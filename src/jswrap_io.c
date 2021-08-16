@@ -188,7 +188,7 @@ Objects can contain:
 void jswrap_io_analogWrite(Pin pin, JsVarFloat value, JsVar *options) {
   JsVarFloat freq = 0;
   JshAnalogOutputFlags flags = JSAOF_NONE;
-  if (jsvIsObject(options)) {
+  if (options && jsvIsObject(options)) {
     freq = jsvGetFloatAndUnLock(jsvObjectGetChild(options, "freq", 0));
     if (jsvGetBoolAndUnLock(jsvObjectGetChild(options, "forceSoft", 0)))
           flags |= JSAOF_FORCE_SOFTWARE;
@@ -270,6 +270,7 @@ void jswrap_io_digitalWrite(
     JsVarInt value //!< The value of the output.
   ) {
   // Handle the case where it is an array of pins.
+  if (!pinVar) return;
   if (jsvIsArray(pinVar)) {
     JsVarRef pinName = jsvGetLastChild(pinVar); // NOTE: start at end and work back!
     while (pinName) {
@@ -317,6 +318,7 @@ If the pin argument is an object with a `read` method, the `read` method will be
 passed back.
 */
 JsVarInt jswrap_io_digitalRead(JsVar *pinVar) {
+  if (!pinVar) return 0;
   // Hadnle the case where it is an array of pins.
   if (jsvIsArray(pinVar)) {
     int pins = 0;
@@ -679,7 +681,7 @@ JsVar *jswrap_interface_setWatch(
     edge = 1;
     debounce = 25;
   }
-  if (jsvIsObject(repeatOrObject)) {
+  if (repeatOrObject && jsvIsObject(repeatOrObject)) {
     JsVar *v;
     v = jsvObjectGetChild(repeatOrObject, "repeat", 0);
     if (v) repeat = jsvGetBoolAndUnLock(v);

@@ -118,7 +118,7 @@ JsVar *jswrap_object_valueOf(JsVar *parent) {
 Convert the Object to a string
  */
 JsVar *jswrap_object_toString(JsVar *parent, JsVar *arg0) {
-  if (jsvIsInt(arg0) && jsvIsNumeric(parent)) {
+  if (parent && arg0 && jsvIsInt(arg0) && jsvIsNumeric(parent)) {
     JsVarInt radix = jsvGetInteger(arg0);
     if (radix>=2 && radix<=36) {
       char buf[JS_NUMBER_BUFFER_SIZE];

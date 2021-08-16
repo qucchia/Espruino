@@ -66,7 +66,7 @@ static void NO_INLINE jslGetNextCh() {
     lex->it.charIdx -= lex->it.charsInVar;
     lex->it.varIndex += lex->it.charsInVar;
 #ifdef SPIFLASH_BASE
-    if (jsvIsFlashString(lex->it.var))
+    if (lex->it.var && jsvIsFlashString(lex->it.var))
       return jsvStringIteratorLoadFlashString(&lex->it);
 #endif
     if (lex->it.var && jsvGetLastChild(lex->it.var)) {

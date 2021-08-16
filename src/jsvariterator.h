@@ -126,7 +126,7 @@ static ALWAYS_INLINE void jsvStringIteratorLoadInline(JsvStringIterator *it) {
   it->charIdx -= it->charsInVar;
   it->varIndex += it->charsInVar;
 #ifdef SPIFLASH_BASE
-  if (jsvIsFlashString(it->var))
+  if (it->var && jsvIsFlashString(it->var))
     return jsvStringIteratorLoadFlashString(it);
 #endif
   if (it->var && jsvGetLastChild(it->var)) {

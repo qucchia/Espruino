@@ -519,8 +519,8 @@ for className in builtins:
     codeOut('      if (v) return v;');
     codeOut("    }")
 codeOut('    // ------------------------------------------ INSTANCE METHODS WE MUST CHECK CONSTRUCTOR FOR')
-codeOut('    JsVar *proto = jsvIsObject(parent)?jsvSkipNameAndUnLock(jsvFindChildFromString(parent, JSPARSE_INHERITS_VAR, false)):0;')
-codeOut('    JsVar *constructor = jsvIsObject(proto)?jsvSkipNameAndUnLock(jsvFindChildFromString(proto, JSPARSE_CONSTRUCTOR_VAR, false)):0;')
+codeOut('    JsVar *proto = (parent&&jsvIsObject(parent))?jsvSkipNameAndUnLock(jsvFindChildFromString(parent, JSPARSE_INHERITS_VAR, false)):0;')
+codeOut('    JsVar *constructor = (proto&&jsvIsObject(proto))?jsvSkipNameAndUnLock(jsvFindChildFromString(proto, JSPARSE_CONSTRUCTOR_VAR, false)):0;')
 codeOut('    jsvUnLock(proto);')
 codeOut('    if (constructor && jsvIsNativeFunction(constructor)) {')
 codeOut('      const JswSymList *l = jswGetSymbolListForConstructorProto(constructor);')
@@ -584,7 +584,7 @@ for className in builtins:
 
     codeOut("    if ("+check+") return &jswSymbolTables["+builtin["indexName"]+"];");
 codeOut('  }')
-codeOut('  JsVar *constructor = jsvIsObject(parent)?jsvSkipNameAndUnLock(jsvFindChildFromString(parent, JSPARSE_CONSTRUCTOR_VAR, false)):0;')
+codeOut('  JsVar *constructor = (parent&&jsvIsObject(parent))?jsvSkipNameAndUnLock(jsvFindChildFromString(parent, JSPARSE_CONSTRUCTOR_VAR, false)):0;')
 codeOut('  if (constructor && jsvIsNativeFunction(constructor)) {')
 codeOut('    const JswSymList *l = jswGetSymbolListForConstructorProto(constructor);')
 codeOut('    jsvUnLock(constructor);')

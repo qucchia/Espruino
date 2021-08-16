@@ -252,7 +252,7 @@ static bool jsfGetJSONForObjectItWithCallback(JsvObjectIterator *it, JSONFlags f
     bool hidden = jsvIsInternalObjectKey(index) ||
         ((flags & JSON_IGNORE_FUNCTIONS) && jsvIsFunction(item)) ||
         ((flags&JSON_NO_UNDEFINED) && jsvIsUndefined(item)) ||
-        jsvIsGetterOrSetter(item);
+        (item && jsvIsGetterOrSetter(item));
     if (!hidden) {
       sinceNewLine++;
       if (!first) cbprintf(user_callback, user_data, (flags&JSON_PRETTY)?", ":",");
@@ -411,7 +411,7 @@ void jsfGetJSONWithCallback(JsVar *var, JsVar *varName, JSONFlags flags, const c
       bool showContents = true;
       if (flags & JSON_SHOW_OBJECT_NAMES) {
         JsVar *proto = jsvObjectGetChild(var, JSPARSE_INHERITS_VAR, 0);
-        if (jsvHasChildren(proto)) {
+        if (proto && jsvHasChildren(proto)) {
           JsVar *constr = jsvObjectGetChild(proto, JSPARSE_CONSTRUCTOR_VAR, 0);
           if (constr) {
             JsVar *p = jsvGetIndexOf(execInfo.root, constr, true);
@@ -436,7 +436,7 @@ void jsfGetJSONWithCallback(JsVar *var, JsVar *varName, JSONFlags flags, const c
         JsVar *toStringFn = 0;
         if (flags & JSON_ALLOW_TOJSON)
           toStringFn = jspGetNamedField(var, "toJSON", false);
-        if (jsvIsFunction(toStringFn)) {
+        if (toStringFn && jsvIsFunction(toStringFn)) {
           JsVar *varNameStr = varName ? jsvAsString(varName) : 0;
           JsVar *result = jspExecuteFunction(toStringFn,var,1,&varNameStr);
           jsvUnLock(varNameStr);

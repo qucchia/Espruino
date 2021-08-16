@@ -259,7 +259,7 @@ JsVar *jswrap_graphics_createArrayBuffer(int width, int height, int bpp, JsVar *
   gfx.data.flags = JSGRAPHICSFLAGS_NONE;
   gfx.graphicsVar = parent;
 
-  if (jsvIsObject(options)) {
+  if (options && jsvIsObject(options)) {
     if (jsvGetBoolAndUnLock(jsvObjectGetChild(options, "zigzag", 0)))
       gfx.data.flags = (JsGraphicsFlags)(gfx.data.flags | JSGRAPHICSFLAGS_ARRAYBUFFER_ZIGZAG);
     if (jsvGetBoolAndUnLock(jsvObjectGetChild(options, "msb", 0)))

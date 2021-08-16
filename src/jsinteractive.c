@@ -606,7 +606,7 @@ void jsiDumpSerialInitialisation(vcbprintf_callback user_callback, void *user_da
       int baudrate = (int)jsvGetInteger(baud);
       if (baudrate <= 0) baudrate = DEFAULT_BAUD_RATE;
       cbprintf(user_callback, user_data, "%s.setup(%d", serialName, baudrate);
-      if (jsvIsObject(options)) {
+      if (options && jsvIsObject(options)) {
         user_callback(", ", user_data);
         jsfGetJSONWithCallback(options, NULL, JSON_SHOW_DEVICES, 0, user_callback, user_data);
       }
@@ -1751,7 +1751,7 @@ bool jsiExecuteEventCallbackName(JsVar *obj, const char *cbName, unsigned int ar
 // Execute the named Event callback on the named object, and return true if it exists
 bool jsiExecuteEventCallbackOn(const char *objectName, const char *cbName, unsigned int argCount, JsVar **argPtr) {
   JsVar *obj = jsvObjectGetChild(execInfo.root, objectName, 0);
-  bool executed = jsiExecuteEventCallbackName(obj, cbName, argCount, argPtr);
+  bool executed = obj && jsiExecuteEventCallbackName(obj, cbName, argCount, argPtr);
   jsvUnLock(obj);
   return executed;
 }
@@ -1887,14 +1887,14 @@ void jsiIdle() {
     } else if (DEVICE_IS_SERIAL(eventType)) {
       // ------------------------------------------------------------------------ SERIAL CALLBACK
       JsVar *usartClass = jsvSkipNameAndUnLock(jsiGetClassNameFromDevice(eventType));
-      if (jsvIsObject(usartClass)) {
+      if (usartClass && jsvIsObject(usartClass)) {
         maxEvents -= jsiHandleIOEventForUSART(usartClass, &event);
       }
       jsvUnLock(usartClass);
     } else if (DEVICE_IS_USART_STATUS(eventType)) {
       // ------------------------------------------------------------------------ SERIAL STATUS CALLBACK
       JsVar *usartClass = jsvSkipNameAndUnLock(jsiGetClassNameFromDevice(IOEVENTFLAGS_GETTYPE(IOEVENTFLAGS_SERIAL_STATUS_TO_SERIAL(event.flags))));
-      if (jsvIsObject(usartClass)) {
+      if (usartClass && jsvIsObject(usartClass)) {
         if (event.flags & EV_SERIAL_STATUS_FRAMING_ERR)
           jsiExecuteObjectCallbacks(usartClass, JS_EVENT_PREFIX"framing", 0, 0);
         if (event.flags & EV_SERIAL_STATUS_PARITY_ERR)
@@ -1909,7 +1909,7 @@ void jsiIdle() {
     } else if (DEVICE_IS_I2C(eventType)) {
       // ------------------------------------------------------------------------ I2C CALLBACK
       JsVar *i2cClass = jsvSkipNameAndUnLock(jsiGetClassNameFromDevice(eventType));
-      if (jsvIsObject(i2cClass)) {
+      if (i2cClass && jsvIsObject(i2cClass)) {
         uint8_t addr = event.data.time&0xff;
         int len = event.data.time>>8;
         JsVar *obj = jsvNewObject();
@@ -2368,7 +2368,7 @@ void jsiDumpState(vcbprintf_callback user_callback, void *user_data) {
         // normal variable definition
         cbprintf(user_callback, user_data, "var %v = ", child);
         bool hasProto = false;
-        if (jsvIsObject(data)) {
+        if (data && jsvIsObject(data)) {
           JsVar *proto = jsvObjectGetChild(data, JSPARSE_INHERITS_VAR, 0);
           if (proto) {
             JsVar *protoName = jsvGetPathTo(execInfo.root, proto, 4, data);

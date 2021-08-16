@@ -152,7 +152,7 @@ JsVar *jspFindPrototypeFor(const char *className) {
 /** Here we assume that we have already looked in the parent itself -
  * and are now going down looking at the stuff it inherited */
 JsVar *jspeiFindChildFromStringInParents(JsVar *parent, const char *name) {
-  if (jsvIsObject(parent)) {
+  if (parent && jsvIsObject(parent)) {
     // If an object, look for an 'inherits' var
     JsVar *inheritsFrom = jsvObjectGetChild(parent, JSPARSE_INHERITS_VAR, 0);
 
@@ -518,7 +518,7 @@ NO_INLINE JsVar *jspeFunctionCall(JsVar *function, JsVar *functionName, JsVar *t
       JsvObjectIterator it;
       jsvObjectIteratorNew(&it, function);
       JsVar *param = jsvObjectIteratorGetKey(&it);
-      while (jsvIsFunctionParameter(param)) {
+      while (param && jsvIsFunctionParameter(param)) {
         if ((unsigned)argCount>=argPtrSize) {
           // allocate more space on stack if needed
           unsigned int newArgPtrSize = (argPtrSize?argPtrSize:(unsigned int)argCount)*4;
@@ -603,7 +603,7 @@ NO_INLINE JsVar *jspeFunctionCall(JsVar *function, JsVar *functionName, JsVar *t
 
       if (nativePtr && !JSP_HAS_ERROR) {
         returnVar = jsnCallFunction(nativePtr, function->varData.native.argTypes, thisVar, argPtr, argCount);
-        assert(!jsvIsName(returnVar));
+        assert(!returnVar || !jsvIsName(returnVar));
       } else {
         returnVar = 0;
       }
@@ -1185,7 +1185,7 @@ NO_INLINE JsVar *jspeFactorFunctionCall() {
    */
   if (parent && jsvIsBasicName(a) && !jsvIsNewChild(a)) {
     JsVar *value = jsvLockSafe(jsvGetFirstChild(a));
-    if (jsvIsGetterOrSetter(value)) { // no need to do this for functions since we've just executed whatever we needed to
+    if (value && jsvIsGetterOrSetter(value)) { // no need to do this for functions since we've just executed whatever we needed to
       JsVar *nameVar = jsvCopyNameOnly(a,false,true);
       JsVar *newChild = jsvCreateNewChild(parent, nameVar, value);
       jsvUnLock2(nameVar, a);
@@ -1305,7 +1305,7 @@ NO_INLINE JsVar *jspeFactorArray() {
 NO_INLINE void jspEnsureIsPrototype(JsVar *instanceOf, JsVar *prototypeName) {
   if (!prototypeName) return;
   JsVar *prototypeVar = jsvSkipName(prototypeName);
-  if (!jsvIsObject(prototypeVar)) {
+  if (!prototypeVar || !jsvIsObject(prototypeVar)) {
     if (!jsvIsUndefined(prototypeVar))
       jsExceptionHere(JSET_TYPEERROR, "Prototype should be an object, got %t", prototypeVar);
     jsvUnLock(prototypeVar);
@@ -1679,7 +1679,7 @@ NO_INLINE JsVar *jspeFactor() {
       * in a static method it references the extended class's constructor (but this is different)
      */
 
-    if (jsvIsObject(execInfo.thisVar)) {
+    if (execInfo.thisVar && jsvIsObject(execInfo.thisVar)) {
       // 'this' is an object - must be calling a normal method
       JsVar *proto1 = jsvObjectGetChild(execInfo.thisVar, JSPARSE_INHERITS_VAR, 0); // if we're in a method, get __proto__ first
       JsVar *proto2 = jsvIsObject(proto1) ? jsvObjectGetChild(proto1, JSPARSE_INHERITS_VAR, 0) : 0; // still in method, get __proto__.__proto__
@@ -1699,7 +1699,7 @@ NO_INLINE JsVar *jspeFactor() {
     } else if (jsvIsFunction(execInfo.thisVar)) {
       // 'this' is a function - must be calling a static method
       JsVar *proto1 = jsvObjectGetChild(execInfo.thisVar, JSPARSE_PROTOTYPE_VAR, 0);
-      JsVar *proto2 = jsvIsObject(proto1) ? jsvObjectGetChild(proto1, JSPARSE_INHERITS_VAR, 0) : 0;
+      JsVar *proto2 = (proto1 && jsvIsObject(proto1)) ? jsvObjectGetChild(proto1, JSPARSE_INHERITS_VAR, 0) : 0;
       jsvUnLock(proto1);
       if (!proto2) {
         jsExceptionHere(JSET_SYNTAXERROR, "Calling 'super' outside of class");
@@ -1899,7 +1899,7 @@ NO_INLINE JsVar *__jspeBinaryExpression(JsVar *a, unsigned int lastPrecedence) {
           if (!jsvIsFunction(bv)) {
             jsExceptionHere(JSET_ERROR, "Expecting a function on RHS in instanceof check, got %t", bv);
           } else {
-            if (jsvIsObject(av) || jsvIsFunction(av)) {
+            if (av && (jsvIsObject(av) || jsvIsFunction(av))) {
               JsVar *bproto = jspGetNamedField(bv, JSPARSE_PROTOTYPE_VAR, false);
               JsVar *proto = jsvObjectGetChild(av, JSPARSE_INHERITS_VAR, 0);
               while (proto) {
@@ -2042,8 +2042,10 @@ NO_INLINE JsVar *jspeExpression() {
     JsVar *a = jspeAssignmentExpression();
     if (lex->tk!=',') return a;
     // if we get a comma, we just forget this data and parse the next bit...
-    jsvCheckReferenceError(a);
-    jsvUnLock(a);
+    if (a) {
+      jsvCheckReferenceError(a);
+      jsvUnLock(a);
+    }
     JSP_ASSERT_MATCH(',');
   }
   return 0;
@@ -2068,8 +2070,10 @@ NO_INLINE void jspeBlockNoBrackets() {
   if (JSP_SHOULD_EXECUTE) {
     while (lex->tk && lex->tk!='}') {
       JsVar *a = jspeStatement();
-      jsvCheckReferenceError(a);
-      jsvUnLock(a);
+      if (a) {
+        jsvCheckReferenceError(a);
+        jsvUnLock(a);
+      }
       if (JSP_HAS_ERROR) {
         if (lex && !(execInfo.execute&EXEC_ERROR_LINE_REPORTED)) {
           execInfo.execute = (JsExecFlags)(execInfo.execute | EXEC_ERROR_LINE_REPORTED);
@@ -2120,7 +2124,7 @@ NO_INLINE JsVar *jspParse() {
   while (!JSP_SHOULDNT_PARSE && lex->tk != LEX_EOF) {
     jsvUnLock(v);
     v = jspeBlockOrStatement();
-    jsvCheckReferenceError(v);
+    if (v) jsvCheckReferenceError(v);
   }
   return v;
 }
@@ -2346,6 +2350,7 @@ NO_INLINE JsVar *jspeStatementDoOrWhile(bool isWhile) {
 }
 
 NO_INLINE JsVar *jspGetBuiltinPrototype(JsVar *obj) {
+  if (!obj) return 0;
   if (jsvIsArray(obj)) {
     JsVar *v = jspFindPrototypeFor("Array");
     if (v) return v;
@@ -2694,7 +2699,7 @@ NO_INLINE JsVar *jspeStatementFunctionDecl(bool isClass) {
     // OPT: can Find* use just a JsVar that is a 'name'?
     JsVar *existingName = jspeiFindNameOnTop(funcName, true);
     JsVar *existingFunc = jsvSkipName(existingName);
-    if (jsvIsFunction(existingFunc)) {
+    if (existingFunc && jsvIsFunction(existingFunc)) {
       // 'proper' replace, that keeps the original function var and swaps the children
       funcVar = jsvSkipNameAndUnLock(funcVar);
       jswrap_function_replaceWith(existingFunc, funcVar);
@@ -2892,7 +2897,7 @@ bool jspIsConstructor(JsVar *constructor, const char *constructorName) {
 JsVar *jspGetPrototype(JsVar *object) {
   if (!jsvIsObject(object)) return 0;
   JsVar *proto = jsvObjectGetChild(object, JSPARSE_INHERITS_VAR, 0);
-  if (jsvIsObject(proto))
+  if (proto && jsvIsObject(proto))
     return proto;
   jsvUnLock(proto);
   return 0;
@@ -3076,6 +3081,7 @@ JsVar *jspEvaluateModule(JsVar *moduleContents) {
  * have added when we created it. It's safe to call this on
  * non-prototypes and non-objects.  */
 JsVar *jspGetPrototypeOwner(JsVar *proto) {
+  if (!proto) return 0;
   if (jsvIsObject(proto) || jsvIsArray(proto)) {
     return jsvSkipNameAndUnLock(jsvObjectGetChild(proto, JSPARSE_CONSTRUCTOR_VAR, 0));
   }

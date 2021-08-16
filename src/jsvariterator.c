@@ -30,6 +30,7 @@ bool jsvIterateCallback(
     void *callbackData
   ) {
   bool ok = true;
+  if (!data) return false;
   // Handle the data being a single numeric.
   if (jsvIsNumeric(data)) {
     callback((int)jsvGetInteger(data), callbackData);
@@ -115,6 +116,7 @@ bool jsvIterateBufferCallback(
     void *callbackData
   ) {
   bool ok = true;
+  if (!data) return false;
   // Handle the data being a single numeric.
   if (jsvIsNumeric(data)) {
     unsigned char ch = (unsigned char)jsvGetInteger(data);

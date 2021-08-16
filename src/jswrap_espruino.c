@@ -1035,12 +1035,14 @@ void jswrap_espruino_setConsole(JsVar *deviceVar, JsVar *options) {
     return;
 
   IOEventFlags device = EV_NONE;
-  if (jsvIsObject(deviceVar)) {
-    device = jsiGetDeviceFromClass(deviceVar);
-  } else if (jsvIsString(deviceVar)) {
-    char name[JSLEX_MAX_TOKEN_LENGTH];
-    jsvGetString(deviceVar, name, JSLEX_MAX_TOKEN_LENGTH);
-    device = jshFromDeviceString(name);
+  if (deviceVar) {
+    if (jsvIsObject(deviceVar)) {
+      device = jsiGetDeviceFromClass(deviceVar);
+    } else if (jsvIsString(deviceVar)) {
+      char name[JSLEX_MAX_TOKEN_LENGTH];
+      jsvGetString(deviceVar, name, JSLEX_MAX_TOKEN_LENGTH);
+      device = jshFromDeviceString(name);
+    }
   }
 
   if (device==EV_NONE && !jsvIsNull(deviceVar)) {
@@ -1394,7 +1396,7 @@ void jswrap_espruino_mapInPlace(JsVar *from, JsVar *to, JsVar *map, JsVarInt bit
     jsExceptionHere(JSET_ERROR, "Third argument should be a function or array");
     return;
   }
-  bool isFn = jsvIsFunction(map);
+  bool isFn = map&&jsvIsFunction(map);
   int bitsFrom = 8*(int)JSV_ARRAYBUFFER_GET_SIZE(from->varData.arraybuffer.type);
   bool msbFirst = true;
   if (bits<0) {
@@ -2027,12 +2029,14 @@ JsVar *jswrap_espruino_decodeUTF8(JsVar *str, JsVar *lookup, JsVar *replaceFn) {
       jsvStringIteratorAppend(&dit, (char)cp); // ASCII (including extended)
     } else {
       JsVar* replace = 0;
-      if (jsvIsArray(lookup))
-        replace = jsvGetArrayItem(lookup, cp);
-      else if (jsvIsObject(lookup)) {
-        char code[16];
-        itostr(cp, code, 16);
-        replace = jsvObjectGetChild(lookup, code, 0);
+      if (lookup) {
+        if (jsvIsArray(lookup))
+          replace = jsvGetArrayItem(lookup, cp);
+        else if (jsvIsObject(lookup)) {
+          char code[16];
+          itostr(cp, code, 16);
+          replace = jsvObjectGetChild(lookup, code, 0);
+        }
       }
       if (!replace && jsvIsFunction(replaceFn)) {
         JsVar *v = jsvNewFromInteger(cp);
