@@ -25,7 +25,7 @@
   "ifndef" : "SAVE_ON_FLASH"
 }
 This class helps
- */
+*/
 
 /*JSON{
   "type" : "constructor",
@@ -52,7 +52,7 @@ v.setUint8(3,"0x56")
 console.log("0x"+v.getUint32(0).toString(16))
 // prints 0x12340056
 ```
- */
+*/
 JsVar *jswrap_dataview_constructor(JsVar *buffer, int byteOffset, int byteLength) {
   if (!jsvIsArrayBuffer(buffer) ||
       buffer->varData.arraybuffer.type!=ARRAYBUFFERVIEW_ARRAYBUFFER) {
@@ -125,6 +125,7 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   "return" : ["JsVar","the index of the value in the array, or -1"],
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */
 /*JSON{
   "type" : "method",
@@ -138,6 +139,7 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   "return" : ["JsVar","the index of the value in the array, or -1"],
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */
 /*JSON{
   "type" : "method",
@@ -151,6 +153,7 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   "return" : ["JsVar","the index of the value in the array, or -1"],
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */
 /*JSON{
   "type" : "method",
@@ -164,6 +167,7 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   "return" : ["JsVar","the index of the value in the array, or -1"],
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */
 /*JSON{
   "type" : "method",
@@ -177,6 +181,7 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   "return" : ["JsVar","the index of the value in the array, or -1"],
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */
 /*JSON{
   "type" : "method",
@@ -190,6 +195,7 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   "return" : ["JsVar","the index of the value in the array, or -1"],
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */
 /*JSON{
   "type" : "method",
@@ -203,6 +209,7 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   "return" : ["JsVar","the index of the value in the array, or -1"],
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */
 /*JSON{
   "type" : "method",
@@ -216,6 +223,7 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   "return" : ["JsVar","the index of the value in the array, or -1"],
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */
 
 // =============================================================================  SET
@@ -232,6 +240,7 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   ],
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */
 /*JSON{
   "type" : "method",
@@ -245,6 +254,7 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   ],
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */
 /*JSON{
   "type" : "method",
@@ -258,6 +268,7 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   ],
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */
 /*JSON{
   "type" : "method",
@@ -271,6 +282,7 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   ],
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */
 /*JSON{
   "type" : "method",
@@ -284,6 +296,7 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   ],
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */
 /*JSON{
   "type" : "method",
@@ -297,6 +310,7 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   ],
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */
 /*JSON{
   "type" : "method",
@@ -310,6 +324,7 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   ],
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */
 /*JSON{
   "type" : "method",
@@ -323,4 +338,5 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   ],
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */

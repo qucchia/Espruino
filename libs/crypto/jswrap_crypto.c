@@ -191,7 +191,6 @@ JsVar *jswrap_crypto_SHAx(JsVar *message, int shaNum) {
   "return_object" : "ArrayBuffer",
   "ifdef" : "USE_CRYPTO"
 }
-
 Performs a SHA1 hash and returns the result as a 20 byte ArrayBuffer.
 
 **Note:** On some boards (currently only Espruino Original) there isn't space
@@ -210,7 +209,6 @@ used instead.
   "return_object" : "ArrayBuffer",
   "ifdef" : "USE_SHA256"
 }
-
 Performs a SHA224 hash and returns the result as a 28 byte ArrayBuffer
 */
 /*JSON{
@@ -225,7 +223,6 @@ Performs a SHA224 hash and returns the result as a 28 byte ArrayBuffer
   "return_object" : "ArrayBuffer",
   "ifdef" : "USE_SHA256"
 }
-
 Performs a SHA256 hash and returns the result as a 32 byte ArrayBuffer
 */
 /*JSON{
@@ -240,7 +237,6 @@ Performs a SHA256 hash and returns the result as a 32 byte ArrayBuffer
   "return_object" : "ArrayBuffer",
   "ifdef" : "USE_SHA512"
 }
-
 Performs a SHA384 hash and returns the result as a 48 byte ArrayBuffer
 */
 /*JSON{
@@ -255,7 +251,6 @@ Performs a SHA384 hash and returns the result as a 48 byte ArrayBuffer
   "return_object" : "ArrayBuffer",
   "ifdef" : "USE_SHA512"
 }
-
 Performs a SHA512 hash and returns the result as a 64 byte ArrayBuffer
 */
 
@@ -274,7 +269,6 @@ Performs a SHA512 hash and returns the result as a 64 byte ArrayBuffer
   "return_object" : "ArrayBuffer",
   "ifdef" : "USE_TLS"
 }
-
 Password-Based Key Derivation Function 2 algorithm, using SHA512
 */
 JsVar *jswrap_crypto_PBKDF2(JsVar *passphrase, JsVar *salt, JsVar *options) {
@@ -461,6 +455,7 @@ static NO_INLINE JsVar *jswrap_crypto_AEScrypt(JsVar *message, JsVar *key, JsVar
   "return_object" : "ArrayBuffer",
   "ifdef" : "USE_AES"
 }
+
 */
 JsVar *jswrap_crypto_AES_encrypt(JsVar *message, JsVar *key, JsVar *options) {
   return jswrap_crypto_AEScrypt(message, key, options, true);
@@ -480,6 +475,7 @@ JsVar *jswrap_crypto_AES_encrypt(JsVar *message, JsVar *key, JsVar *options) {
   "return_object" : "ArrayBuffer",
   "ifdef" : "USE_AES"
 }
+
 */
 JsVar *jswrap_crypto_AES_decrypt(JsVar *message, JsVar *key, JsVar *options) {
   return jswrap_crypto_AEScrypt(message, key, options, false);

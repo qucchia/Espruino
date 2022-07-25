@@ -161,20 +161,20 @@ The pin connected to Corner #6
 
 
 /*JSON{
-    "type": "class",
-    "class" : "Badge"
+  "type" : "class",
+  "class" : "Badge"
 }
 Class containing utility functions for accessing IO on the hexagonal badge
 */
 /*JSON{
-    "type" : "staticmethod",
-    "class" : "Badge",
-    "name" : "capSense",
-    "generate" : "jswrap_badge_capSense",
-    "params" : [
-      ["corner","int","The corner to use"]
-    ],
-    "return" : ["int", "Capacitive sense counter" ]
+  "type" : "staticmethod",
+  "class" : "Badge",
+  "name" : "capSense",
+  "generate" : "jswrap_badge_capSense",
+  "params" : [
+    ["corner","int","The corner to use"]
+  ],
+  "return" : ["int","Capacitive sense counter"]
 }
 Capacitive sense - the higher the capacitance, the higher the number returned.
 
@@ -189,11 +189,11 @@ int jswrap_badge_capSense(int corner) {
 }
 
 /*JSON{
-    "type" : "staticmethod",
-    "class" : "Badge",
-    "name" : "getBatteryPercentage",
-    "generate" : "jswrap_badge_getBatteryPercentage",
-    "return" : ["int", "A percentage between 0 and 100" ]
+  "type" : "staticmethod",
+  "class" : "Badge",
+  "name" : "getBatteryPercentage",
+  "generate" : "jswrap_badge_getBatteryPercentage",
+  "return" : ["int","A percentage between 0 and 100"]
 }
 Return an approximate battery percentage remaining based on a normal CR2032
 battery (2.8 - 2.2v)
@@ -239,15 +239,16 @@ void badge_lcd_flip(JsVar *g) {
 
 
 /*JSON{
-    "type" : "staticmethod",
-    "class" : "Badge",
-    "name" : "setContrast",
-    "generate" : "jswrap_badge_setContrast",
-    "params" : [
-      ["c","float","Contrast between 0 and 1"]
-    ]
+  "type" : "staticmethod",
+  "class" : "Badge",
+  "name" : "setContrast",
+  "generate" : "jswrap_badge_setContrast",
+  "params" : [
+    ["c","float","Contrast between 0 and 1"]
+  ]
 }
-Set the LCD's contrast*/
+Set the LCD's contrast
+*/
 void jswrap_badge_setContrast(JsVarFloat c) {
   if (c<0) c=0;
   if (c>1) c=1;
@@ -262,7 +263,9 @@ void jswrap_badge_setContrast(JsVarFloat c) {
 /*JSON{
   "type" : "init",
   "generate" : "jswrap_badge_init"
-}*/
+}
+
+*/
 void jswrap_badge_init() {
   // LCD Init 1
   jshPinOutput(LCD_CS,0);
@@ -332,7 +335,9 @@ void jswrap_badge_init() {
 /*JSON{
   "type" : "kill",
   "generate" : "jswrap_badge_kill"
-}*/
+}
+
+*/
 void jswrap_badge_kill() {
 
 }
@@ -340,7 +345,9 @@ void jswrap_badge_kill() {
 /*JSON{
   "type" : "idle",
   "generate" : "jswrap_badge_idle"
-}*/
+}
+
+*/
 bool jswrap_badge_idle() {
   return false;
 }

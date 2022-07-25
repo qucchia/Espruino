@@ -31,7 +31,7 @@
 }
 This class handles waveforms. In Espruino, a Waveform is a set of data that you
 want to input or output.
- */
+*/
 
 static JsVar *jswrap_waveform_getBuffer(JsVar *waveform, int bufferNumber, bool *is16Bit) {
   JsVar *buffer = jsvObjectGetChild(waveform, (bufferNumber==0)?"buffer":"buffer2", 0);
@@ -52,7 +52,9 @@ static JsVar *jswrap_waveform_getBuffer(JsVar *waveform, int bufferNumber, bool 
   "type" : "idle",
   "generate" : "jswrap_waveform_idle",
   "ifndef" : "SAVE_ON_FLASH"
-}*/
+}
+
+*/
 bool jswrap_waveform_idle() {
   JsVar *waveforms = jsvObjectGetChild(execInfo.hiddenRoot, JSI_WAVEFORM_NAME, 0);
   if (waveforms) {
@@ -108,7 +110,9 @@ bool jswrap_waveform_idle() {
   "type" : "kill",
   "generate" : "jswrap_waveform_kill",
   "ifndef" : "SAVE_ON_FLASH"
-}*/
+}
+
+*/
 void jswrap_waveform_kill() { // be sure to remove all waveforms...
   JsVar *waveforms = jsvObjectGetChild(execInfo.hiddenRoot, JSI_WAVEFORM_NAME, 0);
   if (waveforms) {
@@ -153,7 +157,7 @@ double-buffered - see `options` below) which contains the data to input/output.
 When double-buffered, a 'buffer' event will be emitted each time a buffer is
 finished with (the argument is that buffer). When the recording stops, a
 'finish' event will be emitted (with the first argument as the buffer).
- */
+*/
 JsVar *jswrap_waveform_constructor(int samples, JsVar *options) {
   if (samples<=0) {
     jsExceptionHere(JSET_ERROR, "Samples must be greater than 0");
@@ -261,7 +265,7 @@ static void jswrap_waveform_start(JsVar *waveform, Pin pin, JsVarFloat freq, JsV
 Will start outputting the waveform on the given pin - the pin must have
 previously been initialised with analogWrite. If not repeating, it'll emit a
 `finish` event when it is done.
- */
+*/
 void jswrap_waveform_startOutput(JsVar *waveform, Pin pin, JsVarFloat freq, JsVar *options) {
   jswrap_waveform_start(waveform, pin, freq, options, true/*write*/);
 }
@@ -280,7 +284,7 @@ void jswrap_waveform_startOutput(JsVar *waveform, Pin pin, JsVarFloat freq, JsVa
 }
 Will start inputting the waveform on the given pin that supports analog. If not
 repeating, it'll emit a `finish` event when it is done.
- */
+*/
 void jswrap_waveform_startInput(JsVar *waveform, Pin pin, JsVarFloat freq, JsVar *options) {
   // Setup analog, and also bail out on failure
   if (jshPinAnalog(pin)<0) return;
@@ -296,7 +300,7 @@ void jswrap_waveform_startInput(JsVar *waveform, Pin pin, JsVarFloat freq, JsVar
   "generate" : "jswrap_waveform_stop"
 }
 Stop a waveform that is currently outputting
- */
+*/
 void jswrap_waveform_stop(JsVar *waveform) {
   bool running = jsvGetBoolAndUnLock(jsvObjectGetChild(waveform, "running", 0));
   if (!running) {

@@ -72,29 +72,29 @@ Called when the connection closes.
 
 
 /*JSON{
-    "type" : "property",
-    "class" : "httpSRq",
-    "name" : "headers",
-    "generate" : false,
-    "return" : ["JsVar", "An object mapping header name to value" ]
+  "type" : "property",
+  "class" : "httpSRq",
+  "name" : "headers",
+  "generate" : false,
+  "return" : ["JsVar","An object mapping header name to value"]
 }
 The headers to sent to the server with this HTTP request.
 *//*Documentation only*/
 /*JSON{
-    "type" : "property",
-    "class" : "httpSRq",
-    "name" : "method",
-    "generate" : false,
-    "return" : ["JsVar", "A string" ]
+  "type" : "property",
+  "class" : "httpSRq",
+  "name" : "method",
+  "generate" : false,
+  "return" : ["JsVar","A string"]
 }
 The HTTP method used with this request. Often `"GET"`.
 *//*Documentation only*/
 /*JSON{
-    "type" : "property",
-    "class" : "httpSRq",
-    "name" : "url",
-    "generate" : false,
-    "return" : ["JsVar", "A string representing the URL" ]
+  "type" : "property",
+  "class" : "httpSRq",
+  "name" : "url",
+  "generate" : false,
+  "return" : ["JsVar","A string representing the URL"]
 }
 The URL requested in this HTTP request, for instance:
 
@@ -226,38 +226,38 @@ event function receives an error object as parameter with a `code` field and a
 conclude the HTTP request/response.
 */
 /*JSON{
-    "type" : "property",
-    "class" : "httpCRs",
-    "name" : "headers",
-    "generate" : false,
-    "return" : ["JsVar", "An object mapping header name to value" ]
+  "type" : "property",
+  "class" : "httpCRs",
+  "name" : "headers",
+  "generate" : false,
+  "return" : ["JsVar","An object mapping header name to value"]
 }
 The headers received along with the HTTP response
 *//*Documentation only*/
 /*JSON{
-    "type" : "property",
-    "class" : "httpCRs",
-    "name" : "statusCode",
-    "generate" : false,
-    "return" : ["JsVar", "The status code as a String" ]
+  "type" : "property",
+  "class" : "httpCRs",
+  "name" : "statusCode",
+  "generate" : false,
+  "return" : ["JsVar","The status code as a String"]
 }
 The HTTP response's status code - usually `"200"` if all went well
 *//*Documentation only*/
 /*JSON{
-    "type" : "property",
-    "class" : "httpCRs",
-    "name" : "statusMessage",
-    "generate" : false,
-    "return" : ["JsVar", "An String Status Message" ]
+  "type" : "property",
+  "class" : "httpCRs",
+  "name" : "statusMessage",
+  "generate" : false,
+  "return" : ["JsVar","An String Status Message"]
 }
 The HTTP response's status message - Usually `"OK"` if all went well
 *//*Documentation only*/
 /*JSON{
-    "type" : "property",
-    "class" : "httpCRs",
-    "name" : "httpVersion",
-    "generate" : false,
-    "return" : ["JsVar", "Th" ]
+  "type" : "property",
+  "class" : "httpCRs",
+  "name" : "httpVersion",
+  "generate" : false,
+  "return" : ["JsVar","Th"]
 }
 The HTTP version reported back by the server - usually `"1.1"`
 *//*Documentation only*/
@@ -339,7 +339,7 @@ JsVar *jswrap_http_createServer(JsVar *callback) {
   "type" : "staticmethod",
   "class" : "http",
   "name" : "request",
-    "generate_full" : "jswrap_net_connect(options, callback, ST_HTTP)",
+  "generate_full" : "jswrap_net_connect(options, callback, ST_HTTP)",
   "params" : [
     ["options","JsVar","An object containing host,port,path,method,headers fields (and also ca,key,cert if HTTPS is enabled)"],
     ["callback","JsVar","A function(res) that will be called when a connection is made. You can then call `res.on('data', function(data) { ... })` and `res.on('close', function() { ... })` to deal with the response."]
@@ -379,7 +379,6 @@ here](/Internet#http-post)
 
 **Note:** if TLS/HTTPS is enabled, options can have `ca`, `key` and `cert`
 fields. See `tls.connect` for more information about these and how to use them.
-
 */
 
 /*JSON{
@@ -467,11 +466,11 @@ Stop listening for new HTTP connections
 // ---------------------------------------------------------------------------------
 // ---------------------------------------------------------------------------------
 /*JSON{
-    "type" : "property",
-    "class" : "httpSRs",
-    "name" : "headers",
-    "generate" : false,
-    "return" : ["JsVar", "An object mapping header name to value" ]
+  "type" : "property",
+  "class" : "httpSRs",
+  "name" : "headers",
+  "generate" : false,
+  "return" : ["JsVar","An object mapping header name to value"]
 }
 The headers to send back along with the HTTP response.
 

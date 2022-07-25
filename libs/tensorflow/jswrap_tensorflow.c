@@ -25,6 +25,7 @@
   "type" : "library",
   "class" : "tensorflow"
 }
+
 */
 
 void *jswrap_tfmicrointerpreter_getTFMI(JsVar *parent) {
@@ -52,6 +53,7 @@ void *jswrap_tfmicrointerpreter_getTFMI(JsVar *parent) {
   "return" : ["JsVar","A tensorflow instance"],
   "return_object" : "TFMicroInterpreter"
 }
+
 */
 JsVar *jswrap_tensorflow_create(int arena_size, JsVar *model) {
   if (arena_size<512) {
@@ -143,6 +145,7 @@ JsVar *jswrap_tfmicrointerpreter_tensorToArrayBuffer(JsVar *parent, bool isInput
   "return" : ["JsVar","An arraybuffer referencing the input data"],
   "return_object" : "ArrayBufferView"
 }
+
 */
 JsVar *jswrap_tfmicrointerpreter_getInput(JsVar *parent) {
   return jswrap_tfmicrointerpreter_tensorToArrayBuffer(parent, true);
@@ -155,6 +158,7 @@ JsVar *jswrap_tfmicrointerpreter_getInput(JsVar *parent) {
   "return" : ["JsVar","An arraybuffer referencing the output data"],
   "return_object" : "ArrayBufferView"
 }
+
 */
 JsVar *jswrap_tfmicrointerpreter_getOutput(JsVar *parent) {
   return jswrap_tfmicrointerpreter_tensorToArrayBuffer(parent, false);
@@ -165,6 +169,7 @@ JsVar *jswrap_tfmicrointerpreter_getOutput(JsVar *parent) {
   "name" : "invoke",
   "generate" : "jswrap_tfmicrointerpreter_invoke"
 }
+
 */
 void jswrap_tfmicrointerpreter_invoke(JsVar *parent) {
   void *tfmi = jswrap_tfmicrointerpreter_getTFMI(parent);

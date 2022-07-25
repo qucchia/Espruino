@@ -27,7 +27,7 @@
   "class" : "console"
 }
 An Object that contains functions for writing to the interactive console
- */
+*/
 
 /*JSON{
   "type" : "variable",
@@ -36,7 +36,7 @@ An Object that contains functions for writing to the interactive console
   "return" : ["JsVar","The global scope"]
 }
 A reference to the global scope, where everything is defined.
- */
+*/
 
 /*JSON{
   "type" : "function",
@@ -49,7 +49,7 @@ A reference to the global scope, where everything is defined.
 }
 When Espruino is busy, set the pin specified here high. Set this to undefined to
 disable the feature.
- */
+*/
 #ifndef SAVE_ON_FLASH
 void jswrap_interface_setBusyIndicator(JsVar *pinVar) {
   Pin oldPin = pinBusyIndicator;
@@ -75,7 +75,7 @@ When Espruino is asleep, set the pin specified here low (when it's awake, set it
 high). Set this to undefined to disable the feature.
 
 Please see http://www.espruino.com/Power+Consumption for more details on this.
- */
+*/
 #ifndef SAVE_ON_FLASH
 void jswrap_interface_setSleepIndicator(JsVar *pinVar) {
   Pin oldPin = pinSleepIndicator;
@@ -102,7 +102,7 @@ around 100uA. This only works on STM32 Espruino Boards (nRF52 boards sleep
 automatically).
 
 Please see http://www.espruino.com/Power+Consumption for more details on this.
- */
+*/
 void jswrap_interface_setDeepSleep(bool sleep) {
   jsfSetFlag(JSF_DEEP_SLEEP, sleep);
 }
@@ -121,7 +121,7 @@ Output debugging information
 
 Note: This is not included on boards with low amounts of flash memory, or the
 Espruino board.
- */
+*/
 void jswrap_interface_trace(JsVar *root) {
   #ifdef ESPRUINOBOARD
   // leave this function out on espruino board - we need to save as much flash as possible
@@ -152,7 +152,7 @@ with E.setBootCode" and dumps that too.
 
 **Note:** 'Internal' functions are currently not handled correctly. You will
 need to recreate these in the `onInit` function.
- */
+*/
 /*JSON{
   "type" : "function",
   "name" : "load",
@@ -178,7 +178,7 @@ Espruino every time it starts.
 **If you specify a filename in the argument then that file will be loaded from
 Storage after reset** in much the same way as calling `reset()` then
 `eval(require("Storage").read(filename))`
- */
+*/
 void jswrap_interface_load(JsVar *storageName) {
   jsiStatus |= JSIS_TODO_FLASH_LOAD;
   jsvObjectSetChild(execInfo.hiddenRoot,JSI_LOAD_CODE_NAME,storageName);
@@ -217,7 +217,7 @@ starts.
 In order to stop the program saved with this command being loaded automatically,
 check out [the Troubleshooting
 guide](https://www.espruino.com/Troubleshooting#espruino-stopped-working-after-i-typed-save-)
- */
+*/
 /*JSON{
   "type" : "function",
   "name" : "reset",
@@ -241,7 +241,6 @@ called) the board will load the previously saved code.
 
 Calling `reset(true)` will cause *all saved code in flash memory to be cleared
 as well*.
-
 */
 void jswrap_interface_reset(bool clearFlash) {
   jsiStatus |= JSIS_TODO_RESET;
@@ -262,7 +261,7 @@ Print the supplied string(s) to the console
  **you are not running a terminal app** then when you print data Espruino may
  pause execution and wait until the computer requests the data it is trying to
  print.
- */
+*/
 /*JSON{
   "type" : "staticmethod",
   "class" : "console",
@@ -278,7 +277,7 @@ Print the supplied string(s) to the console
  **you are not running a terminal app** then when you print data Espruino may
  pause execution and wait until the computer requests the data it is trying to
  print.
- */
+*/
 void jswrap_interface_print(JsVar *v) {
   assert(jsvIsArray(v));
 
@@ -313,7 +312,7 @@ Fill the console with the contents of the given function, so you can edit it.
 
 NOTE: This is a convenience function - it will not edit 'inner functions'. For
 that, you must edit the 'outer function' and re-execute it.
- */
+*/
 void jswrap_interface_edit(JsVar *funcName) {
   JsVar *func = 0;
   if (jsvIsString(funcName)) {
@@ -379,7 +378,7 @@ void jswrap_interface_edit(JsVar *funcName) {
 Should Espruino echo what you type back to you? true = yes (Default), false =
 no. When echo is off, the result of executing a command is not returned.
 Instead, you must use 'print' to send output.
- */
+*/
 void jswrap_interface_echo(bool echoOn) {
   if (echoOn)
     jsiStatus &= ~JSIS_ECHO_OFF;
@@ -394,7 +393,7 @@ void jswrap_interface_echo(bool echoOn) {
   "return" : ["float",""]
 }
 Return the current system time in Seconds (as a floating point number)
- */
+*/
 
 /*JSON{
   "type" : "function",
@@ -417,7 +416,7 @@ setTime((new Date("Tue, 19 Feb 2019 10:57")).getTime()/1000)
 ```
 
 To set the timezone for all new Dates, use `E.setTimeZone(hours)`.
- */
+*/
 void jswrap_interactive_setTime(JsVarFloat time) {
   jshInterruptOff();
   JsSysTime stime = jshGetTimeFromMilliseconds(time*1000);
@@ -438,7 +437,7 @@ void jswrap_interactive_setTime(JsVarFloat time) {
   "return" : ["JsVar","The board's serial number"]
 }
 Get the serial number of this board
- */
+*/
 JsVar *jswrap_interface_getSerial() {
   char buf[8];
   unsigned char serial[32];
@@ -497,7 +496,7 @@ returned by `setInterval` into the `clearInterval` function.
  than 5 seconds, Espruino may execute the interval up to 1 second late. This is
  because Espruino can only wake from deep sleep every second - and waking early
  would cause Espruino to waste power while it waited for the correct time.
- */
+*/
 /*JSON{
   "type" : "function",
   "name" : "setTimeout",
@@ -540,7 +539,7 @@ returned by `setTimeout` into the `clearTimeout` function.
  than 5 seconds, Espruino may execute the interval up to 1 second late. This is
  because Espruino can only wake from deep sleep every second - and waking early
  would cause Espruino to waste power while it waited for the correct time.
- */
+*/
 JsVar *_jswrap_interface_setTimeoutOrInterval(JsVar *func, JsVarFloat interval, JsVar *args, bool isTimeout) {
   // NOTE: The 5 sec delay mentioned in the description is handled by jshSleep
   if (!jsvIsFunction(func) && !jsvIsString(func)) {
@@ -593,7 +592,7 @@ Clear the Interval that was created with `setInterval`, for example:
 If no argument is supplied, all timeouts and intervals are stopped.
 
 To avoid accidentally deleting all Intervals, if a parameter is supplied but is `undefined` then an Exception will be thrown.
- */
+*/
 /*JSON{
   "type" : "function",
   "name" : "clearTimeout",
@@ -611,7 +610,7 @@ Clear the Timeout that was created with `setTimeout`, for example:
 If no argument is supplied, all timeouts and intervals are stopped.
 
 To avoid accidentally deleting all Timeouts, if a parameter is supplied but is `undefined` then an Exception will be thrown.
- */
+*/
 void _jswrap_interface_clearTimeoutOrInterval(JsVar *idVarArr, bool isTimeout) {
   JsVar *timerArrayPtr = jsvLock(timerArray);
   if (jsvIsUndefined(idVarArr) || jsvGetArrayLength(idVarArr)==0) {
@@ -671,7 +670,7 @@ Change the Interval on a callback created with `setInterval`, for example:
 This takes effect immediately and resets the timeout, so in the example above,
 regardless of when you call `changeInterval`, the next interval will occur
 1500ms after it.
- */
+*/
 void jswrap_interface_changeInterval(JsVar *idVar, JsVarFloat interval) {
   JsVar *timerArrayPtr = jsvLock(timerArray);
   if (interval<TIMER_MIN_INTERVAL) interval=TIMER_MIN_INTERVAL;

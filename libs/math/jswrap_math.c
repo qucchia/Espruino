@@ -84,56 +84,72 @@ This is a standard JavaScript class that contains useful Maths routines
   "name" : "E",
   "generate_full" : "2.718281828459045",
   "return" : ["float","The value of E - 2.718281828459045"]
-}*/
+}
+
+*/
 /*JSON{
   "type" : "staticproperty",
   "class" : "Math",
   "name" : "PI",
   "generate_full" : "PI",
   "return" : ["float","The value of PI - 3.141592653589793"]
-}*/
+}
+
+*/
 /*JSON{
   "type" : "staticproperty",
   "class" : "Math",
   "name" : "LN2",
   "generate_full" : "0.6931471805599453",
   "return" : ["float","The natural logarithm of 2 - 0.6931471805599453"]
-}*/
+}
+
+*/
 /*JSON{
   "type" : "staticproperty",
   "class" : "Math",
   "name" : "LN10",
   "generate_full" : "2.302585092994046",
   "return" : ["float","The natural logarithm of 10 - 2.302585092994046"]
-}*/
+}
+
+*/
 /*JSON{
   "type" : "staticproperty",
   "class" : "Math",
   "name" : "LOG2E",
   "generate_full" : "1.4426950408889634",
   "return" : ["float","The base 2 logarithm of e - 1.4426950408889634"]
-}*/
+}
+
+*/
 /*JSON{
   "type" : "staticproperty",
   "class" : "Math",
   "name" : "LOG10E",
   "generate_full" : "0.4342944819032518",
   "return" : ["float","The base 10 logarithm of e - 0.4342944819032518"]
-}*/
+}
+
+*/
 /*JSON{
   "type" : "staticproperty",
   "class" : "Math",
   "name" : "SQRT2",
   "generate_full" : "1.4142135623730951",
   "return" : ["float","The square root of 2 - 1.4142135623730951"]
-}*/
+}
+
+*/
 /*JSON{
   "type" : "staticproperty",
   "class" : "Math",
   "name" : "SQRT1_2",
   "generate_full" : "0.7071067811865476",
   "return" : ["float","The square root of 1/2 - 0.7071067811865476"]
-}*/
+}
+
+*/
 
 
 /*JSON{
@@ -145,7 +161,9 @@ This is a standard JavaScript class that contains useful Maths routines
     ["x","float","A floating point value"]
   ],
   "return" : ["float","The absolute value of x (eg, ```Math.abs(2)==2```, but also ```Math.abs(-2)==2```)"]
-}*/
+}
+
+*/
 JsVarFloat jswrap_math_abs(JsVarFloat x) {
   return (x<0)?-x:x;
 }
@@ -159,7 +177,9 @@ JsVarFloat jswrap_math_abs(JsVarFloat x) {
     ["x","float","The value to get the arc cosine of"]
   ],
   "return" : ["float","The arc cosine of x, between 0 and PI"]
-}*/
+}
+
+*/
 /*JSON{
   "type" : "staticmethod",
   "ifndef" : "SAVE_ON_FLASH_EXTREME",
@@ -170,7 +190,9 @@ JsVarFloat jswrap_math_abs(JsVarFloat x) {
     ["x","float","The value to get the arc sine of"]
   ],
   "return" : ["float","The arc sine of x, between -PI/2 and PI/2"]
-}*/
+}
+
+*/
 JsVarFloat jswrap_math_asin(JsVarFloat x) {
   return jswrap_math_atan(x / jswrap_math_sqrt(1-x*x));
 }
@@ -183,7 +205,9 @@ JsVarFloat jswrap_math_asin(JsVarFloat x) {
     ["x","float","The value to get the arc tangent of"]
   ],
   "return" : ["float","The arc tangent of x, between -PI/2 and PI/2"]
-}*/
+}
+
+*/
 double jswrap_math_atan(double x) {
 #ifdef SAVE_ON_FLASH_MATH
   /* To save on flash, do our own atan function that's slower/nastier
@@ -231,7 +255,9 @@ double jswrap_math_atan(double x) {
     ["x","float","The X-part of the angle to get the arc tangent of"]
   ],
   "return" : ["float","The arctangent of Y/X, between -PI and PI"]
-}*/
+}
+
+*/
 double jswrap_math_atan2(double y, double x) {
 #ifdef SAVE_ON_FLASH_MATH
   if (x>0) return jswrap_math_atan(y/x);
@@ -258,7 +284,9 @@ double jswrap_math_atan2(double y, double x) {
     ["theta","float","The angle to get the cosine of"]
   ],
   "return" : ["float","The cosine of theta"]
-}*/
+}
+
+*/
 
 double jswrap_math_mod(double x, double y) {
   double a, b;
@@ -336,14 +364,18 @@ double jswrap_math_pow(double x, double y) {
     ["y","float","The power x should be raised to"]
   ],
   "return" : ["float","x raised to the power y (x^y)"]
-}*/
+}
+
+*/
 /*JSON{
   "type" : "staticmethod",
   "class" : "Math",
   "name" : "random",
   "generate_full" : "(JsVarFloat)rand() / (JsVarFloat)RAND_MAX",
   "return" : ["float","A random number between 0 and 1"]
-}*/
+}
+
+*/
 /*JSON{
   "type" : "staticmethod",
   "class" : "Math",
@@ -353,7 +385,9 @@ double jswrap_math_pow(double x, double y) {
     ["x","float","The value to round"]
   ],
   "return" : ["JsVar","x, rounded to the nearest integer"]
-}*/
+}
+
+*/
 JsVar *jswrap_math_round(double x) {
   if (!isfinite(x) || isNegativeZero(x)) return jsvNewFromFloat(x);
   x += (x<0) ? -0.4999999999 : 0.4999999999;
@@ -372,7 +406,9 @@ JsVar *jswrap_math_round(double x) {
     ["theta","float","The angle to get the sine of"]
   ],
   "return" : ["float","The sine of theta"]
-}*/
+}
+
+*/
 /*JSON{
   "type" : "staticmethod",
   "class" : "Math",
@@ -382,7 +418,9 @@ JsVar *jswrap_math_round(double x) {
     ["theta","float","The angle to get the tangent of"]
   ],
   "return" : ["float","The tangent of theta"]
-}*/ // note - we're trying to avoid having to use cos here
+}
+
+*/ // note - we're trying to avoid having to use cos here
 
 /* we could use the real sqrt - but re-use pow to save on code space */
 /*JSON{
@@ -395,7 +433,9 @@ JsVar *jswrap_math_round(double x) {
     ["x","float","The value to take the square root of"]
   ],
   "return" : ["float","The square root of x"]
-}*/
+}
+
+*/
 
 double jswrap_math_sqrt(double x) {
   return (x>=0) ? exp(log(x) * 0.5) : NAN;
@@ -410,7 +450,9 @@ double jswrap_math_sqrt(double x) {
     ["x","float","The value to round up"]
   ],
   "return" : ["float","x, rounded upwards to the nearest integer"]
-}*/
+}
+
+*/
 /*JSON{
   "type" : "staticmethod",
   "class" : "Math",
@@ -420,7 +462,9 @@ double jswrap_math_sqrt(double x) {
     ["x","float","The value to round down"]
   ],
   "return" : ["float","x, rounded downwards to the nearest integer"]
-}*/
+}
+
+*/
 
 /*JSON{
   "type" : "staticmethod",
@@ -432,7 +476,9 @@ double jswrap_math_sqrt(double x) {
     ["x","float","The value raise E to the power of"]
   ],
   "return" : ["float","E^x"]
-}*/
+}
+
+*/
 /*JSON{
   "type" : "staticmethod",
   "ifndef" : "SAVE_ON_FLASH_EXTREME",
@@ -443,7 +489,9 @@ double jswrap_math_sqrt(double x) {
     ["x","float","The value to take the logarithm (base E) root of"]
   ],
   "return" : ["float","The log (base E) of x"]
-}*/
+}
+
+*/
 
 /*JSON{
   "type" : "staticmethod",

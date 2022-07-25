@@ -293,7 +293,7 @@ basics.
   "return_object" : "RegExp"
 }
 Creates a RegExp object, for handling Regular Expressions
- */
+*/
 JsVar *jswrap_regexp_constructor(JsVar *str, JsVar *flags) {
   if (!jsvIsString(str)) {
     jsExceptionHere(JSET_TYPEERROR, "Expecting String as first argument, got %t", str);
@@ -345,8 +345,7 @@ Or with groups `/W(o)rld/.exec("Hello World")` returns:
  "input": "Hello World"
 ]
 ```
-
- */
+*/
 JsVar *jswrap_regexp_exec(JsVar *parent, JsVar *arg) {
   JsVar *str = jsvAsString(arg);
   JsVarInt lastIndex = jsvGetIntegerAndUnLock(jsvObjectGetChild(parent, "lastIndex", 0));
@@ -395,7 +394,7 @@ JsVar *jswrap_regexp_exec(JsVar *parent, JsVar *arg) {
 }
 Test this regex on a string - returns `true` on a successful match, or `false`
 otherwise
- */
+*/
 bool jswrap_regexp_test(JsVar *parent, JsVar *str) {
   JsVar *v = jswrap_regexp_exec(parent, str);
   bool r = v && !jsvIsNull(v);

@@ -25,20 +25,20 @@
 #endif
 
 /*JSON{
-  "type"          : "function",
-  "name"          : "peek8",
+  "type" : "function",
+  "name" : "peek8",
   "generate_full" : "jswrap_io_peek(addr,count,1)",
-  "params"        : [
-    ["addr", "int", "The address in memory to read"],
-    ["count", "int", "(optional) the number of items to read. If >1 a Uint8Array will be returned."]
+  "params" : [
+    ["addr","int","The address in memory to read"],
+    ["count","int","(optional) the number of items to read. If >1 a Uint8Array will be returned."]
   ],
-  "return"        : ["JsVar","The value of memory at the given location"]
+  "return" : ["JsVar","The value of memory at the given location"]
 }
 Read 8 bits of memory at the given location - DANGEROUS!
- */
+*/
 /*JSON{
-  "type"          : "function",
-  "name"          : "poke8",
+  "type" : "function",
+  "name" : "poke8",
   "generate_full" : "jswrap_io_poke(addr,value,1)",
   "params" : [
     ["addr","int","The address in memory to write"],
@@ -46,7 +46,7 @@ Read 8 bits of memory at the given location - DANGEROUS!
   ]
 }
 Write 8 bits of memory at the given location - VERY DANGEROUS!
- */
+*/
 /*JSON{
   "type" : "function",
   "name" : "peek16",
@@ -58,7 +58,7 @@ Write 8 bits of memory at the given location - VERY DANGEROUS!
   "return" : ["JsVar","The value of memory at the given location"]
 }
 Read 16 bits of memory at the given location - DANGEROUS!
- */
+*/
 /*JSON{
   "type" : "function",
   "name" : "poke16",
@@ -69,7 +69,7 @@ Read 16 bits of memory at the given location - DANGEROUS!
   ]
 }
 Write 16 bits of memory at the given location - VERY DANGEROUS!
- */
+*/
 /*JSON{
   "type" : "function",
   "name" : "peek32",
@@ -81,7 +81,7 @@ Write 16 bits of memory at the given location - VERY DANGEROUS!
   "return" : ["JsVar","The value of memory at the given location"]
 }
 Read 32 bits of memory at the given location - DANGEROUS!
- */
+*/
 /*JSON{
   "type" : "function",
   "name" : "poke32",
@@ -92,7 +92,7 @@ Read 32 bits of memory at the given location - DANGEROUS!
   ]
 }
 Write 32 bits of memory at the given location - VERY DANGEROUS!
- */
+*/
 
 uint32_t _jswrap_io_peek(size_t addr, int wordSize) {
   if (wordSize==1) return READ_FLASH_UINT8((char*)addr);
@@ -166,7 +166,7 @@ However only pins connected to an ADC will work (see the datasheet)
 
  **Note:** if you didn't call `pinMode` beforehand then this function will also
  reset pin's state to `"analog"`
- */
+*/
 /*JSON{
   "type" : "function",
   "name" : "analogWrite",
@@ -189,7 +189,7 @@ Objects can contain:
 
  **Note:** if you didn't call `pinMode` beforehand then this function will also
  reset pin's state to `"output"`
- */
+*/
 void jswrap_io_analogWrite(Pin pin, JsVarFloat value, JsVar *options) {
   JsVarFloat freq = 0;
   JshAnalogOutputFlags flags = JSAOF_NONE;
@@ -228,7 +228,7 @@ eg. `digitalPulse(A0,1,5);` pulses A0 high for 5ms.
 
 digitalPulse is for SHORT pulses that need to be very accurate. If you're doing
 anything over a few milliseconds, use setTimeout instead.
- */
+*/
 void jswrap_io_digitalPulse(Pin pin, bool value, JsVar *times) {
   if (!jshIsPinValid(pin)) {
     jsExceptionHere(JSET_ERROR, "Invalid pin!");
@@ -272,12 +272,12 @@ void jswrap_io_digitalPulse(Pin pin, bool value, JsVar *times) {
 }
 
 /*JSON{
-  "type"     : "function",
-  "name"     : "digitalWrite",
+  "type" : "function",
+  "name" : "digitalWrite",
   "generate" : "jswrap_io_digitalWrite",
-  "params"   : [
-    ["pin",   "JsVar","The pin to use"],
-    ["value", "int","Whether to pulse high (true) or low (false)"]
+  "params" : [
+    ["pin","JsVar","The pin to use"],
+    ["value","int","Whether to pulse high (true) or low (false)"]
   ]
 }
 Set the digital value of the given pin.
@@ -330,13 +330,13 @@ void jswrap_io_digitalWrite(
 
 
 /*JSON{
-  "type"     : "function",
-  "name"     : "digitalRead",
+  "type" : "function",
+  "name" : "digitalRead",
   "generate" : "jswrap_io_digitalRead",
-  "params"   : [
+  "params" : [
     ["pin","JsVar","The pin to use"]
   ],
-  "return"   : ["int","The digital Value of the Pin"]
+  "return" : ["int","The digital Value of the Pin"]
 }
 Get the digital value of the given pin.
 
@@ -383,13 +383,13 @@ JsVarInt jswrap_io_digitalRead(JsVar *pinVar) {
 }
 
 /*JSON{
-  "type"     : "function",
-  "name"     : "pinMode",
+  "type" : "function",
+  "name" : "pinMode",
   "generate" : "jswrap_io_pinMode",
-  "params"   : [
-    ["pin", "pin", "The pin to set pin mode for"],
-    ["mode", "JsVar", "The mode - a string that is either 'analog', 'input', 'input_pullup', 'input_pulldown', 'output', 'opendrain', 'af_output' or 'af_opendrain'. Do not include this argument or use 'auto' if you want to revert to automatic pin mode setting."],
-    ["automatic", "bool", "Optional, default is false. If true, subsequent commands will automatically change the state (see notes below)"]
+  "params" : [
+    ["pin","pin","The pin to set pin mode for"],
+    ["mode","JsVar","The mode - a string that is either 'analog', 'input', 'input_pullup', 'input_pulldown', 'output', 'opendrain', 'af_output' or 'af_opendrain'. Do not include this argument or use 'auto' if you want to revert to automatic pin mode setting."],
+    ["automatic","bool","Optional, default is false. If true, subsequent commands will automatically change the state (see notes below)"]
   ]
 }
 Set the mode of the given pin.
@@ -460,7 +460,7 @@ void jswrap_io_pinMode(
 }
 Return the current mode of the given pin. See `pinMode` for more information on
 returned values.
- */
+*/
 JsVar *jswrap_io_getPinMode(Pin pin) {
   if (!jshIsPinValid(pin)) {
     jsExceptionHere(JSET_ERROR, "Invalid pin");
@@ -572,7 +572,7 @@ the polarity given.
 `repeat` is the amount of times shift data out for each array item. For instance
 we may want to shift 8 bits out through 2 pins - in which case we need to set
 repeat to 4.
- */
+*/
 void jswrap_io_shiftOut(JsVar *pins, JsVar *options, JsVar *data) {
   jswrap_io_shiftOutData d;
   d.cnt = 0;
@@ -642,9 +642,9 @@ void jswrap_io_shiftOut(JsVar *pins, JsVar *options, JsVar *data) {
   "name" : "setWatch",
   "generate" : "jswrap_interface_setWatch",
   "params" : [
-    ["function", "JsVar", "A Function or String to be executed"],
-    ["pin", "pin", "The pin to watch"],
-    ["options", "JsVar","If a boolean or integer, it determines whether to call this once (false = default) or every time a change occurs (true). Can be an object of the form `{ repeat: true/false(default), edge:'rising'/'falling'/'both'(default), debounce:10}` - see below for more information."]
+    ["function","JsVar","A Function or String to be executed"],
+    ["pin","pin","The pin to watch"],
+    ["options","JsVar","If a boolean or integer, it determines whether to call this once (false = default) or every time a change occurs (true). Can be an object of the form `{ repeat: true/false(default), edge:'rising'/'falling'/'both'(default), debounce:10}` - see below for more information."]
   ],
   "return" : ["JsVar","An ID that can be passed to clearWatch"]
 }
@@ -710,8 +710,7 @@ pin's state to `"input"`
 **Note:** On nRF52 chips (used in Puck.js, Pixl.js, MDBT42Q) `setWatch` disables
 the GPIO output on that pin. In order to be able to write to the pin again you
 need to disable the watch with `clearWatch`.
-
- */
+*/
 JsVar *jswrap_interface_setWatch(
     JsVar *func,           //!< A callback function to be invoked when the pin state changes.
     Pin    pin,            //!< The pin to be watched.
@@ -828,7 +827,7 @@ JsVar *jswrap_interface_setWatch(
 Clear the Watch that was created with setWatch. If no parameter is supplied, all watches will be removed.
 
 To avoid accidentally deleting all Watches, if a parameter is supplied but is `undefined` then an Exception will be thrown.
- */
+*/
 void jswrap_interface_clearWatch(JsVar *idVarArr) {
   if (jsvIsUndefined(idVarArr) || jsvGetArrayLength(idVarArr)==0) {
     JsVar *watchArrayPtr = jsvLock(watchArray);

@@ -54,7 +54,7 @@ implementation on some devices - hence this library to simplify things.
   "name" : "write",
   "generate" : "jswrap_neopixel_write",
   "params" : [
-    ["pin", "pin", "The Pin the LEDs are connected to"],
+    ["pin","pin","The Pin the LEDs are connected to"],
     ["data","JsVar","The data to write to the LED strip (must be a multiple of 3 bytes long)"]
   ]
 }

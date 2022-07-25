@@ -200,7 +200,9 @@ static bool fileGetFromVar(JsFile *file, JsVar *parent) {
 /*JSON{
   "type" : "kill",
   "generate" : "jswrap_file_kill"
-}*/
+}
+
+*/
 void jswrap_file_kill() {
   JsVar *arr = fsGetArray(false);
   if (arr) {
@@ -601,10 +603,10 @@ Pipe this file to a stream (an object with a 'write' method)
   "name" : "flashFatFS",
   "generate" : "jswrap_E_flashFatFS",
   "ifdef" : "USE_FLASHFS",
-   "params" : [
+  "params" : [
     ["options","JsVar",["An optional object `{ addr : int=0x300000, sectors : int=256, format : bool=false }`","addr : start address in flash","sectors: number of sectors to use","format:  Format the media"]]
   ],
-  "return" : ["bool","True on success, or false on failure"]  
+  "return" : ["bool","True on success, or false on failure"]
 }
 Change the parameters used for the flash filesystem. The default address is the
 last 1Mb of 4Mb Flash, 0x300000, with total size of 1Mb.

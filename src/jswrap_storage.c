@@ -43,7 +43,6 @@ const int STORAGEFILE_CHUNKSIZE =
   "type" : "library",
   "class" : "Storage"
 }
-
 This module allows you to read and write part of the nonvolatile flash memory of
 your device using a filesystem-like API.
 
@@ -75,7 +74,7 @@ characters. However in 2v04 and earlier the max length is 8.
 Erase the flash storage area. This will remove all files created with
 `require("Storage").write(...)` as well as any code saved with `save()` or
 `E.setBootCode()`.
- */
+*/
 void jswrap_storage_eraseAll() {
   jsfEraseAll();
 }
@@ -93,7 +92,7 @@ Erase a single file from the flash storage area.
 
 **Note:** This function should be used with normal files, and not `StorageFile`s
 created with `require("Storage").open(filename, ...)`
- */
+*/
 void jswrap_storage_erase(JsVar *name) {
   jsfEraseFile(jsfNameFromVar(name));
 }
@@ -316,7 +315,7 @@ require("Storage").list(undefined, {sf:false})
 
 **Note:** This will output system files (eg. saved code) as well as files that
 you may have written.
- */
+*/
 JsVar *jswrap_storage_list(JsVar *regex, JsVar *filter) {
   JsfFileFlags containing = 0;
   JsfFileFlags notContaining = 0;
@@ -360,7 +359,7 @@ require("Storage").hash(/\.boot\.js$/)
 **Note:** This function is used by Bangle.js as a way to cache files. For
 instance the bootloader will add all `.boot.js` files together into a single
 `.boot0` file, but it needs to know quickly whether anything has changed.
- */
+*/
 JsVarInt jswrap_storage_hash(JsVar *regex) {
   return jsfHashFiles(regex, 0, JSFF_STORAGEFILE);
 }
@@ -385,7 +384,7 @@ that memory (eg. functions that have their code stored in flash) then they may
 become garbled when compaction happens. To avoid this, call `eraseFiles` before
 uploading data that you intend to reference to ensure that uploaded files are
 right at the start of flash and cannot be compacted further.
- */
+*/
 void jswrap_storage_compact() {
   jsfCompact();
 }
@@ -399,7 +398,7 @@ void jswrap_storage_compact() {
 }
 This writes information about all blocks in flash memory to the console - and is
 only useful for debugging flash storage.
- */
+*/
 void jswrap_storage_debug() {
   jsfDebugFiles();
 }
@@ -415,7 +414,7 @@ void jswrap_storage_debug() {
 Return the amount of free bytes available in Storage. Due to fragmentation there
 may be more bytes available, but this represents the maximum size of file that
 can be written.
- */
+*/
 int jswrap_storage_getFree() {
   return (int)jsfGetStorageStats(0,true).free;
 }
@@ -440,7 +439,7 @@ Returns:
   trashCount // How many trash files do we have?
 }
 ```
- */
+*/
 JsVar *jswrap_storage_getStats() {
   JsVar *o = jsvNewObject();
   if (!o) return NULL;
@@ -463,7 +462,7 @@ JsVar *jswrap_storage_getStats() {
 }
 Writes a lookup table for files into Bangle.js's storage. This allows any file
 stored up to that point to be accessed quickly.
- */
+*/
 void jswrap_storage_optimise() {
 #ifdef ESPR_STORAGE_FILENAME_TABLE
   jsfCreateFileTable();
@@ -489,7 +488,6 @@ Open a file in the Storage area. This can be used for appending data
 Please see `StorageFile` for more information (and examples).
 
 **Note:** These files write through immediately - they do not need closing.
-
 */
 JsVar *jswrap_storage_open(JsVar *name, JsVar *modeVar) {
   char mode = 0;
@@ -578,7 +576,6 @@ JsVar *jswrap_storage_open(JsVar *name, JsVar *modeVar) {
   "class" : "StorageFile",
   "ifndef" : "SAVE_ON_FLASH"
 }
-
 These objects are created from `require("Storage").open` and allow Storage items
 to be read/written.
 

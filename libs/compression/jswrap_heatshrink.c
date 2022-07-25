@@ -51,6 +51,7 @@ memory at the same time.
   "return_object" : "ArrayBuffer",
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */
 JsVar *jswrap_heatshrink_compress(JsVar *data) {
   if (!jsvIsIterable(data)) {
@@ -94,6 +95,7 @@ JsVar *jswrap_heatshrink_compress(JsVar *data) {
   "return_object" : "ArrayBuffer",
   "ifndef" : "SAVE_ON_FLASH"
 }
+
 */
 JsVar *jswrap_heatshrink_decompress(JsVar *data) {
   if (!jsvIsIterable(data)) {

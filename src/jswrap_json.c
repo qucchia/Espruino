@@ -32,7 +32,7 @@ const char *JSON_LIMIT_TEXT = " ... ";
   "class" : "JSON"
 }
 An Object that handles conversion to and from the JSON data interchange format
- */
+*/
 
 /*JSON{
   "type" : "staticmethod",
@@ -54,7 +54,7 @@ with JSON.parse or eval.
 * The `replacer` argument is ignored
 * Typed arrays like `new Uint8Array(5)` will be dumped as if they were arrays,
   not as if they were objects (since it is more compact)
- */
+*/
 JsVar *jswrap_json_stringify(JsVar *v, JsVar *replacer, JsVar *space) {
   NOT_USED(replacer);
   JSONFlags flags = JSON_IGNORE_FUNCTIONS|JSON_NO_UNDEFINED|JSON_ARRAYBUFFER_AS_ARRAY|JSON_JSON_COMPATIBILE|JSON_ALLOW_TOJSON;
@@ -173,7 +173,7 @@ Parse the given JSON string into a JavaScript object
 
 NOTE: This implementation uses eval() internally, and as such it is unsafe as it
 can allow arbitrary JS commands to be executed.
- */
+*/
 JsVar *jswrap_json_parse(JsVar *v) {
   JsLex lex;
   JsVar *str = jsvAsString(v);

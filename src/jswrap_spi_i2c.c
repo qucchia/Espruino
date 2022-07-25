@@ -26,7 +26,7 @@
 }
 This class allows use of the built-in SPI ports. Currently it is SPI master
 only.
- */
+*/
 
 /*JSON{
   "type" : "object",
@@ -35,7 +35,7 @@ only.
   "#if" : "SPI_COUNT>=1"
 }
 The first SPI port
- */
+*/
 /*JSON{
   "type" : "object",
   "name" : "SPI2",
@@ -43,7 +43,7 @@ The first SPI port
   "#if" : "SPI_COUNT>=2"
 }
 The second SPI port
- */
+*/
 /*JSON{
   "type" : "object",
   "name" : "SPI3",
@@ -51,7 +51,7 @@ The second SPI port
   "#if" : "SPI_COUNT>=3"
 }
 The third SPI port
- */
+*/
 
 /*JSON{
   "type" : "constructor",
@@ -64,7 +64,7 @@ Create a software SPI port. This has limited functionality (no baud rate), but
 it can work on any pins.
 
 Use `SPI.setup` to configure this port.
- */
+*/
 JsVar *jswrap_spi_constructor() {
   return jspNewObject(0,"SPI");
 }
@@ -188,8 +188,7 @@ significantly slower transmission speeds.
 
 For maximum speeds, please pass either Strings or Typed Arrays as arguments.
 Note that you can even pass arrays of arrays, like `[1,[2,3,4],5]`
-
- */
+*/
 typedef struct {
   spi_sender spiSend;          //!< A function to be called to send SPI data.
   spi_sender_data spiSendData; //!< Control information on the nature of the SPI interface.
@@ -318,7 +317,7 @@ Write a character or array of characters to SPI - without reading the result
 back.
 
 For maximum speeds, please pass either Strings or Typed Arrays as arguments.
- */
+*/
 void jswrap_spi_write(
     JsVar *parent, //!<
     JsVar *args    //!<
@@ -379,7 +378,7 @@ useful for faking one-wire style protocols
 Sending multiple bytes in one call to send is preferable as they can then be
 transmitted end to end. Using multiple calls to send() will result in
 significantly slower transmission speeds.
- */
+*/
 void jswrap_spi_send4bit(JsVar *parent, JsVar *srcdata, int bit0, int bit1, Pin nss_pin) {
   if (!jsvIsObject(parent)) return;
   IOEventFlags device = jsiGetDeviceFromClass(parent);
@@ -452,7 +451,7 @@ useful for faking one-wire style protocols
 Sending multiple bytes in one call to send is preferable as they can then be
 transmitted end to end. Using multiple calls to send() will result in
 significantly slower transmission speeds.
- */
+*/
 void jswrap_spi_send8bit(JsVar *parent, JsVar *srcdata, int bit0, int bit1, Pin nss_pin) {
   if (!jsvIsObject(parent)) return;
   IOEventFlags device = jsiGetDeviceFromClass(parent);
@@ -514,7 +513,7 @@ mode only.
 
 All addresses are in 7 bit format. If you have an 8 bit address then you need to
 shift it one bit to the right.
- */
+*/
 /*JSON{
   "type" : "constructor",
   "class" : "I2C",
@@ -526,7 +525,7 @@ Create a software I2C port. This has limited functionality (no baud rate), but
 it can work on any pins.
 
 Use `I2C.setup` to configure this port.
- */
+*/
 JsVar *jswrap_i2c_constructor() {
   return jspNewObject(0,"I2C");
 }
@@ -553,7 +552,7 @@ May return undefined if no device can be found.
   "#if" : "I2C_COUNT>=1"
 }
 The first I2C port
- */
+*/
 /*JSON{
   "type" : "object",
   "name" : "I2C2",
@@ -561,7 +560,7 @@ The first I2C port
   "#if" : "I2C_COUNT>=2"
 }
 The second I2C port
- */
+*/
 /*JSON{
   "type" : "object",
   "name" : "I2C3",
@@ -569,7 +568,7 @@ The second I2C port
   "#if" : "I2C_COUNT>=3"
 }
 The third I2C port
- */
+*/
 
 
 
@@ -586,7 +585,7 @@ Set up this I2C port
 
 If not specified in options, the default pins are used (usually the lowest
 numbered pins on the lowest port that supports this peripheral)
- */
+*/
 void jswrap_i2c_setup(JsVar *parent, JsVar *options) {
   if (!jsvIsObject(parent)) return;
   IOEventFlags device = jsiGetDeviceFromClass(parent);
@@ -649,7 +648,7 @@ static NO_INLINE int i2c_get_address(JsVar *address, bool *sendStop) {
 }
 Transmit to the slave device with the given address. This is like Arduino's
 beginTransmission, write, and endTransmission rolled up into one.
- */
+*/
 
 void jswrap_i2c_writeTo(JsVar *parent, JsVar *addressVar, JsVar *args) {
   if (!jsvIsObject(parent)) return;
@@ -693,7 +692,7 @@ void jswrap_i2c_writeTo(JsVar *parent, JsVar *addressVar, JsVar *args) {
 Request bytes from the given slave device, and return them as a Uint8Array
 (packed array of bytes). This is like using Arduino Wire's requestFrom,
 available and read functions. Sends a STOP
- */
+*/
 JsVar *jswrap_i2c_readFrom(JsVar *parent, JsVar *addressVar, int nBytes) {
   if (!jsvIsObject(parent)) return 0;
   IOEventFlags device = jsiGetDeviceFromClass(parent);

@@ -47,10 +47,10 @@
   "name" : "connect",
   "generate" : "jswrap_cc3000_connect",
   "params" : [
-    ["spi", "JsVar", "Device to use for SPI (or undefined to use the default). SPI should be 1,000,000 baud, and set to 'mode 1'"],
-    ["cs", "pin", "The pin to use for Chip Select"],
-    ["en", "pin", "The pin to use for Enable"],
-    ["irq", "pin", "The pin to use for Interrupts"]
+    ["spi","JsVar","Device to use for SPI (or undefined to use the default). SPI should be 1,000,000 baud, and set to 'mode 1'"],
+    ["cs","pin","The pin to use for Chip Select"],
+    ["en","pin","The pin to use for Enable"],
+    ["irq","pin","The pin to use for Interrupts"]
   ],
   "return" : ["JsVar","A WLAN Object"],
   "return_object" : "WLAN"

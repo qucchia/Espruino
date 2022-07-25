@@ -23,7 +23,7 @@
 }
 This class provides a software-defined OneWire master. It is designed to be
 similar to Arduino's OneWire library.
- */
+*/
 
 static Pin onewire_getpin(JsVar *parent) {
   return jshGetPinFromVarAndUnLock(jsvObjectGetChild(parent, "pin", 0));
@@ -100,7 +100,7 @@ static void NO_INLINE OneWireWrite(Pin pin, int bits, unsigned long long data) {
   "return" : ["JsVar","A OneWire object"]
 }
 Create a software OneWire implementation on the given pin
- */
+*/
 JsVar *jswrap_onewire_constructor(Pin pin) {
   JsVar *ow = jspNewObject(0, "OneWire");
   if (!ow) return 0;
@@ -117,7 +117,7 @@ JsVar *jswrap_onewire_constructor(Pin pin) {
   "return" : ["bool","True is a device was present (it held the bus low)"]
 }
 Perform a reset cycle
- */
+*/
 bool jswrap_onewire_reset(JsVar *parent) {
   Pin pin = onewire_getpin(parent);
   if (!jshIsPinValid(pin)) return 0;
@@ -134,7 +134,7 @@ bool jswrap_onewire_reset(JsVar *parent) {
   ]
 }
 Select a ROM - always performs a reset first
- */
+*/
 void jswrap_onewire_select(JsVar *parent, JsVar *rom) {
   Pin pin = onewire_getpin(parent);
   if (!jshIsPinValid(pin)) return;
@@ -173,7 +173,7 @@ void jswrap_onewire_select(JsVar *parent, JsVar *rom) {
   "generate" : "jswrap_onewire_skip"
 }
 Skip a ROM
- */
+*/
 void jswrap_onewire_skip(JsVar *parent) {
   Pin pin = onewire_getpin(parent);
   if (!jshIsPinValid(pin)) return;
@@ -191,7 +191,7 @@ void jswrap_onewire_skip(JsVar *parent) {
   ]
 }
 Write one or more bytes
- */
+*/
 void _jswrap_onewire_write_cb(int data, Pin *pin) {
   OneWireWrite(*pin, 8, (unsigned int)data);
 }
@@ -220,11 +220,13 @@ void jswrap_onewire_write(JsVar *parent, JsVar *data, bool leavePowerOn) {
   "class" : "OneWire",
   "name" : "read",
   "generate" : "jswrap_onewire_read",
-  "params" : [["count","JsVar","(optional) The amount of bytes to read"]],
+  "params" : [
+    ["count","JsVar","(optional) The amount of bytes to read"]
+  ],
   "return" : ["JsVar","The byte that was read, or a Uint8Array if count was specified and >=0"]
 }
 Read a byte
- */
+*/
 JsVar *jswrap_onewire_read(JsVar *parent, JsVar *count) {
   Pin pin = onewire_getpin(parent);
   if (!jshIsPinValid(pin)) return 0;
@@ -257,7 +259,7 @@ JsVar *jswrap_onewire_read(JsVar *parent, JsVar *count) {
   "return" : ["JsVar","An array of devices that were found"]
 }
 Search for devices
- */
+*/
 JsVar *jswrap_onewire_search(JsVar *parent, int command) {
   // search - code from http://www.maximintegrated.com/app-notes/index.mvp/id/187
   Pin pin = onewire_getpin(parent);

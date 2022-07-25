@@ -29,14 +29,14 @@
   "check" : "jsvIsObject(var)"
 }
 This is the built-in class for Objects
- */
+*/
 /*JSON{
   "type" : "class",
   "class" : "Function",
   "check" : "jsvIsFunction(var)"
 }
 This is the built-in class for Functions
- */
+*/
 
 /*JSON{
   "type" : "constructor",
@@ -49,7 +49,7 @@ This is the built-in class for Functions
   "return" : ["JsVar","An Object"]
 }
 Creates an Object from the supplied argument
- */
+*/
 JsVar *jswrap_object_constructor(JsVar *value) {
   if (jsvIsObject(value) || jsvIsArray(value) || jsvIsFunction(value))
     return jsvLockAgain(value);
@@ -70,7 +70,7 @@ JsVar *jswrap_object_constructor(JsVar *value) {
   "return" : ["JsVar","The length of the object"]
 }
 Find the length of the object
- */
+*/
 JsVar *jswrap_object_length(JsVar *parent) {
   JsVarInt l;
   if (jsvIsArray(parent)) {
@@ -96,7 +96,7 @@ JsVar *jswrap_object_length(JsVar *parent) {
   "return" : ["JsVar","The primitive value of this object"]
 }
 Returns the primitive value of this object.
- */
+*/
 JsVar *jswrap_object_valueOf(JsVar *parent) {
   if (!parent) {
     jsExceptionHere(JSET_TYPEERROR, "Invalid type %t for valueOf", parent);
@@ -116,7 +116,7 @@ JsVar *jswrap_object_valueOf(JsVar *parent) {
   "return" : ["JsVar","A String representing the object"]
 }
 Convert the Object to a string
- */
+*/
 JsVar *jswrap_object_toString(JsVar *parent, JsVar *arg0) {
   if (jsvIsInt(arg0) && jsvIsNumeric(parent)) {
     JsVarInt radix = jsvGetInteger(arg0);
@@ -140,7 +140,7 @@ JsVar *jswrap_object_toString(JsVar *parent, JsVar *arg0) {
   "return" : ["JsVar","A copy of this Object"]
 }
 Copy this object completely
- */
+*/
 JsVar *jswrap_object_clone(JsVar *parent) {
   if (!parent) return 0;
   return jsvCopy(parent, true);
@@ -157,7 +157,7 @@ JsVar *jswrap_object_clone(JsVar *parent) {
   "return" : ["JsVar","An array of strings - one for each key on the given object"]
 }
 Return all enumerable keys of the given object
- */
+*/
 /*JSON{
   "type" : "staticmethod",
   "class" : "Object",
@@ -310,7 +310,7 @@ JsVar *jswrap_object_keys_or_property_names(
   "return" : ["JsVar","An array of values - one for each key on the given object"]
 }
 Return all enumerable values of the given object
- */
+*/
 /*JSON{
   "type" : "staticmethod",
   "class" : "Object",
@@ -323,7 +323,7 @@ Return all enumerable values of the given object
   "return" : ["JsVar","An array of `[key,value]` pairs - one for each key on the given object"]
 }
 Return all enumerable keys and values of the given object
- */
+*/
 void _jswrap_object_values_cb(void *data, JsVar *name) {
   JsVar **cbData = (JsVar**)data;
   jsvArrayPushAndUnLock(cbData[0], jspGetVarNamedField(cbData[1], name, false));
@@ -363,7 +363,7 @@ JsVar *jswrap_object_values_or_entries(JsVar *object, bool returnEntries) {
 }
 Creates a new object with the specified prototype object and properties.
 properties are currently unsupported.
- */
+*/
 JsVar *jswrap_object_create(JsVar *proto, JsVar *propertiesObject) {
   if (!jsvIsObject(proto) && !jsvIsNull(proto)) {
     jsExceptionHere(JSET_TYPEERROR, "Object prototype may only be an Object or null: %t", proto);
@@ -392,7 +392,7 @@ JsVar *jswrap_object_create(JsVar *proto, JsVar *propertiesObject) {
   "return" : ["JsVar","An object with a description of the property. The values of writable/enumerable/configurable may not be entirely correct due to Espruino's implementation."]
 }
 Get information on the given property in the object, or undefined
- */
+*/
 JsVar *jswrap_object_getOwnPropertyDescriptor(JsVar *parent, JsVar *name) {
   if (!jswrap_object_hasOwnProperty(parent, name))
     return 0;
@@ -448,7 +448,7 @@ Return true if the object (not its prototype) has the given property.
 
 NOTE: This currently returns false-positives for built-in functions in
 prototypes
- */
+*/
 bool jswrap_object_hasOwnProperty(JsVar *parent, JsVar *name) {
   JsVar *propName = jsvAsArrayIndex(name);
 
@@ -508,8 +508,7 @@ Add a new property to the Object. 'Desc' is an object with the following fields:
 
 **Note:** `configurable`, `enumerable` and `writable` are not implemented and
 will be ignored.
-
- */
+*/
 JsVar *jswrap_object_defineProperty(JsVar *parent, JsVar *propName, JsVar *desc) {
   if (!jsvIsObject(parent)) {
     jsExceptionHere(JSET_ERROR, "First argument must be an object, got %t", parent);
@@ -563,7 +562,7 @@ JsVar *jswrap_object_defineProperty(JsVar *parent, JsVar *propName, JsVar *desc)
 }
 Adds new properties to the Object. See `Object.defineProperty` for more
 information
- */
+*/
 JsVar *jswrap_object_defineProperties(JsVar *parent, JsVar *props) {
   if (!jsvIsObject(parent)) {
     jsExceptionHere(JSET_ERROR, "First argument must be an object, got %t\n", parent);
@@ -599,7 +598,7 @@ JsVar *jswrap_object_defineProperties(JsVar *parent, JsVar *props) {
 }
 Get the prototype of the given object - this is like writing `object.__proto__`
 but is the 'proper' ES6 way of doing it
- */
+*/
 JsVar *jswrap_object_getPrototypeOf(JsVar *object) {
   return jspGetNamedField(object, "__proto__", false);
 }
@@ -617,7 +616,7 @@ JsVar *jswrap_object_getPrototypeOf(JsVar *object) {
 }
 Set the prototype of the given object - this is like writing `object.__proto__ =
 prototype` but is the 'proper' ES6 way of doing it
- */
+*/
 JsVar *jswrap_object_setPrototypeOf(JsVar *object, JsVar *proto) {
   JsVar *v = (jsvIsFunction(object)||jsvIsObject(object)) ? jsvFindChildFromString(object, "__proto__", true) : 0;
   if (!jsvIsName(v)) {
@@ -643,7 +642,7 @@ Appends all keys and values in any subsequent objects to the first object
 
 **Note:** Unlike the standard ES6 `Object.assign`, this will throw an exception
 if given raw strings, bools or numbers rather than objects.
- */
+*/
 JsVar *jswrap_object_assign(JsVar *args) {
   JsVar *result = 0;
 
@@ -683,7 +682,7 @@ JsVar *jswrap_object_assign(JsVar *args) {
   "return" : ["bool","A Boolean object"]
 }
 Creates a boolean
- */
+*/
 bool jswrap_boolean_constructor(JsVar *value) {
   return jsvGetBool(value);
 }
@@ -745,7 +744,7 @@ o.removeAllListeners('answer')
 o.emit('answer', 44);
 // nothing printed
 ```
- */
+*/
 void jswrap_object_on(JsVar *parent, JsVar *event, JsVar *listener) {
   if (!jsvHasChildren(parent)) {
     jsExceptionHere(JSET_TYPEERROR, "Parent must be an object - not a String, Integer, etc.");
@@ -809,7 +808,7 @@ Call any event listeners that were added to this object with `Object.on`, for
 instance `obj.emit('data', 'Foo')`.
 
 For more information see `Object.on`
- */
+*/
 void jswrap_object_emit(JsVar *parent, JsVar *event, JsVar *argArray) {
   if (!jsvHasChildren(parent)) {
     jsExceptionHere(JSET_TYPEERROR, "Parent must be an object - not a String, Integer, etc.");
@@ -869,7 +868,7 @@ Serial1.removeListener("data", foo);
 ```
 
 For more information see `Object.on`
- */
+*/
 void jswrap_object_removeListener(JsVar *parent, JsVar *event, JsVar *callback) {
   if (!jsvHasChildren(parent)) {
     jsExceptionHere(JSET_TYPEERROR, "Parent must be an object - not a String, Integer, etc.");
@@ -922,7 +921,7 @@ Serial1.removeAllListeners(); // removes all listeners for all event types
 ```
 
 For more information see `Object.on`
- */
+*/
 void jswrap_object_removeAllListeners(JsVar *parent, JsVar *event) {
   if (!jsvHasChildren(parent)) {
     jsExceptionHere(JSET_TYPEERROR, "Parent must be an object - not a String, Integer, etc.");
@@ -982,7 +981,7 @@ void jswrap_object_removeAllListeners_cstr(JsVar *parent, const char *event) {
 This replaces the function with the one in the argument - while keeping the old
 function's scope. This allows inner functions to be edited, and is used when
 edit() is called on an inner function.
- */
+*/
 void jswrap_function_replaceWith(JsVar *oldFunc, JsVar *newFunc) {
   if ((!jsvIsFunction(oldFunc)) || (!jsvIsFunction(newFunc))) {
     jsExceptionHere(JSET_TYPEERROR, "Argument should be a function");
@@ -1053,7 +1052,7 @@ void jswrap_function_replaceWith(JsVar *oldFunc, JsVar *newFunc) {
   "return" : ["JsVar","The return value of executing this function"]
 }
 This executes the function with the supplied 'this' argument and parameters
- */
+*/
 // ... it just so happens that the way JsVarArray is parsed means that apply and call can be exactly the same function!
 
 
@@ -1069,7 +1068,7 @@ This executes the function with the supplied 'this' argument and parameters
   "return" : ["JsVar","The return value of executing this function"]
 }
 This executes the function with the supplied 'this' argument and parameters
- */
+*/
 JsVar *jswrap_function_apply_or_call(JsVar *parent, JsVar *thisArg, JsVar *argsArray) {
   unsigned int i;
   JsVar **args = 0;
@@ -1121,7 +1120,7 @@ JsVar *jswrap_function_apply_or_call(JsVar *parent, JsVar *thisArg, JsVar *argsA
   "return" : ["JsVar","The 'bound' function"]
 }
 This executes the function with the supplied 'this' argument and parameters
- */
+*/
 JsVar *jswrap_function_bind(JsVar *parent, JsVar *thisArg, JsVar *argsArray) {
   if (!jsvIsFunction(parent)) {
     jsExceptionHere(JSET_TYPEERROR, "Function.bind expects to be called on function, got %t", parent);

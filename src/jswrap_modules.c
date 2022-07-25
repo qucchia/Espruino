@@ -29,7 +29,7 @@
   "class" : "Modules"
 }
 Built-in class that caches the modules used by the `require` command
- */
+*/
 
 static JsVar *jswrap_modules_getModuleList() {
   return jsvObjectGetChild(execInfo.hiddenRoot, JSPARSE_MODULE_CACHE_NAME, JSV_OBJECT);
@@ -43,10 +43,10 @@ static JsVar *jswrap_modules_getModuleList() {
     ["moduleName","JsVar","A String containing the name of the given module"]
   ],
   "return" : ["JsVar","The result of evaluating the string"],
-  "typescript": [
-    "declare function require<T extends keyof Libraries>(moduleName: T): Libraries[T];",
-    "declare function require<T extends Exclude<string, keyof Libraries>>(moduleName: T): any;"
-  ]
+  "typescript" : [
+  "declare function require<T extends keyof Libraries>(moduleName: T): Libraries[T];",
+  "declare function require<T extends Exclude<string, keyof Libraries>>(moduleName: T): any;"
+]
 }
 Load the given module, and return the exported functions and variables.
 
@@ -61,7 +61,7 @@ print(s.read("test"));
 
 Check out [the page on Modules](/Modules) for an explanation of what modules are
 and how you can use them.
- */
+*/
 JsVar *jswrap_require(JsVar *moduleName) {
   if (!jsvIsString(moduleName)) {
     jsExceptionHere(JSET_TYPEERROR, "Expecting a module name as a string, but got %t", moduleName);
@@ -170,7 +170,7 @@ JsVar *jswrap_require(JsVar *moduleName) {
   "return" : ["JsVar","An array of module names"]
 }
 Return an array of module names that have been cached
- */
+*/
 JsVar *jswrap_modules_getCached() {
   JsVar *arr = jsvNewEmptyArray();
   if (!arr) return 0; // out of memory
@@ -202,7 +202,7 @@ JsVar *jswrap_modules_getCached() {
   ]
 }
 Remove the given module from the list of cached modules
- */
+*/
 void jswrap_modules_removeCached(JsVar *id) {
   if (!jsvIsString(id)) {
     jsExceptionHere(JSET_ERROR, "The argument to removeCached must be a string");
@@ -229,7 +229,7 @@ void jswrap_modules_removeCached(JsVar *id) {
   "generate" : "jswrap_modules_removeAllCached"
 }
 Remove all cached modules
- */
+*/
 void jswrap_modules_removeAllCached() {
   JsVar *moduleList = jswrap_modules_getModuleList();
   if (!moduleList) return; // out of memory
@@ -248,7 +248,7 @@ void jswrap_modules_removeAllCached() {
   ]
 }
 Add the given module to the cache
- */
+*/
 void jswrap_modules_addCached(JsVar *id, JsVar *sourceCode) {
   if (!jsvIsString(id) ||
       !(jsvIsString(sourceCode) || jsvIsFunction(sourceCode))) {

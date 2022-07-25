@@ -428,7 +428,9 @@ type Graphics. For instance to draw a line you'd type:
 /*JSON{
   "type" : "method",
   "class" : "Graphics",
-  "params" : [ ["all","bool","[optional] (only on some devices) If `true` then copy all pixels, not just those that have changed."] ],
+  "params" : [
+    ["all","bool","[optional] (only on some devices) If `true` then copy all pixels, not just those that have changed."]
+  ],
   "name" : "flip"
 }
 On instances of graphics that drive a display with an offscreen buffer, calling
@@ -477,7 +479,9 @@ new Uint8Array([
 /*JSON{
   "type" : "idle",
   "generate" : "jswrap_graphics_idle"
-}*/
+}
+
+*/
 bool jswrap_graphics_idle() {
   graphicsIdle();
   return false;
@@ -487,7 +491,9 @@ bool jswrap_graphics_idle() {
   "type" : "init",
   "generate" : "jswrap_graphics_init",
   "sortorder" : -100
-}*/
+}
+
+*/
 void jswrap_graphics_init() {
   // sortorder is first because we don't want subsequent
   // _init to a) not have GFX and b) not get their theme
@@ -550,14 +556,7 @@ static bool isValidBPP(int bpp) {
     ["width","int32","Pixels wide"],
     ["height","int32","Pixels high"],
     ["bpp","int32","Number of bits per pixel"],
-    ["options","JsVar",[
-      "An object of other options. `{ zigzag : true/false(default), vertical_byte : true/false(default), msb : true/false(default), color_order: 'rgb'(default),'bgr',etc }`",
-      "`zigzag` = whether to alternate the direction of scanlines for rows",
-      "`vertical_byte` = whether to align bits in a byte vertically or not",
-      "`msb` = when bits<8, store pixels most significant bit first, when bits>8, store most significant byte first",
-      "`interleavex` = Pixels 0,2,4,etc are from the top half of the image, 1,3,5,etc from the bottom half. Used for P3 LED panels.",
-      "`color_order` = re-orders the colour values that are supplied via setColor"
-    ]]
+    ["options","JsVar",["An object of other options. `{ zigzag : true/false(default), vertical_byte : true/false(default), msb : true/false(default), color_order: 'rgb'(default),'bgr',etc }`","`zigzag` = whether to alternate the direction of scanlines for rows","`vertical_byte` = whether to align bits in a byte vertically or not","`msb` = when bits<8, store pixels most significant bit first, when bits>8, store most significant byte first","`interleavex` = Pixels 0,2,4,etc are from the top half of the image, 1,3,5,etc from the bottom half. Used for P3 LED panels.","`color_order` = re-orders the colour values that are supplied via setColor"]]
   ],
   "return" : ["JsVar","The new Graphics object"],
   "return_object" : "Graphics"
@@ -1725,7 +1724,6 @@ You can also use these forms, but they are not recommended:
 `g.getFont()` will return the current font as a String.
 
 For a list of available font names, you can use `g.getFonts()`.
-
 */
 JsVar *jswrap_graphics_setFont(JsVar *parent, JsVar *fontId, int size) {
 #ifndef SAVE_ON_FLASH
@@ -3574,9 +3572,9 @@ void jswrap_graphics_dump(JsVar *parent) {
     ["arr","JsVar","An array of three vertices, six enties in form of ```[x0,y0,x1,y1,x2,y2]```"],
     ["options","JsVar","number of points to calulate"]
   ],
-  "return" : ["JsVar", "Array with calculated points" ]
+  "return" : ["JsVar","Array with calculated points"]
 }
- Calculate the square area under a Bezier curve.
+Calculate the square area under a Bezier curve.
 
  x0,y0: start point x1,y1: control point y2,y2: end point
 
@@ -3644,7 +3642,7 @@ JsVar *jswrap_graphics_quadraticBezier( JsVar *parent, JsVar *arr, JsVar *option
     ["verts","JsVar","An array of vertices, of the form ```[x1,y1,x2,y2,x3,y3,etc]```"],
     ["transformation","JsVar","The transformation to apply, either an Object or an Array (see below)"]
   ],
-  "return" : ["JsVar", "Array of transformed vertices" ]
+  "return" : ["JsVar","Array of transformed vertices"]
 }
 Transformation can be:
 
@@ -3780,7 +3778,6 @@ change the background to red using:
 ```
 g.setTheme({bg:"#f00"});
 ```
-
 */
 JsVar *jswrap_graphics_setTheme(JsVar *parent, JsVar *theme) {
 #ifdef GRAPHICS_THEME

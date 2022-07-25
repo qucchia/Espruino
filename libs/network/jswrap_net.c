@@ -23,7 +23,9 @@
 /*JSON{
   "type" : "idle",
   "generate" : "jswrap_net_idle"
-}*/
+}
+
+*/
 bool jswrap_net_idle() {
   JsNetwork net;
   if (!networkGetFromVar(&net)) return false;
@@ -36,15 +38,19 @@ bool jswrap_net_idle() {
 /*JSON{
   "type" : "init",
   "generate" : "jswrap_net_init"
-}*/
+}
+
+*/
 void jswrap_net_init() {
   socketInit();
 }
 
 /*JSON{
-  "type"     : "kill",
+  "type" : "kill",
   "generate" : "jswrap_net_kill"
-}*/
+}
+
+*/
 void jswrap_net_kill() {
   JsNetwork net;
   if (networkWasCreated()) {
@@ -289,7 +295,6 @@ event is always followed by a close event. The error codes are:
 * -12: bad argument
 * -13: SSL handshake failed
 * -14: invalid SSL data
-
 */
 /*JSON{
   "type" : "method",
@@ -491,7 +496,9 @@ An actual socket connection - allowing transmit/receive of TCP data
     ["length","JsVar","Number of bytes in the message [optional]"],
     ["args","JsVarArray","Destination port number, Destination IP address string"]
   ]
-}*/
+}
+
+*/
 // There are futher arguments within the 'args' JsVarArray:
 //  ["port","JsVar","Destination port number to send the message to"],
 //  ["address","JsVar","Destination hostname or IP address string"]
@@ -553,6 +560,7 @@ is defined with `X.on('message', function(msg) { ... })` then it will be called`
   ],
   "return" : ["JsVar","The dgramSocket instance that 'bind' was called on"]
 }
+
 */
 JsVar *jswrap_dgramSocket_bind(JsVar *parent, unsigned short port, JsVar *callback) {
   parent = jsvLockAgain(parent); // we're returning the parent, so need to re-lock it
@@ -590,6 +598,7 @@ void jswrap_dgram_close(JsVar *parent) {
     ["ip","JsVar","A string containing the ip to join with"]
   ]
 }
+
 */
 void jswrap_dgram_addMembership(JsVar *parent, JsVar *group, JsVar *ip) {
   JsNetwork net;

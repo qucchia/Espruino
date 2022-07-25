@@ -78,8 +78,8 @@ Library for communication with the WIZnet Ethernet module
   "name" : "connect",
   "generate" : "jswrap_wiznet_connect",
   "params" : [
-    ["spi", "JsVar", "Device to use for SPI (or undefined to use the default)"],
-    ["cs", "pin", "The pin to use for Chip Select"]
+    ["spi","JsVar","Device to use for SPI (or undefined to use the default)"],
+    ["cs","pin","The pin to use for Chip Select"]
   ],
   "return" : ["JsVar","An Ethernet Object"],
   "return_object" : "Ethernet"
@@ -372,7 +372,7 @@ bool jswrap_ethernet_setHostname(JsVar *wlanObj, JsVar *jsHostname, JsVar *callb
   "params" : [
     ["callback","JsVar","An optional `callback(err,hostname)` function to be called back with the status information."]
   ],
-  "return" : ["JsVar" ]
+  "return" : ["JsVar"]
 }
 Returns the hostname
 */
@@ -401,10 +401,9 @@ JsVar * jswrap_ethernet_getHostname(JsVar *wlanObj, JsVar *callback) {
   "params" : [
     ["options","JsVar","An optional `callback(err, status)` function to be called back with the status information."]
   ],
-  "return" : ["JsVar" ]
+  "return" : ["JsVar"]
 }
 Get the current status of the ethernet device
-
 */
 JsVar * jswrap_ethernet_getStatus( JsVar *wlanObj, JsVar *callback) {
   NOT_USED(wlanObj);
