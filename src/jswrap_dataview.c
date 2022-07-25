@@ -41,7 +41,8 @@ This class helps
   "return_object" : "DataView",
   "ifndef" : "SAVE_ON_FLASH"
 }
-Create a `DataView` object that can be used to access the data in an `ArrayBuffer`.
+Create a `DataView` object that can be used to access the data in an
+`ArrayBuffer`.
 
 ```
 var b = new ArrayBuffer(8)

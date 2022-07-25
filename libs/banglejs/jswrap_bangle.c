@@ -91,7 +91,8 @@ declare const WIDGETS: { [key: string]: Widget };
   "class" : "Bangle",
   "ifdef" : "BANGLEJS"
 }
-Class containing utility functions for the [Bangle.js Smart Watch](http://www.espruino.com/Bangle.js)
+Class containing utility functions for the [Bangle.js Smart
+Watch](http://www.espruino.com/Bangle.js)
 */
 
 
@@ -138,8 +139,8 @@ Called whenever a step is detected by Bangle.js's pedometer.
   "params" : [["info","JsVar","An object containing the last 10 minutes health data"]],
   "ifdef" : "BANGLEJS"
 }
-See `Bangle.getHealthStatus()` for more information. This is used for health tracking to
-allow Bangle.js to record historical exercise data.
+See `Bangle.getHealthStatus()` for more information. This is used for health
+tracking to allow Bangle.js to record historical exercise data.
  */
 /*JSON{
   "type" : "event",
@@ -156,7 +157,8 @@ Has the watch been moved so that it is face-up, or not face up?
   "name" : "twist",
   "ifdef" : "BANGLEJS"
 }
-This event happens when the watch has been twisted around it's axis - for instance as if it was rotated so someone could look at the time.
+This event happens when the watch has been twisted around it's axis - for
+instance as if it was rotated so someone could look at the time.
 
 To tweak when this happens, see the `twist*` options in `Bangle.setOptions()`
  */
@@ -176,14 +178,15 @@ Is the battery charging or not?
   "params" : [["xyz","JsVar",""]],
   "ifdef" : "BANGLEJS"
 }
-Magnetometer/Compass data available with `{x,y,z,dx,dy,dz,heading}` object as a parameter
+Magnetometer/Compass data available with `{x,y,z,dx,dy,dz,heading}` object as a
+parameter
 
 * `x/y/z` raw x,y,z magnetometer readings
 * `dx/dy/dz` readings based on calibration since magnetometer turned on
-* `heading` in degrees based on calibrated readings (will be NaN if magnetometer hasn't been rotated around 360 degrees)
+* `heading` in degrees based on calibrated readings (will be NaN if magnetometer
+  hasn't been rotated around 360 degrees)
 
-To get this event you must turn the compass on
-with `Bangle.setCompassPower(1)`.
+To get this event you must turn the compass on with `Bangle.setCompassPower(1)`.
 
 You can also retrieve the most recent reading with `Bangle.getCompass()`.
  */
@@ -199,8 +202,7 @@ You can also retrieve the most recent reading with `Bangle.getCompass()`.
 }
 Raw NMEA GPS / u-blox data messages received as a string
 
-To get this event you must turn the GPS on
-with `Bangle.setGPSPower(1)`.
+To get this event you must turn the GPS on with `Bangle.setGPSPower(1)`.
  */
 /*JSON{
   "type" : "event",
@@ -226,13 +228,12 @@ GPS data, as an object. Contains:
 
 If a value such as `lat` is not known because there is no fix, it'll be `NaN`.
 
-`hdop` is a value from the GPS receiver that gives a rough idea of accuracy
-of lat/lon based on the geometry of the satellites in range. Multiply by 5 to
-get a value in meters. This is just a ballpark estimation and should
-not be considered remotely accurate.
+`hdop` is a value from the GPS receiver that gives a rough idea of accuracy of
+lat/lon based on the geometry of the satellites in range. Multiply by 5 to get a
+value in meters. This is just a ballpark estimation and should not be considered
+remotely accurate.
 
-To get this event you must turn the GPS on
-with `Bangle.setGPSPower(1)`.
+To get this event you must turn the GPS on with `Bangle.setGPSPower(1)`.
  */
 /*JSON{
   "type" : "event",
@@ -250,8 +251,8 @@ Heat rate data, as an object. Contains:
 }
 ```
 
-To get this event you must turn the heart rate monitor on
-with `Bangle.setHRMPower(1)`.
+To get this event you must turn the heart rate monitor on with
+`Bangle.setHRMPower(1)`.
  */
 /*JSON{
   "type" : "event",
@@ -279,7 +280,8 @@ Called when heart rate sensor data is available - see `Bangle.setHRMPower(1)`.
   "params" : [["e","JsVar","An object containing `{temperature,pressure,altitude}`"]],
   "ifdef" : "BANGLEJS"
 }
-When `Bangle.setBarometerPower(true)` is called, this event is fired containing barometer readings.
+When `Bangle.setBarometerPower(true)` is called, this event is fired containing
+barometer readings.
 
 Same format as `Bangle.getPressure()`
 */
@@ -290,7 +292,8 @@ Same format as `Bangle.getPressure()`
   "params" : [["on","bool","`true` if screen is on"]],
   "ifdef" : "BANGLEJS"
 }
-Has the screen been turned on or off? Can be used to stop tasks that are no longer useful if nothing is displayed.  Also see `Bangle.isLCDOn()`
+Has the screen been turned on or off? Can be used to stop tasks that are no
+longer useful if nothing is displayed. Also see `Bangle.isLCDOn()`
 */
 /*JSON{
   "type" : "event",
@@ -308,9 +311,11 @@ Has the screen been locked? Also see `Bangle.isLocked()`
   "params" : [["data","JsVar","`{dir, double, x, y, z}`"]],
   "ifdef" : "BANGLEJS"
 }
-If the watch is tapped, this event contains information on the way it was tapped.
+If the watch is tapped, this event contains information on the way it was
+tapped.
 
-`dir` reports the side of the watch that was tapped (not the direction it was tapped in).
+`dir` reports the side of the watch that was tapped (not the direction it was
+tapped in).
 
 ```
 {
@@ -338,11 +343,11 @@ Emitted when a 'gesture' (fast movement) is detected
               ["weights","JsVar","An array of floating point values output by the model"]],
   "ifdef" : "BANGLEJS"
 }
-Emitted when a 'gesture' (fast movement) is detected, and a Tensorflow model is in
-storage in the `".tfmodel"` file.
+Emitted when a 'gesture' (fast movement) is detected, and a Tensorflow model is
+in storage in the `".tfmodel"` file.
 
-If a `".tfnames"` file is specified as a comma-separated list of names, it will be used
-to decode `gesture` from a number into a string.
+If a `".tfnames"` file is specified as a comma-separated list of names, it will
+be used to decode `gesture` from a number into a string.
 */
 /*JSON{
   "type" : "event",
@@ -352,9 +357,11 @@ to decode `gesture` from a number into a string.
               ["directionUD","int","`-1` for up, `1` for down, `0` for left/right (Bangle.js 2 only)"]],
   "ifdef" : "BANGLEJS"
 }
-Emitted when a swipe on the touchscreen is detected (a movement from left->right, right->left, down->up or up->down) 
+Emitted when a swipe on the touchscreen is detected (a movement from
+left->right, right->left, down->up or up->down)
 
-Bangle.js 1 is only capable of detecting left/right swipes as it only contains a 2 zone touchscreen.
+Bangle.js 1 is only capable of detecting left/right swipes as it only contains a
+2 zone touchscreen.
 */
 /*JSON{
   "type" : "event",
@@ -377,11 +384,11 @@ Emitted when the touchscreen is pressed
 }
 Emitted when the touchscreen is dragged or released
 
-The touchscreen extends past the edge of the screen and while
-`x` and `y` coordinates are arranged such that they align with
-the LCD's pixels, if your finger goes towards the edge of the
-screen, `x` and `y` could end up larger than 175 (the screen's maximum pixel coordinates)
-or smaller than 0. Coordinates from the `touch` event are clipped.
+The touchscreen extends past the edge of the screen and while `x` and `y`
+coordinates are arranged such that they align with the LCD's pixels, if your
+finger goes towards the edge of the screen, `x` and `y` could end up larger than
+175 (the screen's maximum pixel coordinates) or smaller than 0. Coordinates from
+the `touch` event are clipped.
 */
 /*JSON{
   "type" : "event",
@@ -390,10 +397,12 @@ or smaller than 0. Coordinates from the `touch` event are clipped.
   "params" : [["event","JsVar","Object of form `{xy:Uint8Array([x1,y1,x2,y2...])}` containing touch coordinates"]],
   "ifdef" : "BANGLEJS2"
 }
-Emitted when the touchscreen is dragged for a large enough distance to count as a gesture.
+Emitted when the touchscreen is dragged for a large enough distance to count as
+a gesture.
 
-If Bangle.strokes is defined and populated with data from `Unistroke.new`, the `event` argument will also
-contain a `stroke` field containing the most closely matching stroke name.
+If Bangle.strokes is defined and populated with data from `Unistroke.new`, the
+`event` argument will also contain a `stroke` field containing the most closely
+matching stroke name.
 
 For example:
 
@@ -1733,13 +1742,12 @@ static void jswrap_banglejs_setLCDPowerBacklight(bool isOn) {
 }
 This function can be used to turn Bangle.js's LCD off or on.
 
-This function resets the Bangle's 'activity timer' (like
-pressing a button or the screen would) so after a time period
-of inactivity set by `Bangle.setLCDTimeout` the screen will
-turn off.
+This function resets the Bangle's 'activity timer' (like pressing a button or
+the screen would) so after a time period of inactivity set by
+`Bangle.setLCDTimeout` the screen will turn off.
 
-If you want to keep the screen on permanently (until apps
-are changed) you can do:
+If you want to keep the screen on permanently (until apps are changed) you can
+do:
 
 ```
 Bangle.setLCDTimeout(0); // turn off the timeout
@@ -1747,8 +1755,8 @@ Bangle.setLCDPower(1); // keep screen on
 ```
 
 
-**When on full, the LCD draws roughly 40mA.** You can adjust
-When brightness using `Bange.setLCDBrightness`.
+**When on full, the LCD draws roughly 40mA.** You can adjust When brightness
+using `Bange.setLCDBrightness`.
 */
 void jswrap_banglejs_setLCDPower(bool isOn) {
 #ifdef ESPR_BACKLIGHT_FADE
@@ -1789,9 +1797,9 @@ void jswrap_banglejs_setLCDPower(bool isOn) {
 This function can be used to adjust the brightness of Bangle.js's display, and
 hence prolong its battery life.
 
-Due to hardware design constraints, software PWM has to be used which
-means that the display may flicker slightly when Bluetooth is active
-and the display is not at full power.
+Due to hardware design constraints, software PWM has to be used which means that
+the display may flicker slightly when Bluetooth is active and the display is not
+at full power.
 
 **Power consumption**
 
@@ -1825,12 +1833,23 @@ This function can be used to change the way graphics is handled on Bangle.js.
 
 Available options for `Bangle.setLCDMode` are:
 
-* `Bangle.setLCDMode()` or `Bangle.setLCDMode("direct")` (the default) - The drawable area is 240x240 16 bit. Unbuffered, so draw calls take effect immediately. Terminal and vertical scrolling work (horizontal scrolling doesn't).
-* `Bangle.setLCDMode("doublebuffered")` - The drawable area is 240x160 16 bit, terminal and scrolling will not work. `g.flip()` must be called for draw operations to take effect.
-* `Bangle.setLCDMode("120x120")` - The drawable area is 120x120 8 bit, `g.getPixel`, terminal, and full scrolling work. Uses an offscreen buffer stored on Bangle.js, `g.flip()` must be called for draw operations to take effect.
-* `Bangle.setLCDMode("80x80")` - The drawable area is 80x80 8 bit, `g.getPixel`, terminal, and full scrolling work. Uses an offscreen buffer stored on Bangle.js, `g.flip()` must be called for draw operations to take effect.
+* `Bangle.setLCDMode()` or `Bangle.setLCDMode("direct")` (the default) - The
+  drawable area is 240x240 16 bit. Unbuffered, so draw calls take effect
+  immediately. Terminal and vertical scrolling work (horizontal scrolling
+  doesn't).
+* `Bangle.setLCDMode("doublebuffered")` - The drawable area is 240x160 16 bit,
+  terminal and scrolling will not work. `g.flip()` must be called for draw
+  operations to take effect.
+* `Bangle.setLCDMode("120x120")` - The drawable area is 120x120 8 bit,
+  `g.getPixel`, terminal, and full scrolling work. Uses an offscreen buffer
+  stored on Bangle.js, `g.flip()` must be called for draw operations to take
+  effect.
+* `Bangle.setLCDMode("80x80")` - The drawable area is 80x80 8 bit, `g.getPixel`,
+  terminal, and full scrolling work. Uses an offscreen buffer stored on
+  Bangle.js, `g.flip()` must be called for draw operations to take effect.
 
-You can also call `Bangle.setLCDMode()` to return to normal, unbuffered `"direct"` mode.
+You can also call `Bangle.setLCDMode()` to return to normal, unbuffered
+`"direct"` mode.
 */
 void jswrap_banglejs_setLCDMode(JsVar *mode) {
 #ifdef LCD_CONTROLLER_ST7789_8BIT
@@ -1969,11 +1988,16 @@ void jswrap_banglejs_setLCDOffset(int y) {
 }
 This function can be used to turn Bangle.js's LCD power saving on or off.
 
-With power saving off, the display will remain in the state you set it with `Bangle.setLCDPower`.
+With power saving off, the display will remain in the state you set it with
+`Bangle.setLCDPower`.
 
-With power saving on, the display will turn on if a button is pressed, the watch is turned face up, or the screen is updated (see `Bangle.setOptions` for configuration). It'll turn off automatically after the given timeout.
+With power saving on, the display will turn on if a button is pressed, the watch
+is turned face up, or the screen is updated (see `Bangle.setOptions` for
+configuration). It'll turn off automatically after the given timeout.
 
-**Note:** This function also sets the Backlight and Lock timeout (the time at which the touchscreen/buttons start being ignored). To set both separately, use `Bangle.setOptions`
+**Note:** This function also sets the Backlight and Lock timeout (the time at
+which the touchscreen/buttons start being ignored). To set both separately, use
+`Bangle.setOptions`
 */
 void jswrap_banglejs_setLCDTimeout(JsVarFloat timeout) {
   if (!isfinite(timeout))
@@ -1996,11 +2020,13 @@ void jswrap_banglejs_setLCDTimeout(JsVarFloat timeout) {
     ],
     "ifdef" : "BANGLEJS"
 }
-Set how often the watch should poll for new acceleration/gyro data and kick the Watchdog timer. It isn't
-recommended that you make this interval much larger than 1000ms, but values up to 4000ms are allowed.
+Set how often the watch should poll for new acceleration/gyro data and kick the
+Watchdog timer. It isn't recommended that you make this interval much larger
+than 1000ms, but values up to 4000ms are allowed.
 
-Calling this will set `Bangle.setOptions({powerSave: false})` - disabling the dynamic adjustment of
-poll interval to save battery power when Bangle.js is stationary.
+Calling this will set `Bangle.setOptions({powerSave: false})` - disabling the
+dynamic adjustment of poll interval to save battery power when Bangle.js is
+stationary.
 */
 void jswrap_banglejs_setPollInterval(JsVarFloat interval) {
   if (!isfinite(interval) || interval<10 || interval>ACCEL_POLL_INTERVAL_MAX) {
@@ -2024,28 +2050,50 @@ void jswrap_banglejs_setPollInterval(JsVarFloat interval) {
 Set internal options used for gestures, etc...
 
 * `wakeOnBTN1` should the LCD turn on when BTN1 is pressed? default = `true`
-* `wakeOnBTN2` (Bangle.js 1) should the LCD turn on when BTN2 is pressed? default = `true`
-* `wakeOnBTN3` (Bangle.js 1) should the LCD turn on when BTN3 is pressed? default = `true`
-* `wakeOnFaceUp` should the LCD turn on when the watch is turned face up? default = `false`
-* `wakeOnTouch` should the LCD turn on when the touchscreen is pressed? default = `false`
-* `wakeOnTwist` should the LCD turn on when the watch is twisted? default = `true`
-* `twistThreshold`  How much acceleration to register a twist of the watch strap? Can be negative for oppsite direction. default = `800`
-* `twistMaxY` Maximum acceleration in Y to trigger a twist (low Y means watch is facing the right way up). default = `-800`
-* `twistTimeout`  How little time (in ms) must a twist take from low->high acceleration? default = `1000`
-* `gestureStartThresh` how big a difference before we consider a gesture started? default = `sqr(800)`
-* `gestureEndThresh` how small a difference before we consider a gesture ended? default = `sqr(2000)`
-* `gestureInactiveCount` how many samples do we keep after a gesture has ended? default = `4`
-* `gestureMinLength` how many samples must a gesture have before we notify about it? default = `10`
-* `powerSave` after a minute of not being moved, Bangle.js will change the accelerometer poll interval down to 800ms (10x accelerometer samples).
-   On movement it'll be raised to the default 80ms. If `Bangle.setPollInterval` is used this is disabled, and for it to work the poll interval
-   must be either 80ms or 800ms. default = `true`. Setting `powerSave:false` will disable this automatic power saving, but will **not** change
-   the poll interval from its current value. If you desire a specific interval (eg the default 80ms) you must set it manually with `Bangle.setPollInterval(80)`
-   after setting `powerSave:false`.
+* `wakeOnBTN2` (Bangle.js 1) should the LCD turn on when BTN2 is pressed?
+  default = `true`
+* `wakeOnBTN3` (Bangle.js 1) should the LCD turn on when BTN3 is pressed?
+  default = `true`
+* `wakeOnFaceUp` should the LCD turn on when the watch is turned face up?
+  default = `false`
+* `wakeOnTouch` should the LCD turn on when the touchscreen is pressed? default
+  = `false`
+* `wakeOnTwist` should the LCD turn on when the watch is twisted? default =
+  `true`
+* `twistThreshold` How much acceleration to register a twist of the watch strap?
+  Can be negative for oppsite direction. default = `800`
+* `twistMaxY` Maximum acceleration in Y to trigger a twist (low Y means watch is
+  facing the right way up). default = `-800`
+* `twistTimeout` How little time (in ms) must a twist take from low->high
+  acceleration? default = `1000`
+* `gestureStartThresh` how big a difference before we consider a gesture
+  started? default = `sqr(800)`
+* `gestureEndThresh` how small a difference before we consider a gesture ended?
+  default = `sqr(2000)`
+* `gestureInactiveCount` how many samples do we keep after a gesture has ended?
+  default = `4`
+* `gestureMinLength` how many samples must a gesture have before we notify about
+  it? default = `10`
+* `powerSave` after a minute of not being moved, Bangle.js will change the
+   accelerometer poll interval down to 800ms (10x accelerometer samples). On
+   movement it'll be raised to the default 80ms. If `Bangle.setPollInterval` is
+   used this is disabled, and for it to work the poll interval must be either
+   80ms or 800ms. default = `true`. Setting `powerSave:false` will disable this
+   automatic power saving, but will **not** change the poll interval from its
+   current value. If you desire a specific interval (eg the default 80ms) you
+   must set it manually with `Bangle.setPollInterval(80)` after setting
+   `powerSave:false`.
 * `lockTimeout` how many milliseconds before the screen locks
 * `lcdPowerTimeout` how many milliseconds before the screen turns off
-* `backlightTimeout` how many milliseconds before the screen's backlight turns off
-* `hrmPollInterval` set the requested poll interval (in milliseconds) for the heart rate monitor. On Bangle.js 2 only 10,20,40,80,160,200 ms are supported, and polling rate may not be exact. The algorithm's filtering is tuned for 20-40ms poll intervals, so higher/lower intervals may effect the reliability of the BPM reading.
-* `seaLevelPressure` (Bangle.js 2) Normally 1013.25 millibars - this is used for calculating altitude with the pressure sensor
+* `backlightTimeout` how many milliseconds before the screen's backlight turns
+  off
+* `hrmPollInterval` set the requested poll interval (in milliseconds) for the
+  heart rate monitor. On Bangle.js 2 only 10,20,40,80,160,200 ms are supported,
+  and polling rate may not be exact. The algorithm's filtering is tuned for
+  20-40ms poll intervals, so higher/lower intervals may effect the reliability
+  of the BPM reading.
+* `seaLevelPressure` (Bangle.js 2) Normally 1013.25 millibars - this is used for
+  calculating altitude with the pressure sensor
 
 Where accelerations are used they are in internal units, where `8192 = 1g`
 
@@ -2155,8 +2203,8 @@ int jswrap_banglejs_isLCDOn() {
     ],
     "ifdef" : "BANGLEJS"
 }
-This function can be used to lock or unlock Bangle.js
-(eg whether buttons and touchscreen work or not)
+This function can be used to lock or unlock Bangle.js (eg whether buttons and
+touchscreen work or not)
 */
 void jswrap_banglejs_setLocked(bool isLocked) {
 #if defined(TOUCH_I2C)
@@ -2551,8 +2599,8 @@ void jswrap_banglejs_resetCompass() {
     "return" : ["bool","Is the Barometer on?"],
     "#if" : "defined(DTNO1_F5) || defined(BANGLEJS_Q3) || defined(DICKENS)"
 }
-Set the power to the barometer IC. Once enbled, `Bangle.pressure` events
-are fired each time a new barometer reading is available.
+Set the power to the barometer IC. Once enbled, `Bangle.pressure` events are
+fired each time a new barometer reading is available.
 
 When on, the barometer draws roughly 50uA
 */
@@ -2681,16 +2729,17 @@ void jswrap_banglejs_setStepCount(JsVarInt count) {
     "return" : ["JsVar","An object containing magnetometer readings (as below)"],
     "ifdef" : "BANGLEJS"
 }
-Get the most recent Magnetometer/Compass reading. Data is in the same format as the `Bangle.on('mag',` event.
+Get the most recent Magnetometer/Compass reading. Data is in the same format as
+the `Bangle.on('mag',` event.
 
 Returns an `{x,y,z,dx,dy,dz,heading}` object
 
 * `x/y/z` raw x,y,z magnetometer readings
 * `dx/dy/dz` readings based on calibration since magnetometer turned on
-* `heading` in degrees based on calibrated readings (will be NaN if magnetometer hasn't been rotated around 360 degrees)
+* `heading` in degrees based on calibrated readings (will be NaN if magnetometer
+  hasn't been rotated around 360 degrees)
 
-To get this event you must turn the compass on
-with `Bangle.setCompassPower(1)`.*/
+To get this event you must turn the compass on with `Bangle.setCompassPower(1)`.*/
 JsVar *jswrap_banglejs_getCompass() {
 #ifdef MAG_I2C
   JsVar *o = jsvNewObject();
@@ -2728,12 +2777,14 @@ JsVar *jswrap_banglejs_getCompass() {
     "return" : ["JsVar","An object containing accelerometer readings (as below)"],
     "ifdef" : "BANGLEJS"
 }
-Get the most recent accelerometer reading. Data is in the same format as the `Bangle.on('accel',` event.
+Get the most recent accelerometer reading. Data is in the same format as the
+`Bangle.on('accel',` event.
 
 * `x` is X axis (left-right) in `g`
 * `y` is Y axis (up-down) in `g`
 * `z` is Z axis (in-out) in `g`
-* `diff` is difference between this and the last reading in `g` (calculated by comparing vectors, not magnitudes)
+* `diff` is difference between this and the last reading in `g` (calculated by
+  comparing vectors, not magnitudes)
 * `td` is the elapsed
 * `mag` is the magnitude of the acceleration in `g`
 */
@@ -2763,14 +2814,16 @@ JsVar *jswrap_banglejs_getAccel() {
 
 `range` is one of:
 
-* `undefined` or `'current'` - health data so far in the last 10 minutes is returned,
+* `undefined` or `'current'` - health data so far in the last 10 minutes is
+  returned,
 * `'last'` - health data during the last 10 minutes
 * `'day'` - the health data so far for the day
 
 
 `getHealthStatus` returns an object containing:
 
-* `movement` is the 32 bit sum of all `acc.diff` readings since power on (and rolls over). It is the difference in accelerometer values as `g*8192`
+* `movement` is the 32 bit sum of all `acc.diff` readings since power on (and
+  rolls over). It is the difference in accelerometer values as `g*8192`
 * `steps` is the number of steps during this period
 * `bpm` the best BPM reading from HRM sensor during this period
 * `bpmConfidence` best BPM confidence (0-100%) during this period
@@ -3904,8 +3957,8 @@ bool jswrap_banglejs_gps_character(char ch) {
     "ifdef" : "BANGLEJS"
 }
 Feature flag - If true, this Bangle.js firmware reads `setting.json` and
-modifies beep & buzz behaviour accordingly (the bootloader
-doesn't need to do it).
+modifies beep & buzz behaviour accordingly (the bootloader doesn't need to do
+it).
 */
 
 /*JSON{
@@ -3988,7 +4041,8 @@ void jswrap_banglejs_accelWr(JsVarInt reg, JsVarInt data) {
 }
 Reads a register from the accelerometer
 
-**Note:** On Espruino 2v06 and before this function only returns a number (`cnt` is ignored).
+**Note:** On Espruino 2v06 and before this function only returns a number (`cnt`
+is ignored).
 */
 
 
@@ -4159,12 +4213,12 @@ void jswrap_banglejs_ioWr(JsVarInt mask, bool on) {
     "return" : ["JsVar","A promise that will be resolved with `{temperature, pressure, altitude}`"],
     "#if" : "defined(DTNO1_F5) || defined(BANGLEJS_Q3) || defined(DICKENS)"
 }
-Read temperature, pressure and altitude data. A promise is returned
-which will be resolved with `{temperature, pressure, altitude}`.
+Read temperature, pressure and altitude data. A promise is returned which will
+be resolved with `{temperature, pressure, altitude}`.
 
-If the Barometer has been turned on with `Bangle.setBarometerPower` then this will
-return almost immediately with the reading. If the Barometer is off, conversions take
-between 500-750ms.
+If the Barometer has been turned on with `Bangle.setBarometerPower` then this
+will return almost immediately with the reading. If the Barometer is off,
+conversions take between 500-750ms.
 
 Altitude assumes a sea-level pressure of 1013.25 hPa
 
@@ -4367,12 +4421,13 @@ JsVar *jswrap_banglejs_getPressure() {
     "return" : ["JsVar","{x:..., y:...}"],
     "ifdef" : "BANGLEJS"
 }
-Perform a Spherical [Web Mercator projection](https://en.wikipedia.org/wiki/Web_Mercator_projection)
-of latitude and longitude into `x` and `y` coordinates, which are roughly
-equivalent to meters from `{lat:0,lon:0}`.
+Perform a Spherical [Web Mercator
+projection](https://en.wikipedia.org/wiki/Web_Mercator_projection) of latitude
+and longitude into `x` and `y` coordinates, which are roughly equivalent to
+meters from `{lat:0,lon:0}`.
 
-This is the formula used for most online mapping and is a good way
-to compare GPS coordinates to work out the distance between them.
+This is the formula used for most online mapping and is a good way to compare
+GPS coordinates to work out the distance between them.
 */
 JsVar *jswrap_banglejs_project(JsVar *latlong) {
   const double degToRad = PI / 180; // degree to radian conversion
@@ -4607,8 +4662,8 @@ void jswrap_banglejs_off() {
     "generate" : "jswrap_banglejs_softOff",
     "ifdef" : "BANGLEJS"
 }
-Turn Bangle.js (mostly) off, but keep the CPU in sleep
-mode until BTN1 is pressed to preserve the RTC (current time).
+Turn Bangle.js (mostly) off, but keep the CPU in sleep mode until BTN1 is
+pressed to preserve the RTC (current time).
 */
 void jswrap_banglejs_softOff() {
 #ifndef EMULATED
@@ -4794,11 +4849,11 @@ JsVar *jswrap_banglejs_getLogo() {
     "generate_js" : "libs/js/banglejs/Bangle_loadWidgets.min.js",
     "ifdef" : "BANGLEJS"
 }
-Load all widgets from flash Storage. Call this once at the beginning
-of your application if you want any on-screen widgets to be loaded.
+Load all widgets from flash Storage. Call this once at the beginning of your
+application if you want any on-screen widgets to be loaded.
 
-They will be loaded into a global `WIDGETS` array, and
-can be rendered with `Bangle.drawWidgets`.
+They will be loaded into a global `WIDGETS` array, and can be rendered with
+`Bangle.drawWidgets`.
 */
 /*JSON{
     "type" : "staticmethod",
@@ -4809,9 +4864,8 @@ can be rendered with `Bangle.drawWidgets`.
 }
 Draw any onscreen widgets that were loaded with `Bangle.loadWidgets()`.
 
-Widgets should redraw themselves when something changes - you'll only
-need to call drawWidgets if you decide to clear the entire screen
-with `g.clear()`.
+Widgets should redraw themselves when something changes - you'll only need to
+call drawWidgets if you decide to clear the entire screen with `g.clear()`.
 */
 /*JSON{
     "type" : "staticmethod", "class" : "Bangle", "name" : "drawWidgets", "patch":true,
@@ -4827,8 +4881,8 @@ with `g.clear()`.
     "generate_js" : "libs/js/banglejs/Bangle_showLauncher.min.js",
     "ifdef" : "BANGLEJS"
 }
-Load the Bangle.js app launcher, which will allow the user
-to select an application to launch.
+Load the Bangle.js app launcher, which will allow the user to select an
+application to launch.
 */
 
 /*JSON{
@@ -4845,8 +4899,8 @@ to select an application to launch.
 }
 Display a menu on the screen, and set up the buttons to navigate through it.
 
-Supply an object containing menu items. When an item is selected, the
-function it references will be executed. For example:
+Supply an object containing menu items. When an item is selected, the function
+it references will be executed. For example:
 
 ```
 var boolean = false;
@@ -4880,24 +4934,29 @@ var submenu = {
 E.showMenu(mainmenu);
 ```
 
-The menu will stay onscreen and active until explicitly removed,
-which you can do by calling `E.showMenu()` without arguments.
+The menu will stay onscreen and active until explicitly removed, which you can
+do by calling `E.showMenu()` without arguments.
 
 See http://www.espruino.com/graphical_menu for more detailed information.
 
 On Bangle.js there are a few additions over the standard `graphical_menu`:
 
 * The options object can contain:
-  * `back : function() { }` - add a 'back' button, with the function called when it is pressed
-  * (Bangle.js 2) `scroll : int` - an integer specifying how much the initial menu should be scrolled by
+  * `back : function() { }` - add a 'back' button, with the function called when
+    it is pressed
+  * (Bangle.js 2) `scroll : int` - an integer specifying how much the initial
+    menu should be scrolled by
 * The object returned by `E.showMenu` contains:
-  * (Bangle.js 2) `scroller` - the object returned by `E.showScroller` - `scroller.scroll` returns the amount the menu is currently scrolled by
+  * (Bangle.js 2) `scroller` - the object returned by `E.showScroller` -
+    `scroller.scroll` returns the amount the menu is currently scrolled by
 * In the object specified for editable numbers:
-  * (Bangle.js 2) the `format` function is called with `format(value)` in the main menu, `format(value,1)` when in a scrollable list, or `format(value,2)` when in a popup window.
+  * (Bangle.js 2) the `format` function is called with `format(value)` in the
+    main menu, `format(value,1)` when in a scrollable list, or `format(value,2)`
+    when in a popup window.
 
-You can also specify menu items as an array (rather than an Object). This can be useful
-if you have menu items with the same title, or you want to `push` menu items onto an
-array:
+You can also specify menu items as an array (rather than an Object). This can be
+useful if you have menu items with the same title, or you want to `push` menu
+items onto an array:
 
 ```
 var menu = [
@@ -4955,12 +5014,11 @@ E.showMessage("Lots of text will wrap automatically",{
     "ifdef" : "BANGLEJS"
 }
 
-Displays a full screen prompt on the screen, with the buttons
-requested (or `Yes` and `No` for defaults).
+Displays a full screen prompt on the screen, with the buttons requested (or
+`Yes` and `No` for defaults).
 
-When the button is pressed the promise is resolved with the
-requested values (for the `Yes` and `No` defaults, `true` and `false`
-are returned).
+When the button is pressed the promise is resolved with the requested values
+(for the `Yes` and `No` defaults, `true` and `false` are returned).
 
 ```
 E.showPrompt("Do you like fish?").then(function(v) {
@@ -5007,8 +5065,8 @@ The second `options` argument can contain:
     "return" : ["JsVar", "A menu object with `draw()` and `drawItem(itemNo)` functions" ],
     "ifdef" : "BANGLEJS"
 }
-Display a scrollable menu on the screen, and set up the buttons/touchscreen to navigate through it
-and select items.
+Display a scrollable menu on the screen, and set up the buttons/touchscreen to
+navigate through it and select items.
 
 Supply an object containing:
 
@@ -5104,11 +5162,12 @@ To remove the window, call `E.showAlert()` with no arguments.
     "ifdef" : "BANGLEJS", "no_docs":1
 }
 
-On most Espruino board there are LEDs, in which case `LED` will be an actual Pin.
+On most Espruino board there are LEDs, in which case `LED` will be an actual
+Pin.
 
-On Bangle.js there are no LEDs, so to remain compatible with example code that might
-expect an LED, this is an object that behaves like a pin, but which just displays
-a circle on the display
+On Bangle.js there are no LEDs, so to remain compatible with example code that
+might expect an LED, this is an object that behaves like a pin, but which just
+displays a circle on the display
 */
 /*JSON{
     "type" : "variable",
@@ -5118,11 +5177,12 @@ a circle on the display
     "ifdef" : "BANGLEJS", "no_docs":1
 }
 
-On most Espruino board there are LEDs, in which case `LED1` will be an actual Pin.
+On most Espruino board there are LEDs, in which case `LED1` will be an actual
+Pin.
 
-On Bangle.js there are no LEDs, so to remain compatible with example code that might
-expect an LED, this is an object that behaves like a pin, but which just displays
-a circle on the display
+On Bangle.js there are no LEDs, so to remain compatible with example code that
+might expect an LED, this is an object that behaves like a pin, but which just
+displays a circle on the display
 */
 /*JSON{
     "type" : "variable",
@@ -5132,11 +5192,12 @@ a circle on the display
     "ifdef" : "BANGLEJS", "no_docs":1
 }
 
-On most Espruino board there are LEDs, in which case `LED2` will be an actual Pin.
+On most Espruino board there are LEDs, in which case `LED2` will be an actual
+Pin.
 
-On Bangle.js there are no LEDs, so to remain compatible with example code that might
-expect an LED, this is an object that behaves like a pin, but which just displays
-a circle on the display
+On Bangle.js there are no LEDs, so to remain compatible with example code that
+might expect an LED, this is an object that behaves like a pin, but which just
+displays a circle on the display
 */
 
 
@@ -5151,30 +5212,39 @@ a circle on the display
     ],
     "ifdef" : "BANGLEJS"
 }
-This puts Bangle.js into the specified UI input mode, and calls the callback provided when there is user input.
+This puts Bangle.js into the specified UI input mode, and calls the callback
+provided when there is user input.
 
 Currently supported interface types are:
 
-* 'updown' - UI input with upwards motion `cb(-1)`, downwards motion `cb(1)`, and select `cb()`
+* 'updown' - UI input with upwards motion `cb(-1)`, downwards motion `cb(1)`,
+  and select `cb()`
   * Bangle.js 1 uses BTN1/3 for up/down and BTN2 for select
   * Bangle.js 2 uses touchscreen swipe up/down and tap
-* 'leftright' - UI input with left motion `cb(-1)`, right motion `cb(1)`, and select `cb()`
+* 'leftright' - UI input with left motion `cb(-1)`, right motion `cb(1)`, and
+  select `cb()`
   * Bangle.js 1 uses BTN1/3 for left/right and BTN2 for select
   * Bangle.js 2 uses touchscreen swipe left/right and tap/BTN1 for select
-* 'clock' - called for clocks. Sets `Bangle.CLOCK=1` and allows a button to start the launcher
+* 'clock' - called for clocks. Sets `Bangle.CLOCK=1` and allows a button to
+  start the launcher
   * Bangle.js 1 BTN2 starts the launcher
   * Bangle.js 2 BTN1 starts the launcher
-* 'clockupdown' - called for clocks. Sets `Bangle.CLOCK=1`, allows a button to start the launcher, but also provides up/down functionality
+* 'clockupdown' - called for clocks. Sets `Bangle.CLOCK=1`, allows a button to
+  start the launcher, but also provides up/down functionality
   * Bangle.js 1 BTN2 starts the launcher, BTN1/BTN3 call `cb(-1)` and `cb(1)`
-  * Bangle.js 2 BTN1 starts the launcher, touchscreen tap in top/bottom right hand side calls `cb(-1)` and `cb(1)`
-* `{mode:"custom", ...}` allows you to specify custom handlers for different interations. See below.
+  * Bangle.js 2 BTN1 starts the launcher, touchscreen tap in top/bottom right
+    hand side calls `cb(-1)` and `cb(1)`
+* `{mode:"custom", ...}` allows you to specify custom handlers for different
+  interations. See below.
 * `undefined` removes all user interaction code
 
-While you could use setWatch/etc manually, the benefit here is that you don't end up with multiple `setWatch` instances, and
-the actual input method (touch, or buttons) is implemented dependent on the watch (Bangle.js 1 or 2)
+While you could use setWatch/etc manually, the benefit here is that you don't
+end up with multiple `setWatch` instances, and the actual input method (touch,
+or buttons) is implemented dependent on the watch (Bangle.js 1 or 2)
 
-**Note:** You can override this function in boot code to change the interaction mode with the watch. For instance
-you could make all clocks start the launcher with a swipe by using:
+**Note:** You can override this function in boot code to change the interaction
+mode with the watch. For instance you could make all clocks start the launcher
+with a swipe by using:
 
 ```
 (function() {
@@ -5189,7 +5259,8 @@ you could make all clocks start the launcher with a swipe by using:
 })();
 ```
 
-The first argument can also be an object, in which case more options can be specified:
+The first argument can also be an object, in which case more options can be
+specified:
 
 ```
 Bangle.setUI({
@@ -5218,12 +5289,10 @@ Bangle.setUI({
     "#if" : "defined(BANGLEJS_Q3) || defined(EMULATED)"
 }
 
-Erase all storage and reload it with the default
-contents.
+Erase all storage and reload it with the default contents.
 
-This is only available on Bangle.js 2.0. On Bangle.js 1.0
-you need to use `Install Default Apps` under the `More...` tab
-of http://banglejs.com/apps
+This is only available on Bangle.js 2.0. On Bangle.js 1.0 you need to use
+`Install Default Apps` under the `More...` tab of http://banglejs.com/apps
 */
 extern void ble_app_error_handler(uint32_t error_code, uint32_t line_num, const uint8_t * p_file_name);
 void jswrap_banglejs_factoryReset() {
@@ -5239,8 +5308,7 @@ void jswrap_banglejs_factoryReset() {
     "return" : ["JsVar","An object of the form `{x,y,w,h,x2,y2}`"],
     "ifdef" : "BANGLEJS"
 }
-Returns the rectangle on the screen that is currently
-reserved for the app.
+Returns the rectangle on the screen that is currently reserved for the app.
 */
 JsVar *jswrap_banglejs_appRect() {
   JsVar *o = jsvNewObject();
