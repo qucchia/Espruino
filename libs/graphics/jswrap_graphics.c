@@ -840,7 +840,7 @@ int jswrap_graphics_getWidthOrHeight(JsVar *parent, bool height) {
   "generate" : "jswrap_graphics_getBPP",
   "return" : ["int","The bits per pixel of this Graphics instance."]
 }
-The number of bits per pixel of this Graphics instance
+The number of bits per pixel of this Graphics instance.
 
 **Note:** Bangle.js 2 behaves a little differently here. The display is 3 bit,
 so `getBPP` returns 3 and `asBMP`/`asImage`/etc return 3 bit images. However in
@@ -980,7 +980,7 @@ JsVar *_jswrap_graphics_fillRect_col(JsVar *parent, JsVar *opt, int y1, int x2, 
   "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
-Fill a rectangular area in the Foreground Color
+Fill a rectangular area in the Foreground Color.
 
 On devices with enough memory, you can specify `{x,y,x2,y2,r}` as the first
 argument, which allows you to draw a rounded rectangle.
@@ -1006,7 +1006,7 @@ JsVar *jswrap_graphics_fillRect(JsVar *parent, JsVar *opt, int y1, int x2, int y
   "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
-Fill a rectangular area in the Background Color
+Fill a rectangular area in the Background Color.
 
 On devices with enough memory, you can specify `{x,y,x2,y2,r}` as the first
 argument, which allows you to draw a rounded rectangle.
@@ -1548,7 +1548,7 @@ JsVar *jswrap_graphics_setClipRect(JsVar *parent, int x1, int y1, int x2, int y2
   "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
-Make subsequent calls to `drawString` use the built-in 4x6 pixel bitmapped Font
+Make subsequent calls to `drawString` use the built-in 4x6 pixel bitmapped Font.
 
 It is recommended that you use `Graphics.setFont("4x6")` for more flexibility.
 */
@@ -1707,15 +1707,15 @@ JsVar *jswrap_graphics_setFontAlign(JsVar *parent, int x, int y, int r) {
 }
 Set the font by name. Various forms are available:
 
-* `g.setFont("4x6")` - standard 4x6 bitmap font
-* `g.setFont("Vector:12")` - vector font 12px high
-* `g.setFont("4x6:2")` - 4x6 bitmap font, doubled in size
-* `g.setFont("6x8:2x3")` - 6x8 bitmap font, doubled in width, tripled in height
+* `g.setFont("4x6")` - standard 4x6 bitmap font.
+* `g.setFont("Vector:12")` - vector font 12px high.
+* `g.setFont("4x6:2")` - 4x6 bitmap font, doubled in size.
+* `g.setFont("6x8:2x3")` - 6x8 bitmap font, doubled in width, tripled in height.
 
 You can also use these forms, but they are not recommended:
 
-* `g.setFont("Vector12")` - vector font 12px high
-* `g.setFont("4x6",2)` - 4x6 bitmap font, doubled in size
+* `g.setFont("Vector12")` - vector font 12px high.
+* `g.setFont("4x6",2)` - 4x6 bitmap font, doubled in size.
 
 `g.getFont()` will return the current font as a String.
 
@@ -1802,7 +1802,7 @@ JsVar *jswrap_graphics_setFont(JsVar *parent, JsVar *fontId, int size) {
 Get the font by name - can be saved and used with `Graphics.setFont`.
 
 Normally this might return something like `"4x6"`, but if a scale factor is
-specified, a colon and then the size is reported, like "4x6:2"
+specified, a colon and then the size is reported, like "4x6:2".
 
 **Note:** For custom fonts, `Custom` is currently reported instead of the font
 name.
@@ -2513,7 +2513,7 @@ JsVar *jswrap_graphics_moveTo(JsVar *parent, int x, int y) {
   "return_object" : "Graphics"
 }
 Draw a polyline (lines between each of the points in `poly`) in the current
-foreground color
+foreground color.
 
 **Note:** there is a limit of 64 points (128 XY elements) for polygons
 */
@@ -2531,7 +2531,7 @@ foreground color
   "return_object" : "Graphics"
 }
 Draw an **antialiased** polyline (lines between each of the points in `poly`) in
-the current foreground color
+the current foreground color.
 
 **Note:** there is a limit of 64 points (128 XY elements) for polygons
 */
@@ -2786,23 +2786,23 @@ Image can be:
   palette : optional Uint16Array(2/4/16) }`. bpp = bits per pixel (default is
   1), transparent (if defined) is the colour that will be treated as
   transparent, and palette is a color palette that each pixel will be looked up
-  in first
+  in first.
 * A String where the the first few bytes are:
   `width,height,bpp,[transparent,]image_bytes...`. If a transparent colour is
   specified the top bit of `bpp` should be set.
 * An ArrayBuffer Graphics object (if `bpp<8`, `msb:true` must be set) - this is
-  disabled on devices without much flash memory available
+  disabled on devices without much flash memory available.
 
 Draw an image at the specified position.
 
 * If the image is 1 bit, the graphics foreground/background colours will be
   used.
 * If `img.palette` is a Uint16Array or 2/4/16 elements, color data will be
-  looked from the supplied palette
-* On Bangle.js, 2 bit images blend from background(0) to foreground(1) colours
-* On Bangle.js, 4 bit images use the Apple Mac 16 color palette
-* On Bangle.js, 8 bit images use the Web Safe 216 color palette
-* Otherwise color data will be copied as-is. Bitmaps are rendered MSB-first
+  looked from the supplied palette.
+* On Bangle.js, 2 bit images blend from background(0) to foreground(1) colours.
+* On Bangle.js, 4 bit images use the Apple Mac 16 color palette.
+* On Bangle.js, 8 bit images use the Web Safe 216 color palette.
+* Otherwise color data will be copied as-is. Bitmaps are rendered MSB-first.
 
 If `options` is supplied, `drawImage` will allow images to be rendered at any
 scale or angle. If `options.rotate` is set it will center images at `x,y`.
@@ -3146,9 +3146,9 @@ Will return undefined if data can't be allocated for the image.
 The image data itself will be referenced rather than copied if:
 
 * An image `object` was requested (not `string`)
-* The Graphics instance was created with `Graphics.createArrayBuffer`
-* Is 8 bpp *OR* the `{msb:true}` option was given
-* No other format options (zigzag/etc) were given
+* The Graphics instance was created with `Graphics.createArrayBuffer`.
+* Is 8 bpp *OR* the `{msb:true}` option was given.
+* No other format options (zigzag/etc) were given.
 
 Otherwise data will be copied, which takes up more space and may be quite slow.
 */
@@ -3315,7 +3315,7 @@ JsVar *jswrap_graphics_scroll(JsVar *parent, int xdir, int ydir) {
   "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
-Blit one area of the screen (x1,y1 w,h) to another (x2,y2 w,h)
+Blit one area of the screen (x1,y1 w,h) to another (x2,y2 w,h).
 
 ```
 g.blit({
@@ -3572,7 +3572,7 @@ void jswrap_graphics_dump(JsVar *parent) {
 }
 Calculate the square area under a Bezier curve.
 
- x0,y0: start point x1,y1: control point y2,y2: end point
+ x0,y0: start point x1,y1: control point y2,y2: end point.
 
  Max 10 points without start point.
 */

@@ -272,7 +272,7 @@ static JsVar *matchhere(char *regexp, JsvStringIterator *txtIt, matchInfo info) 
   "ifndef" : "SAVE_ON_FLASH",
   "class" : "RegExp"
 }
-The built-in class for handling Regular Expressions
+The built-in class for handling Regular Expressions.
 
 **Note:** Espruino's regular expression parser does not contain all the features
 present in a full ES6 JS engine. However it does contain support for the all the

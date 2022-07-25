@@ -77,10 +77,10 @@ At boot time the esp8266's firmware captures the cause of the reset/reboot. This
 function returns this information in an object with the following fields:
 
 * `reason`: "power on", "wdt reset", "exception", "soft wdt", "restart", "deep
-  sleep", or "reset pin"
-* `exccause`: exception cause
-* `epc1`, `epc2`, `epc3`: instruction pointers
-* `excvaddr`: address being accessed
+  sleep", or "reset pin".
+* `exccause`: exception cause.
+* `epc1`, `epc2`, `epc3`: instruction pointers.
+* `excvaddr`: address being accessed.
 * `depc`: (?)
 */
 JsVar *jswrap_ESP8266_getResetInfo() {
@@ -225,8 +225,8 @@ following fields:
 * `cpuFrequency` - CPU operating frequency in Mhz.
 * `freeHeap` - Amount of free heap in bytes.
 * `maxCon` - Maximum number of concurrent connections.
-* `flashMap` - Configured flash size&map: '512KB:256/256' .. '4MB:512/512'
-* `flashKB` - Configured flash size in KB as integer
+* `flashMap` - Configured flash size&map: '512KB:256/256' .. '4MB:512/512'.
+* `flashKB` - Configured flash size in KB as integer.
 * `flashChip` - Type of flash chip as string with manufacturer & chip, ex: '0xEF
   0x4016`
 */

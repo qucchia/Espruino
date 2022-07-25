@@ -24,9 +24,9 @@ starting an access point, etc.
 
 It is available on these devices:
 
-* [Espruino WiFi](http://www.espruino.com/WiFi#using-wifi)
-* [ESP8266](http://www.espruino.com/EspruinoESP8266)
-* [ESP32](http://www.espruino.com/ESP32)
+* [Espruino WiFi](http://www.espruino.com/WiFi#using-wifi).
+* [ESP8266](http://www.espruino.com/EspruinoESP8266).
+* [ESP32](http://www.espruino.com/ESP32).
 
 **Certain features may or may not be implemented on your device** however we
 have documented what is available and what isn't.
@@ -35,8 +35,8 @@ If you're not using one of the devices above, a separate WiFi library is
 provided. For instance:
 
 * An [ESP8266 connected to an Espruino
-  board](http://www.espruino.com/ESP8266#software)
-* An [CC3000 WiFi Module](http://www.espruino.com/CC3000)
+  board](http://www.espruino.com/ESP8266#software).
+* An [CC3000 WiFi Module](http://www.espruino.com/CC3000).
 
 [Other ways of connecting to the
 net](http://www.espruino.com/Internet#related-pages) such as GSM, Ethernet and
@@ -67,8 +67,8 @@ succeeded, i.e., a connection to the AP's network has been established.
 
 On ESP32/ESP8266 there is a `details` parameter which includes:
 
-* ssid - The SSID of the access point to which the association was established
-* mac - The BSSID/mac address of the access point
+* ssid - The SSID of the access point to which the association was established.
+* mac - The BSSID/mac address of the access point.
 * channel - The wifi channel used (an integer, typ 1..14)
 */
 
@@ -85,8 +85,8 @@ been lost.
 
 On ESP32/ESP8266 there is a `details` parameter which includes:
 
-* ssid - The SSID of the access point from which the association was lost
-* mac - The BSSID/mac address of the access point
+* ssid - The SSID of the access point from which the association was lost.
+* mac - The BSSID/mac address of the access point.
 * reason - The reason for the disconnection (string)
 */
 
@@ -102,7 +102,7 @@ On ESP32/ESP8266 there is a `details` parameter which includes:
 The 'auth_change' event is called when the authentication mode with the
 associated access point changes. The details include:
 
-* oldMode - The old auth mode (string: open, wep, wpa, wpa2, wpa_wpa2)
+* oldMode - The old auth mode (string: open, wep, wpa, wpa2, wpa_wpa2).
 * newMode - The new auth mode (string: open, wep, wpa, wpa2, wpa_wpa2)
 */
 
@@ -132,8 +132,8 @@ happens when an association is formed (in that case the 'associated' and
 
 On ESP32/ESP8266 there is a `details` parameter which includes:
 
-* ip - The IP address obtained as string
-* netmask - The network's IP range mask as string
+* ip - The IP address obtained as string.
+* netmask - The network's IP range mask as string.
 * gw - The network's default gateway as string
 */
 
@@ -179,7 +179,7 @@ access point (or its association times out?). The details include:
 The 'probe_recv' event is called when a probe request is received from some
 station by the esp8266's access point. The details include:
 
-* mac - The MAC address of the station in string format (00:00:00:00:00:00)
+* mac - The MAC address of the station in string format (00:00:00:00:00:00).
 * rssi - The signal strength in dB of the probe request
 */
 
@@ -272,7 +272,7 @@ with an array of APs found, each AP is an object with:
 * `mac`: access point MAC address in 00:00:00:00:00:00 format.
 * `authMode`: `open`, `wep`, `wpa`, `wpa2`, or `wpa_wpa2`.
 * `channel`: wifi channel 1..13.
-* `hidden`: true if the SSID is hidden (ESP32/ESP8266 only)
+* `hidden`: true if the SSID is hidden (ESP32/ESP8266 only).
 * `rssi`: signal strength in dB in the range -110..0.
 
 Notes:
@@ -422,7 +422,7 @@ has the following properties:
 Retrieve the current access point configuration and status. The details object
 has the following properties:
 
-* `status` - Current access point status: `enabled` or `disabled`
+* `status` - Current access point status: `enabled` or `disabled`.
 * `stations` - an array of the stations connected to the access point. This
   array may be empty. Each entry in the array is an object describing the
   station which, at a minimum contains `ip` being the IP address of the station.
@@ -454,10 +454,10 @@ automatically apply this configuration at boot time, unless `what=="clear"`, in
 which case the saved configuration is cleared such that wifi remains disabled at
 boot. The saved configuration includes:
 
-* mode (off/sta/ap/sta+ap)
-* SSIDs & passwords
-* phy (11b/g/n)
-* powersave setting
+* mode (off/sta/ap/sta+ap).
+* SSIDs & passwords.
+* phy (11b/g/n).
+* powersave setting.
 * DHCP hostname
 */
 
@@ -594,8 +594,8 @@ returns.
 }
 The `settings` object must contain the following properties.
 
-* `ip` IP address as string (e.g. "192.168.5.100")
-* `gw` The network gateway as string (e.g. "192.168.5.1")
+* `ip` IP address as string (e.g. "192.168.5.100").
+* `gw` The network gateway as string (e.g. "192.168.5.1").
 * `netmask` The interface netmask as string (e.g. "255.255.255.0")
 */
 
@@ -612,8 +612,8 @@ The `settings` object must contain the following properties.
 }
 The `settings` object must contain the following properties.
 
-* `ip` IP address as string (e.g. "192.168.5.100")
-* `gw` The network gateway as string (e.g. "192.168.5.1")
+* `ip` IP address as string (e.g. "192.168.5.100").
+* `gw` The network gateway as string (e.g. "192.168.5.1").
 * `netmask` The interface netmask as string (e.g. "255.255.255.0")
 */
 
@@ -648,8 +648,8 @@ ping is received.
 }
 Switch to using a higher communication speed with the WiFi module.
 
-* `true` = 921600 baud
-* `false` = 115200
+* `true` = 921600 baud.
+* `false` = 115200.
 * `1843200` (or any number) = use a specific baud rate. * eg.
 `wifi.turbo(true,callback)` or `wifi.turbo(1843200,callback)`
 */

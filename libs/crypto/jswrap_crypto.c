@@ -43,7 +43,7 @@
   "class" : "crypto",
   "ifdef" : "USE_CRYPTO"
 }
-Cryptographic functions
+Cryptographic functions.
 
 **Note:** This library is currently only included in builds for boards where
 there is space. For other boards there is `crypto.js` which implements SHA1 in
@@ -57,7 +57,7 @@ JS.
   "class" : "AES",
   "ifdef" : "USE_AES"
 }
-Class containing AES encryption/decryption
+Class containing AES encryption/decryption.
 
 **Note:** This library is currently only included in builds for boards where
 there is space. For other boards there is `crypto.js` which implements SHA1 in

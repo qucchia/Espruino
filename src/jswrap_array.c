@@ -190,7 +190,7 @@ JsVar *jswrap_array_join(JsVar *parent, JsVar *filler) {
   ],
   "return" : ["int","The new size of the array."]
 }
-Push a new value onto the end of this array'
+Push a new value onto the end of this array'.
 
 This is the opposite of `[1,2,3].unshift(0)`, which adds one or more elements to
 the beginning of the array.

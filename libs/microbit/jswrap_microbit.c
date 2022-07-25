@@ -224,17 +224,17 @@ void jswrap_microbit_kill() {
   "ifdef" : "MICROBIT"
 }
 **Note:** This function is only available on the [BBC micro:bit](/MicroBit)
-board
+board.
 
 Show an image on the in-built 5x5 LED screen.
 
 Image can be:
 
 * A number where each bit represents a pixel (so 25 bits). eg. `5` or
-  `0x1FFFFFF`
+  `0x1FFFFFF`.
 * A string, eg: `show("10001")`. Newlines are ignored, and anything that is not
 a space or `0` is treated as a 1.
-* An array of 4 bytes (more will be ignored), eg `show([1,2,3,0])`
+* An array of 4 bytes (more will be ignored), eg `show([1,2,3,0])`.
 
 For instance the following works for images:
 
@@ -332,9 +332,9 @@ JsVar *getXYZ(int x, int y, int z, JsVarFloat range) {
   "ifdef" : "MICROBIT"
 }
 **Note:** This function is only available on the [BBC micro:bit](/MicroBit)
-board
+board.
 
-Get the current acceleration of the micro:bit from the on-board accelerometer
+Get the current acceleration of the micro:bit from the on-board accelerometer.
 
 **This is deprecated.** Please use `Microbit.accel` instead.
 */
@@ -372,10 +372,10 @@ JsVar *jswrap_microbit_acceleration() {
   "ifdef" : "MICROBIT"
 }
 **Note:** This function is only available on the [BBC micro:bit](/MicroBit)
-board
+board.
 
 Get the current compass position for the micro:bit from the on-board
-magnetometer
+magnetometer.
 
 **This is deprecated.** Please use `Microbit.mag` instead.
 */
@@ -546,7 +546,7 @@ The micro:bit's speaker pin
   "ifdef" : "MICROBIT2",
   "return" : ["pin",""]
 }
-The micro:bit's microphone pin
+The micro:bit's microphone pin.
 
 `MIC_ENABLE` should be set to 1 before using this
 */
@@ -609,7 +609,7 @@ the detected gesture.
   "ifdef" : "MICROBIT2"
 }
 **Note:** This function is only available on the [BBC micro:bit](/MicroBit)
-board
+board.
 
 Write the given value to the accelerometer
 */

@@ -377,7 +377,7 @@ address.
 Called when a host device disconnects from Espruino.
 
 The most common reason is:
-* 19 - `REMOTE_USER_TERMINATED_CONNECTION`
+* 19 - `REMOTE_USER_TERMINATED_CONNECTION`.
 * 22 - `LOCAL_HOST_TERMINATED_CONNECTION`
 */
 /*JSON{
@@ -652,9 +652,9 @@ NRF.setAddress("ff:ee:dd:cc:bb:aa random");
 
 Addresses take the form:
 
-* `"ff:ee:dd:cc:bb:aa"` or `"ff:ee:dd:cc:bb:aa public"` for a public address
+* `"ff:ee:dd:cc:bb:aa"` or `"ff:ee:dd:cc:bb:aa public"` for a public address.
 * `"ff:ee:dd:cc:bb:aa random"` for a random static address (the default for
-  Espruino)
+  Espruino).
 
 This may throw a `INVALID_BLE_ADDR` error if the upper two bits of the address
 don't match the address type.
@@ -757,7 +757,7 @@ NRF.setAdvertising([0x03,  // Length of Service List
 ```
 
 (However for Eddystone we'd advise that you use the [Espruino Eddystone
-library](/Puck.js+Eddystone))
+library](/Puck.js+Eddystone)).
 
 **Note:** When specifying data as an array, certain advertising options such as
 `discoverable` and `showName` won't have any effect.
@@ -827,9 +827,9 @@ NRF.setAdvertising({},{
 If you're using [EspruinoHub](https://github.com/espruino/EspruinoHub) then it
 will automatically decode this into the folling MQTT topics:
 
-* `/ble/advertise/ma:c_:_a:dd:re:ss/espruino` -> `{"a":10,"b":15}`
-* `/ble/advertise/ma:c_:_a:dd:re:ss/a` -> `1`
-* `/ble/advertise/ma:c_:_a:dd:re:ss/b` -> `2`
+* `/ble/advertise/ma:c_:_a:dd:re:ss/espruino` -> `{"a":10,"b":15}`.
+* `/ble/advertise/ma:c_:_a:dd:re:ss/a` -> `1`.
+* `/ble/advertise/ma:c_:_a:dd:re:ss/b` -> `2`.
 
 Note that **you only have 24 characters available for JSON**, so try to use the
 shortest field names possible and avoid floating point values that can be very
@@ -1196,7 +1196,7 @@ void jswrap_ble_setScanResponse(JsVar *data) {
 Change the services and characteristics Espruino advertises.
 
 If you want to **change** the value of a characteristic, you need to use
-`NRF.updateServices()` instead
+`NRF.updateServices()` instead.
 
 To expose some information on Characteristic `ABCD` on service `BCDE` you could
 do:
@@ -1271,7 +1271,7 @@ NRF.setServices({
 ```
 
 **Note:** UUIDs can be integers between `0` and `0xFFFF`, strings of the form
-`"ABCD"`, or strings of the form `"ABCDABCD-ABCD-ABCD-ABCD-ABCDABCDABCD"`
+`"ABCD"`, or strings of the form `"ABCDABCD-ABCD-ABCD-ABCD-ABCDABCDABCD"`.
 
 `options` can be of the form:
 
@@ -1313,7 +1313,7 @@ you can add `uart:false` after the `advertise` element to disable the UART,
 however you then be unable to connect to Puck.js's console via Bluetooth.
 
 If you absolutely require two or more 128 bit UUIDs then you will have to
-specify your own raw advertising data packets with `NRF.setAdvertising`
+specify your own raw advertising data packets with `NRF.setAdvertising`.
 
 **Note:** The services on Espruino can only be modified when there is no device
 connected to it as it requires a restart of the Bluetooth stack. **iOS devices
@@ -1734,7 +1734,7 @@ bool jswrap_ble_filter_device(JsVar *filters, JsVar *device) {
 }
 Start/stop listening for BLE advertising packets within range. Returns a
 `BluetoothDevice` for each advertsing packet. **By default this is not an active
-scan, so Scan Response advertising data is not included (see below)**
+scan, so Scan Response advertising data is not included (see below)**.
 
 ```
 // Start scanning
@@ -2152,7 +2152,7 @@ void jswrap_ble_findDevices(JsVar *callback, JsVar *options) {
   ]
 }
 Start/stop listening for RSSI values on the currently active connection (where
-This device is a peripheral and is being connected to by a 'central' device)
+This device is a peripheral and is being connected to by a 'central' device).
 
 ```
 // Start scanning
@@ -2209,8 +2209,8 @@ for central connections.
 This sets the connection parameters - these affect the transfer speed and power
 usage when the device is connected.
 
-* When not low power, the connection interval is between 7.5 and 20ms
-* When low power, the connection interval is between 500 and 1000ms
+* When not low power, the connection interval is between 7.5 and 20ms.
+* When low power, the connection interval is between 500 and 1000ms.
 
 When low power connection is enabled, transfers of data over Bluetooth will be
 very slow, however power usage while connected will be drastically decreased.
@@ -2672,7 +2672,7 @@ void jswrap_ble_sendHIDReport(JsVar *data, JsVar *callback) {
   "ifdef" : "BANGLEJS"
 }
 Called when a notification arrives on an Apple iOS device Bangle.js is connected
-to
+to.
 
 
 ```
@@ -2706,7 +2706,7 @@ NRF.ancsGetNotificationInfo( event.uid ).then(a=>print("Notify",E.toJS(a)));
   "ifdef" : "BANGLEJS"
 }
 Called when a media event arrives on an Apple iOS device Bangle.js is connected
-to
+to.
 
 
 ```
@@ -2959,7 +2959,7 @@ JsVar *jswrap_ble_amsGetTrackInfo(JsVar *id) {
     ["id","JsVar","For example, 'play', 'pause', 'volup' or 'voldown'."]
   ]
 }
-Send an AMS command to an Apple Media Service device to control music playback
+Send an AMS command to an Apple Media Service device to control music playback.
 
 Command is one of play, pause, playpause, next, prev, volup, voldown, repeat,
 shuffle, skipforward, skipback, like, dislike, bookmark
@@ -3023,12 +3023,12 @@ here, Espruino will pick the FIRST device it finds, or it'll call `catch`.
 `options` can have the following fields:
 
 * `filters` - a list of filters that a device must match before it is returned
-  (see below)
+  (see below).
 * `timeout` - the maximum time to scan for in milliseconds (scanning stops when
-a match is found. eg. `NRF.requestDevice({ timeout:2000, filters: [ ... ] })`
+a match is found. eg. `NRF.requestDevice({ timeout:2000, filters: [ ... ] })`.
 * `active` - whether to perform active scanning (requesting 'scan response'
 packets from any devices that are found). eg. `NRF.requestDevice({ active:true,
-filters: [ ... ] })`
+filters: [ ... ] })`.
 * `phy` - (NRF52840 only) use the long-range coded phy (`"1mbps"` default, can
   be `"1mbps/2mbps/both/coded"`)
 * `extended` - (NRF52840 only) support receiving extended-length advertising
@@ -3039,11 +3039,11 @@ filters: [ ... ] })`
 The following filter types are implemented:
 
 * `services` - list of services as strings (all of which must match). 128 bit
-  services must be in the form '01230123-0123-0123-0123-012301230123'
-* `name` - exact device name
-* `namePrefix` - starting characters of device name
+  services must be in the form '01230123-0123-0123-0123-012301230123'.
+* `name` - exact device name.
+* `namePrefix` - starting characters of device name.
 * `id` - exact device address (`id:"e9:53:86:09:89:99 random"`) (this is
-  Espruino-specific, and is not part of the Web Bluetooth spec)
+  Espruino-specific, and is not part of the Web Bluetooth spec).
 * `serviceData` - an object containing service characteristics which must all
   match (`serviceData:{"1809":{}}`). Matching of actual service data is not
   supported yet.
@@ -3276,11 +3276,11 @@ operation) the interval is raised to 7.5ms again.
 
 The options for `interval` are:
 
-* `undefined` / `"auto"` : (default) automatically adjust connection interval
+* `undefined` / `"auto"` : (default) automatically adjust connection interval.
 * `100` : set min and max connection interval to the same number (between 7.5ms
-  and 4000ms)
+  and 4000ms).
 * `{minInterval:20, maxInterval:100}` : set min and max connection interval as a
-  range
+  range.
 
 This configuration is not remembered during a `save()` - you will have to re-set
 it via `onInit`.
@@ -3474,7 +3474,7 @@ JsVar *jswrap_ble_startBonding(bool forceRePair) {
   "ifdef" : "NRF52_SERIES"
 }
 A Web Bluetooth-style device - you can request one using
-`NRF.requestDevice(address)`
+`NRF.requestDevice(address)`.
 
 For example:
 
@@ -3538,7 +3538,7 @@ JsVar *jswrap_BluetoothDevice_gatt(JsVar *parent) {
 Called when the device pairs and sends a passkey that Espruino should display.
 
 For this to be used, you'll have to specify that there's a display using
-`NRF.setSecurity`
+`NRF.setSecurity`.
 
 **This is not part of the Web Bluetooth Specification.** It has been added
 specifically for Espruino.
@@ -3556,7 +3556,7 @@ Respond with `BluetoothDevice.sendPasskey()` with a 6 character string
 containing only `0..9`.
 
 For this to be used, you'll have to specify that there's a keyboard using
-`NRF.setSecurity`
+`NRF.setSecurity`.
 
 **This is not part of the Web Bluetooth Specification.** It has been added
 specifically for Espruino.
@@ -3689,7 +3689,7 @@ JsVar *jswrap_ble_BluetoothRemoteGATTServer_connect(JsVar *parent, JsVar *option
   "#if" : "defined(NRF52_SERIES) || defined(ESP32)"
 }
 Web Bluetooth-style GATT server - get this using `NRF.connect(address)` or
-`NRF.requestDevice(options)` and `response.gatt.connect`
+`NRF.requestDevice(options)` and `response.gatt.connect`.
 
 https://webbluetoothcg.github.io/web-bluetooth/#bluetoothremotegattserver
 */
@@ -3925,7 +3925,7 @@ JsVar *jswrap_BluetoothRemoteGATTServer_getPrimaryServices(JsVar *parent) {
   ],
   "#if" : "defined(NRF52_SERIES) || defined(ESP32)"
 }
-Start/stop listening for RSSI values on the active GATT connection
+Start/stop listening for RSSI values on the active GATT connection.
 
 ```
 // Start listening for RSSI value updates
@@ -3958,7 +3958,7 @@ void jswrap_BluetoothRemoteGATTServer_setRSSIHandler(JsVar *parent, JsVar *callb
   "#if" : "defined(NRF52_SERIES) || defined(ESP32)"
 }
 Web Bluetooth-style GATT service - get this using
-`BluetoothRemoteGATTServer.getPrimaryService(s)`
+`BluetoothRemoteGATTServer.getPrimaryService(s)`.
 
 https://webbluetoothcg.github.io/web-bluetooth/#bluetoothremotegattservice
 */
@@ -4038,7 +4038,7 @@ JsVar *jswrap_BluetoothRemoteGATTService_getCharacteristics(JsVar *parent) {
   "#if" : "defined(NRF52_SERIES) || defined(ESP32)"
 }
 Web Bluetooth-style GATT characteristic - get this using
-`BluetoothRemoteGATTService.getCharacteristic(s)`
+`BluetoothRemoteGATTService.getCharacteristic(s)`.
 
 https://webbluetoothcg.github.io/web-bluetooth/#bluetoothremotegattcharacteristic
 */
@@ -4062,7 +4062,7 @@ https://webbluetoothcg.github.io/web-bluetooth/#bluetoothremotegattcharacteristi
   "return_object" : "Promise",
   "#if" : "defined(NRF52_SERIES) || defined(ESP32)"
 }
-Write a characteristic's value
+Write a characteristic's value.
 
 ```
 var device;
@@ -4106,7 +4106,7 @@ JsVar *jswrap_ble_BluetoothRemoteGATTCharacteristic_writeValue(JsVar *characteri
   "return_object" : "Promise",
   "#if" : "defined(NRF52_SERIES) || defined(ESP32)"
 }
-Read a characteristic's value, return a promise containing a `DataView`
+Read a characteristic's value, return a promise containing a `DataView`.
 
 ```
 var device;

@@ -22,7 +22,7 @@
   "type" : "class",
   "class" : "Serial"
 }
-This class allows use of the built-in USARTs
+This class allows use of the built-in USARTs.
 
 Methods may be called on the `USB`, `Serial1`, `Serial2`, `Serial3`, `Serial4`,
 `Serial5` and `Serial6` objects. While different processors provide different
@@ -67,7 +67,7 @@ but the `STOP` bit wasn't in the correct place. This is either because there was
 noise on the line, or the line has been pulled to 0 for a long period of time.
 
 To enable this, you must initialise Serial with `SerialX.setup(..., { ...,
-errors:true });`
+errors:true });`.
 
 **Note:** Even though there was an error, the byte will still be received and
 passed to the `data` handler.
@@ -84,7 +84,7 @@ The `parity` event is called when the UART was configured with a parity bit, and
 this doesn't match the bits that have actually been received.
 
 To enable this, you must initialise Serial with `SerialX.setup(..., { ...,
-errors:true });`
+errors:true });`.
 
 **Note:** Even though there was an error, the byte will still be received and
 passed to the `data` handler.
@@ -281,7 +281,7 @@ you need to respond to `framing` or `parity` errors then you'll need to use
 `errors:true` when initialising serial.
 
 On Linux builds there is no default Serial device, so you must specify a path to
-a device - for instance: `Serial1.setup(9600,{path:"/dev/ttyACM0"})`
+a device - for instance: `Serial1.setup(9600,{path:"/dev/ttyACM0"})`.
 
 You can also set up 'software serial' using code like:
 
@@ -424,7 +424,7 @@ void _jswrap_serial_print(JsVar *parent, JsVar *arg, bool isPrint, bool newLine)
     ["string","JsVar","A String to print."]
   ]
 }
-Print a string to the serial port - without a line feed
+Print a string to the serial port - without a line feed.
 
  **Note:** This function replaces any occurances of `\n` in the string with
  `\r\n`. To avoid this, use `Serial.write`.
@@ -459,7 +459,7 @@ void jswrap_serial_println(JsVar *parent,  JsVar *str) {
     ["data","JsVarArray","One or more items to write. May be ints, strings, arrays, or special objects (see `E.toUint8Array` for more info)."]
   ]
 }
-Write a character or array of data to the serial port
+Write a character or array of data to the serial port.
 
 This method writes unmodified data, eg `Serial.write([1,2,3])` is equivalent to
 `Serial.write("\1\2\3")`. If you'd like data converted to a string first, use

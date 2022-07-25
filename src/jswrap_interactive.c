@@ -117,7 +117,7 @@ void jswrap_interface_setDeepSleep(bool sleep) {
     ["root","JsVar","The symbol to output (optional). If nothing is specified, everything will be output."]
   ]
 }
-Output debugging information
+Output debugging information.
 
 Note: This is not included on boards with low amounts of flash memory, or the
 Espruino board.
@@ -143,7 +143,7 @@ void jswrap_interface_trace(JsVar *root) {
   "generate_full" : "jsiDumpState((vcbprintf_callback)jsiConsolePrintString, 0)"
 }
 Output current interpreter state in a text form such that it can be copied to a
-new device
+new device.
 
 Espruino keeps its current state in RAM (even if the function code is stored in
 Flash). When you type `dump()` it dumps the current state of code in RAM plus
@@ -255,7 +255,7 @@ void jswrap_interface_reset(bool clearFlash) {
     ["text","JsVarArray",""]
   ]
 }
-Print the supplied string(s) to the console
+Print the supplied string(s) to the console.
 
  **Note:** If you're connected to a computer (not a wall adaptor) via USB but
  **you are not running a terminal app** then when you print data Espruino may
@@ -271,7 +271,7 @@ Print the supplied string(s) to the console
     ["text","JsVarArray","One or more arguments to print."]
   ]
 }
-Print the supplied string(s) to the console
+Print the supplied string(s) to the console.
 
  **Note:** If you're connected to a computer (not a wall adaptor) via USB but
  **you are not running a terminal app** then when you print data Espruino may

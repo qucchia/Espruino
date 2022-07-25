@@ -58,7 +58,7 @@ something that was not possible with `onInit`.
   "name" : "kill"
 }
 This event is called just before the device shuts down for commands such as
-`reset()`, `load()`, `save()`, `E.reboot()` or `Bangle.off()`
+`reset()`, `load()`, `save()`, `E.reboot()` or `Bangle.off()`.
 
 For example to write `"Bye!"` just before shutting down use:
 
@@ -82,7 +82,7 @@ reset.
   ]
 }
 This event is called when an error is created by Espruino itself (rather than JS
-code) which changes the state of the error flags reported by `E.getErrorFlags()`
+code) which changes the state of the error flags reported by `E.getErrorFlags()`.
 
 This could be low memory, full buffers, UART overflow, etc. `E.getErrorFlags()`
 has a full description of each type of error.
@@ -156,7 +156,7 @@ JsVarFloat jswrap_espruino_getTemperature() {
   "return" : ["float","The voltage (in Volts) that a reading of 1 from `analogRead` actually represents - usually around 3.3v."]
 }
 Check the internal voltage reference. To work out an actual voltage of an input
-pin, you can use `analogRead(pin)*E.getAnalogVRef()`
+pin, you can use `analogRead(pin)*E.getAnalogVRef()`.
 
  **Note:** This value is calculated by reading the voltage on an internal
 voltage reference with the ADC. It will be slightly noisy, so if you need this
@@ -201,10 +201,10 @@ int nativeCallGetCType() {
   "return" : ["JsVar","The native function."]
 }
 ADVANCED: This is a great way to crash Espruino if you're not sure what you are
-doing
+doing.
 
 Create a native function that executes the code at the given address. Eg.
-`E.nativeCall(0x08012345,'double (double,double)')(1.1, 2.2)`
+`E.nativeCall(0x08012345,'double (double,double)')(1.1, 2.2)`.
 
 If you're executing a thumb function, you'll almost certainly need to set the
 bottom bit of the address to 1.
@@ -677,7 +677,7 @@ can happen to any stream - Serial,HTTP,etc.
 error and so was removed.
 
 `'LOW_MEMORY'`: Memory is running low - Espruino had to run a garbage collection
-pass or remove some of the command history
+pass or remove some of the command history.
 
 `'MEMORY'`: Espruino ran out of memory and was unable to allocate some data that
 it needed.
@@ -702,11 +702,11 @@ JsVar *jswrap_espruino_getErrorFlags() {
 Get Espruino's interpreter flags that control the way it handles your JavaScript
 code.
 
-* `deepSleep` - Allow deep sleep modes (also set by setDeepSleep)
+* `deepSleep` - Allow deep sleep modes (also set by setDeepSleep).
 * `pretokenise` - When adding functions, pre-minify them and tokenise reserved
-  words
+  words.
 * `unsafeFlash` - Some platforms stop writes/erases to interpreter memory to
-  stop you bricking the device accidentally - this removes that protection
+  stop you bricking the device accidentally - this removes that protection.
 * `unsyncFiles` - When writing files, *don't* flush all data to the SD card
   after each command (the default is *to* flush). This is much faster, but can
   cause filesystem damage if power is lost without the filesystem unmounted.
@@ -841,15 +841,15 @@ JsVar *jswrap_espruino_toString(JsVar *args) {
 This creates a Uint8Array from the given arguments. These are handled as
 follows:
 
- * `Number` -> read as an integer, using the lowest 8 bits
+ * `Number` -> read as an integer, using the lowest 8 bits.
  * `String` -> use each character's numeric value (eg. `String.charCodeAt(...)`)
- * `Array` -> Call itself on each element
- * `ArrayBuffer` or Typed Array -> use the lowest 8 bits of each element
+ * `Array` -> Call itself on each element.
+ * `ArrayBuffer` or Typed Array -> use the lowest 8 bits of each element.
  * `Object`:
    * `{data:..., count: int}` -> call itself `object.count` times, on
-     `object.data`
+     `object.data`.
    * `{callback : function}` -> call the given function, call itself on return
-     value
+     value.
 
 For example:
 
@@ -901,8 +901,8 @@ them.
 
 For example:
 
-* `JSON.stringify({a:1,b:2}) == '{"a":1,"b":2}'`
-* `E.toJS({a:1,b:2}) == '{a:1,b:2}'`
+* `JSON.stringify({a:1,b:2}) == '{"a":1,"b":2}'`.
+* `E.toJS({a:1,b:2}) == '{a:1,b:2}'`.
 
 **Note:** Strings generated with `E.toJS` can't be reliably parsed by
 `JSON.parse` - however they are valid JS so will work with `eval` (but this has
@@ -968,7 +968,7 @@ If `alwaysExec` is `true`, the code will be executed even after a call to
 but you want some code that is always built in (for instance setting up a
 display or keyboard).
 
-To remove boot code that has been saved previously, use `E.setBootCode("")`
+To remove boot code that has been saved previously, use `E.setBootCode("")`.
 
 **Note:** this removes any code that was previously saved with `save()`
 */
@@ -997,19 +997,19 @@ is unimplemented or the clock speed cannot be changed.
 **Note:** On pretty much all boards, UART, SPI, I2C, PWM, etc will change
 frequency and will need setting up again in order to work.
 
-### STM32F4
+### STM32F4.
 
 Options is of the form `{ M: int, N: int, P: int, Q: int }` - see the 'Clocks'
 section of the microcontroller's reference manual for what these mean.
 
-* System clock = 8Mhz * N / ( M * P )
-* USB clock (should be 48Mhz) = 8Mhz * N / ( M * Q )
+* System clock = 8Mhz * N / ( M * P ).
+* USB clock (should be 48Mhz) = 8Mhz * N / ( M * Q ).
 
 Optional arguments are:
 
-* `latency` - flash latency from 0..15
-* `PCLK1` - Peripheral clock 1 divisor (default: 2)
-* `PCLK2` - Peripheral clock 2 divisor (default: 4)
+* `latency` - flash latency from 0..15.
+* `PCLK1` - Peripheral clock 1 divisor (default: 2).
+* `PCLK2` - Peripheral clock 2 divisor (default: 4).
 
 The Pico's default is `{M:8, N:336, P:4, Q:7, PCLK1:2, PCLK2:4}`, use `{M:8,
 N:336, P:8, Q:7, PCLK:1, PCLK2:2}` to halve the system clock speed while keeping
@@ -1020,7 +1020,7 @@ On STM32F4 boards (eg. Espruino Pico), the USB clock needs to be kept at 48Mhz
 or USB will fail to work. You'll also experience USB instability if the
 processor clock falls much below 48Mhz.
 
-### ESP8266
+### ESP8266.
 
 Just specify an integer value, either 80 or 160 (for 80 or 160Mhz)
 */
@@ -1186,9 +1186,9 @@ void jswrap_espruino_dumpFreeList() {
 }
 Show fragmentation.
 
-* ` ` is free space
-* `#` is a normal variable
-* `L` is a locked variable (address used, cannopt be moved)
+* ` ` is free space.
+* `#` is a normal variable.
+* `L` is a locked variable (address used, cannopt be moved).
 * `=` represents data in a Flat String (must be contiguous)
 */
 void jswrap_e_dumpFragmentation() {
@@ -1627,7 +1627,7 @@ Convert hue, saturation and brightness to red, green and blue (packed into an
 integer if `asArray==false` or an array if `asArray==true`).
 
 This replaces `Graphics.setColorHSB` and `Graphics.setBgColorHSB`. On devices
-with 24 bit colour it can be used as: `Graphics.setColor(E.HSBtoRGB(h, s, b))`
+with 24 bit colour it can be used as: `Graphics.setColor(E.HSBtoRGB(h, s, b))`.
 
 You can quickly set RGB items in an Array or Typed Array using
 `array.set(E.HSBtoRGB(h, s, b,true), offset)`, which can be useful with arrays
@@ -1690,7 +1690,7 @@ JsVar *jswrap_espruino_HSBtoRGB(JsVarFloat hue, JsVarFloat sat, JsVarFloat bri, 
 }
 Set a password on the console (REPL). When powered on, Espruino will then demand
 a password before the console can be used. If you want to lock the console
-immediately after this you can call `E.lockConsole()`
+immediately after this you can call `E.lockConsole()`.
 
 To remove the password, call this function with no arguments.
 
@@ -1735,7 +1735,7 @@ void jswrap_espruino_lockConsole() {
 }
 Set the time zone to be used with `Date` objects.
 
-For example `E.setTimeZone(1)` will be GMT+0100
+For example `E.setTimeZone(1)` will be GMT+0100.
 
 Note that `E.setTimeZone()` will have no effect when daylight savings time rules
 have been set with `E.setDST()`. The timezone value will be stored, but never
@@ -1783,7 +1783,7 @@ The parameters are
   December
 - endDayOffset: The number of days between the selected day-of-week and the
   actual day that DST ends - usually 0
-- endTimeOfDay: The number of minutes elapsed in the day before DST ends
+- endTimeOfDay: The number of minutes elapsed in the day before DST ends.
 
 To determine what the `dowNumber, dow, month, dayOffset, timeOfDay` parameters
 should be, start with a sentence of the form "DST starts on the last Sunday of
@@ -1799,7 +1799,7 @@ endTimeOfDay=120.
 Using Ukraine as an example, we have a time which is 2 hours ahead of GMT in
 winter (EET) and 3 hours in summer (EEST). DST starts at 03:00 EET on the last
 Sunday in March, and ends at 04:00 EEST on the last Sunday in October. So
-someone in Ukraine might call `E.setDST(60,120,4,0,2,0,180,4,0,9,0,240);`
+someone in Ukraine might call `E.setDST(60,120,4,0,2,0,180,4,0,9,0,240);`.
 
 Note that when DST parameters are set (i.e. when `dstOffset` is not zero),
 `E.setTimeZone()` has no effect.

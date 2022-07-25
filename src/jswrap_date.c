@@ -226,7 +226,7 @@ The built-in class for handling Dates.
 **Note:** By default the time zone is GMT+0, however you can change the timezone
 using the `E.setTimeZone(...)` function.
 
-For example `E.setTimeZone(1)` will be GMT+0100
+For example `E.setTimeZone(1)` will be GMT+0100.
 
 *However* if you have daylight savings time set with `E.setDST(...)` then the
 timezone set by `E.setTimeZone(...)` will be _ignored_.
@@ -658,7 +658,7 @@ JsVarFloat jswrap_date_setFullYear(JsVar *parent, int yearValue, JsVar *monthVal
   "generate" : "jswrap_date_toString",
   "return" : ["JsVar","A String."]
 }
-Converts to a String, eg: `Fri Jun 20 2014 14:52:20 GMT+0000`
+Converts to a String, eg: `Fri Jun 20 2014 14:52:20 GMT+0000`.
 
  **Note:** This uses whatever timezone was set with `E.setTimeZone()` or
  `E.setDST()`
@@ -688,7 +688,7 @@ JsVar *jswrap_date_toString(JsVar *parent) {
   "generate" : "jswrap_date_toUTCString",
   "return" : ["JsVar","A String."]
 }
-Converts to a String, eg: `Fri, 20 Jun 2014 14:52:20 GMT`
+Converts to a String, eg: `Fri, 20 Jun 2014 14:52:20 GMT`.
 
  **Note:** This always assumes a timezone of GMT
 */
@@ -706,7 +706,7 @@ JsVar *jswrap_date_toUTCString(JsVar *parent) {
   "generate" : "jswrap_date_toISOString",
   "return" : ["JsVar","A String."]
 }
-Converts to a ISO 8601 String, eg: `2014-06-20T14:52:20.123Z`
+Converts to a ISO 8601 String, eg: `2014-06-20T14:52:20.123Z`.
 
  **Note:** This always assumes a timezone of GMT
 */

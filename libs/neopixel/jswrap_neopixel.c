@@ -42,7 +42,7 @@ bool neopixelWrite(Pin pin, unsigned char *rgbData, size_t rgbSize);
   "type" : "library",
   "class" : "neopixel"
 }
-This library allows you to write to Neopixel/WS281x/APA10x/SK6812 LED strips
+This library allows you to write to Neopixel/WS281x/APA10x/SK6812 LED strips.
 
 These use a high speed single-wire protocol which needs platform-specific
 implementation on some devices - hence this library to simplify things.
@@ -85,7 +85,6 @@ setInterval(function() {
 ```
 
 **Note:**
-
 * Different types of LED have the data in different orders - so don't be
 surprised by RGB or BGR orderings!
 

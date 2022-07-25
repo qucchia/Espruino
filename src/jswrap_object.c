@@ -495,16 +495,16 @@ bool jswrap_object_hasOwnProperty(JsVar *parent, JsVar *name) {
 Add a new property to the Object. 'Desc' is an object with the following fields:
 
 * `configurable` (bool = false) - can this property be changed/deleted (not
-  implemented)
+  implemented).
 * `enumerable` (bool = false) - can this property be enumerated (not
-  implemented)
-* `value` (anything) - the value of this property
+  implemented).
+* `value` (anything) - the value of this property.
 * `writable` (bool = false) - can the value be changed with the assignment
   operator?
 * `get` (function) - the getter function, or undefined if no getter (only
-  supported on some platforms)
+  supported on some platforms).
 * `set` (function) - the setter function, or undefined if no setter (only
-  supported on some platforms)
+  supported on some platforms).
 
 **Note:** `configurable`, `enumerable` and `writable` are not implemented and
 will be ignored.
@@ -638,7 +638,7 @@ JsVar *jswrap_object_setPrototypeOf(JsVar *object, JsVar *proto) {
   ],
   "return" : ["JsVar","The target object."]
 }
-Appends all keys and values in any subsequent objects to the first object
+Appends all keys and values in any subsequent objects to the first object.
 
 **Note:** Unlike the standard ES6 `Object.assign`, this will throw an exception
 if given raw strings, bools or numbers rather than objects.
@@ -715,10 +715,10 @@ function(d) {...})`.
 This is the same as Node.js's [EventEmitter](https://nodejs.org/api/events.html)
 but on Espruino the functionality is built into every object:
 
-* `Object.on`
-* `Object.emit`
-* `Object.removeListener`
-* `Object.removeAllListeners`
+* `Object.on`.
+* `Object.emit`.
+* `Object.removeListener`.
+* `Object.removeAllListeners`.
 
 ```
 var o = {}; // o can be any object...

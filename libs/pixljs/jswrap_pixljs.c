@@ -193,7 +193,7 @@ void jswrap_pixljs_setContrast(JsVarFloat c) {
 }
 This function can be used to turn Pixl.js's LCD off or on.
 
-* With the LCD off, Pixl.js draws around 0.1mA
+* With the LCD off, Pixl.js draws around 0.1mA.
 * With the LCD on, Pixl.js draws around 0.25mA
 */
 void jswrap_pixljs_setLCDPower(bool isOn) {

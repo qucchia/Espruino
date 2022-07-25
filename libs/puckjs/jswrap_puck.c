@@ -656,7 +656,7 @@ JsVar *jswrap_puck_mag() {
 Turn on the magnetometer, take a single temperature reading from the MAG3110
 chip, and then turn it off again.
 
-(If the magnetometer is already on, this just returns the last reading obtained)
+(If the magnetometer is already on, this just returns the last reading obtained).
 
 `E.getTemperature()` uses the microcontroller's temperature sensor, but this
 uses the magnetometer's.
@@ -701,7 +701,7 @@ information.
   "name" : "accel",
   "ifdef" : "PUCKJS"
 }
-Only on Puck.js v2.0
+Only on Puck.js v2.0.
 
 Called after `Puck.accelOn()` every time accelerometer data is sampled. There is
 one argument which is an object of the form `{acc:{x,y,z}, gyro:{x,y,z}}`
@@ -740,17 +740,17 @@ If given an argument, the sample rate is set (if not, it's at 0.63 Hz). The
 sample rate must be one of the following (resulting in the given power
 consumption):
 
-* 80 Hz - 900uA
-* 40 Hz - 550uA
-* 20 Hz - 275uA
-* 10 Hz - 137uA
-* 5 Hz - 69uA
-* 2.5 Hz - 34uA
-* 1.25 Hz - 17uA
-* 0.63 Hz - 8uA
-* 0.31 Hz - 8uA
-* 0.16 Hz - 8uA
-* 0.08 Hz - 8uA
+* 80 Hz - 900uA.
+* 40 Hz - 550uA.
+* 20 Hz - 275uA.
+* 10 Hz - 137uA.
+* 5 Hz - 69uA.
+* 2.5 Hz - 34uA.
+* 1.25 Hz - 17uA.
+* 0.63 Hz - 8uA.
+* 0.31 Hz - 8uA.
+* 0.16 Hz - 8uA.
+* 0.08 Hz - 8uA.
 
 When the battery level drops too low while sampling is turned on, the
 magnetometer may stop sampling without warning, even while other Puck functions
@@ -935,15 +935,15 @@ JsVarFloat jswrap_puck_getTemperature() {
 }
 Accepted values are:
 
-* 1.6 Hz (no Gyro) - 40uA (2v05 and later firmware)
-* 12.5 Hz (with Gyro)- 350uA
-* 26 Hz (with Gyro) - 450 uA
-* 52 Hz (with Gyro) - 600 uA
-* 104 Hz (with Gyro) - 900 uA
-* 208 Hz (with Gyro) - 1500 uA
-* 416 Hz (with Gyro) (not recommended)
-* 833 Hz (with Gyro) (not recommended)
-* 1660 Hz (with Gyro) (not recommended)
+* 1.6 Hz (no Gyro) - 40uA (2v05 and later firmware).
+* 12.5 Hz (with Gyro)- 350uA.
+* 26 Hz (with Gyro) - 450 uA.
+* 52 Hz (with Gyro) - 600 uA.
+* 104 Hz (with Gyro) - 900 uA.
+* 208 Hz (with Gyro) - 1500 uA.
+* 416 Hz (with Gyro) (not recommended).
+* 833 Hz (with Gyro) (not recommended).
+* 1660 Hz (with Gyro) (not recommended).
 
 Once `Puck.accelOn()` is called, the `Puck.accel` event will be called each time
 data is received. `Puck.accelOff()` can be called to turn the accelerometer off.
@@ -1018,9 +1018,9 @@ Turn on the accelerometer, take a single reading, and then turn it off again.
 The values reported are the raw values from the chip. In normal configuration:
 
 * accelerometer: full-scale (32768) is 4g, so you need to divide by 8192 to get
-  correctly scaled values
+  correctly scaled values.
 * gyro: full-scale (32768) is 245 dps, so you need to divide by 134 to get
-  correctly scaled values
+  correctly scaled values.
 
 If taking more than one reading, we'd suggest you use `Puck.accelOn()` and the
 `Puck.accel` event.
@@ -1122,7 +1122,7 @@ For example `Puck.IR(pulseTimes)` - see http://www.espruino.com/Puck.js+Infrared
 for a full example.
 
 You can also attach an external LED to Puck.js, in which case you can just
-execute `Puck.IR(pulseTimes, led_cathode, led_anode)`
+execute `Puck.IR(pulseTimes, led_cathode, led_anode)`.
 
 It is also possible to just supply a single pin for IR transmission with
 `Puck.IR(pulseTimes, led_anode)` (on 2v05 and above).

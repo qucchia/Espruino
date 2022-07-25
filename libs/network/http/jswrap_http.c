@@ -24,7 +24,7 @@
   "type" : "library",
   "class" : "http"
 }
-This library allows you to create http servers and make http requests
+This library allows you to create http servers and make http requests.
 
 In order to use this, you will need an extra module to get network connectivity
 such as the [TI CC3000](/CC3000) or [WIZnet W5500](/WIZnet).
@@ -98,7 +98,7 @@ The HTTP method used with this request. Often `"GET"`.
 }
 The URL requested in this HTTP request, for instance:
 
-* `"/"` - the main page
+* `"/"` - the main page.
 * `"/favicon.ico"` - the web page's icon
 *//*Documentation only*/
 
@@ -317,7 +317,7 @@ Pipe this to a stream (an object with a 'write' method)
   "return" : ["JsVar","Returns a new httpSrv object."],
   "return_object" : "httpSrv"
 }
-Create an HTTP Server
+Create an HTTP Server.
 
 When a request to the server is made, the callback is called. In the callback
 you can use the methods on the response (`httpSRs`) to send data. You can also
@@ -372,10 +372,10 @@ req.end(); // called to finish the HTTP request and get the response
 ```
 
 You can easily pre-populate `options` from a URL using `var options =
-url.parse("http://www.example.com/foo.html")`
+url.parse("http://www.example.com/foo.html")`.
 
 There's an example of using [`http.request` for HTTP POST
-here](/Internet#http-post)
+here](/Internet#http-post).
 
 **Note:** if TLS/HTTPS is enabled, options can have `ca`, `key` and `cert`
 fields. See `tls.connect` for more information about these and how to use them.
@@ -590,7 +590,7 @@ This function writes the `data` argument as a string. Data that is passed in
     ["data","JsVar","A string containing data to send."]
   ]
 }
-Finish this HTTP request - optional data to append as an argument
+Finish this HTTP request - optional data to append as an argument.
 
 See `Socket.write` for more information about the data argument
 */

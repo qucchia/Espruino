@@ -246,7 +246,7 @@ static void _eth_getIP_set_address(JsVar *options, char *name, unsigned char *pt
   "return" : ["bool","True on success."]
 }
 Set the current IP address or get an IP from DHCP (if no options object is
-specified)
+specified).
 
 If 'mac' is specified as an option, it must be a string of the form
 `"00:01:02:03:04:05"` The default mac is 00:08:DC:01:02:03.

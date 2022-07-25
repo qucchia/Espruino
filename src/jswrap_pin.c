@@ -22,7 +22,7 @@
   "class" : "Pin",
   "check" : "jsvIsPin(var)"
 }
-This is the built-in class for Pins, such as D0,D1,LED1, or BTN
+This is the built-in class for Pins, such as D0,D1,LED1, or BTN.
 
 You can call the methods on Pin, or you can use Wiring-style functions such as
 digitalWrite
@@ -74,7 +74,7 @@ bool jswrap_pin_read(JsVar *parent) {
   "name" : "set",
   "generate" : "jswrap_pin_set"
 }
-Sets the output state of the pin to a 1
+Sets the output state of the pin to a 1.
 
  **Note:** if you didn't call `pinMode` beforehand then this function will also
  reset the pin's state to `"output"`
@@ -90,7 +90,7 @@ void jswrap_pin_set(JsVar *parent) {
   "name" : "reset",
   "generate" : "jswrap_pin_reset"
 }
-Sets the output state of the pin to a 0
+Sets the output state of the pin to a 0.
 
  **Note:** if you didn't call `pinMode` beforehand then this function will also
  reset the pin's state to `"output"`
@@ -109,7 +109,7 @@ void jswrap_pin_reset(JsVar *parent) {
     ["value","bool","Whether to set output high (true/1) or low (false/0)."]
   ]
 }
-Sets the output state of the pin to the parameter given
+Sets the output state of the pin to the parameter given.
 
  **Note:** if you didn't call `pinMode` beforehand then this function will also
  reset the pin's state to `"output"`

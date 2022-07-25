@@ -754,7 +754,7 @@ JsVar *jswrap_string_repeat(JsVar *parent, int count) {
   "return" : ["JsVar","A string containing this string padded to the correct length."],
   "return_object" : "String"
 }
-Pad this string at the beginnind to the required number of characters
+Pad this string at the beginnind to the required number of characters.
 
 ```
 "Hello".padStart(10) == "     Hello"
@@ -774,7 +774,7 @@ Pad this string at the beginnind to the required number of characters
   "return" : ["JsVar","A string containing this string padded to the correct length."],
   "return_object" : "String"
 }
-Pad this string at the end to the required number of characters
+Pad this string at the end to the required number of characters.
 
 ```
 "Hello".padEnd(10) == "Hello     "

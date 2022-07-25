@@ -37,16 +37,16 @@ If you want to access arrays of differing types of data you may also find
 }
 This is the built-in JavaScript class that is the prototype for:
 
-* [Uint8Array](/Reference#Uint8Array)
-* [UintClamped8Array](/Reference#UintClamped8Array)
-* [Int8Array](/Reference#Int8Array)
-* [Uint16Array](/Reference#Uint16Array)
-* [Int16Array](/Reference#Int16Array)
-* [Uint24Array](/Reference#Uint24Array) (Espruino-specific - not standard JS)
-* [Uint32Array](/Reference#Uint32Array)
-* [Int32Array](/Reference#Int32Array)
-* [Float32Array](/Reference#Float32Array)
-* [Float64Array](/Reference#Float64Array)
+* [Uint8Array](/Reference#Uint8Array).
+* [UintClamped8Array](/Reference#UintClamped8Array).
+* [Int8Array](/Reference#Int8Array).
+* [Uint16Array](/Reference#Uint16Array).
+* [Int16Array](/Reference#Int16Array).
+* [Uint24Array](/Reference#Uint24Array) (Espruino-specific - not standard JS).
+* [Uint32Array](/Reference#Uint32Array).
+* [Int32Array](/Reference#Int32Array).
+* [Float32Array](/Reference#Float32Array).
+* [Float64Array](/Reference#Float64Array).
 
 If you want to access arrays of differing types of data you may also find
 `DataView` useful.

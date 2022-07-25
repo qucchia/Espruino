@@ -71,7 +71,7 @@ var g = require('tv').setup({ type : "vga",
 });
 ```
 
-or
+or.
 
 ```
 var g = require('tv').setup({ type : "vga",

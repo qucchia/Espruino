@@ -51,7 +51,7 @@ with JSON.parse or eval.
 
 **Note:** This differs from JavaScript's standard `JSON.stringify` in that:
 
-* The `replacer` argument is ignored
+* The `replacer` argument is ignored.
 * Typed arrays like `new Uint8Array(5)` will be dumped as if they were arrays,
   not as if they were objects (since it is more compact)
 */
@@ -169,7 +169,7 @@ JsVar *jswrap_json_parse_internal() {
   ],
   "return" : ["JsVar","The JavaScript object created by parsing the data string."]
 }
-Parse the given JSON string into a JavaScript object
+Parse the given JSON string into a JavaScript object.
 
 NOTE: This implementation uses eval() internally, and as such it is unsafe as it
 can allow arbitrary JS commands to be executed.

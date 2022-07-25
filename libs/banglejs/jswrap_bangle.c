@@ -117,11 +117,11 @@ The Bangle.js's vibration motor.
 }
 Accelerometer data available with `{x,y,z,diff,mag}` object as a parameter.
 
-* `x` is X axis (left-right) in `g`
-* `y` is Y axis (up-down) in `g`
-* `z` is Z axis (in-out) in `g`
-* `diff` is difference between this and the last reading in `g`
-* `mag` is the magnitude of the acceleration in `g`
+* `x` is X axis (left-right) in `g`.
+* `y` is Y axis (up-down) in `g`.
+* `z` is Z axis (in-out) in `g`.
+* `diff` is difference between this and the last reading in `g`.
+* `mag` is the magnitude of the acceleration in `g`.
 
 You can also retrieve the most recent reading with `Bangle.getAccel()`.
 */
@@ -191,12 +191,12 @@ Is the battery charging or not?
   "ifdef" : "BANGLEJS"
 }
 Magnetometer/Compass data available with `{x,y,z,dx,dy,dz,heading}` object as a
-parameter
+parameter.
 
-* `x/y/z` raw x,y,z magnetometer readings
-* `dx/dy/dz` readings based on calibration since magnetometer turned on
+* `x/y/z` raw x,y,z magnetometer readings.
+* `dx/dy/dz` readings based on calibration since magnetometer turned on.
 * `heading` in degrees based on calibrated readings (will be NaN if magnetometer
-  hasn't been rotated around 360 degrees)
+  hasn't been rotated around 360 degrees).
 
 To get this event you must turn the compass on with `Bangle.setCompassPower(1)`.
 
@@ -212,7 +212,7 @@ You can also retrieve the most recent reading with `Bangle.getCompass()`.
   ],
   "ifdef" : "BANGLEJS"
 }
-Raw NMEA GPS / u-blox data messages received as a string
+Raw NMEA GPS / u-blox data messages received as a string.
 
 To get this event you must turn the GPS on with `Bangle.setGPSPower(1)`.
 */
@@ -390,7 +390,7 @@ be used to decode `gesture` from a number into a string.
   "ifdef" : "BANGLEJS"
 }
 Emitted when a swipe on the touchscreen is detected (a movement from
-left->right, right->left, down->up or up->down)
+left->right, right->left, down->up or up->down).
 
 Bangle.js 1 is only capable of detecting left/right swipes as it only contains a
 2 zone touchscreen.
@@ -416,7 +416,7 @@ Emitted when the touchscreen is pressed
   ],
   "ifdef" : "BANGLEJS"
 }
-Emitted when the touchscreen is dragged or released
+Emitted when the touchscreen is dragged or released.
 
 The touchscreen extends past the edge of the screen and while `x` and `y`
 coordinates are arranged such that they align with the LCD's pixels, if your
@@ -1838,12 +1838,11 @@ the display may flicker slightly when Bluetooth is active and the display is not
 at full power.
 
 **Power consumption**
-
-* 0 = 7mA
-* 0.1 = 12mA
-* 0.2 = 18mA
-* 0.5 = 28mA
-* 0.9 = 40mA (switching overhead)
+* 0 = 7mA.
+* 0.1 = 12mA.
+* 0.2 = 18mA.
+* 0.5 = 28mA.
+* 0.9 = 40mA (switching overhead).
 * 1 = 40mA
 */
 void jswrap_banglejs_setLCDBrightness(JsVarFloat v) {
@@ -2085,31 +2084,31 @@ void jswrap_banglejs_setPollInterval(JsVarFloat interval) {
 }
 Set internal options used for gestures, etc...
 
-* `wakeOnBTN1` should the LCD turn on when BTN1 is pressed? default = `true`
+* `wakeOnBTN1` should the LCD turn on when BTN1 is pressed? default = `true`.
 * `wakeOnBTN2` (Bangle.js 1) should the LCD turn on when BTN2 is pressed?
-  default = `true`
+  default = `true`.
 * `wakeOnBTN3` (Bangle.js 1) should the LCD turn on when BTN3 is pressed?
-  default = `true`
+  default = `true`.
 * `wakeOnFaceUp` should the LCD turn on when the watch is turned face up?
-  default = `false`
+  default = `false`.
 * `wakeOnTouch` should the LCD turn on when the touchscreen is pressed? default
-  = `false`
+  = `false`.
 * `wakeOnTwist` should the LCD turn on when the watch is twisted? default =
-  `true`
+  `true`.
 * `twistThreshold` How much acceleration to register a twist of the watch strap?
-  Can be negative for oppsite direction. default = `800`
+  Can be negative for oppsite direction. default = `800`.
 * `twistMaxY` Maximum acceleration in Y to trigger a twist (low Y means watch is
-  facing the right way up). default = `-800`
+  facing the right way up). default = `-800`.
 * `twistTimeout` How little time (in ms) must a twist take from low->high
-  acceleration? default = `1000`
+  acceleration? default = `1000`.
 * `gestureStartThresh` how big a difference before we consider a gesture
-  started? default = `sqr(800)`
+  started? default = `sqr(800)`.
 * `gestureEndThresh` how small a difference before we consider a gesture ended?
-  default = `sqr(2000)`
+  default = `sqr(2000)`.
 * `gestureInactiveCount` how many samples do we keep after a gesture has ended?
-  default = `4`
+  default = `4`.
 * `gestureMinLength` how many samples must a gesture have before we notify about
-  it? default = `10`
+  it? default = `10`.
 * `powerSave` after a minute of not being moved, Bangle.js will change the
    accelerometer poll interval down to 800ms (10x accelerometer samples). On
    movement it'll be raised to the default 80ms. If `Bangle.setPollInterval` is
@@ -2119,17 +2118,17 @@ Set internal options used for gestures, etc...
    current value. If you desire a specific interval (eg the default 80ms) you
    must set it manually with `Bangle.setPollInterval(80)` after setting
    `powerSave:false`.
-* `lockTimeout` how many milliseconds before the screen locks
-* `lcdPowerTimeout` how many milliseconds before the screen turns off
+* `lockTimeout` how many milliseconds before the screen locks.
+* `lcdPowerTimeout` how many milliseconds before the screen turns off.
 * `backlightTimeout` how many milliseconds before the screen's backlight turns
-  off
+  off.
 * `hrmPollInterval` set the requested poll interval (in milliseconds) for the
   heart rate monitor. On Bangle.js 2 only 10,20,40,80,160,200 ms are supported,
   and polling rate may not be exact. The algorithm's filtering is tuned for
   20-40ms poll intervals, so higher/lower intervals may effect the reliability
   of the BPM reading.
 * `seaLevelPressure` (Bangle.js 2) Normally 1013.25 millibars - this is used for
-  calculating altitude with the pressure sensor
+  calculating altitude with the pressure sensor.
 
 Where accelerations are used they are in internal units, where `8192 = 1g`
 */
@@ -2378,7 +2377,7 @@ void jswrap_banglejs_lcdWr(JsVarInt cmd, JsVar *data) {
   "return" : ["bool","Is HRM on?"],
   "ifdef" : "BANGLEJS"
 }
-Set the power to the Heart rate monitor
+Set the power to the Heart rate monitor.
 
 When on, data is output via the `HRM` event on `Bangle`:
 
@@ -2538,7 +2537,7 @@ JsVar *jswrap_banglejs_getGPSFix() {
   "return" : ["bool","Is the Compass on?"],
   "ifdef" : "BANGLEJS"
 }
-Set the power to the Compass
+Set the power to the Compass.
 
 When on, data is output via the `mag` event on `Bangle`:
 
@@ -2768,12 +2767,12 @@ void jswrap_banglejs_setStepCount(JsVarInt count) {
 Get the most recent Magnetometer/Compass reading. Data is in the same format as
 the `Bangle.on('mag',` event.
 
-Returns an `{x,y,z,dx,dy,dz,heading}` object
+Returns an `{x,y,z,dx,dy,dz,heading}` object.
 
-* `x/y/z` raw x,y,z magnetometer readings
-* `dx/dy/dz` readings based on calibration since magnetometer turned on
+* `x/y/z` raw x,y,z magnetometer readings.
+* `dx/dy/dz` readings based on calibration since magnetometer turned on.
 * `heading` in degrees based on calibrated readings (will be NaN if magnetometer
-  hasn't been rotated around 360 degrees)
+  hasn't been rotated around 360 degrees).
 
 To get this event you must turn the compass on with `Bangle.setCompassPower(1)`.
 */
@@ -2817,12 +2816,12 @@ JsVar *jswrap_banglejs_getCompass() {
 Get the most recent accelerometer reading. Data is in the same format as the
 `Bangle.on('accel',` event.
 
-* `x` is X axis (left-right) in `g`
-* `y` is Y axis (up-down) in `g`
-* `z` is Z axis (in-out) in `g`
+* `x` is X axis (left-right) in `g`.
+* `y` is Y axis (up-down) in `g`.
+* `z` is Z axis (in-out) in `g`.
 * `diff` is difference between this and the last reading in `g` (calculated by
-  comparing vectors, not magnitudes)
-* `td` is the elapsed
+  comparing vectors, not magnitudes).
+* `td` is the elapsed.
 * `mag` is the magnitude of the acceleration in `g`
 */
 JsVar *jswrap_banglejs_getAccel() {
@@ -2851,17 +2850,17 @@ JsVar *jswrap_banglejs_getAccel() {
 `range` is one of:
 
 * `undefined` or `'current'` - health data so far in the last 10 minutes is
-  returned,
-* `'last'` - health data during the last 10 minutes
-* `'day'` - the health data so far for the day
+  returned,.
+* `'last'` - health data during the last 10 minutes.
+* `'day'` - the health data so far for the day.
 
 
 `getHealthStatus` returns an object containing:
 
 * `movement` is the 32 bit sum of all `acc.diff` readings since power on (and
-  rolls over). It is the difference in accelerometer values as `g*8192`
-* `steps` is the number of steps during this period
-* `bpm` the best BPM reading from HRM sensor during this period
+  rolls over). It is the difference in accelerometer values as `g*8192`.
+* `steps` is the number of steps during this period.
+* `bpm` the best BPM reading from HRM sensor during this period.
 * `bpmConfidence` best BPM confidence (0-100%) during this period
 */
 static JsVar *_jswrap_banglejs_getHealthStatusObject(HealthState *health) {
@@ -4074,7 +4073,7 @@ void jswrap_banglejs_accelWr(JsVarInt reg, JsVarInt data) {
   "return" : ["JsVar",""],
   "ifdef" : "BANGLEJS"
 }
-Reads a register from the accelerometer
+Reads a register from the accelerometer.
 
 **Note:** On Espruino 2v06 and before this function only returns a number (`cnt`
 is ignored).
@@ -4255,7 +4254,7 @@ If the Barometer has been turned on with `Bangle.setBarometerPower` then this
 will return almost immediately with the reading. If the Barometer is off,
 conversions take between 500-750ms.
 
-Altitude assumes a sea-level pressure of 1013.25 hPa
+Altitude assumes a sea-level pressure of 1013.25 hPa.
 
 ```
 Bangle.getPressure().then(d=>{
@@ -4740,7 +4739,7 @@ void jswrap_banglejs_softOff() {
   "return" : ["JsVar","An image to be used with `g.drawImage` (as a String)."],
   "ifdef" : "BANGLEJS"
 }
-* On platforms with an LCD of >=8bpp this is 222 x 104 x 2 bits
+* On platforms with an LCD of >=8bpp this is 222 x 104 x 2 bits.
 * Otherwise it's 119 x 56 x 1 bits
 */
 JsVar *jswrap_banglejs_getLogo() {
@@ -4979,12 +4978,12 @@ On Bangle.js there are a few additions over the standard `graphical_menu`:
 
 * The options object can contain:
   * `back : function() { }` - add a 'back' button, with the function called when
-    it is pressed
+    it is pressed.
   * (Bangle.js 2) `scroll : int` - an integer specifying how much the initial
-    menu should be scrolled by
+    menu should be scrolled by.
 * The object returned by `E.showMenu` contains:
   * (Bangle.js 2) `scroller` - the object returned by `E.showScroller` -
-    `scroller.scroll` returns the amount the menu is currently scrolled by
+    `scroller.scroll` returns the amount the menu is currently scrolled by.
 * In the object specified for editable numbers:
   * (Bangle.js 2) the `format` function is called with `format(value)` in the
     main menu, `format(value,1)` when in a scrollable list, or `format(value,2)`
@@ -5256,29 +5255,29 @@ provided when there is user input.
 Currently supported interface types are:
 
 * 'updown' - UI input with upwards motion `cb(-1)`, downwards motion `cb(1)`,
-  and select `cb()`
-  * Bangle.js 1 uses BTN1/3 for up/down and BTN2 for select
-  * Bangle.js 2 uses touchscreen swipe up/down and tap
+  and select `cb()`.
+  * Bangle.js 1 uses BTN1/3 for up/down and BTN2 for select.
+  * Bangle.js 2 uses touchscreen swipe up/down and tap.
 * 'leftright' - UI input with left motion `cb(-1)`, right motion `cb(1)`, and
-  select `cb()`
-  * Bangle.js 1 uses BTN1/3 for left/right and BTN2 for select
-  * Bangle.js 2 uses touchscreen swipe left/right and tap/BTN1 for select
+  select `cb()`.
+  * Bangle.js 1 uses BTN1/3 for left/right and BTN2 for select.
+  * Bangle.js 2 uses touchscreen swipe left/right and tap/BTN1 for select.
 * 'clock' - called for clocks. Sets `Bangle.CLOCK=1` and allows a button to
-  start the launcher
-  * Bangle.js 1 BTN2 starts the launcher
-  * Bangle.js 2 BTN1 starts the launcher
+  start the launcher.
+  * Bangle.js 1 BTN2 starts the launcher.
+  * Bangle.js 2 BTN1 starts the launcher.
 * 'clockupdown' - called for clocks. Sets `Bangle.CLOCK=1`, allows a button to
-  start the launcher, but also provides up/down functionality
-  * Bangle.js 1 BTN2 starts the launcher, BTN1/BTN3 call `cb(-1)` and `cb(1)`
+  start the launcher, but also provides up/down functionality.
+  * Bangle.js 1 BTN2 starts the launcher, BTN1/BTN3 call `cb(-1)` and `cb(1)`.
   * Bangle.js 2 BTN1 starts the launcher, touchscreen tap in top/bottom right
-    hand side calls `cb(-1)` and `cb(1)`
+    hand side calls `cb(-1)` and `cb(1)`.
 * `{mode:"custom", ...}` allows you to specify custom handlers for different
   interations. See below.
-* `undefined` removes all user interaction code
+* `undefined` removes all user interaction code.
 
 While you could use setWatch/etc manually, the benefit here is that you don't
 end up with multiple `setWatch` instances, and the actual input method (touch,
-or buttons) is implemented dependent on the watch (Bangle.js 1 or 2)
+or buttons) is implemented dependent on the watch (Bangle.js 1 or 2).
 
 **Note:** You can override this function in boot code to change the interaction
 mode with the watch. For instance you could make all clocks start the launcher

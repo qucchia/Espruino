@@ -119,7 +119,7 @@ those based on `nRF52` chips can have SPI on any pins, so don't have specific
 markings.
 
 The SPI `mode` is between 0 and 3 - see
-http://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus#Clock_polarity_and_phase
+http://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus#Clock_polarity_and_phase.
 
 On STM32F1-based parts, you cannot mix AF and non-AF pins (SPI pins are usually
 grouped on the chip - and you can't mix pins from two groups). Espruino will not
@@ -373,7 +373,7 @@ void jswrap_spi_write(
   ]
 }
 Send data down SPI, using 4 bits for each 'real' bit (MSB first). This can be
-useful for faking one-wire style protocols
+useful for faking one-wire style protocols.
 
 Sending multiple bytes in one call to send is preferable as they can then be
 transmitted end to end. Using multiple calls to send() will result in
@@ -446,7 +446,7 @@ void jswrap_spi_send4bit(JsVar *parent, JsVar *srcdata, int bit0, int bit1, Pin 
   ]
 }
 Send data down SPI, using 8 bits for each 'real' bit (MSB first). This can be
-useful for faking one-wire style protocols
+useful for faking one-wire style protocols.
 
 Sending multiple bytes in one call to send is preferable as they can then be
 transmitted end to end. Using multiple calls to send() will result in
@@ -581,7 +581,7 @@ The third I2C port
     ["options","JsVar",["An optional structure containing extra information on initialising the I2C port","```{scl:pin, sda:pin, bitrate:100000}```","You can find out which pins to use by looking at [your board's reference page](#boards) and searching for pins with the `I2C` marker. Note that 400kHz is the maximum bitrate for most parts."]]
   ]
 }
-Set up this I2C port
+Set up this I2C port.
 
 If not specified in options, the default pins are used (usually the lowest
 numbered pins on the lowest port that supports this peripheral)

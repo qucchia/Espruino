@@ -158,11 +158,11 @@ void jswrap_io_poke(JsVarInt addr, JsVar *data, int wordSize) {
   ],
   "return" : ["float","The analog Value of the Pin between 0 and 1."]
 }
-Get the analog value of the given pin
+Get the analog value of the given pin.
 
-This is different to Arduino which only returns an integer between 0 and 1023
+This is different to Arduino which only returns an integer between 0 and 1023.
 
-However only pins connected to an ADC will work (see the datasheet)
+However only pins connected to an ADC will work (see the datasheet).
 
  **Note:** if you didn't call `pinMode` beforehand then this function will also
  reset pin's state to `"analog"`
@@ -182,10 +182,10 @@ Set the analog Value of a pin. It will be output using PWM.
 Objects can contain:
 
 * `freq` - pulse frequency in Hz, eg. ```analogWrite(A0,0.5,{ freq : 10 });``` -
-  specifying a frequency will force PWM output, even if the pin has a DAC
+  specifying a frequency will force PWM output, even if the pin has a DAC.
 * `soft` - boolean, If true software PWM is used if hardware is not available.
 * `forceSoft` - boolean, If true software PWM is used even if hardware PWM or a
-  DAC is available
+  DAC is available.
 
  **Note:** if you didn't call `pinMode` beforehand then this function will also
  reset pin's state to `"output"`
@@ -221,10 +221,10 @@ has finished.
 
 eg. `digitalPulse(A0,1,5);` pulses A0 high for 5ms.
 `digitalPulse(A0,1,[5,2,4]);` pulses A0 high for 5ms, low for 2ms, and high for
-4ms
+4ms.
 
  **Note:** if you didn't call `pinMode` beforehand then this function will also
- reset pin's state to `"output"`
+ reset pin's state to `"output"`.
 
 digitalPulse is for SHORT pulses that need to be very accurate. If you're doing
 anything over a few milliseconds, use setTimeout instead.
@@ -283,7 +283,7 @@ void jswrap_io_digitalPulse(Pin pin, bool value, JsVar *times) {
 Set the digital value of the given pin.
 
  **Note:** if you didn't call `pinMode` beforehand then this function will also
- reset pin's state to `"output"`
+ reset pin's state to `"output"`.
 
 If pin argument is an array of pins (eg. `[A2,A1,A0]`) the value argument will
 be treated as an array of bits where the last array element is the least
@@ -341,11 +341,11 @@ void jswrap_io_digitalWrite(
 Get the digital value of the given pin.
 
  **Note:** if you didn't call `pinMode` beforehand then this function will also
- reset pin's state to `"input"`
+ reset pin's state to `"input"`.
 
 If the pin argument is an array of pins (eg. `[A2,A1,A0]`) the value returned
 will be an number where the last array element is the least significant bit, for
-example if `A0=A1=1` and `A2=0`, `digitalRead([A2,A1,A0]) == 0b011`
+example if `A0=A1=1` and `A2=0`, `digitalRead([A2,A1,A0]) == 0b011`.
 
 If the pin argument is an object with a `read` method, the `read` method will be
 called and the integer value it returns passed back.
@@ -395,19 +395,19 @@ JsVarInt jswrap_io_digitalRead(JsVar *pinVar) {
 Set the mode of the given pin.
 
  * `auto`/`undefined` - Don't change state, but allow `digitalWrite`/etc to
-   automatically change state as appropriate
- * `analog` - Analog input
- * `input` - Digital input
- * `input_pullup` - Digital input with internal ~40k pull-up resistor
- * `input_pulldown` - Digital input with internal ~40k pull-down resistor
- * `output` - Digital output
+   automatically change state as appropriate.
+ * `analog` - Analog input.
+ * `input` - Digital input.
+ * `input_pullup` - Digital input with internal ~40k pull-up resistor.
+ * `input_pulldown` - Digital input with internal ~40k pull-down resistor.
+ * `output` - Digital output.
  * `opendrain` - Digital output that only ever pulls down to 0v. Sending a
-   logical `1` leaves the pin open circuit
+   logical `1` leaves the pin open circuit.
  * `opendrain_pullup` - Digital output that pulls down to 0v. Sending a logical
-   `1` enables internal ~40k pull-up resistor
- * `af_output` - Digital output from built-in peripheral
+   `1` enables internal ~40k pull-up resistor.
+ * `af_output` - Digital output from built-in peripheral.
  * `af_opendrain` - Digital output from built-in peripheral that only ever pulls
-   down to 0v. Sending a logical `1` leaves the pin open circuit
+   down to 0v. Sending a logical `1` leaves the pin open circuit.
 
  **Note:** `digitalRead`/`digitalWrite`/etc set the pin mode automatically
 *unless* `pinMode` has been called first. If you want `digitalRead`/etc to set
@@ -680,13 +680,13 @@ information (all optional):
 The `function` callback is called with an argument, which is an object of type
 `{state:bool, time:float, lastTime:float}`.
 
- * `state` is whether the pin is currently a `1` or a `0`
- * `time` is the time in seconds at which the pin changed state
+ * `state` is whether the pin is currently a `1` or a `0`.
+ * `time` is the time in seconds at which the pin changed state.
  * `lastTime` is the time in seconds at which the **pin last changed state**.
    When using `edge:'rising'` or `edge:'falling'`, this is not the same as when
    the function was last called.
  * `data` is included if `data:pin` was specified in the options, and can be
-   used for reading in clocked data
+   used for reading in clocked data.
 
 For instance, if you want to measure the length of a positive pulse you could
 use `setWatch(function(e) { console.log(e.time-e.lastTime); }, BTN, {
@@ -702,7 +702,7 @@ cause the function to be called from within the IRQ. When doing this, interrupts
 will happen on both edges and there will be no debouncing.
 
 **Note:** if you didn't call `pinMode` beforehand then this function will reset
-pin's state to `"input"`
+pin's state to `"input"`.
 
 **Note:** The STM32 chip (used in the [Espruino Board](/EspruinoBoard) and
 [Pico](/Pico)) cannot watch two pins with the same number - eg `A0` and `B0`.

@@ -178,9 +178,9 @@ ArrayBuffer.
 
 This can be used:
 
-* In a `DataView` with `new DataView(require("Storage").readArrayBuffer("x"))`
+* In a `DataView` with `new DataView(require("Storage").readArrayBuffer("x"))`.
 * In a `Uint8Array/Float32Array/etc` with `new
-  Uint8Array(require("Storage").readArrayBuffer("x"))`
+  Uint8Array(require("Storage").readArrayBuffer("x"))`.
 
 **Note:** This function should be used with normal files, and not `StorageFile`s
 created with `require("Storage").open(filename, ...)`
@@ -214,13 +214,13 @@ file, and `require("Storage").read("MyFile")` to read it.
 
 If you supply:
 
-* A String, it will be written as-is
-* An array, will be written as a byte array (but read back as a String)
+* A String, it will be written as-is.
+* An array, will be written as a byte array (but read back as a String).
 * An object, it will automatically be converted to a JSON string before being
 written.
 
 **Note:** If an array is supplied it will not be converted to JSON. To be
-explicit about the conversion you can use `Storage.writeJSON`
+explicit about the conversion you can use `Storage.writeJSON`.
 
 You may also create a file and then populate data later **as long as you don't
 try and overwrite data that already exists**. For instance:
@@ -274,7 +274,7 @@ disappear when the device resets or power is lost.
 Simply write `require("Storage").writeJSON("MyFile", [1,2,3])` to write a new
 file, and `require("Storage").readJSON("MyFile")` to read it.
 
-This is equivalent to: `require("Storage").write(name, JSON.stringify(data))`
+This is equivalent to: `require("Storage").write(name, JSON.stringify(data))`.
 
 **Note:** This function should be used with normal files, and not `StorageFile`s
 created with `require("Storage").open(filename, ...)`

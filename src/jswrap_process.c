@@ -106,24 +106,24 @@ const void * const exportPtrs[] = {
 }
 Returns an Object containing various pre-defined variables.
 
-* `VERSION` - is the Espruino version
-* `GIT_COMMIT` - is Git commit hash this firmware was built from
+* `VERSION` - is the Espruino version.
+* `GIT_COMMIT` - is Git commit hash this firmware was built from.
 * `BOARD` - the board's ID (eg. `PUCKJS`)
-* `RAM` - total amount of on-chip RAM in bytes
-* `FLASH` - total amount of on-chip flash memory in bytes
-* `SPIFLASH` - (on Bangle.js) total amount of off-chip flash memory in bytes
+* `RAM` - total amount of on-chip RAM in bytes.
+* `FLASH` - total amount of on-chip flash memory in bytes.
+* `SPIFLASH` - (on Bangle.js) total amount of off-chip flash memory in bytes.
 * `HWVERSION` - For Puck.js this is the board revision (1, 2, 2.1), or for
-  Bangle.js it's 1 or 2
-* `STORAGE` - memory in bytes dedicated to the `Storage` module
-* `SERIAL` - the serial number of this chip
+  Bangle.js it's 1 or 2.
+* `STORAGE` - memory in bytes dedicated to the `Storage` module.
+* `SERIAL` - the serial number of this chip.
 * `CONSOLE` - the name of the current console device being used (`Serial1`,
-  `USB`, `Bluetooth`, etc)
-* `MODULES` - a list of built-in modules separated by commas
+  `USB`, `Bluetooth`, etc).
+* `MODULES` - a list of built-in modules separated by commas.
 * `EXPTR` - The address of the `exportPtrs` structure in flash (this includes
-  links to built-in functions that compiled JS code needs)
+  links to built-in functions that compiled JS code needs).
 * `APP_RAM_BASE` - On nRF5x boards, this is the RAM required by the Softdevice
   *if it doesn't exactly match what was allocated*. You can use this to update
-  `LD_APP_RAM_BASE` in the `BOARD.py` file
+  `LD_APP_RAM_BASE` in the `BOARD.py` file.
 
 For example, to get a list of built-in modules, you can use
 `process.env.MODULES.split(',')`
@@ -176,14 +176,14 @@ JsVar *jswrap_process_env() {
 Run a Garbage Collection pass, and return an object containing information on
 memory usage.
 
-* `free` : Memory that is available to be used (in blocks)
-* `usage` : Memory that has been used (in blocks)
-* `total` : Total memory (in blocks)
+* `free` : Memory that is available to be used (in blocks).
+* `usage` : Memory that has been used (in blocks).
+* `total` : Total memory (in blocks).
 * `history` : Memory used for command history - that is freed if memory is low.
-  Note that this is INCLUDED in the figure for 'free'
-* `gc` : Memory freed during the GC pass
-* `gctime` : Time taken for GC pass (in milliseconds)
-* `blocksize` : Size of a block (variable) in bytes
+  Note that this is INCLUDED in the figure for 'free'.
+* `gc` : Memory freed during the GC pass.
+* `gctime` : Time taken for GC pass (in milliseconds).
+* `blocksize` : Size of a block (variable) in bytes.
 * `stackEndAddress` : (on ARM) the address (that can be used with peek/poke/etc)
   of the END of the stack. The stack grows down, so unless you do a lot of
   recursion the bytes above this can be used.

@@ -42,7 +42,7 @@ functions. Versions of the functions with 'Sync' after them are also provided
 for compatibility.
 
 To use this, you must type ```var fs = require('fs')``` to get access to the
-library
+library.
 
 See [the page on File IO](http://www.espruino.com/File+IO) for more information,
 and for examples on wiring up an SD card if your device doesn't come with one.
@@ -166,7 +166,7 @@ JsVar *jswrap_fs_readdir(JsVar *path) {
   ],
   "return" : ["bool","True on success, false on failure."]
 }
-Write the data to the given file
+Write the data to the given file.
 
 NOTE: Espruino does not yet support Async file IO, so this function behaves like
 the 'Sync' version.
@@ -196,7 +196,7 @@ Write the data to the given file
   ],
   "return" : ["bool","True on success, false on failure."]
 }
-Append the data to the given file, created a new file if it doesn't exist
+Append the data to the given file, created a new file if it doesn't exist.
 
 NOTE: Espruino does not yet support Async file IO, so this function behaves like
 the 'Sync' version.
@@ -237,7 +237,7 @@ bool jswrap_fs_writeOrAppendFile(JsVar *path, JsVar *data, bool append) {
   ],
   "return" : ["JsVar","A string containing the contents of the file (or undefined if the file doesn't exist)."]
 }
-Read all data from a file and return as a string
+Read all data from a file and return as a string.
 
 NOTE: Espruino does not yet support Async file IO, so this function behaves like
 the 'Sync' version.
@@ -280,7 +280,7 @@ JsVar *jswrap_fs_readFile(JsVar *path) {
   ],
   "return" : ["bool","True on success, or false on failure."]
 }
-Delete the given file
+Delete the given file.
 
 NOTE: Espruino does not yet support Async file IO, so this function behaves like
 the 'Sync' version.
@@ -394,7 +394,7 @@ JsVar *jswrap_fs_stat(JsVar *path) {
   ],
   "return" : ["bool","True on success, or false on failure."]
 }
-Create the directory
+Create the directory.
 
 NOTE: Espruino does not yet support Async file IO, so this function behaves like
 the 'Sync' version.

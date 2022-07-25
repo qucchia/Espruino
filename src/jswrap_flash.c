@@ -121,7 +121,7 @@ void jswrap_flash_erasePage(JsVar *addr) {
     ["addr","int","The address to start writing from."]
   ]
 }
-Write data into memory at the given address
+Write data into memory at the given address.
 
 In flash memory you may only turn bits that are 1 into bits that are 0. If
 you're writing data into an area that you have already written (so `read`

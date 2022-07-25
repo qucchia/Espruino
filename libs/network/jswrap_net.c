@@ -80,7 +80,7 @@ http.request/get
   ],
   "return" : ["JsVar","An object containing options for ```http.request``` or ```http.get```. Contains `method`, `host`, `path`, `pathname`, `search`, `port` and `query`."]
 }
-A utility function to split a URL into parts
+A utility function to split a URL into parts.
 
 This is useful in web servers for instance when handling a request.
 
@@ -217,7 +217,7 @@ JsVar *jswrap_url_parse(JsVar *url, bool parseQuery) {
   "type" : "library",
   "class" : "net"
 }
-This library allows you to create TCPIP servers and clients
+This library allows you to create TCPIP servers and clients.
 
 In order to use this, you will need an extra module to get network connectivity.
 
@@ -275,19 +275,19 @@ first place). If a "connected" event was issued on this socket then the error
 event is always followed by a close event. The error codes are:
 
 * -1: socket closed (this is not really an error and will not cause an error
-  callback)
-* -2: out of memory (typically while allocating a buffer to hold data)
-* -3: timeout
-* -4: no route
-* -5: busy
-* -6: not found (DNS resolution)
-* -7: max sockets (... exceeded)
-* -8: unsent data (some data could not be sent)
-* -9: connection reset (or refused)
-* -10: unknown error
-* -11: no connection
-* -12: bad argument
-* -13: SSL handshake failed
+  callback).
+* -2: out of memory (typically while allocating a buffer to hold data).
+* -3: timeout.
+* -4: no route.
+* -5: busy.
+* -6: not found (DNS resolution).
+* -7: max sockets (... exceeded).
+* -8: unsent data (some data could not be sent).
+* -9: connection reset (or refused).
+* -10: unknown error.
+* -11: no connection.
+* -12: bad argument.
+* -13: SSL handshake failed.
 * -14: invalid SSL data
 */
 /*JSON{
@@ -351,7 +351,7 @@ send.
   "return" : ["JsVar","Returns a new Server Object."],
   "return_object" : "Server"
 }
-Create a Server
+Create a Server.
 
 When a request to the server is made, the callback is called. In the callback
 you can use the methods on the connection to send data. You can also add
@@ -441,7 +441,7 @@ JsVar *jswrap_net_connect(JsVar *options, JsVar *callback, SocketType socketType
   "type" : "library",
   "class" : "dgram"
 }
-This library allows you to create UDP/DATAGRAM servers and clients
+This library allows you to create UDP/DATAGRAM servers and clients.
 
 In order to use this, you will need an extra module to get network connectivity.
 
@@ -617,7 +617,7 @@ Called when the connection closes.
   "class" : "tls",
   "ifdef" : "USE_TLS"
 }
-This library allows you to create TCPIP servers and clients using TLS encryption
+This library allows you to create TCPIP servers and clients using TLS encryption.
 
 In order to use this, you will need an extra module to get network connectivity.
 
@@ -639,7 +639,7 @@ page for more information on how to use it.
   "return_object" : "Socket",
   "ifdef" : "USE_TLS"
 }
-Create a socket connection using TLS
+Create a socket connection using TLS.
 
 Options can have `ca`, `key` and `cert` fields, which should be the decoded
 content of the certificate.
@@ -658,13 +658,13 @@ from it so you have raw base64, and then feed it into `atob` as above.
 
 You can also:
 * Just specify the filename (<=100 characters) and it will be loaded and parsed
-  if you have an SD card connected. For instance `options.key = "key.pem";`
+  if you have an SD card connected. For instance `options.key = "key.pem";`.
 * Specify a function, which will be called to retrieve the data. For instance
-  `options.key = function() { eeprom.load_my_info(); };
+  `options.key = function() { eeprom.load_my_info(); };.
 
 For more information about generating and using certificates, see:
 
-https://engineering.circle.com/https-authorized-certs-with-node-js/
+https://engineering.circle.com/https-authorized-certs-with-node-js/.
 
 (You'll need to use 2048 bit certificates as opposed to 4096 bit shown above)
 */
