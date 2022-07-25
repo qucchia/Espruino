@@ -215,8 +215,8 @@ static char macFmt[] = "%02x:%02x:%02x:%02x:%02x:%02x";
 //===== This file contains definitions for two classes: ESP8266 and wifi
 
 /*JSON{
-   "type": "library",
-   "class": "ESP8266"
+  "type" : "library",
+  "class" : "ESP8266"
 }
 The ESP8266 library is specific to the ESP8266 version of Espruino, i.e.,
 running Espruino on an ESP8266 module (not to be confused with using the ESP8266
@@ -1254,10 +1254,9 @@ void   jswrap_ESP8266_wifi_init1() {
 
 
 /*JSON{
-  "type":"init",
-  "generate":"jswrap_ESP8266_wifi_soft_init"
+  "type" : "init",
+  "generate" : "jswrap_ESP8266_wifi_soft_init"
 }
-
 // This function is called in soft_init to hook-up the network. This happens
 from user_main's // init_done() and also from `reset()` in order to re-hook-up
 the network.
@@ -1275,14 +1274,14 @@ void jswrap_ESP8266_wifi_soft_init() {
 }
 
 /*JSON{
-  "type"     : "staticmethod",
-  "class"    : "ESP8266",
-  "ifdef"    : "ESP8266",
-  "name"     : "ping",
+  "type" : "staticmethod",
+  "class" : "ESP8266",
+  "ifdef" : "ESP8266",
+  "name" : "ping",
   "generate" : "jswrap_wifi_ping",
-  "params"   : [
-    ["ipAddr", "JsVar", "A string representation of an IP address."],
-    ["pingCallback", "JsVar", "Optional callback function."]
+  "params" : [
+    ["ipAddr","JsVar","A string representation of an IP address."],
+    ["pingCallback","JsVar","Optional callback function."]
   ]
 }
 **DEPRECATED** - please use `Wifi.ping` instead.

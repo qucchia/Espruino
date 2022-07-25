@@ -45,13 +45,12 @@ memory at the same time.
   "name" : "compress",
   "generate" : "jswrap_heatshrink_compress",
   "params" : [
-    ["data","JsVar","The data to compress"]
+    ["data","JsVar","The data to compress."]
   ],
-  "return" : ["JsVar","Returns the result as an ArrayBuffer"],
+  "return" : ["JsVar","Returns the result as an ArrayBuffer."],
   "return_object" : "ArrayBuffer",
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/
 JsVar *jswrap_heatshrink_compress(JsVar *data) {
   if (!jsvIsIterable(data)) {
     jsExceptionHere(JSET_TYPEERROR,"Expecting something iterable, got %t",data);
@@ -88,13 +87,12 @@ JsVar *jswrap_heatshrink_compress(JsVar *data) {
   "name" : "decompress",
   "generate" : "jswrap_heatshrink_decompress",
   "params" : [
-    ["data","JsVar","The data to decompress"]
+    ["data","JsVar","The data to decompress."]
   ],
-  "return" : ["JsVar","Returns the result as an ArrayBuffer"],
+  "return" : ["JsVar","Returns the result as an ArrayBuffer."],
   "return_object" : "ArrayBuffer",
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/
 JsVar *jswrap_heatshrink_decompress(JsVar *data) {
   if (!jsvIsIterable(data)) {
     jsExceptionHere(JSET_TYPEERROR,"Expecting something iterable, got %t",data);

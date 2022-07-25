@@ -38,21 +38,19 @@
 /*JSON{
   "type" : "library",
   "class" : "CC3000"
-}
-
-*/
+}*/
 /*JSON{
   "type" : "staticmethod",
   "class" : "CC3000",
   "name" : "connect",
   "generate" : "jswrap_cc3000_connect",
   "params" : [
-    ["spi", "JsVar", "Device to use for SPI (or undefined to use the default). SPI should be 1,000,000 baud, and set to 'mode 1'"],
-    ["cs", "pin", "The pin to use for Chip Select"],
-    ["en", "pin", "The pin to use for Enable"],
-    ["irq", "pin", "The pin to use for Interrupts"]
+    ["spi","JsVar","Device to use for SPI (or undefined to use the default). SPI should be 1,000,000 baud, and set to 'mode 1'."],
+    ["cs","pin","The pin to use for Chip Select."],
+    ["en","pin","The pin to use for Enable."],
+    ["irq","pin","The pin to use for Interrupts."]
   ],
-  "return" : ["JsVar","A WLAN Object"],
+  "return" : ["JsVar","A WLAN Object."],
   "return_object" : "WLAN"
 }
 Initialise the CC3000 and return a WLAN object
@@ -114,9 +112,9 @@ An instantiation of a WiFi network adaptor
   "name" : "connect",
   "generate" : "jswrap_wlan_connect",
   "params" : [
-    ["ap","JsVar","Access point name"],
-    ["key","JsVar","WPA2 key (or undefined for unsecured connection)"],
-    ["callback","JsVar","Function to call back with connection status. It has one argument which is one of 'connect'/'disconnect'/'dhcp'"]
+    ["ap","JsVar","Access point name."],
+    ["key","JsVar","WPA2 key (or undefined for unsecured connection)."],
+    ["callback","JsVar","Function to call back with connection status. It has one argument which is one of 'connect'/'disconnect'/'dhcp'."]
   ],
   "return" : ["bool","True if connection succeeded, false if it didn't."]
 }
@@ -262,7 +260,7 @@ static void _wlan_getIP_set_address(JsVar *options, char *name, unsigned char *p
   "params" : [
     ["options","JsVar","Object containing IP address options `{ ip : '1,2,3,4', subnet, gateway, dns }`, or do not supply an object in otder to force DHCP."]
   ],
-  "return" : ["bool","True on success"]
+  "return" : ["bool","True on success."]
 }
 Set the current IP address for get an IP from DHCP (if no options object is
 specified).

@@ -34,9 +34,9 @@ Library that initialises a network device that calls into JavaScript
   "name" : "create",
   "generate" : "jswrap_networkjs_create",
   "params" : [
-    ["obj","JsVar","An object containing functions to access the network device"]
+    ["obj","JsVar","An object containing functions to access the network device."]
   ],
-  "return" : ["JsVar","The object passed in"]
+  "return" : ["JsVar","The object passed in."]
 }
 Initialise the network using the callbacks given and return the first argument.
 For instance:

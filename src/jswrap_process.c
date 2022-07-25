@@ -29,13 +29,15 @@
   "class" : "process"
 }
 This class contains information about Espruino itself
- */
+*/
 
 /*JSON{
   "type" : "event",
   "class" : "process",
   "name" : "uncaughtException",
-  "params" : [["exception","JsVar","The uncaught exception"]]
+  "params" : [
+    ["exception","JsVar","The uncaught exception."]
+  ]
 }
 This event is called when an exception gets thrown and isn't caught (eg. it gets
 all the way back to the event loop).
@@ -65,10 +67,10 @@ console - which may make debugging difficult!
   "class" : "process",
   "name" : "version",
   "generate_full" : "jsvNewFromString(JS_VERSION)",
-  "return" : ["JsVar","The version of Espruino"]
+  "return" : ["JsVar","The version of Espruino."]
 }
 Returns the version of Espruino as a String
- */
+*/
 
 #ifndef SAVE_ON_FLASH
 /* NOTE: The order of these is very important, as 
@@ -100,7 +102,7 @@ const void * const exportPtrs[] = {
   "class" : "process",
   "name" : "env",
   "generate" : "jswrap_process_env",
-  "return" : ["JsVar","An object"]
+  "return" : ["JsVar","An object."]
 }
 Returns an Object containing various pre-defined variables.
 
@@ -167,9 +169,9 @@ JsVar *jswrap_process_env() {
   "name" : "memory",
   "generate" : "jswrap_process_memory",
   "params" : [
-    ["gc","JsVar","An optional boolean. If `undefined` or `true` Garbage collection is performed, if `false` it is not"]
+    ["gc","JsVar","An optional boolean. If `undefined` or `true` Garbage collection is performed, if `false` it is not."]
   ],
-  "return" : ["JsVar","Information about memory usage"]
+  "return" : ["JsVar","Information about memory usage."]
 }
 Run a Garbage Collection pass, and return an object containing information on
 memory usage.
@@ -200,7 +202,7 @@ Memory units are specified in 'blocks', which are around 16 bytes each
 http://www.espruino.com/Performance for more information.
 
 **Note:** To find free areas of flash memory, see `require('Flash').getFree()`
- */
+*/
 JsVar *jswrap_process_memory(JsVar *gc) {
   JsSysTime time1, time2;
   int varsGCd = -1;

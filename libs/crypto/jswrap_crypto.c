@@ -185,13 +185,12 @@ JsVar *jswrap_crypto_SHAx(JsVar *message, int shaNum) {
   "name" : "SHA1",
   "generate_full" : "jswrap_crypto_SHAx(message, 1)",
   "params" : [
-    ["message","JsVar","The message to apply the hash to"]
+    ["message","JsVar","The message to apply the hash to."]
   ],
-  "return" : ["JsVar","Returns a 20 byte ArrayBuffer"],
+  "return" : ["JsVar","Returns a 20 byte ArrayBuffer."],
   "return_object" : "ArrayBuffer",
   "ifdef" : "USE_CRYPTO"
 }
-
 Performs a SHA1 hash and returns the result as a 20 byte ArrayBuffer.
 
 **Note:** On some boards (currently only Espruino Original) there isn't space
@@ -204,13 +203,12 @@ used instead.
   "name" : "SHA224",
   "generate_full" : "jswrap_crypto_SHAx(message, 224)",
   "params" : [
-    ["message","JsVar","The message to apply the hash to"]
+    ["message","JsVar","The message to apply the hash to."]
   ],
-  "return" : ["JsVar","Returns a 20 byte ArrayBuffer"],
+  "return" : ["JsVar","Returns a 20 byte ArrayBuffer."],
   "return_object" : "ArrayBuffer",
   "ifdef" : "USE_SHA256"
 }
-
 Performs a SHA224 hash and returns the result as a 28 byte ArrayBuffer
 */
 /*JSON{
@@ -219,13 +217,12 @@ Performs a SHA224 hash and returns the result as a 28 byte ArrayBuffer
   "name" : "SHA256",
   "generate_full" : "jswrap_crypto_SHAx(message, 256)",
   "params" : [
-    ["message","JsVar","The message to apply the hash to"]
+    ["message","JsVar","The message to apply the hash to."]
   ],
-  "return" : ["JsVar","Returns a 20 byte ArrayBuffer"],
+  "return" : ["JsVar","Returns a 20 byte ArrayBuffer."],
   "return_object" : "ArrayBuffer",
   "ifdef" : "USE_SHA256"
 }
-
 Performs a SHA256 hash and returns the result as a 32 byte ArrayBuffer
 */
 /*JSON{
@@ -234,13 +231,12 @@ Performs a SHA256 hash and returns the result as a 32 byte ArrayBuffer
   "name" : "SHA384",
   "generate_full" : "jswrap_crypto_SHAx(message, 384)",
   "params" : [
-    ["message","JsVar","The message to apply the hash to"]
+    ["message","JsVar","The message to apply the hash to."]
   ],
-  "return" : ["JsVar","Returns a 20 byte ArrayBuffer"],
+  "return" : ["JsVar","Returns a 20 byte ArrayBuffer."],
   "return_object" : "ArrayBuffer",
   "ifdef" : "USE_SHA512"
 }
-
 Performs a SHA384 hash and returns the result as a 48 byte ArrayBuffer
 */
 /*JSON{
@@ -249,13 +245,12 @@ Performs a SHA384 hash and returns the result as a 48 byte ArrayBuffer
   "name" : "SHA512",
   "generate_full" : "jswrap_crypto_SHAx(message, 512)",
   "params" : [
-    ["message","JsVar","The message to apply the hash to"]
+    ["message","JsVar","The message to apply the hash to."]
   ],
-  "return" : ["JsVar","Returns a 32 byte ArrayBuffer"],
+  "return" : ["JsVar","Returns a 32 byte ArrayBuffer."],
   "return_object" : "ArrayBuffer",
   "ifdef" : "USE_SHA512"
 }
-
 Performs a SHA512 hash and returns the result as a 64 byte ArrayBuffer
 */
 
@@ -266,15 +261,14 @@ Performs a SHA512 hash and returns the result as a 64 byte ArrayBuffer
   "name" : "PBKDF2",
   "generate" : "jswrap_crypto_PBKDF2",
   "params" : [
-    ["passphrase","JsVar","Passphrase"],
-    ["salt","JsVar","Salt for turning passphrase into a key"],
-    ["options","JsVar","Object of Options, `{ keySize: 8 (in 32 bit words), iterations: 10, hasher: 'SHA1'/'SHA224'/'SHA256'/'SHA384'/'SHA512' }`"]
+    ["passphrase","JsVar","Passphrase."],
+    ["salt","JsVar","Salt for turning passphrase into a key."],
+    ["options","JsVar","Object of Options, `{ keySize: 8 (in 32 bit words), iterations: 10, hasher: 'SHA1'/'SHA224'/'SHA256'/'SHA384'/'SHA512' }`."]
   ],
-  "return" : ["JsVar","Returns an ArrayBuffer"],
+  "return" : ["JsVar","Returns an ArrayBuffer."],
   "return_object" : "ArrayBuffer",
   "ifdef" : "USE_TLS"
 }
-
 Password-Based Key Derivation Function 2 algorithm, using SHA512
 */
 JsVar *jswrap_crypto_PBKDF2(JsVar *passphrase, JsVar *salt, JsVar *options) {
@@ -453,15 +447,14 @@ static NO_INLINE JsVar *jswrap_crypto_AEScrypt(JsVar *message, JsVar *key, JsVar
   "name" : "encrypt",
   "generate" : "jswrap_crypto_AES_encrypt",
   "params" : [
-    ["passphrase","JsVar","Message to encrypt"],
-    ["key","JsVar","Key to encrypt message - must be an ArrayBuffer of 128, 192, or 256 BITS"],
-    ["options","JsVar","An optional object, may specify `{ iv : new Uint8Array(16), mode : 'CBC|CFB|CTR|OFB|ECB' }`"]
+    ["passphrase","JsVar","Message to encrypt."],
+    ["key","JsVar","Key to encrypt message - must be an ArrayBuffer of 128, 192, or 256 BITS."],
+    ["options","JsVar","An optional object, may specify `{ iv : new Uint8Array(16), mode : 'CBC|CFB|CTR|OFB|ECB' }`."]
   ],
-  "return" : ["JsVar","Returns an ArrayBuffer"],
+  "return" : ["JsVar","Returns an ArrayBuffer."],
   "return_object" : "ArrayBuffer",
   "ifdef" : "USE_AES"
-}
-*/
+}*/
 JsVar *jswrap_crypto_AES_encrypt(JsVar *message, JsVar *key, JsVar *options) {
   return jswrap_crypto_AEScrypt(message, key, options, true);
 }
@@ -472,15 +465,14 @@ JsVar *jswrap_crypto_AES_encrypt(JsVar *message, JsVar *key, JsVar *options) {
   "name" : "decrypt",
   "generate" : "jswrap_crypto_AES_decrypt",
   "params" : [
-    ["passphrase","JsVar","Message to decrypt"],
-    ["key","JsVar","Key to encrypt message - must be an ArrayBuffer of 128, 192, or 256 BITS"],
-    ["options","JsVar","An optional object, may specify `{ iv : new Uint8Array(16), mode : 'CBC|CFB|CTR|OFB|ECB' }`"]
+    ["passphrase","JsVar","Message to decrypt."],
+    ["key","JsVar","Key to encrypt message - must be an ArrayBuffer of 128, 192, or 256 BITS."],
+    ["options","JsVar","An optional object, may specify `{ iv : new Uint8Array(16), mode : 'CBC|CFB|CTR|OFB|ECB' }`."]
   ],
-  "return" : ["JsVar","Returns an ArrayBuffer"],
+  "return" : ["JsVar","Returns an ArrayBuffer."],
   "return_object" : "ArrayBuffer",
   "ifdef" : "USE_AES"
-}
-*/
+}*/
 JsVar *jswrap_crypto_AES_decrypt(JsVar *message, JsVar *key, JsVar *options) {
   return jswrap_crypto_AEScrypt(message, key, options, false);
 }

@@ -428,7 +428,9 @@ type Graphics. For instance to draw a line you'd type:
 /*JSON{
   "type" : "method",
   "class" : "Graphics",
-  "params" : [ ["all","bool","[optional] (only on some devices) If `true` then copy all pixels, not just those that have changed."] ],
+  "params" : [
+    ["all","bool","[optional] (only on some devices) If `true` then copy all pixels, not just those that have changed."]
+  ],
   "name" : "flip"
 }
 On instances of graphics that drive a display with an offscreen buffer, calling
@@ -453,7 +455,7 @@ force a full update of the screen.
   "type" : "property",
   "class" : "Graphics",
   "name" : "buffer",
-  "return" : ["JsVar","An ArrayBuffer (or not defined on Graphics instances not created with `Graphics.createArrayBuffer`)"]
+  "return" : ["JsVar","An ArrayBuffer (or not defined on Graphics instances not created with `Graphics.createArrayBuffer`)."]
 }
 On Graphics instances with an offscreen buffer, this is an `ArrayBuffer` that
 provides access to the underlying pixel data.
@@ -525,7 +527,7 @@ void jswrap_graphics_init() {
   "class" : "Graphics",
   "name" : "getInstance",
   "generate" : "jswrap_graphics_getInstance",
-  "return" : ["JsVar","An instance of `Graphics` or undefined"]
+  "return" : ["JsVar","An instance of `Graphics` or undefined."]
 }
 On devices like Pixl.js or HYSTM boards that contain a built-in display this
 will return an instance of the graphics class that can be used to access that
@@ -547,19 +549,12 @@ static bool isValidBPP(int bpp) {
   "name" : "createArrayBuffer",
   "generate" : "jswrap_graphics_createArrayBuffer",
   "params" : [
-    ["width","int32","Pixels wide"],
-    ["height","int32","Pixels high"],
-    ["bpp","int32","Number of bits per pixel"],
-    ["options","JsVar",[
-      "An object of other options. `{ zigzag : true/false(default), vertical_byte : true/false(default), msb : true/false(default), color_order: 'rgb'(default),'bgr',etc }`",
-      "`zigzag` = whether to alternate the direction of scanlines for rows",
-      "`vertical_byte` = whether to align bits in a byte vertically or not",
-      "`msb` = when bits<8, store pixels most significant bit first, when bits>8, store most significant byte first",
-      "`interleavex` = Pixels 0,2,4,etc are from the top half of the image, 1,3,5,etc from the bottom half. Used for P3 LED panels.",
-      "`color_order` = re-orders the colour values that are supplied via setColor"
-    ]]
+    ["width","int32","Pixels wide."],
+    ["height","int32","Pixels high."],
+    ["bpp","int32","Number of bits per pixel."],
+    ["options","JsVar",["An object of other options. `{ zigzag : true/false(default), vertical_byte : true/false(default), msb : true/false(default), color_order: 'rgb'(default),'bgr',etc }`","`zigzag` = whether to alternate the direction of scanlines for rows","`vertical_byte` = whether to align bits in a byte vertically or not","`msb` = when bits<8, store pixels most significant bit first, when bits>8, store most significant byte first","`interleavex` = Pixels 0,2,4,etc are from the top half of the image, 1,3,5,etc from the bottom half. Used for P3 LED panels.","`color_order` = re-orders the colour values that are supplied via setColor."]]
   ],
-  "return" : ["JsVar","The new Graphics object"],
+  "return" : ["JsVar","The new Graphics object."],
   "return_object" : "Graphics"
 }
 Create a Graphics object that renders to an Array Buffer. This will have a field
@@ -634,12 +629,12 @@ JsVar *jswrap_graphics_createArrayBuffer(int width, int height, int bpp, JsVar *
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_graphics_createCallback",
   "params" : [
-    ["width","int32","Pixels wide"],
-    ["height","int32","Pixels high"],
-    ["bpp","int32","Number of bits per pixel"],
+    ["width","int32","Pixels wide."],
+    ["height","int32","Pixels high."],
+    ["bpp","int32","Number of bits per pixel."],
     ["callback","JsVar","A function of the form ```function(x,y,col)``` that is called whenever a pixel needs to be drawn, or an object with: ```{setPixel:function(x,y,col),fillRect:function(x1,y1,x2,y2,col)}```. All arguments are already bounds checked."]
   ],
-  "return" : ["JsVar","The new Graphics object"],
+  "return" : ["JsVar","The new Graphics object."],
   "return_object" : "Graphics"
 }
 Create a Graphics object that renders by calling a JavaScript callback function
@@ -694,11 +689,11 @@ JsVar *jswrap_graphics_createCallback(int width, int height, int bpp, JsVar *cal
   "ifdef" : "USE_LCD_SDL",
   "generate" : "jswrap_graphics_createSDL",
   "params" : [
-    ["width","int32","Pixels wide"],
-    ["height","int32","Pixels high"],
-    ["bpp","int32","Bits per pixel (8,16,24 or 32 supported)"]
+    ["width","int32","Pixels wide."],
+    ["height","int32","Pixels high."],
+    ["bpp","int32","Bits per pixel (8,16,24 or 32 supported)."]
   ],
-  "return" : ["JsVar","The new Graphics object"],
+  "return" : ["JsVar","The new Graphics object."],
   "return_object" : "Graphics"
 }
 Create a Graphics object that renders to SDL window (Linux-based devices only)
@@ -729,9 +724,9 @@ JsVar *jswrap_graphics_createSDL(int width, int height, int bpp) {
   "#if" : "!defined(SAVE_ON_FLASH) && !defined(ESPRUINOBOARD)",
   "generate" : "jswrap_graphics_createImage",
   "params" : [
-    ["str","JsVar","A String containing a newline-separated image - space is 0, anything else is 1"]
+    ["str","JsVar","A String containing a newline-separated image - space is 0, anything else is 1."]
   ],
-  "return" : ["JsVar","An Image object that can be used with `Graphics.drawImage`"]
+  "return" : ["JsVar","An Image object that can be used with `Graphics.drawImage`."]
 }
 Create a simple Black and White image for use with `Graphics.drawImage`.
 
@@ -821,7 +816,7 @@ JsVar *jswrap_graphics_createImage(JsVar *data) {
   "class" : "Graphics",
   "name" : "getWidth",
   "generate_full" : "jswrap_graphics_getWidthOrHeight(parent, false)",
-  "return" : ["int","The width of this Graphics instance"]
+  "return" : ["int","The width of this Graphics instance."]
 }
 The width of this Graphics instance
 */
@@ -830,7 +825,7 @@ The width of this Graphics instance
   "class" : "Graphics",
   "name" : "getHeight",
   "generate_full" : "jswrap_graphics_getWidthOrHeight(parent, true)",
-  "return" : ["int","The height of this Graphics instance"]
+  "return" : ["int","The height of this Graphics instance."]
 }
 The height of this Graphics instance
 */
@@ -843,7 +838,7 @@ int jswrap_graphics_getWidthOrHeight(JsVar *parent, bool height) {
   "class" : "Graphics",
   "name" : "getBPP",
   "generate" : "jswrap_graphics_getBPP",
-  "return" : ["int","The bits per pixel of this Graphics instance"]
+  "return" : ["int","The bits per pixel of this Graphics instance."]
 }
 The number of bits per pixel of this Graphics instance
 
@@ -866,7 +861,7 @@ int jswrap_graphics_getBPP(JsVar *parent) {
   "class" : "Graphics",
   "name" : "reset",
   "generate" : "jswrap_graphics_reset",
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Reset the state of Graphics to the defaults (eg. Color, Font, etc) that would
@@ -887,9 +882,9 @@ JsVar *jswrap_graphics_reset(JsVar *parent) {
   "name" : "clear",
   "generate" : "jswrap_graphics_clear",
   "params" : [
-    ["reset","bool","If `true`, resets the state of Graphics to the default (eg. Color, Font, etc) as if calling `Graphics.reset`"]
+    ["reset","bool","If `true`, resets the state of Graphics to the default (eg. Color, Font, etc) as if calling `Graphics.reset`."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Clear the LCD with the Background Color
@@ -977,12 +972,12 @@ JsVar *_jswrap_graphics_fillRect_col(JsVar *parent, JsVar *opt, int y1, int x2, 
   "name" : "fillRect",
   "generate" : "jswrap_graphics_fillRect",
   "params" : [
-    ["x1","JsVar","The left X coordinate OR an object containing `{x,y,x2,y2}` or `{x,y,w,h}`"],
-    ["y1","int32","The top Y coordinate"],
-    ["x2","int32","The right X coordinate"],
-    ["y2","int32","The bottom Y coordinate"]
+    ["x1","JsVar","The left X coordinate OR an object containing `{x,y,x2,y2}` or `{x,y,w,h}`."],
+    ["y1","int32","The top Y coordinate."],
+    ["x2","int32","The right X coordinate."],
+    ["y2","int32","The bottom Y coordinate."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Fill a rectangular area in the Foreground Color
@@ -1003,12 +998,12 @@ JsVar *jswrap_graphics_fillRect(JsVar *parent, JsVar *opt, int y1, int x2, int y
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_graphics_clearRect",
   "params" : [
-    ["x1","JsVar","The left X coordinate OR an object containing `{x,y,x2,y2}` or `{x,y,w,h}`"],
-    ["y1","int32","The top Y coordinate"],
-    ["x2","int32","The right X coordinate"],
-    ["y2","int32","The bottom Y coordinate"]
+    ["x1","JsVar","The left X coordinate OR an object containing `{x,y,x2,y2}` or `{x,y,w,h}`."],
+    ["y1","int32","The top Y coordinate."],
+    ["x2","int32","The right X coordinate."],
+    ["y2","int32","The bottom Y coordinate."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Fill a rectangular area in the Background Color
@@ -1026,12 +1021,12 @@ JsVar *jswrap_graphics_clearRect(JsVar *parent, JsVar *opt, int y1, int x2, int 
   "name" : "drawRect",
   "generate" : "jswrap_graphics_drawRect",
   "params" : [
-    ["x1","JsVar","The left X coordinate OR an object containing `{x,y,x2,y2}` or `{x,y,w,h}`"],
-    ["y1","int32","The top Y coordinate"],
-    ["x2","int32","The right X coordinate"],
-    ["y2","int32","The bottom Y coordinate"]
+    ["x1","JsVar","The left X coordinate OR an object containing `{x,y,x2,y2}` or `{x,y,w,h}`."],
+    ["y1","int32","The top Y coordinate."],
+    ["x2","int32","The right X coordinate."],
+    ["y2","int32","The bottom Y coordinate."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Draw an unfilled rectangle 1px wide in the Foreground Color
@@ -1052,11 +1047,11 @@ JsVar *jswrap_graphics_drawRect(JsVar *parent, JsVar *opt, int y1, int x2, int y
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_graphics_fillCircle",
   "params" : [
-    ["x","int32","The X axis"],
-    ["y","int32","The Y axis"],
-    ["rad","int32","The circle radius"]
+    ["x","int32","The X axis."],
+    ["y","int32","The Y axis."],
+    ["rad","int32","The circle radius."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Draw a filled circle in the Foreground Color
@@ -1072,11 +1067,11 @@ Draw a filled circle in the Foreground Color
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_graphics_drawCircle",
   "params" : [
-    ["x","int32","The X axis"],
-    ["y","int32","The Y axis"],
-    ["rad","int32","The circle radius"]
+    ["x","int32","The X axis."],
+    ["y","int32","The Y axis."],
+    ["rad","int32","The circle radius."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Draw an unfilled circle 1px wide in the Foreground Color
@@ -1092,11 +1087,11 @@ JsVar *jswrap_graphics_drawCircle(JsVar *parent, int x, int y, int rad) {
   "ifdef" : "GRAPHICS_ANTIALIAS",
   "generate" : "jswrap_graphics_drawCircleAA",
   "params" : [
-    ["x","int32","Centre x-coordinate"],
-    ["y","int32","Centre y-coordinate"],
-    ["r","int32","Radius"]
+    ["x","int32","Centre x-coordinate."],
+    ["y","int32","Centre y-coordinate."],
+    ["r","int32","Radius."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Draw a circle, centred at (x,y) with radius r in the current foreground color
@@ -1118,12 +1113,12 @@ JsVar *jswrap_graphics_drawCircleAA(JsVar *parent, int x, int y, int r) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_graphics_fillEllipse",
   "params" : [
-    ["x1","int32","The left X coordinate"],
-    ["y1","int32","The top Y coordinate"],
-    ["x2","int32","The right X coordinate"],
-    ["y2","int32","The bottom Y coordinate"]
+    ["x1","int32","The left X coordinate."],
+    ["y1","int32","The top Y coordinate."],
+    ["x2","int32","The right X coordinate."],
+    ["y2","int32","The bottom Y coordinate."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Draw a filled ellipse in the Foreground Color
@@ -1142,12 +1137,12 @@ JsVar *jswrap_graphics_fillEllipse(JsVar *parent, int x, int y, int x2, int y2) 
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_graphics_drawEllipse",
   "params" : [
-    ["x1","int32","The left X coordinate"],
-    ["y1","int32","The top Y coordinate"],
-    ["x2","int32","The right X coordinate"],
-    ["y2","int32","The bottom Y coordinate"]
+    ["x1","int32","The left X coordinate."],
+    ["y1","int32","The top Y coordinate."],
+    ["x2","int32","The right X coordinate."],
+    ["y2","int32","The bottom Y coordinate."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Draw an ellipse in the Foreground Color
@@ -1165,10 +1160,10 @@ JsVar *jswrap_graphics_drawEllipse(JsVar *parent, int x, int y, int x2, int y2) 
   "name" : "getPixel",
   "generate" : "jswrap_graphics_getPixel",
   "params" : [
-    ["x","int32","The left"],
-    ["y","int32","The top"]
+    ["x","int32","The left."],
+    ["y","int32","The top."]
   ],
-  "return" : ["int32","The color"]
+  "return" : ["int32","The color."]
 }
 Get a pixel's color
 */
@@ -1183,11 +1178,11 @@ int jswrap_graphics_getPixel(JsVar *parent, int x, int y) {
   "name" : "setPixel",
   "generate" : "jswrap_graphics_setPixel",
   "params" : [
-    ["x","int32","The left"],
-    ["y","int32","The top"],
-    ["col","JsVar","The color (if `undefined`, the foreground color is useD)"]
+    ["x","int32","The left."],
+    ["y","int32","The top."],
+    ["col","JsVar","The color (if `undefined`, the foreground color is useD)."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Set a pixel's color
@@ -1211,11 +1206,11 @@ JsVar *jswrap_graphics_setPixel(JsVar *parent, int x, int y, JsVar *color) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_graphics_toColor",
   "params" : [
-    ["r","JsVar","Red (between 0 and 1) **OR** an integer representing the color in the current bit depth and color order **OR** a hexidecimal color string of the form `'#rrggbb' or `'#rgb'`"],
-    ["g","JsVar","Green (between 0 and 1)"],
-    ["b","JsVar","Blue (between 0 and 1)"]
+    ["r","JsVar","Red (between 0 and 1) **OR** an integer representing the color in the current bit depth and color order **OR** a hexidecimal color string of the form `'#rrggbb' or `'#rgb'`."],
+    ["g","JsVar","Green (between 0 and 1)."],
+    ["b","JsVar","Blue (between 0 and 1)."]
   ],
-  "return" : ["int","The color index represented by the arguments"]
+  "return" : ["int","The color index represented by the arguments."]
 }
 Work out the color value to be used in the current bit depth based on the arguments.
 
@@ -1373,11 +1368,11 @@ unsigned int jswrap_graphics_toColor(JsVar *parent, JsVar *r, JsVar *g, JsVar *b
   "ifdef" : "GRAPHICS_ANTIALIAS",
   "generate" : "jswrap_graphics_blendColor",
   "params" : [
-    ["col_a","JsVar","Color to blend from (either a single integer color value, or a string)"],
-    ["col_b","JsVar","Color to blend to (either a single integer color value, or a string)"],
-    ["amt","JsVar","The amount to blend. 0=col_a, 1=col_b, 0.5=halfway between (and so on)"]
+    ["col_a","JsVar","Color to blend from (either a single integer color value, or a string)."],
+    ["col_b","JsVar","Color to blend to (either a single integer color value, or a string)."],
+    ["amt","JsVar","The amount to blend. 0=col_a, 1=col_b, 0.5=halfway between (and so on)."]
   ],
-  "return" : ["int","The color index represented by the blended colors"]
+  "return" : ["int","The color index represented by the blended colors."]
 }
 Blend between two colors, and return the result.
 
@@ -1404,11 +1399,11 @@ unsigned int jswrap_graphics_blendColor(JsVar *parent, JsVar *ca, JsVar *cb, JsV
   "name" : "setColor",
   "generate_full" : "jswrap_graphics_setColorX(parent, r,g,b, true)",
   "params" : [
-    ["r","JsVar","Red (between 0 and 1) **OR** an integer representing the color in the current bit depth and color order **OR** a hexidecimal color string of the form `'#012345'`"],
-    ["g","JsVar","[optional] Green (between 0 and 1)"],
-    ["b","JsVar","[optional] Blue (between 0 and 1)"]
+    ["r","JsVar","Red (between 0 and 1) **OR** an integer representing the color in the current bit depth and color order **OR** a hexidecimal color string of the form `'#012345'`."],
+    ["g","JsVar","[optional] Green (between 0 and 1)."],
+    ["b","JsVar","[optional] Blue (between 0 and 1)."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Set the color to use for subsequent drawing operations.
@@ -1435,11 +1430,11 @@ be a floating point value, and `g` and `b` are ignored.
   "name" : "setBgColor",
   "generate_full" : "jswrap_graphics_setColorX(parent, r,g,b, false)",
   "params" : [
-    ["r","JsVar","Red (between 0 and 1) **OR** an integer representing the color in the current bit depth and color order **OR** a hexidecimal color string of the form `'#012345'`"],
-    ["g","JsVar","Green (between 0 and 1)"],
-    ["b","JsVar","Blue (between 0 and 1)"]
+    ["r","JsVar","Red (between 0 and 1) **OR** an integer representing the color in the current bit depth and color order **OR** a hexidecimal color string of the form `'#012345'`."],
+    ["g","JsVar","Green (between 0 and 1)."],
+    ["b","JsVar","Blue (between 0 and 1)."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Set the background color to use for subsequent drawing operations.
@@ -1466,7 +1461,7 @@ JsVar *jswrap_graphics_setColorX(JsVar *parent, JsVar *r, JsVar *g, JsVar *b, bo
   "class" : "Graphics",
   "name" : "getColor",
   "generate_full" : "jswrap_graphics_getColorX(parent, true)",
-  "return" : ["int","The integer value of the colour"]
+  "return" : ["int","The integer value of the colour."]
 }
 Get the color to use for subsequent drawing operations
 */
@@ -1475,7 +1470,7 @@ Get the color to use for subsequent drawing operations
   "class" : "Graphics",
   "name" : "getBgColor",
   "generate_full" : "jswrap_graphics_getColorX(parent, false)",
-  "return" : ["int","The integer value of the colour"]
+  "return" : ["int","The integer value of the colour."]
 }
 Get the background color to use for subsequent drawing operations
 */
@@ -1492,12 +1487,12 @@ JsVarInt jswrap_graphics_getColorX(JsVar *parent, bool isForeground) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_graphics_setClipRect",
   "params" : [
-    ["x1","int","Top left X coordinate"],
-    ["y1","int","Top left Y coordinate"],
-    ["x2","int","Bottom right X coordinate"],
-    ["y2","int","Bottom right Y coordinate"]
+    ["x1","int","Top left X coordinate."],
+    ["y1","int","Top left Y coordinate."],
+    ["x2","int","Bottom right X coordinate."],
+    ["y2","int","Bottom right Y coordinate."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 This sets the 'clip rect' that subsequent drawing operations are clipped to sit
@@ -1550,7 +1545,7 @@ JsVar *jswrap_graphics_setClipRect(JsVar *parent, int x1, int y1, int x2, int y2
   "class" : "Graphics",
   "name" : "setFontBitmap",
   "generate_full" : "jswrap_graphics_setFontSizeX(parent, 1+JSGRAPHICS_FONTSIZE_4X6, false)",
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Make subsequent calls to `drawString` use the built-in 4x6 pixel bitmapped Font
@@ -1564,9 +1559,9 @@ It is recommended that you use `Graphics.setFont("4x6")` for more flexibility.
   "ifndef" : "SAVE_ON_FLASH",
   "generate_full" : "jswrap_graphics_setFontSizeX(parent, size, true)",
   "params" : [
-    ["size","int32","The height of the font, as an integer"]
+    ["size","int32","The height of the font, as an integer."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Make subsequent calls to `drawString` use a Vector Font of the given height.
@@ -1605,12 +1600,12 @@ JsVar *jswrap_graphics_setFontSizeX(JsVar *parent, int size, bool isVectorFont) 
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_graphics_setFontCustom",
   "params" : [
-    ["bitmap","JsVar","A column-first, MSB-first, 1bpp bitmap containing the font bitmap"],
-    ["firstChar","int32","The first character in the font - usually 32 (space)"],
-    ["width","JsVar","The width of each character in the font. Either an integer, or a string where each character represents the width"],
-    ["height","int32","The height as an integer (max 255). Bits 8-15 represent the scale factor (eg. `2<<8` is twice the size). Bits 16-23 represent the BPP (0,1=1 bpp, 2=2 bpp, 4=4 bpp)"]
+    ["bitmap","JsVar","A column-first, MSB-first, 1bpp bitmap containing the font bitmap."],
+    ["firstChar","int32","The first character in the font - usually 32 (space)."],
+    ["width","JsVar","The width of each character in the font. Either an integer, or a string where each character represents the width."],
+    ["height","int32","The height as an integer (max 255). Bits 8-15 represent the scale factor (eg. `2<<8` is twice the size). Bits 16-23 represent the BPP (0,1=1 bpp, 2=2 bpp, 4=4 bpp)."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Make subsequent calls to `drawString` use a Custom Font of the given height. See
@@ -1669,11 +1664,11 @@ JsVar *jswrap_graphics_setFontCustom(JsVar *parent, JsVar *bitmap, int firstChar
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_graphics_setFontAlign",
   "params" : [
-    ["x","int32","X alignment. -1=left (default), 0=center, 1=right"],
-    ["y","int32","Y alignment. -1=top (default), 0=center, 1=bottom"],
-    ["rotation","int32","Rotation of the text. 0=normal, 1=90 degrees clockwise, 2=180, 3=270"]
+    ["x","int32","X alignment. -1=left (default), 0=center, 1=right."],
+    ["y","int32","Y alignment. -1=top (default), 0=center, 1=bottom."],
+    ["rotation","int32","Rotation of the text. 0=normal, 1=90 degrees clockwise, 2=180, 3=270."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Set the alignment for subsequent calls to `drawString`
@@ -1704,10 +1699,10 @@ JsVar *jswrap_graphics_setFontAlign(JsVar *parent, int x, int y, int r) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_graphics_setFont",
   "params" : [
-    ["name","JsVar","The name of the font to use (if undefined, the standard 4x6 font will be used)"],
-    ["size","int","The size of the font (or undefined)"]
+    ["name","JsVar","The name of the font to use (if undefined, the standard 4x6 font will be used)."],
+    ["size","int","The size of the font (or undefined)."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Set the font by name. Various forms are available:
@@ -1725,7 +1720,6 @@ You can also use these forms, but they are not recommended:
 `g.getFont()` will return the current font as a String.
 
 For a list of available font names, you can use `g.getFonts()`.
-
 */
 JsVar *jswrap_graphics_setFont(JsVar *parent, JsVar *fontId, int size) {
 #ifndef SAVE_ON_FLASH
@@ -1802,7 +1796,7 @@ JsVar *jswrap_graphics_setFont(JsVar *parent, JsVar *fontId, int size) {
   "name" : "getFont",
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_graphics_getFont",
-  "return" : ["JsVar","Get the name of the current font"],
+  "return" : ["JsVar","Get the name of the current font."],
   "return_object" : "String"
 }
 Get the font by name - can be saved and used with `Graphics.setFont`.
@@ -1854,7 +1848,7 @@ JsVar *jswrap_graphics_getFont(JsVar *parent) {
   "name" : "getFonts",
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_graphics_getFonts",
-  "return" : ["JsVar","And array of font names"],
+  "return" : ["JsVar","And array of font names."],
   "return_object" : "Array"
 }
 Return an array of all fonts currently in the Graphics library.
@@ -1953,7 +1947,7 @@ static int _jswrap_graphics_getCharWidth(JsGraphics *gfx, JsGraphicsFontInfo *in
   "name" : "getFontHeight",
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_graphics_getFontHeight",
-  "return" : ["int","The height in pixels of the current font"]
+  "return" : ["int","The height in pixels of the current font."]
 }
 Return the height in pixels of the current font
 */
@@ -2039,9 +2033,9 @@ JsVarInt _jswrap_graphics_stringWidth(JsGraphics *gfx, JsVar *var, int lineStart
   "name" : "stringWidth",
   "generate" : "jswrap_graphics_stringWidth",
   "params" : [
-    ["str","JsVar","The string"]
+    ["str","JsVar","The string."]
   ],
-  "return" : ["int","The length of the string in pixels"]
+  "return" : ["int","The length of the string in pixels."]
 }
 Return the size in pixels of a string of text in the current font
 */
@@ -2056,9 +2050,9 @@ JsVarInt jswrap_graphics_stringWidth(JsVar *parent, JsVar *var) {
   "name" : "stringMetrics",
   "generate" : "jswrap_graphics_stringMetrics",
   "params" : [
-    ["str","JsVar","The string"]
+    ["str","JsVar","The string."]
   ],
-  "return" : ["JsVar","An object containing `{width,height}` of the string"]
+  "return" : ["JsVar","An object containing `{width,height}` of the string."]
 }
 Return the width and height in pixels of a string of text in the current font
 */
@@ -2080,10 +2074,10 @@ JsVar* jswrap_graphics_stringMetrics(JsVar *parent, JsVar *var) {
   "name" : "wrapString",
   "generate" : "jswrap_graphics_wrapString",
   "params" : [
-    ["str","JsVar","The string"],
-    ["maxWidth","int","The width in pixels"]
+    ["str","JsVar","The string."],
+    ["maxWidth","int","The width in pixels."]
   ],
-  "return" : ["JsVar","An array of lines that are all less than `maxWidth`"]
+  "return" : ["JsVar","An array of lines that are all less than `maxWidth`."]
 }
 Wrap a string to the given pixel width using the current font, and return the
 lines as an array.
@@ -2186,12 +2180,12 @@ JsVar *jswrap_graphics_wrapString(JsVar *parent, JsVar *str, int maxWidth) {
   "name" : "drawString",
   "generate" : "jswrap_graphics_drawString",
   "params" : [
-    ["str","JsVar","The string"],
-    ["x","int32","The X position of the leftmost pixel"],
-    ["y","int32","The Y position of the topmost pixel"],
+    ["str","JsVar","The string."],
+    ["x","int32","The X position of the leftmost pixel."],
+    ["y","int32","The Y position of the topmost pixel."],
     ["solid","bool","For bitmap fonts, should empty pixels be filled with the background color?"]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Draw a string of text in the current font.
@@ -2412,12 +2406,12 @@ void jswrap_graphics_drawCString(JsGraphics *gfx, int x, int y, char *str) {
   "name" : "drawLine",
   "generate" : "jswrap_graphics_drawLine",
   "params" : [
-    ["x1","int32","The left"],
-    ["y1","int32","The top"],
-    ["x2","int32","The right"],
-    ["y2","int32","The bottom"]
+    ["x1","int32","The left."],
+    ["y1","int32","The top."],
+    ["x2","int32","The right."],
+    ["y2","int32","The bottom."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Draw a line between x1,y1 and x2,y2 in the current foreground color
@@ -2436,12 +2430,12 @@ JsVar *jswrap_graphics_drawLine(JsVar *parent, int x1, int y1, int x2, int y2) {
   "ifdef" : "GRAPHICS_ANTIALIAS",
   "generate" : "jswrap_graphics_drawLineAA",
   "params" : [
-    ["x1","float","The left"],
-    ["y1","float","The top"],
-    ["x2","float","The right"],
-    ["y2","float","The bottom"]
+    ["x1","float","The left."],
+    ["y1","float","The top."],
+    ["x2","float","The right."],
+    ["y2","float","The bottom."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Draw a line between x1,y1 and x2,y2 in the current foreground color
@@ -2466,10 +2460,10 @@ JsVar *jswrap_graphics_drawLineAA(JsVar *parent, double x1, double y1, double x2
   "name" : "lineTo",
   "generate" : "jswrap_graphics_lineTo",
   "params" : [
-    ["x","int32","X value"],
-    ["y","int32","Y value"]
+    ["x","int32","X value."],
+    ["y","int32","Y value."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Draw a line from the last position of lineTo or moveTo to this position
@@ -2489,10 +2483,10 @@ JsVar *jswrap_graphics_lineTo(JsVar *parent, int x, int y) {
   "name" : "moveTo",
   "generate" : "jswrap_graphics_moveTo",
   "params" : [
-    ["x","int32","X value"],
-    ["y","int32","Y value"]
+    ["x","int32","X value."],
+    ["y","int32","Y value."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Move the cursor to a position - see lineTo
@@ -2512,10 +2506,10 @@ JsVar *jswrap_graphics_moveTo(JsVar *parent, int x, int y) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate_full" : "jswrap_graphics_drawPoly_X(parent, poly, closed, false)",
   "params" : [
-    ["poly","JsVar","An array of vertices, of the form ```[x1,y1,x2,y2,x3,y3,etc]```"],
-    ["closed","bool","Draw another line between the last element of the array and the first"]
+    ["poly","JsVar","An array of vertices, of the form ```[x1,y1,x2,y2,x3,y3,etc]```."],
+    ["closed","bool","Draw another line between the last element of the array and the first."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Draw a polyline (lines between each of the points in `poly`) in the current
@@ -2530,10 +2524,10 @@ foreground color
   "ifdef" : "GRAPHICS_ANTIALIAS",
   "generate_full" : "jswrap_graphics_drawPoly_X(parent, poly, closed, true)",
   "params" : [
-    ["poly","JsVar","An array of vertices, of the form ```[x1,y1,x2,y2,x3,y3,etc]```"],
-    ["closed","bool","Draw another line between the last element of the array and the first"]
+    ["poly","JsVar","An array of vertices, of the form ```[x1,y1,x2,y2,x3,y3,etc]```."],
+    ["closed","bool","Draw another line between the last element of the array and the first."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Draw an **antialiased** polyline (lines between each of the points in `poly`) in
@@ -2598,9 +2592,9 @@ JsVar *jswrap_graphics_drawPoly_X(JsVar *parent, JsVar *poly, bool closed, bool 
   "ifndef" : "SAVE_ON_FLASH",
   "generate_full" : "jswrap_graphics_fillPoly_X(parent, poly, false);",
   "params" : [
-    ["poly","JsVar","An array of vertices, of the form ```[x1,y1,x2,y2,x3,y3,etc]```"]
+    ["poly","JsVar","An array of vertices, of the form ```[x1,y1,x2,y2,x3,y3,etc]```."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Draw a filled polygon in the current foreground color.
@@ -2629,9 +2623,9 @@ perfectly without overdraw - but this will not fill the same pixels as
   "ifdef" : "GRAPHICS_ANTIALIAS",
   "generate_full" : "jswrap_graphics_fillPoly_X(parent, poly, true);",
   "params" : [
-    ["poly","JsVar","An array of vertices, of the form ```[x1,y1,x2,y2,x3,y3,etc]```"]
+    ["poly","JsVar","An array of vertices, of the form ```[x1,y1,x2,y2,x3,y3,etc]```."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Draw a filled polygon in the current foreground color.
@@ -2695,10 +2689,10 @@ JsVar *jswrap_graphics_fillPoly_X(JsVar *parent, JsVar *poly, bool antiAlias) {
   "name" : "setRotation",
   "generate" : "jswrap_graphics_setRotation",
   "params" : [
-    ["rotation","int32","The clockwise rotation. 0 for no rotation, 1 for 90 degrees, 2 for 180, 3 for 270"],
-    ["reflect","bool","Whether to reflect the image"]
+    ["rotation","int32","The clockwise rotation. 0 for no rotation, 1 for 90 degrees, 2 for 180, 3 for 270."],
+    ["reflect","bool","Whether to reflect the image."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Set the current rotation of the graphics device.
@@ -2740,9 +2734,9 @@ JsVar *jswrap_graphics_setRotation(JsVar *parent, int rotation, bool reflect) {
   "name" : "imageMetrics",
   "generate" : "jswrap_graphics_imageMetrics",
   "params" : [
-    ["str","JsVar","The string"]
+    ["str","JsVar","The string."]
   ],
-  "return" : ["JsVar","An object containing `{width,height,bpp,transparent}` for the image"]
+  "return" : ["JsVar","An object containing `{width,height,bpp,transparent}` for the image."]
 }
 Return the width and height in pixels of an image (either Graphics, Image
 Object, Image String or ArrayBuffer). Returns `undefined` if image couldn't be
@@ -2777,12 +2771,12 @@ JsVar *jswrap_graphics_imageMetrics(JsVar *parent, JsVar *var) {
   "name" : "drawImage",
   "generate" : "jswrap_graphics_drawImage",
   "params" : [
-    ["image","JsVar","An image to draw, either a String or an Object (see below)"],
-    ["x","int32","The X offset to draw the image"],
-    ["y","int32","The Y offset to draw the image"],
-    ["options","JsVar","options for scaling,rotation,etc (see below)"]
+    ["image","JsVar","An image to draw, either a String or an Object (see below)."],
+    ["x","int32","The X offset to draw the image."],
+    ["y","int32","The Y offset to draw the image."],
+    ["options","JsVar","options for scaling,rotation,etc (see below)."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Image can be:
@@ -3005,10 +2999,10 @@ JsVar *jswrap_graphics_drawImage(JsVar *parent, JsVar *image, int xPos, int yPos
   "#if" : "defined(BANGLEJS) || defined(LINUX)",
   "generate" : "jswrap_graphics_drawImages",
   "params" : [
-    ["layers","JsVar","An array of objects {x,y,image,scale,rotate,center} (up to 3)"],
-    ["options","JsVar","options for rendering - see below"]
+    ["layers","JsVar","An array of objects {x,y,image,scale,rotate,center} (up to 3)."],
+    ["options","JsVar","options for rendering - see below."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Draws multiple images *at once* - which avoids flicker on unbuffered systems
@@ -3138,9 +3132,9 @@ JsVar *jswrap_graphics_drawImages(JsVar *parent, JsVar *layersVar, JsVar *option
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_graphics_asImage",
   "params" : [
-    ["type","JsVar","The type of image to return. Either `object`/undefined to return an image object, or `string` to return an image string"]
+    ["type","JsVar","The type of image to return. Either `object`/undefined to return an image object, or `string` to return an image string."]
   ],
-  "return" : ["JsVar","An Image that can be used with `Graphics.drawImage`"]
+  "return" : ["JsVar","An Image that can be used with `Graphics.drawImage`."]
 }
 Return this Graphics object as an Image that can be used with
 `Graphics.drawImage`. Check out [the Graphics reference
@@ -3246,9 +3240,9 @@ JsVar *jswrap_graphics_asImage(JsVar *parent, JsVar *imgType) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_graphics_getModified",
   "params" : [
-    ["reset","bool","Whether to reset the modified area or not"]
+    ["reset","bool","Whether to reset the modified area or not."]
   ],
-  "return" : ["JsVar","An object {x1,y1,x2,y2} containing the modified area, or undefined if not modified"]
+  "return" : ["JsVar","An object {x1,y1,x2,y2} containing the modified area, or undefined if not modified."]
 }
 Return the area of the Graphics canvas that has been modified, and optionally
 clear the modified area to 0.
@@ -3289,10 +3283,10 @@ JsVar *jswrap_graphics_getModified(JsVar *parent, bool reset) {
   "#if" : "!defined(SAVE_ON_FLASH) && !defined(ESPRUINOBOARD)",
   "generate" : "jswrap_graphics_scroll",
   "params" : [
-    ["x","int32","X direction. >0 = to right"],
-    ["y","int32","Y direction. >0 = down"]
+    ["x","int32","X direction. >0 = to right."],
+    ["y","int32","Y direction. >0 = down."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Scroll the contents of this graphics in a certain direction. The remaining area
@@ -3316,9 +3310,9 @@ JsVar *jswrap_graphics_scroll(JsVar *parent, int xdir, int ydir) {
   "#if" : "!defined(SAVE_ON_FLASH) && !defined(ESPRUINOBOARD)",
   "generate" : "jswrap_graphics_blit",
   "params" : [
-    ["options","JsVar","options - see below"]
+    ["options","JsVar","options - see below."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Blit one area of the screen (x1,y1 w,h) to another (x2,y2 w,h)
@@ -3401,7 +3395,7 @@ JsVar *jswrap_graphics_blit(JsVar *parent, JsVar *options) {
   "name" : "asBMP",
   "#if" : "!defined(SAVE_ON_FLASH) && !defined(ESPRUINOBOARD)",
   "generate" : "jswrap_graphics_asBMP",
-  "return" : ["JsVar","A String representing the Graphics as a Windows BMP file (or 'undefined' if not possible)"]
+  "return" : ["JsVar","A String representing the Graphics as a Windows BMP file (or 'undefined' if not possible)."]
 }
 Create a Windows BMP file from this Graphics instance, and return it as a
 String.
@@ -3519,7 +3513,7 @@ JsVar *jswrap_graphics_asBMP(JsVar *parent) {
   "name" : "asURL",
   "#if" : "!defined(SAVE_ON_FLASH) && !defined(ESPRUINOBOARD)",
   "generate" : "jswrap_graphics_asURL",
-  "return" : ["JsVar","A String representing the Graphics as a URL (or 'undefined' if not possible)"]
+  "return" : ["JsVar","A String representing the Graphics as a URL (or 'undefined' if not possible)."]
 }
 Create a URL of the form `data:image/bmp;base64,...` that can be pasted into the
 browser.
@@ -3571,12 +3565,12 @@ void jswrap_graphics_dump(JsVar *parent) {
   "#if" : "!defined(SAVE_ON_FLASH) && !defined(ESPRUINOBOARD)",
   "generate" : "jswrap_graphics_quadraticBezier",
   "params" : [
-    ["arr","JsVar","An array of three vertices, six enties in form of ```[x0,y0,x1,y1,x2,y2]```"],
-    ["options","JsVar","number of points to calulate"]
+    ["arr","JsVar","An array of three vertices, six enties in form of ```[x0,y0,x1,y1,x2,y2]```."],
+    ["options","JsVar","number of points to calulate."]
   ],
-  "return" : ["JsVar", "Array with calculated points" ]
+  "return" : ["JsVar","Array with calculated points."]
 }
- Calculate the square area under a Bezier curve.
+Calculate the square area under a Bezier curve.
 
  x0,y0: start point x1,y1: control point y2,y2: end point
 
@@ -3641,10 +3635,10 @@ JsVar *jswrap_graphics_quadraticBezier( JsVar *parent, JsVar *arr, JsVar *option
   "#if" : "!defined(SAVE_ON_FLASH) && !defined(ESPRUINOBOARD)",
   "generate" : "jswrap_graphics_transformVertices",
   "params" : [
-    ["verts","JsVar","An array of vertices, of the form ```[x1,y1,x2,y2,x3,y3,etc]```"],
-    ["transformation","JsVar","The transformation to apply, either an Object or an Array (see below)"]
+    ["verts","JsVar","An array of vertices, of the form ```[x1,y1,x2,y2,x3,y3,etc]```."],
+    ["transformation","JsVar","The transformation to apply, either an Object or an Array (see below)."]
   ],
-  "return" : ["JsVar", "Array of transformed vertices" ]
+  "return" : ["JsVar","Array of transformed vertices."]
 }
 Transformation can be:
 
@@ -3717,7 +3711,7 @@ JsVar *jswrap_graphics_transformVertices(JsVar *parent, JsVar *verts, JsVar *tra
   "name" : "theme",
   "#if" : "!defined(SAVE_ON_FLASH) && !defined(ESPRUINOBOARD)",
   "generate" : "jswrap_graphics_theme",
-  "return" : ["JsVar","An object containing the current 'theme' (see below)"]
+  "return" : ["JsVar","An object containing the current 'theme' (see below)."]
 }
 Returns an object of the form:
 
@@ -3766,9 +3760,9 @@ JsVar *jswrap_graphics_theme(JsVar *parent) {
   "#if" : "!defined(SAVE_ON_FLASH) && !defined(ESPRUINOBOARD)",
   "generate" : "jswrap_graphics_setTheme",
   "params" : [
-    ["theme","JsVar","An object of the form returned by `Graphics.theme`"]
+    ["theme","JsVar","An object of the form returned by `Graphics.theme`."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Set the global colour scheme. On Bangle.js, this is reloaded from
@@ -3780,7 +3774,6 @@ change the background to red using:
 ```
 g.setTheme({bg:"#f00"});
 ```
-
 */
 JsVar *jswrap_graphics_setTheme(JsVar *parent, JsVar *theme) {
 #ifdef GRAPHICS_THEME

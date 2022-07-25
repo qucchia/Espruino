@@ -24,7 +24,7 @@
   "type" : "variable",
   "name" : "arguments",
   "generate" : "jswrap_arguments",
-  "return" : ["JsVar","An array containing all the arguments given to the function"]
+  "return" : ["JsVar","An array containing all the arguments given to the function."]
 }
 A variable containing the arguments given to the function:
 
@@ -42,8 +42,7 @@ as in normal JavaScript. The length of the arguments array will never be less
 than the number of arguments specified in the function declaration:
 `(function(a){ return arguments.length; })() == 1`. Normal JavaScript
 interpreters would return `0` in the above case.
-
- */
+*/
 extern JsExecInfo execInfo;
 JsVar *jswrap_arguments() {
   JsVar *scope = 0;
@@ -76,12 +75,12 @@ JsVar *jswrap_arguments() {
   "name" : "Function",
   "generate" : "jswrap_function_constructor",
   "params" : [
-    ["args","JsVarArray","Zero or more arguments (as strings), followed by a string representing the code to run"]
+    ["args","JsVarArray","Zero or more arguments (as strings), followed by a string representing the code to run."]
   ],
-  "return" : ["JsVar","A Number object"]
+  "return" : ["JsVar","A Number object."]
 }
 Creates a function
- */
+*/
 JsVar *jswrap_function_constructor(JsVar *args) {
   JsVar *fn = jsvNewWithFlags(JSV_FUNCTION);
   if (!fn) return 0;
@@ -122,10 +121,10 @@ JsVar *jswrap_function_constructor(JsVar *args) {
   "params" : [
     ["code","JsVar",""]
   ],
-  "return" : ["JsVar","The result of evaluating the string"]
+  "return" : ["JsVar","The result of evaluating the string."]
 }
 Evaluate a string containing JavaScript code
- */
+*/
 JsVar *jswrap_eval(JsVar *v) {
   if (!v) return 0;
   JsVar *s = jsvAsString(v); // get as a string
@@ -140,12 +139,12 @@ JsVar *jswrap_eval(JsVar *v) {
   "generate" : "jswrap_parseInt",
   "params" : [
     ["string","JsVar",""],
-    ["radix","JsVar","The Radix of the string (optional)"]
+    ["radix","JsVar","The Radix of the string (optional)."]
   ],
-  "return" : ["JsVar","The integer value of the string (or NaN)"]
+  "return" : ["JsVar","The integer value of the string (or NaN)."]
 }
 Convert a string representing a number into an integer
- */
+*/
 JsVar *jswrap_parseInt(JsVar *v, JsVar *radixVar) {
   int radix = 0;
   if (jsvIsNumeric(radixVar))
@@ -187,10 +186,10 @@ JsVar *jswrap_parseInt(JsVar *v, JsVar *radixVar) {
   "params" : [
     ["string","JsVar",""]
   ],
-  "return" : ["float","The value of the string"]
+  "return" : ["float","The value of the string."]
 }
 Convert a string representing a number into an float
- */
+*/
 JsVarFloat jswrap_parseFloat(JsVar *v) {
   char buffer[JS_NUMBER_BUFFER_SIZE];
   jsvGetString(v, buffer, JS_NUMBER_BUFFER_SIZE);
@@ -219,7 +218,7 @@ JsVarFloat jswrap_parseFloat(JsVar *v) {
 }
 Is the parameter a finite num,ber or not? If needed, the parameter is first
 converted to a number.
- */
+*/
 bool jswrap_isFinite(JsVar *v) {
   JsVarFloat f = jsvGetFloat(v);
   return !isnan(f) && f!=INFINITY && f!=-INFINITY;
@@ -235,7 +234,7 @@ bool jswrap_isFinite(JsVar *v) {
   "return" : ["bool","True is the value is NaN, false if not."]
 }
 Whether the x is NaN (Not a Number) or not
- */
+*/
 bool jswrap_isNaN(JsVar *v) {
   if (jsvIsUndefined(v) ||
       jsvIsObject(v) ||
@@ -284,12 +283,12 @@ NO_INLINE static int jswrap_atob_decode(int c) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_btoa",
   "params" : [
-    ["binaryData","JsVar","A string of data to encode"]
+    ["binaryData","JsVar","A string of data to encode."]
   ],
-  "return" : ["JsVar","A base64 encoded string"]
+  "return" : ["JsVar","A base64 encoded string."]
 }
 Encode the supplied string (or array) into a base64 string
- */
+*/
 JsVar *jswrap_btoa(JsVar *binaryData) {
   if (!jsvIsIterable(binaryData)) {
     jsExceptionHere(JSET_ERROR, "Expecting a string or array, got %t", binaryData);
@@ -342,12 +341,12 @@ JsVar *jswrap_btoa(JsVar *binaryData) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_atob",
   "params" : [
-    ["base64Data","JsVar","A string of base64 data to decode"]
+    ["base64Data","JsVar","A string of base64 data to decode."]
   ],
-  "return" : ["JsVar","A string containing the decoded data"]
+  "return" : ["JsVar","A string containing the decoded data."]
 }
 Decode the supplied base64 string into a normal string
- */
+*/
 JsVar *jswrap_atob(JsVar *base64Data) {
   if (!jsvIsString(base64Data)) {
     jsExceptionHere(JSET_ERROR, "Expecting a string, got %t", base64Data);
@@ -398,13 +397,13 @@ JsVar *jswrap_atob(JsVar *base64Data) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_encodeURIComponent",
   "params" : [
-    ["str","JsVar","A string to encode as a URI"]
+    ["str","JsVar","A string to encode as a URI."]
   ],
-  "return" : ["JsVar","A string containing the encoded data"]
+  "return" : ["JsVar","A string containing the encoded data."]
 }
 Convert a string with any character not alphanumeric or `- _ . ! ~ * ' ( )`
 converted to the form `%XY` where `XY` is its hexadecimal representation
- */
+*/
 JsVar *jswrap_encodeURIComponent(JsVar *arg) {
   JsVar *v = jsvAsString(arg);
   if (!v) return 0;
@@ -447,13 +446,13 @@ JsVar *jswrap_encodeURIComponent(JsVar *arg) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_decodeURIComponent",
   "params" : [
-    ["str","JsVar","A string to decode from a URI"]
+    ["str","JsVar","A string to decode from a URI."]
   ],
-  "return" : ["JsVar","A string containing the decoded data"]
+  "return" : ["JsVar","A string containing the decoded data."]
 }
 Convert any groups of characters of the form '%ZZ', into characters with hex
 code '0xZZ'
- */
+*/
 JsVar *jswrap_decodeURIComponent(JsVar *arg) {
   JsVar *v = jsvAsString(arg);
   if (!v) return 0;

@@ -43,7 +43,6 @@ const int STORAGEFILE_CHUNKSIZE =
   "type" : "library",
   "class" : "Storage"
 }
-
 This module allows you to read and write part of the nonvolatile flash memory of
 your device using a filesystem-like API.
 
@@ -75,7 +74,7 @@ characters. However in 2v04 and earlier the max length is 8.
 Erase the flash storage area. This will remove all files created with
 `require("Storage").write(...)` as well as any code saved with `save()` or
 `E.setBootCode()`.
- */
+*/
 void jswrap_storage_eraseAll() {
   jsfEraseAll();
 }
@@ -86,14 +85,14 @@ void jswrap_storage_eraseAll() {
   "name" : "erase",
   "generate" : "jswrap_storage_erase",
   "params" : [
-    ["name","JsVar","The filename - max 28 characters (case sensitive)"]
+    ["name","JsVar","The filename - max 28 characters (case sensitive)."]
   ]
 }
 Erase a single file from the flash storage area.
 
 **Note:** This function should be used with normal files, and not `StorageFile`s
 created with `require("Storage").open(filename, ...)`
- */
+*/
 void jswrap_storage_erase(JsVar *name) {
   jsfEraseFile(jsfNameFromVar(name));
 }
@@ -104,11 +103,11 @@ void jswrap_storage_erase(JsVar *name) {
   "name" : "read",
   "generate" : "jswrap_storage_read",
   "params" : [
-    ["name","JsVar","The filename - max 28 characters (case sensitive)"],
-    ["offset","int","(optional) The offset in bytes to start from"],
-    ["length","int","(optional) The length to read in bytes (if <=0, the entire file is read)"]
+    ["name","JsVar","The filename - max 28 characters (case sensitive)."],
+    ["offset","int","(optional) The offset in bytes to start from."],
+    ["length","int","(optional) The length to read in bytes (if <=0, the entire file is read)."]
   ],
-  "return" : ["JsVar","A string of data, or `undefined` if the file is not found"]
+  "return" : ["JsVar","A string of data, or `undefined` if the file is not found."]
 }
 Read a file from the flash storage area that has been written with
 `require("Storage").write(...)`.
@@ -136,10 +135,10 @@ JsVar *jswrap_storage_read(JsVar *name, int offset, int length) {
   "name" : "readJSON",
   "generate" : "jswrap_storage_readJSON",
   "params" : [
-    ["name","JsVar","The filename - max 28 characters (case sensitive)"],
-    ["noExceptions","bool","If true and the JSON is not valid, just return `undefined` - otherwise an `Exception` is thrown"]
+    ["name","JsVar","The filename - max 28 characters (case sensitive)."],
+    ["noExceptions","bool","If true and the JSON is not valid, just return `undefined` - otherwise an `Exception` is thrown."]
   ],
-  "return" : ["JsVar","An object containing parsed JSON from the file, or undefined"]
+  "return" : ["JsVar","An object containing parsed JSON from the file, or undefined."]
 }
 Read a file from the flash storage area that has been written with
 `require("Storage").write(...)`, and parse JSON in it into a JavaScript object.
@@ -169,9 +168,9 @@ JsVar *jswrap_storage_readJSON(JsVar *name, bool noExceptions) {
   "name" : "readArrayBuffer",
   "generate" : "jswrap_storage_readArrayBuffer",
   "params" : [
-    ["name","JsVar","The filename - max 28 characters (case sensitive)"]
+    ["name","JsVar","The filename - max 28 characters (case sensitive)."]
   ],
-  "return" : ["JsVar","An ArrayBuffer containing data from the file, or undefined"]
+  "return" : ["JsVar","An ArrayBuffer containing data from the file, or undefined."]
 }
 Read a file from the flash storage area that has been written with
 `require("Storage").write(...)`, and return the raw binary data as an
@@ -200,12 +199,12 @@ JsVar *jswrap_storage_readArrayBuffer(JsVar *name) {
   "name" : "write",
   "generate" : "jswrap_storage_write",
   "params" : [
-    ["name","JsVar","The filename - max 28 characters (case sensitive)"],
-    ["data","JsVar","The data to write"],
-    ["offset","int","[optional] The offset within the file to write"],
-    ["size","int","[optional] The size of the file (if a file is to be created that is bigger than the data)"]
+    ["name","JsVar","The filename - max 28 characters (case sensitive)."],
+    ["data","JsVar","The data to write."],
+    ["offset","int","[optional] The offset within the file to write."],
+    ["size","int","[optional] The size of the file (if a file is to be created that is bigger than the data)."]
   ],
-  "return" : ["bool","True on success, false on failure"]
+  "return" : ["bool","True on success, false on failure."]
 }
 Write/create a file in the flash storage area. This is nonvolatile and will not
 disappear when the device resets or power is lost.
@@ -264,10 +263,10 @@ bool jswrap_storage_write(JsVar *name, JsVar *data, JsVarInt offset, JsVarInt _s
   "name" : "writeJSON",
   "generate" : "jswrap_storage_writeJSON",
   "params" : [
-    ["name","JsVar","The filename - max 28 characters (case sensitive)"],
-    ["data","JsVar","The JSON data to write"]
+    ["name","JsVar","The filename - max 28 characters (case sensitive)."],
+    ["data","JsVar","The JSON data to write."]
   ],
-  "return" : ["bool","True on success, false on failure"]
+  "return" : ["bool","True on success, false on failure."]
 }
 Write/create a file in the flash storage area. This is nonvolatile and will not
 disappear when the device resets or power is lost.
@@ -293,10 +292,10 @@ bool jswrap_storage_writeJSON(JsVar *name, JsVar *data) {
   "name" : "list",
   "generate" : "jswrap_storage_list",
   "params" : [
-    ["regex","JsVar","(optional) If supplied, filenames are checked against this regular expression (with `String.match(regexp)`) to see if they match before being returned"],
-    ["filter","JsVar","(optional) If supplied, File Types are filtered based on this: `{sf:true}` or `{sf:false}` for whether to show StorageFile"]
+    ["regex","JsVar","(optional) If supplied, filenames are checked against this regular expression (with `String.match(regexp)`) to see if they match before being returned."],
+    ["filter","JsVar","(optional) If supplied, File Types are filtered based on this: `{sf:true}` or `{sf:false}` for whether to show StorageFile."]
   ],
-  "return" : ["JsVar","An array of filenames"]
+  "return" : ["JsVar","An array of filenames."]
 }
 List all files in the flash storage area. An array of Strings is returned.
 
@@ -316,7 +315,7 @@ require("Storage").list(undefined, {sf:false})
 
 **Note:** This will output system files (eg. saved code) as well as files that
 you may have written.
- */
+*/
 JsVar *jswrap_storage_list(JsVar *regex, JsVar *filter) {
   JsfFileFlags containing = 0;
   JsfFileFlags notContaining = 0;
@@ -339,9 +338,9 @@ JsVar *jswrap_storage_list(JsVar *regex, JsVar *filter) {
   "name" : "hash",
   "generate" : "jswrap_storage_hash",
   "params" : [
-    ["regex","JsVar","(optional) If supplied, filenames are checked against this regular expression (with `String.match(regexp)`) to see if they match before being hashed"]
+    ["regex","JsVar","(optional) If supplied, filenames are checked against this regular expression (with `String.match(regexp)`) to see if they match before being hashed."]
   ],
-  "return" : ["int","A hash of the files matching"]
+  "return" : ["int","A hash of the files matching."]
 }
 List all files in the flash storage area matching the specfied regex (ignores
 StorageFiles), and then hash their filenames *and* file locations.
@@ -360,7 +359,7 @@ require("Storage").hash(/\.boot\.js$/)
 **Note:** This function is used by Bangle.js as a way to cache files. For
 instance the bootloader will add all `.boot.js` files together into a single
 `.boot0` file, but it needs to know quickly whether anything has changed.
- */
+*/
 JsVarInt jswrap_storage_hash(JsVar *regex) {
   return jsfHashFiles(regex, 0, JSFF_STORAGEFILE);
 }
@@ -385,7 +384,7 @@ that memory (eg. functions that have their code stored in flash) then they may
 become garbled when compaction happens. To avoid this, call `eraseFiles` before
 uploading data that you intend to reference to ensure that uploaded files are
 right at the start of flash and cannot be compacted further.
- */
+*/
 void jswrap_storage_compact() {
   jsfCompact();
 }
@@ -399,7 +398,7 @@ void jswrap_storage_compact() {
 }
 This writes information about all blocks in flash memory to the console - and is
 only useful for debugging flash storage.
- */
+*/
 void jswrap_storage_debug() {
   jsfDebugFiles();
 }
@@ -410,12 +409,12 @@ void jswrap_storage_debug() {
   "class" : "Storage",
   "name" : "getFree",
   "generate" : "jswrap_storage_getFree",
-  "return" : ["int","The amount of free bytes"]
+  "return" : ["int","The amount of free bytes."]
 }
 Return the amount of free bytes available in Storage. Due to fragmentation there
 may be more bytes available, but this represents the maximum size of file that
 can be written.
- */
+*/
 int jswrap_storage_getFree() {
   return (int)jsfGetStorageStats(0,true).free;
 }
@@ -426,7 +425,7 @@ int jswrap_storage_getFree() {
   "class" : "Storage",
   "name" : "getStats",
   "generate" : "jswrap_storage_getStats",
-  "return" : ["JsVar","An object containing info about the current Storage system"]
+  "return" : ["JsVar","An object containing info about the current Storage system."]
 }
 Returns:
 
@@ -440,7 +439,7 @@ Returns:
   trashCount // How many trash files do we have?
 }
 ```
- */
+*/
 JsVar *jswrap_storage_getStats() {
   JsVar *o = jsvNewObject();
   if (!o) return NULL;
@@ -463,7 +462,7 @@ JsVar *jswrap_storage_getStats() {
 }
 Writes a lookup table for files into Bangle.js's storage. This allows any file
 stored up to that point to be accessed quickly.
- */
+*/
 void jswrap_storage_optimise() {
 #ifdef ESPR_STORAGE_FILENAME_TABLE
   jsfCreateFileTable();
@@ -477,10 +476,10 @@ void jswrap_storage_optimise() {
   "name" : "open",
   "generate" : "jswrap_storage_open",
   "params" : [
-    ["name","JsVar","The filename - max **27** characters (case sensitive)"],
-    ["mode","JsVar","The open mode - must be either `'r'` for read,`'w'` for write , or `'a'` for append"]
+    ["name","JsVar","The filename - max **27** characters (case sensitive)."],
+    ["mode","JsVar","The open mode - must be either `'r'` for read,`'w'` for write , or `'a'` for append."]
   ],
-  "return" : ["JsVar","An object containing {read,write,erase}"],
+  "return" : ["JsVar","An object containing {read,write,erase}."],
   "return_object" : "StorageFile"
 }
 Open a file in the Storage area. This can be used for appending data
@@ -489,7 +488,6 @@ Open a file in the Storage area. This can be used for appending data
 Please see `StorageFile` for more information (and examples).
 
 **Note:** These files write through immediately - they do not need closing.
-
 */
 JsVar *jswrap_storage_open(JsVar *name, JsVar *modeVar) {
   char mode = 0;
@@ -578,7 +576,6 @@ JsVar *jswrap_storage_open(JsVar *name, JsVar *modeVar) {
   "class" : "StorageFile",
   "ifndef" : "SAVE_ON_FLASH"
 }
-
 These objects are created from `require("Storage").open` and allow Storage items
 to be read/written.
 
@@ -709,9 +706,9 @@ JsVar *jswrap_storagefile_read_internal(JsVar *f, int len) {
   "name" : "read",
   "generate" : "jswrap_storagefile_read",
   "params" : [
-    ["len","int","How many bytes to read"]
+    ["len","int","How many bytes to read."]
   ],
-  "return" : ["JsVar","A String, or undefined "],
+  "return" : ["JsVar","A String, or undefined ."],
   "return_object" : "String"
 }
 Read 'len' bytes of data from the file, and return a String containing those
@@ -730,7 +727,7 @@ JsVar *jswrap_storagefile_read(JsVar *f, int len) {
   "class" : "StorageFile",
   "name" : "readLine",
   "generate" : "jswrap_storagefile_readLine",
-  "return" : ["JsVar","A line of data"],
+  "return" : ["JsVar","A line of data."],
   "return_object" : "String"
 }
 Read a line of data from the file (up to and including `"\n"`)
@@ -744,7 +741,7 @@ JsVar *jswrap_storagefile_readLine(JsVar *f) {
   "class" : "StorageFile",
   "name" : "getLength",
   "generate" : "jswrap_storagefile_getLength",
-  "return" : ["int","The current length in bytes of the file"]
+  "return" : ["int","The current length in bytes of the file."]
 }
 Return the length of the current file.
 
@@ -810,7 +807,7 @@ int jswrap_storagefile_getLength(JsVar *f) {
   "name" : "write",
   "generate" : "jswrap_storagefile_write",
   "params" : [
-    ["data","JsVar","The data to write. This should not include `'\\xFF'` (character code 255)"]
+    ["data","JsVar","The data to write. This should not include `'\\xFF'` (character code 255)."]
   ]
 }
 Append the given data to a file. You should not attempt to append `"\xFF"`

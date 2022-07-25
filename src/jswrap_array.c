@@ -25,13 +25,13 @@
   "type" : "class",
   "class" : "Array",
   "check" : "jsvIsArray(var)",
-  "typescript": "interface Array<T>"
+  "typescript" : "interface Array<T>"
 }
 This is the built-in JavaScript class for arrays.
 
 Arrays can be defined with ```[]```, ```new Array()```, or ```new
 Array(length)```
- */
+*/
 
 /*JSON{
   "type" : "constructor",
@@ -39,13 +39,13 @@ Array(length)```
   "name" : "Array",
   "generate" : "jswrap_array_constructor",
   "params" : [
-    ["args","JsVarArray","The length of the array OR any number of items to add to the array"]
+    ["args","JsVarArray","The length of the array OR any number of items to add to the array."]
   ],
-  "return" : ["JsVar","An Array"]
+  "return" : ["JsVar","An Array."]
 }
 Create an Array. Either give it one integer argument (>=0) which is the length
 of the array, or any number of arguments
- */
+*/
 JsVar *jswrap_array_constructor(JsVar *args) {
   assert(args);
   if (jsvGetArrayLength(args)==1) {
@@ -77,22 +77,22 @@ JsVar *jswrap_array_constructor(JsVar *args) {
   "name" : "toString",
   "generate" : "jswrap_object_toString",
   "params" : [
-    ["radix","JsVar","unused"]
+    ["radix","JsVar","unused."]
   ],
-  "return" : ["JsVar","A String representing the array"]
+  "return" : ["JsVar","A String representing the array."]
 }
 Convert the Array to a string
- */
+*/
 
 /*JSON{
   "type" : "property",
   "class" : "Array",
   "name" : "length",
   "generate" : "jswrap_object_length",
-  "return" : ["JsVar","The value of the array"]
+  "return" : ["JsVar","The value of the array."]
 }
 Find the length of the array
- */
+*/
 
 /*JSON{
   "type" : "method",
@@ -100,13 +100,13 @@ Find the length of the array
   "name" : "indexOf",
   "generate" : "jswrap_array_indexOf",
   "params" : [
-    ["value","JsVar","The value to check for"],
-    ["startIndex","int","(optional) the index to search from, or 0 if not specified"]
+    ["value","JsVar","The value to check for."],
+    ["startIndex","int","(optional) the index to search from, or 0 if not specified."]
   ],
-  "return" : ["JsVar","the index of the value in the array, or -1"]
+  "return" : ["JsVar","the index of the value in the array, or -1."]
 }
 Return the index of the value in the array, or -1
- */
+*/
 JsVar *jswrap_array_indexOf(JsVar *parent, JsVar *value, JsVarInt startIdx) {
   JsVar *idxName = jsvGetIndexOfFull(parent, value, false/*not exact*/, true/*integer indices only*/, startIdx);
   // but this is the name - we must turn it into a var
@@ -121,13 +121,13 @@ JsVar *jswrap_array_indexOf(JsVar *parent, JsVar *value, JsVarInt startIdx) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_array_includes",
   "params" : [
-    ["value","JsVar","The value to check for"],
-    ["startIndex","int","(optional) the index to search from, or 0 if not specified"]
+    ["value","JsVar","The value to check for."],
+    ["startIndex","int","(optional) the index to search from, or 0 if not specified."]
   ],
-  "return" : ["bool","`true` if the array includes the value, `false` otherwise"]
+  "return" : ["bool","`true` if the array includes the value, `false` otherwise."]
 }
 Return `true` if the array includes the value, `false` otherwise
- */
+*/
 bool jswrap_array_includes(JsVar *arr, JsVar *value, JsVarInt startIdx) {
   if (startIdx<0) startIdx+=jsvGetLength(arr);
   if (startIdx<0) startIdx=0;
@@ -161,13 +161,13 @@ bool jswrap_array_includes(JsVar *arr, JsVar *value, JsVarInt startIdx) {
   "name" : "join",
   "generate" : "jswrap_array_join",
   "params" : [
-    ["separator","JsVar","The separator"]
+    ["separator","JsVar","The separator."]
   ],
-  "return" : ["JsVar","A String representing the Joined array"]
+  "return" : ["JsVar","A String representing the Joined array."]
 }
 Join all elements of this array together into one string, using 'separator'
 between them. eg. ```[1,2,3].join(' ')=='1 2 3'```
- */
+*/
 JsVar *jswrap_array_join(JsVar *parent, JsVar *filler) {
   if (!jsvIsIterable(parent)) return 0;
   if (jsvIsUndefined(filler))
@@ -186,15 +186,15 @@ JsVar *jswrap_array_join(JsVar *parent, JsVar *filler) {
   "name" : "push",
   "generate" : "jswrap_array_push",
   "params" : [
-    ["arguments","JsVarArray","One or more arguments to add"]
+    ["arguments","JsVarArray","One or more arguments to add."]
   ],
-  "return" : ["int","The new size of the array"]
+  "return" : ["int","The new size of the array."]
 }
 Push a new value onto the end of this array'
 
 This is the opposite of `[1,2,3].unshift(0)`, which adds one or more elements to
 the beginning of the array.
- */
+*/
 JsVarInt jswrap_array_push(JsVar *parent, JsVar *args) {
   if (!jsvIsArray(parent)) return -1;
   JsVarInt len = -1;
@@ -218,13 +218,13 @@ JsVarInt jswrap_array_push(JsVar *parent, JsVar *args) {
   "class" : "Array",
   "name" : "pop",
   "generate_full" : "jsvSkipNameAndUnLock(jsvArrayPop(parent))",
-  "return" : ["JsVar","The value that is popped off"]
+  "return" : ["JsVar","The value that is popped off."]
 }
 Remove and return the value on the end of this array.
 
 This is the opposite of `[1,2,3].shift()`, which removes an element from the
 beginning of the array.
- */
+*/
 
 /// return types for _jswrap_array_iterate_with_callback
 typedef enum {
@@ -329,14 +329,14 @@ static JsVar *_jswrap_array_iterate_with_callback(
   "name" : "map",
   "generate" : "jswrap_array_map",
   "params" : [
-    ["function","JsVar","Function used to map one item to another"],
-    ["thisArg","JsVar","if specified, the function is called with 'this' set to thisArg (optional)"]
+    ["function","JsVar","Function used to map one item to another."],
+    ["thisArg","JsVar","if specified, the function is called with 'this' set to thisArg (optional)."]
   ],
-  "return" : ["JsVar","An array containing the results"]
+  "return" : ["JsVar","An array containing the results."]
 }
 Return an array which is made from the following: ```A.map(function) =
 [function(A[0]), function(A[1]), ...]```
- */
+*/
 JsVar *jswrap_array_map(JsVar *parent, JsVar *funcVar, JsVar *thisVar) {
   return _jswrap_array_iterate_with_callback("map", parent, funcVar, thisVar, RETURN_ARRAY, false, false);
 }
@@ -347,13 +347,13 @@ JsVar *jswrap_array_map(JsVar *parent, JsVar *funcVar, JsVar *thisVar) {
   "name" : "forEach",
   "generate" : "jswrap_array_forEach",
   "params" : [
-    ["function","JsVar","Function to be executed"],
-    ["thisArg","JsVar","[optional] If specified, the function is called with 'this' set to thisArg (optional)"]
+    ["function","JsVar","Function to be executed."],
+    ["thisArg","JsVar","[optional] If specified, the function is called with 'this' set to thisArg (optional)."]
   ],
-  "typescript": "forEach(callback: (item: T, index: number, array: T[]) => void, thisArg?: any): void;"
+  "typescript" : "forEach(callback: (item: T, index: number, array: T[]) => void, thisArg?: any): void;"
 }
 Executes a provided function once per array element.
- */
+*/
 void jswrap_array_forEach(JsVar *parent, JsVar *funcVar, JsVar *thisVar) {
   _jswrap_array_iterate_with_callback("forEach", parent, funcVar, thisVar, RETURN_BOOL, false, false);
 }
@@ -364,14 +364,14 @@ void jswrap_array_forEach(JsVar *parent, JsVar *funcVar, JsVar *thisVar) {
   "name" : "filter",
   "generate" : "jswrap_array_filter",
   "params" : [
-    ["function","JsVar","Function to be executed"],
-    ["thisArg","JsVar","if specified, the function is called with 'this' set to thisArg (optional)"]
+    ["function","JsVar","Function to be executed."],
+    ["thisArg","JsVar","if specified, the function is called with 'this' set to thisArg (optional)."]
   ],
-  "return" : ["JsVar","An array containing the results"]
+  "return" : ["JsVar","An array containing the results."]
 }
 Return an array which contains only those elements for which the callback
 function returns 'true'
- */
+*/
 JsVar *jswrap_array_filter(JsVar *parent, JsVar *funcVar, JsVar *thisVar) {
   return _jswrap_array_iterate_with_callback("filter", parent, funcVar, thisVar, RETURN_ARRAY, true, true);
 }
@@ -383,9 +383,9 @@ JsVar *jswrap_array_filter(JsVar *parent, JsVar *funcVar, JsVar *thisVar) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_array_find",
   "params" : [
-    ["function","JsVar","Function to be executed"]
+    ["function","JsVar","Function to be executed."]
   ],
-  "return" : ["JsVar","The array element where `function` returns `true`, or `undefined`"]
+  "return" : ["JsVar","The array element where `function` returns `true`, or `undefined`."]
 }
 Return the array element where `function` returns `true`, or `undefined` if it
 doesn't returns `true` for any element.
@@ -394,7 +394,7 @@ doesn't returns `true` for any element.
 ["Hello","There","World"].find(a=>a[0]=="T")
 // returns "There"
 ```
- */
+*/
 JsVar *jswrap_array_find(JsVar *parent, JsVar *funcVar) {
   return _jswrap_array_iterate_with_callback("find", parent, funcVar, 0, RETURN_ARRAY_ELEMENT, true, true);
 }
@@ -406,9 +406,9 @@ JsVar *jswrap_array_find(JsVar *parent, JsVar *funcVar) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_array_findIndex",
   "params" : [
-    ["function","JsVar","Function to be executed"]
+    ["function","JsVar","Function to be executed."]
   ],
-  "return" : ["JsVar","The array element's index where `function` returns `true`, or `-1`"]
+  "return" : ["JsVar","The array element's index where `function` returns `true`, or `-1`."]
 }
 Return the array element's index where `function` returns `true`, or `-1` if it
 doesn't returns `true` for any element.
@@ -417,7 +417,7 @@ doesn't returns `true` for any element.
 ["Hello","There","World"].findIndex(a=>a[0]=="T")
 // returns 1
 ```
- */
+*/
 JsVar *jswrap_array_findIndex(JsVar *parent, JsVar *funcVar) {
   JsVar *v = _jswrap_array_iterate_with_callback("findIndex", parent, funcVar, 0, RETURN_ARRAY_INDEX, true, true);
   if (v) return v;
@@ -430,14 +430,14 @@ JsVar *jswrap_array_findIndex(JsVar *parent, JsVar *funcVar) {
   "name" : "some",
   "generate" : "jswrap_array_some",
   "params" : [
-    ["function","JsVar","Function to be executed"],
-    ["thisArg","JsVar","if specified, the function is called with 'this' set to thisArg (optional)"]
+    ["function","JsVar","Function to be executed."],
+    ["thisArg","JsVar","if specified, the function is called with 'this' set to thisArg (optional)."]
   ],
-  "return" : ["JsVar","A boolean containing the result"]
+  "return" : ["JsVar","A boolean containing the result."]
 }
 Return 'true' if the callback returns 'true' for any of the elements in the
 array
- */
+*/
 JsVar *jswrap_array_some(JsVar *parent, JsVar *funcVar, JsVar *thisVar) {
   return _jswrap_array_iterate_with_callback("some", parent, funcVar, thisVar, RETURN_BOOL, true, false);
 }
@@ -448,13 +448,13 @@ JsVar *jswrap_array_some(JsVar *parent, JsVar *funcVar, JsVar *thisVar) {
   "name" : "every",
   "generate" : "jswrap_array_every",
   "params" : [
-    ["function","JsVar","Function to be executed"],
-    ["thisArg","JsVar","if specified, the function is called with 'this' set to thisArg (optional)"]
+    ["function","JsVar","Function to be executed."],
+    ["thisArg","JsVar","if specified, the function is called with 'this' set to thisArg (optional)."]
   ],
-  "return" : ["JsVar","A boolean containing the result"]
+  "return" : ["JsVar","A boolean containing the result."]
 }
 Return 'true' if the callback returns 'true' for every element in the array
- */
+*/
 JsVar *jswrap_array_every(JsVar *parent, JsVar *funcVar, JsVar *thisVar) {
   return _jswrap_array_iterate_with_callback("every", parent, funcVar, thisVar, RETURN_BOOL, true, true);
 }
@@ -466,15 +466,15 @@ JsVar *jswrap_array_every(JsVar *parent, JsVar *funcVar, JsVar *thisVar) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_array_reduce",
   "params" : [
-    ["callback","JsVar","Function used to reduce the array"],
-    ["initialValue","JsVar","if specified, the initial value to pass to the function"]
+    ["callback","JsVar","Function used to reduce the array."],
+    ["initialValue","JsVar","if specified, the initial value to pass to the function."]
   ],
-  "return" : ["JsVar","The value returned by the last function called"]
+  "return" : ["JsVar","The value returned by the last function called."]
 }
 Execute `previousValue=initialValue` and then `previousValue =
 callback(previousValue, currentValue, index, array)` for each element in the
 array, and finally return previousValue.
- */
+*/
 JsVar *jswrap_array_reduce(JsVar *parent, JsVar *funcVar, JsVar *initialValue) {
   const char *name = "reduce";
   if (!jsvIsIterable(parent)) {
@@ -531,14 +531,14 @@ JsVar *jswrap_array_reduce(JsVar *parent, JsVar *funcVar, JsVar *initialValue) {
   "name" : "splice",
   "generate" : "jswrap_array_splice",
   "params" : [
-    ["index","int","Index at which to start changing the array. If negative, will begin that many elements from the end"],
+    ["index","int","Index at which to start changing the array. If negative, will begin that many elements from the end."],
     ["howMany","JsVar","An integer indicating the number of old array elements to remove. If howMany is 0, no elements are removed."],
-    ["elements","JsVarArray","One or more items to add to the array"]
+    ["elements","JsVarArray","One or more items to add to the array."]
   ],
   "return" : ["JsVar","An array containing the removed elements. If only one element is removed, an array of one element is returned."]
 }
 Both remove and add items to an array
- */
+*/
 JsVar *jswrap_array_splice(JsVar *parent, JsVarInt index, JsVar *howManyVar, JsVar *elements) {
   if (!jsvIsArray(parent)) return 0;
   JsVarInt len = jsvGetArrayLength(parent);
@@ -619,14 +619,14 @@ JsVar *jswrap_array_splice(JsVar *parent, JsVarInt index, JsVar *howManyVar, JsV
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_array_shift",
   "params" : [
-
+    
   ],
-  "return" : ["JsVar","The element that was removed"]
+  "return" : ["JsVar","The element that was removed."]
 }
 Remove and return the first element of the array.
 
 This is the opposite of `[1,2,3].pop()`, which takes an element off the end.
- */
+*/
 JsVar *jswrap_array_shift(JsVar *parent) {
   // just use splice, as this does all the hard work for us
   JsVar *nRemove = jsvNewFromInteger(1);
@@ -648,15 +648,15 @@ JsVar *jswrap_array_shift(JsVar *parent) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_array_unshift",
   "params" : [
-    ["elements","JsVarArray","One or more items to add to the beginning of the array"]
+    ["elements","JsVarArray","One or more items to add to the beginning of the array."]
   ],
-  "return" : ["int","The new array length"]
+  "return" : ["int","The new array length."]
 }
 Add one or more items to the start of the array, and return its new length.
 
 This is the opposite of `[1,2,3].push(4)`, which puts one or more elements on
 the end.
- */
+*/
 JsVarInt jswrap_array_unshift(JsVar *parent, JsVar *elements) {
   // just use splice, as this does all the hard work for us
   JsVar *nRemove = jsvNewFromInteger(0);
@@ -672,13 +672,13 @@ JsVarInt jswrap_array_unshift(JsVar *parent, JsVar *elements) {
   "name" : "slice",
   "generate" : "jswrap_array_slice",
   "params" : [
-    ["start","int","Start index"],
-    ["end","JsVar","End index (optional)"]
+    ["start","int","Start index."],
+    ["end","JsVar","End index (optional)."]
   ],
-  "return" : ["JsVar","A new array"]
+  "return" : ["JsVar","A new array."]
 }
 Return a copy of a portion of this array (in a new array)
- */
+*/
 JsVar *jswrap_array_slice(JsVar *parent, JsVarInt start, JsVar *endVar) {
   JsVarInt len = jsvGetLength(parent);
   JsVarInt end = len;
@@ -732,12 +732,12 @@ JsVar *jswrap_array_slice(JsVar *parent, JsVarInt start, JsVar *endVar) {
   "name" : "isArray",
   "generate_full" : "jsvIsArray(var)",
   "params" : [
-    ["var","JsVar","The variable to be tested"]
+    ["var","JsVar","The variable to be tested."]
   ],
   "return" : ["bool","True if var is an array, false if not."]
 }
 Returns true if the provided object is an array
- */
+*/
 
 
 NO_INLINE static JsVarInt _jswrap_array_sort_compare(JsVar *a, JsVar *b, JsVar *compareFn) {
@@ -834,12 +834,12 @@ NO_INLINE static void _jswrap_array_sort(JsvIterator *head, int n, JsVar *compar
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_array_sort",
   "params" : [
-    ["var","JsVar","A function to use to compare array elements (or undefined)"]
+    ["var","JsVar","A function to use to compare array elements (or undefined)."]
   ],
-  "return" : ["JsVar","This array object"]
+  "return" : ["JsVar","This array object."]
 }
 Do an in-place quicksort of the array
- */
+*/
 JsVar *jswrap_array_sort (JsVar *array, JsVar *compareFn) {
   if (!jsvIsUndefined(compareFn) && !jsvIsFunction(compareFn)) {
     jsExceptionHere(JSET_ERROR, "Expecting compare function, got %t", compareFn);
@@ -881,13 +881,13 @@ JsVar *jswrap_array_sort (JsVar *array, JsVar *compareFn) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_array_concat",
   "params" : [
-    ["args","JsVarArray","Any items to add to the array"]
+    ["args","JsVarArray","Any items to add to the array."]
   ],
-  "return" : ["JsVar","An Array"]
+  "return" : ["JsVar","An Array."]
 }
 Create a new array, containing the elements from this one and any arguments, if
 any argument is an array then those elements will be added.
- */
+*/
 JsVar *jswrap_array_concat(JsVar *parent, JsVar *args) {
   JsVar *result = jsvNewEmptyArray();
 
@@ -918,14 +918,14 @@ JsVar *jswrap_array_concat(JsVar *parent, JsVar *args) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_array_fill",
   "params" : [
-    ["value","JsVar","The value to fill the array with"],
-    ["start","int","Optional. The index to start from (or 0). If start is negative, it is treated as length+start where length is the length of the array"],
+    ["value","JsVar","The value to fill the array with."],
+    ["start","int","Optional. The index to start from (or 0). If start is negative, it is treated as length+start where length is the length of the array."],
     ["end","JsVar","Optional. The index to end at (or the array length). If end is negative, it is treated as length+end."]
   ],
-  "return" : ["JsVar","This array"]
+  "return" : ["JsVar","This array."]
 }
 Fill this array with the given value, for every index `>= start` and `< end`
- */
+*/
 JsVar *jswrap_array_fill(JsVar *parent, JsVar *value, JsVarInt start, JsVar *endVar) {
   if (!jsvIsIterable(parent)) return 0;
 
@@ -1005,7 +1005,7 @@ void _jswrap_array_reverse_block(JsVar *parent, JsvIterator *it, int items) {
   "return" : ["JsVar","The array, but reversed."]
 }
 Reverse all elements in this array (in place)
- */
+*/
 JsVar *jswrap_array_reverse(JsVar *parent) {
   if (!jsvIsIterable(parent) || jsvIsObject(parent)) return 0;
 

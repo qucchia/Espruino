@@ -348,9 +348,9 @@ static const unsigned char fontWidths[] = {
   "name" : "setFont12x20",
   "generate" : "jswrap_graphics_setFont12x20",
   "params" : [
-    ["scale","int","(optional) If >1 the font will be scaled up by that amount"]
+    ["scale","int","(optional) If >1 the font will be scaled up by that amount."]
   ],
-  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining"],
+  "return" : ["JsVar","The instance of Graphics this was called on, to allow call chaining."],
   "return_object" : "Graphics"
 }
 Set the current font

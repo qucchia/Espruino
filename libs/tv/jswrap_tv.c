@@ -42,10 +42,10 @@ See the [Television](/Television) page for more information.
   "name" : "setup",
   "generate" : "jswrap_tv_setup",
   "params" : [
-    ["options","JsVar","Various options for the TV output"],
+    ["options","JsVar","Various options for the TV output."],
     ["width","int",""]
   ],
-  "return" : ["JsVar","A graphics object"]
+  "return" : ["JsVar","A graphics object."]
 }
 This initialises the TV output. Options for PAL are as follows:
 

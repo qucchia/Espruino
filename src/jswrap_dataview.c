@@ -25,7 +25,7 @@
   "ifndef" : "SAVE_ON_FLASH"
 }
 This class helps
- */
+*/
 
 /*JSON{
   "type" : "constructor",
@@ -33,11 +33,11 @@ This class helps
   "name" : "DataView",
   "generate" : "jswrap_dataview_constructor",
   "params" : [
-    ["buffer","JsVar","The `ArrayBuffer` to base this on"],
-    ["byteOffset","int","(optional) The offset of this view in bytes"],
-    ["byteLength","int","(optional) The length in bytes"]
+    ["buffer","JsVar","The `ArrayBuffer` to base this on."],
+    ["byteOffset","int","(optional) The offset of this view in bytes."],
+    ["byteLength","int","(optional) The length in bytes."]
   ],
-  "return" : ["JsVar","A `DataView` object"],
+  "return" : ["JsVar","A `DataView` object."],
   "return_object" : "DataView",
   "ifndef" : "SAVE_ON_FLASH"
 }
@@ -52,7 +52,7 @@ v.setUint8(3,"0x56")
 console.log("0x"+v.getUint32(0).toString(16))
 // prints 0x12340056
 ```
- */
+*/
 JsVar *jswrap_dataview_constructor(JsVar *buffer, int byteOffset, int byteLength) {
   if (!jsvIsArrayBuffer(buffer) ||
       buffer->varData.arraybuffer.type!=ARRAYBUFFERVIEW_ARRAYBUFFER) {
@@ -119,104 +119,96 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   "name" : "getFloat32",
   "generate_full" : "jswrap_dataview_get(parent, ARRAYBUFFERVIEW_FLOAT32, byteOffset, littleEndian)",
   "params" : [
-    ["byteOffset","int","The offset in bytes to read from"],
-    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian"]
+    ["byteOffset","int","The offset in bytes to read from."],
+    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian."]
   ],
-  "return" : ["JsVar","the index of the value in the array, or -1"],
+  "return" : ["JsVar","the index of the value in the array, or -1."],
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/
 /*JSON{
   "type" : "method",
   "class" : "DataView",
   "name" : "getFloat64",
   "generate_full" : "jswrap_dataview_get(parent, ARRAYBUFFERVIEW_FLOAT64, byteOffset, littleEndian)",
   "params" : [
-    ["byteOffset","int","The offset in bytes to read from"],
-    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian"]
+    ["byteOffset","int","The offset in bytes to read from."],
+    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian."]
   ],
-  "return" : ["JsVar","the index of the value in the array, or -1"],
+  "return" : ["JsVar","the index of the value in the array, or -1."],
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/
 /*JSON{
   "type" : "method",
   "class" : "DataView",
   "name" : "getInt8",
   "generate_full" : "jswrap_dataview_get(parent, ARRAYBUFFERVIEW_INT8, byteOffset, littleEndian)",
   "params" : [
-    ["byteOffset","int","The offset in bytes to read from"],
-    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian"]
+    ["byteOffset","int","The offset in bytes to read from."],
+    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian."]
   ],
-  "return" : ["JsVar","the index of the value in the array, or -1"],
+  "return" : ["JsVar","the index of the value in the array, or -1."],
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/
 /*JSON{
   "type" : "method",
   "class" : "DataView",
   "name" : "getInt16",
   "generate_full" : "jswrap_dataview_get(parent, ARRAYBUFFERVIEW_INT16, byteOffset, littleEndian)",
   "params" : [
-    ["byteOffset","int","The offset in bytes to read from"],
-    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian"]
+    ["byteOffset","int","The offset in bytes to read from."],
+    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian."]
   ],
-  "return" : ["JsVar","the index of the value in the array, or -1"],
+  "return" : ["JsVar","the index of the value in the array, or -1."],
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/
 /*JSON{
   "type" : "method",
   "class" : "DataView",
   "name" : "getInt32",
   "generate_full" : "jswrap_dataview_get(parent, ARRAYBUFFERVIEW_INT32, byteOffset, littleEndian)",
   "params" : [
-    ["byteOffset","int","The offset in bytes to read from"],
-    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian"]
+    ["byteOffset","int","The offset in bytes to read from."],
+    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian."]
   ],
-  "return" : ["JsVar","the index of the value in the array, or -1"],
+  "return" : ["JsVar","the index of the value in the array, or -1."],
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/
 /*JSON{
   "type" : "method",
   "class" : "DataView",
   "name" : "getUint8",
   "generate_full" : "jswrap_dataview_get(parent, ARRAYBUFFERVIEW_UINT8, byteOffset, littleEndian)",
   "params" : [
-    ["byteOffset","int","The offset in bytes to read from"],
-    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian"]
+    ["byteOffset","int","The offset in bytes to read from."],
+    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian."]
   ],
-  "return" : ["JsVar","the index of the value in the array, or -1"],
+  "return" : ["JsVar","the index of the value in the array, or -1."],
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/
 /*JSON{
   "type" : "method",
   "class" : "DataView",
   "name" : "getUint16",
   "generate_full" : "jswrap_dataview_get(parent, ARRAYBUFFERVIEW_UINT16, byteOffset, littleEndian)",
   "params" : [
-    ["byteOffset","int","The offset in bytes to read from"],
-    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian"]
+    ["byteOffset","int","The offset in bytes to read from."],
+    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian."]
   ],
-  "return" : ["JsVar","the index of the value in the array, or -1"],
+  "return" : ["JsVar","the index of the value in the array, or -1."],
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/
 /*JSON{
   "type" : "method",
   "class" : "DataView",
   "name" : "getUint32",
   "generate_full" : "jswrap_dataview_get(parent, ARRAYBUFFERVIEW_UINT32, byteOffset, littleEndian)",
   "params" : [
-    ["byteOffset","int","The offset in bytes to read from"],
-    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian"]
+    ["byteOffset","int","The offset in bytes to read from."],
+    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian."]
   ],
-  "return" : ["JsVar","the index of the value in the array, or -1"],
+  "return" : ["JsVar","the index of the value in the array, or -1."],
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/
 
 // =============================================================================  SET
 
@@ -226,101 +218,93 @@ void jswrap_dataview_set(JsVar *dataview, JsVarDataArrayBufferViewType type, int
   "name" : "setFloat32",
   "generate_full" : "jswrap_dataview_set(parent, ARRAYBUFFERVIEW_FLOAT32, byteOffset, value, littleEndian)",
   "params" : [
-    ["byteOffset","int","The offset in bytes to read from"],
-    ["value","JsVar","The value to write"],
-    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian"]
+    ["byteOffset","int","The offset in bytes to read from."],
+    ["value","JsVar","The value to write."],
+    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian."]
   ],
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/
 /*JSON{
   "type" : "method",
   "class" : "DataView",
   "name" : "setFloat64",
   "generate_full" : "jswrap_dataview_set(parent, ARRAYBUFFERVIEW_FLOAT64, byteOffset, value, littleEndian)",
   "params" : [
-    ["byteOffset","int","The offset in bytes to read from"],
-    ["value","JsVar","The value to write"],
-    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian"]
+    ["byteOffset","int","The offset in bytes to read from."],
+    ["value","JsVar","The value to write."],
+    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian."]
   ],
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/
 /*JSON{
   "type" : "method",
   "class" : "DataView",
   "name" : "setInt8",
   "generate_full" : "jswrap_dataview_set(parent, ARRAYBUFFERVIEW_INT8, byteOffset, value, littleEndian)",
   "params" : [
-    ["byteOffset","int","The offset in bytes to read from"],
-    ["value","JsVar","The value to write"],
-    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian"]
+    ["byteOffset","int","The offset in bytes to read from."],
+    ["value","JsVar","The value to write."],
+    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian."]
   ],
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/
 /*JSON{
   "type" : "method",
   "class" : "DataView",
   "name" : "setInt16",
   "generate_full" : "jswrap_dataview_set(parent, ARRAYBUFFERVIEW_INT16, byteOffset, value, littleEndian)",
   "params" : [
-    ["byteOffset","int","The offset in bytes to read from"],
-    ["value","JsVar","The value to write"],
-    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian"]
+    ["byteOffset","int","The offset in bytes to read from."],
+    ["value","JsVar","The value to write."],
+    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian."]
   ],
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/
 /*JSON{
   "type" : "method",
   "class" : "DataView",
   "name" : "setInt32",
   "generate_full" : "jswrap_dataview_set(parent, ARRAYBUFFERVIEW_INT32, byteOffset, value, littleEndian)",
   "params" : [
-    ["byteOffset","int","The offset in bytes to read from"],
-    ["value","JsVar","The value to write"],
-    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian"]
+    ["byteOffset","int","The offset in bytes to read from."],
+    ["value","JsVar","The value to write."],
+    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian."]
   ],
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/
 /*JSON{
   "type" : "method",
   "class" : "DataView",
   "name" : "setUint8",
   "generate_full" : "jswrap_dataview_set(parent, ARRAYBUFFERVIEW_UINT8, byteOffset, value, littleEndian)",
   "params" : [
-    ["byteOffset","int","The offset in bytes to read from"],
-    ["value","JsVar","The value to write"],
-    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian"]
+    ["byteOffset","int","The offset in bytes to read from."],
+    ["value","JsVar","The value to write."],
+    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian."]
   ],
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/
 /*JSON{
   "type" : "method",
   "class" : "DataView",
   "name" : "setUint16",
   "generate_full" : "jswrap_dataview_set(parent, ARRAYBUFFERVIEW_UINT16, byteOffset, value, littleEndian)",
   "params" : [
-    ["byteOffset","int","The offset in bytes to read from"],
-    ["value","JsVar","The value to write"],
-    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian"]
+    ["byteOffset","int","The offset in bytes to read from."],
+    ["value","JsVar","The value to write."],
+    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian."]
   ],
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/
 /*JSON{
   "type" : "method",
   "class" : "DataView",
   "name" : "setUint32",
   "generate_full" : "jswrap_dataview_set(parent, ARRAYBUFFERVIEW_UINT32, byteOffset, value, littleEndian)",
   "params" : [
-    ["byteOffset","int","The offset in bytes to read from"],
-    ["value","JsVar","The value to write"],
-    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian"]
+    ["byteOffset","int","The offset in bytes to read from."],
+    ["value","JsVar","The value to write."],
+    ["littleEndian","bool","(optional) Whether to read in little endian - if false or undefined data is read as big endian."]
   ],
   "ifndef" : "SAVE_ON_FLASH"
-}
-*/
+}*/

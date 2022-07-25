@@ -21,7 +21,7 @@
   "check" : "jsvIsNumeric(var)"
 }
 This is the built-in JavaScript class for numbers.
- */
+*/
 
 /*JSON{
   "type" : "constructor",
@@ -29,12 +29,12 @@ This is the built-in JavaScript class for numbers.
   "name" : "Number",
   "generate" : "jswrap_number_constructor",
   "params" : [
-    ["value","JsVarArray","A single value to be converted to a number"]
+    ["value","JsVarArray","A single value to be converted to a number."]
   ],
-  "return" : ["JsVar","A Number object"]
+  "return" : ["JsVar","A Number object."]
 }
 Creates a number
- */
+*/
 JsVar *jswrap_number_constructor(JsVar *args) {
   if (jsvGetArrayLength(args)==0) return jsvNewFromInteger(0);
   JsVar *val = jsvGetArrayItem(args, 0);
@@ -67,14 +67,14 @@ JsVar *jswrap_number_constructor(JsVar *args) {
   "type" : "variable",
   "name" : "NaN",
   "generate_full" : "NAN",
-  "return" : ["float","Not a  Number"]
+  "return" : ["float","Not a  Number."]
 }*/
 
 /*JSON{
   "type" : "variable",
   "name" : "Infinity",
   "generate_full" : "INFINITY",
-  "return" : ["float","Positive Infinity (1/0)"]
+  "return" : ["float","Positive Infinity (1/0)."]
 }*/
 
 /*JSON{
@@ -82,7 +82,7 @@ JsVar *jswrap_number_constructor(JsVar *args) {
   "class" : "Number",
   "name" : "NaN",
   "generate_full" : "NAN",
-  "return" : ["float","Not a  Number"]
+  "return" : ["float","Not a  Number."]
 }*/
 
 /*JSON{
@@ -90,7 +90,7 @@ JsVar *jswrap_number_constructor(JsVar *args) {
   "class" : "Number",
   "name" : "MAX_VALUE",
   "generate_full" : "DBL_MAX",
-  "return" : ["float","Maximum representable value"]
+  "return" : ["float","Maximum representable value."]
 }*/
 
 /*JSON{
@@ -98,7 +98,7 @@ JsVar *jswrap_number_constructor(JsVar *args) {
   "class" : "Number",
   "name" : "MIN_VALUE",
   "generate_full" : "DBL_MIN",
-  "return" : ["float","Smallest representable value"]
+  "return" : ["float","Smallest representable value."]
 }*/
 
 /*JSON{
@@ -106,7 +106,7 @@ JsVar *jswrap_number_constructor(JsVar *args) {
   "class" : "Number",
   "name" : "NEGATIVE_INFINITY",
   "generate_full" : "-INFINITY",
-  "return" : ["float","Negative Infinity (-1/0)"]
+  "return" : ["float","Negative Infinity (-1/0)."]
 }*/
 
 /*JSON{
@@ -114,7 +114,7 @@ JsVar *jswrap_number_constructor(JsVar *args) {
   "class" : "Number",
   "name" : "POSITIVE_INFINITY",
   "generate_full" : "INFINITY",
-  "return" : ["float","Positive Infinity (1/0)"]
+  "return" : ["float","Positive Infinity (1/0)."]
 }*/
 
 /*JSON{
@@ -123,12 +123,12 @@ JsVar *jswrap_number_constructor(JsVar *args) {
   "name" : "toFixed",
   "generate" : "jswrap_number_toFixed",
   "params" : [
-    ["decimalPlaces","int32","A number between 0 and 20 specifying the number of decimal digits after the decimal point"]
+    ["decimalPlaces","int32","A number between 0 and 20 specifying the number of decimal digits after the decimal point."]
   ],
-  "return" : ["JsVar","A string"]
+  "return" : ["JsVar","A string."]
 }
 Format the number as a fixed point number
- */
+*/
 JsVar *jswrap_number_toFixed(JsVar *parent, int decimals) {
   if (decimals<0) decimals=0;
   if (decimals>20) decimals=20;
@@ -141,12 +141,12 @@ JsVar *jswrap_number_toFixed(JsVar *parent, int decimals) {
   "type" : "variable",
   "name" : "HIGH",
   "generate_full" : "1",
-  "return" : ["int32","Logic 1 for Arduino compatibility - this is the same as just typing `1`"]
+  "return" : ["int32","Logic 1 for Arduino compatibility - this is the same as just typing `1`."]
 }*/
 
 /*JSON{
   "type" : "variable",
   "name" : "LOW",
   "generate_full" : "0",
-  "return" : ["int32","Logic 0 for Arduino compatibility - this is the same as just typing `0`"]
+  "return" : ["int32","Logic 0 for Arduino compatibility - this is the same as just typing `0`."]
 }*/

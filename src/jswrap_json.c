@@ -32,7 +32,7 @@ const char *JSON_LIMIT_TEXT = " ... ";
   "class" : "JSON"
 }
 An Object that handles conversion to and from the JSON data interchange format
- */
+*/
 
 /*JSON{
   "type" : "staticmethod",
@@ -40,11 +40,11 @@ An Object that handles conversion to and from the JSON data interchange format
   "name" : "stringify",
   "generate" : "jswrap_json_stringify",
   "params" : [
-    ["data","JsVar","The data to be converted to a JSON string"],
-    ["replacer","JsVar","This value is ignored"],
-    ["space","JsVar","The number of spaces to use for padding, a string, or null/undefined for no whitespace "]
+    ["data","JsVar","The data to be converted to a JSON string."],
+    ["replacer","JsVar","This value is ignored."],
+    ["space","JsVar","The number of spaces to use for padding, a string, or null/undefined for no whitespace ."]
   ],
-  "return" : ["JsVar","A JSON string"]
+  "return" : ["JsVar","A JSON string."]
 }
 Convert the given object into a JSON string which can subsequently be parsed
 with JSON.parse or eval.
@@ -54,7 +54,7 @@ with JSON.parse or eval.
 * The `replacer` argument is ignored
 * Typed arrays like `new Uint8Array(5)` will be dumped as if they were arrays,
   not as if they were objects (since it is more compact)
- */
+*/
 JsVar *jswrap_json_stringify(JsVar *v, JsVar *replacer, JsVar *space) {
   NOT_USED(replacer);
   JSONFlags flags = JSON_IGNORE_FUNCTIONS|JSON_NO_UNDEFINED|JSON_ARRAYBUFFER_AS_ARRAY|JSON_JSON_COMPATIBILE|JSON_ALLOW_TOJSON;
@@ -165,15 +165,15 @@ JsVar *jswrap_json_parse_internal() {
   "name" : "parse",
   "generate" : "jswrap_json_parse",
   "params" : [
-    ["string","JsVar","A JSON string"]
+    ["string","JsVar","A JSON string."]
   ],
-  "return" : ["JsVar","The JavaScript object created by parsing the data string"]
+  "return" : ["JsVar","The JavaScript object created by parsing the data string."]
 }
 Parse the given JSON string into a JavaScript object
 
 NOTE: This implementation uses eval() internally, and as such it is unsafe as it
 can allow arbitrary JS commands to be executed.
- */
+*/
 JsVar *jswrap_json_parse(JsVar *v) {
   JsLex lex;
   JsVar *str = jsvAsString(v);

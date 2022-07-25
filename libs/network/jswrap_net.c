@@ -42,7 +42,7 @@ void jswrap_net_init() {
 }
 
 /*JSON{
-  "type"     : "kill",
+  "type" : "kill",
   "generate" : "jswrap_net_kill"
 }*/
 void jswrap_net_kill() {
@@ -75,10 +75,10 @@ http.request/get
   "name" : "parse",
   "generate" : "jswrap_url_parse",
   "params" : [
-    ["urlStr","JsVar","A URL to be parsed"],
-    ["parseQuery","bool","Whether to parse the query string into an object not (default = false)"]
+    ["urlStr","JsVar","A URL to be parsed."],
+    ["parseQuery","bool","Whether to parse the query string into an object not (default = false)."]
   ],
-  "return" : ["JsVar","An object containing options for ```http.request``` or ```http.get```. Contains `method`, `host`, `path`, `pathname`, `search`, `port` and `query`"]
+  "return" : ["JsVar","An object containing options for ```http.request``` or ```http.get```. Contains `method`, `host`, `path`, `pathname`, `search`, `port` and `query`."]
 }
 A utility function to split a URL into parts
 
@@ -245,7 +245,7 @@ An actual socket connection - allowing transmit/receive of TCP data
   "class" : "Socket",
   "name" : "data",
   "params" : [
-    ["data","JsVar","A string containing one or more characters of received data"]
+    ["data","JsVar","A string containing one or more characters of received data."]
   ]
 }
 The 'data' event is called when data is received. If a handler is defined with
@@ -289,14 +289,13 @@ event is always followed by a close event. The error codes are:
 * -12: bad argument
 * -13: SSL handshake failed
 * -14: invalid SSL data
-
 */
 /*JSON{
   "type" : "method",
   "class" : "Socket",
   "name" : "available",
   "generate" : "jswrap_stream_available",
-  "return" : ["int","How many bytes are available"]
+  "return" : ["int","How many bytes are available."]
 }
 Return how many bytes are available to read. If there is already a listener for
 data, this will always return 0.
@@ -307,7 +306,7 @@ data, this will always return 0.
   "name" : "read",
   "generate" : "jswrap_stream_read",
   "params" : [
-    ["chars","int","The number of characters to read, or undefined/0 for all available"]
+    ["chars","int","The number of characters to read, or undefined/0 for all available."]
   ],
   "return" : ["JsVar","A string containing the required bytes."]
 }
@@ -321,7 +320,7 @@ Return a string containing characters that have been received
   "generate" : "jswrap_pipe",
   "params" : [
     ["destination","JsVar","The destination file/stream that will receive content from the source."],
-    ["options","JsVar",["An optional object `{ chunkSize : int=32, end : bool=true, complete : function }`","chunkSize : The amount of data to pipe from source to destination at a time","complete : a function to call when the pipe activity is complete","end : call the 'end' function on the destination when the source is finished"]]
+    ["options","JsVar",["An optional object `{ chunkSize : int=32, end : bool=true, complete : function }`","chunkSize : The amount of data to pipe from source to destination at a time","complete : a function to call when the pipe activity is complete","end : call the 'end' function on the destination when the source is finished."]]
   ]
 }
 Pipe this to a stream (an object with a 'write' method)
@@ -347,9 +346,9 @@ send.
   "name" : "createServer",
   "generate" : "jswrap_net_createServer",
   "params" : [
-    ["callback","JsVar","A `function(connection)` that will be called when a connection is made"]
+    ["callback","JsVar","A `function(connection)` that will be called when a connection is made."]
   ],
-  "return" : ["JsVar","Returns a new Server Object"],
+  "return" : ["JsVar","Returns a new Server Object."],
   "return_object" : "Server"
 }
 Create a Server
@@ -378,10 +377,10 @@ JsVar *jswrap_net_createServer(JsVar *callback) {
   "name" : "connect",
   "generate_full" : "jswrap_net_connect(options, callback, ST_NORMAL)",
   "params" : [
-    ["options","JsVar","An object containing host,port fields"],
+    ["options","JsVar","An object containing host,port fields."],
     ["callback","JsVar","A `function(sckt)` that will be called  with the socket when a connection is made. You can then call `sckt.write(...)` to send data, and `sckt.on('data', function(data) { ... })` and `sckt.on('close', function() { ... })` to deal with the response."]
   ],
-  "return" : ["JsVar","Returns a new net.Socket object"],
+  "return" : ["JsVar","Returns a new net.Socket object."],
   "return_object" : "Socket"
 }
 Create a TCP socket connection
@@ -457,10 +456,10 @@ page for more information on how to use it.
   "name" : "createSocket",
   "generate_full" : "jswrap_dgram_createSocket(type, callback)",
   "params" : [
-    ["type","JsVar","Socket type to create e.g. 'udp4'. Or options object { type: 'udp4', reuseAddr: true, recvBufferSize: 1024 }"],
+    ["type","JsVar","Socket type to create e.g. 'udp4'. Or options object { type: 'udp4', reuseAddr: true, recvBufferSize: 1024 }."],
     ["callback","JsVar","A `function(sckt)` that will be called  with the socket when a connection is made. You can then call `sckt.send(...)` to send data, and `sckt.on('message', function(data) { ... })` and `sckt.on('close', function() { ... })` to deal with the response."]
   ],
-  "return" : ["JsVar","Returns a new dgram.Socket object"],
+  "return" : ["JsVar","Returns a new dgram.Socket object."],
   "return_object" : "dgramSocket"
 }
 Create a UDP socket
@@ -486,10 +485,10 @@ An actual socket connection - allowing transmit/receive of TCP data
   "name" : "send",
   "generate" : "jswrap_dgram_socket_send",
   "params" : [
-    ["buffer","JsVar","A string containing message to send"],
-    ["offset","JsVar","Offset in the passed string where the message starts [optional]"],
-    ["length","JsVar","Number of bytes in the message [optional]"],
-    ["args","JsVarArray","Destination port number, Destination IP address string"]
+    ["buffer","JsVar","A string containing message to send."],
+    ["offset","JsVar","Offset in the passed string where the message starts [optional]."],
+    ["length","JsVar","Number of bytes in the message [optional]."],
+    ["args","JsVarArray","Destination port number, Destination IP address string."]
   ]
 }*/
 // There are futher arguments within the 'args' JsVarArray:
@@ -534,8 +533,8 @@ void jswrap_dgram_socket_send(JsVar *parent, JsVar *buffer, JsVar *offset, JsVar
   "class" : "dgramSocket",
   "name" : "message",
   "params" : [
-    ["msg","JsVar","A string containing the received message"],
-    ["rinfo","JsVar","Sender address,port containing information"]
+    ["msg","JsVar","A string containing the received message."],
+    ["rinfo","JsVar","Sender address,port containing information."]
   ]
 }
 The 'message' event is called when a datagram message is received. If a handler
@@ -548,12 +547,11 @@ is defined with `X.on('message', function(msg) { ... })` then it will be called`
   "name" : "bind",
   "generate" : "jswrap_dgramSocket_bind",
   "params" : [
-    ["port","int32","The port to bind at"],
+    ["port","int32","The port to bind at."],
     ["callback","JsVar","A function(res) that will be called when the socket is bound. You can then call `res.on('message', function(message, info) { ... })` and `res.on('close', function() { ... })` to deal with the response."]
   ],
-  "return" : ["JsVar","The dgramSocket instance that 'bind' was called on"]
-}
-*/
+  "return" : ["JsVar","The dgramSocket instance that 'bind' was called on."]
+}*/
 JsVar *jswrap_dgramSocket_bind(JsVar *parent, unsigned short port, JsVar *callback) {
   parent = jsvLockAgain(parent); // we're returning the parent, so need to re-lock it
 
@@ -586,11 +584,10 @@ void jswrap_dgram_close(JsVar *parent) {
   "name" : "addMembership",
   "generate" : "jswrap_dgram_addMembership",
   "params" : [
-    ["group","JsVar","A string containing the group ip to join"],
-    ["ip","JsVar","A string containing the ip to join with"]
+    ["group","JsVar","A string containing the group ip to join."],
+    ["ip","JsVar","A string containing the ip to join with."]
   ]
-}
-*/
+}*/
 void jswrap_dgram_addMembership(JsVar *parent, JsVar *group, JsVar *ip) {
   JsNetwork net;
   if (!networkGetFromVarIfOnline(&net)) return;
@@ -635,10 +632,10 @@ page for more information on how to use it.
   "name" : "connect",
   "generate_full" : "jswrap_net_connect(options, callback, ST_NORMAL | ST_TLS)",
   "params" : [
-    ["options","JsVar","An object containing host,port fields"],
+    ["options","JsVar","An object containing host,port fields."],
     ["callback","JsVar","A function(res) that will be called when a connection is made. You can then call `res.on('data', function(data) { ... })` and `res.on('close', function() { ... })` to deal with the response."]
   ],
-  "return" : ["JsVar","Returns a new net.Socket object"],
+  "return" : ["JsVar","Returns a new net.Socket object."],
   "return_object" : "Socket",
   "ifdef" : "USE_TLS"
 }
@@ -683,9 +680,9 @@ https://engineering.circle.com/https-authorized-certs-with-node-js/
   "name" : "listen",
   "generate_full" : "jswrap_net_server_listen(parent, port, ST_NORMAL)",
   "params" : [
-    ["port","int32","The port to listen on"]
+    ["port","int32","The port to listen on."]
   ],
-  "return" : ["JsVar","The HTTP server instance that 'listen' was called on"]
+  "return" : ["JsVar","The HTTP server instance that 'listen' was called on."]
 }
 Start listening for new connections on the given port
 */
@@ -727,9 +724,9 @@ void jswrap_net_server_close(JsVar *parent) {
   "name" : "write",
   "generate" : "jswrap_net_socket_write",
   "params" : [
-    ["data","JsVar","A string containing data to send"]
+    ["data","JsVar","A string containing data to send."]
   ],
-  "return" : ["bool","For node.js compatibility, returns the boolean false. When the send buffer is empty, a `drain` event will be sent"]
+  "return" : ["bool","For node.js compatibility, returns the boolean false. When the send buffer is empty, a `drain` event will be sent."]
 }
 This function writes the `data` argument as a string. Data that is passed in
 (including arrays) will be converted to a string with the normal JavaScript
@@ -768,7 +765,7 @@ bool jswrap_net_socket_write(JsVar *parent, JsVar *data) {
   "name" : "end",
   "generate" : "jswrap_net_socket_end",
   "params" : [
-    ["data","JsVar","A string containing data to send"]
+    ["data","JsVar","A string containing data to send."]
   ]
 }
 Close this socket - optional data to append as an argument.

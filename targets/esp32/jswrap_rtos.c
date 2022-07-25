@@ -18,18 +18,20 @@
 #include "rtosutil.h"
 
 /*JSON{
-  "type"    : "class",
-  "class"   : "Queue"
+  "type" : "class",
+  "class" : "Queue"
 }
 A class to support some simple Queue handling for RTOS queues
 */
 /*JSON{
-  "type"     : "constructor",
-  "class"    : "Queue",
-  "name"     : "Queue",
+  "type" : "constructor",
+  "class" : "Queue",
+  "name" : "Queue",
   "generate" : "jswrap_Queue_constructor",
-  "params"   : [ ["queueName", "JsVar", "Name of the queue"] ],
-  "return"   : ["JsVar","A Queue object"]
+  "params" : [
+    ["queueName","JsVar","Name of the queue."]
+  ],
+  "return" : ["JsVar","A Queue object."]
 }
 Creates a Queue Object
 */
@@ -43,10 +45,10 @@ JsVar *jswrap_Queue_constructor(JsVar *queueName){
   return queue;
 }
 /*JSON{
- "type"     : "method",
- "class"    : "Queue",
- "name"     : "read",
- "generate" : "jswrap_Queue_read"
+  "type" : "method",
+  "class" : "Queue",
+  "name" : "read",
+  "generate" : "jswrap_Queue_read"
 }
 reads one character from queue, if available
 */
@@ -58,11 +60,13 @@ void jswrap_Queue_read(JsVar *parent) {
   return;
 }
 /*JSON{
- "type"     : "method",
- "class"    : "Queue",
- "name"     : "writeChar",
- "params"   : [ ["char", "JsVar", "char to be send"] ],
- "generate" : "jswrap_Queue_writeChar"
+  "type" : "method",
+  "class" : "Queue",
+  "name" : "writeChar",
+  "params" : [
+    ["char","JsVar","char to be send."]
+  ],
+  "generate" : "jswrap_Queue_writeChar"
 }
 Writes one character to queue
 */
@@ -71,10 +75,10 @@ void jswrap_Queue_writeChar(JsVar *parent,char c){
   queue_writeChar(idx,c);
 }
 /*JSON{
- "type"     : "method",
- "class"    : "Queue",
- "name"     : "log",
- "generate" : "jswrap_Queue_log"
+  "type" : "method",
+  "class" : "Queue",
+  "name" : "log",
+  "generate" : "jswrap_Queue_log"
 }
 logs list of queues
 */
@@ -84,18 +88,20 @@ void jswrap_Queue_log(JsVar *parent) {
 }
 
 /*JSON{
-  "type"    : "class",
-  "class"   : "Task"
+  "type" : "class",
+  "class" : "Task"
 }
 A class to support some simple Task handling for RTOS tasks
 */
 /*JSON{
-  "type"     : "constructor",
-  "class"    : "Task",
-  "name"     : "Task",
+  "type" : "constructor",
+  "class" : "Task",
+  "name" : "Task",
   "generate" : "jswrap_Task_constructor",
-  "params"   : [ ["taskName", "JsVar", "Name of the task"] ],
-  "return"   : ["JsVar","A Task object"]
+  "params" : [
+    ["taskName","JsVar","Name of the task."]
+  ],
+  "return" : ["JsVar","A Task object."]
 }
 Creates a Task Object
 */
@@ -109,10 +115,10 @@ JsVar *jswrap_Task_constructor(JsVar *taskName){
   return task;
 }
 /*JSON{
- "type"     : "method",
- "class"    : "Task",
- "name"     : "suspend",
- "generate" : "jswrap_Task_suspend"
+  "type" : "method",
+  "class" : "Task",
+  "name" : "suspend",
+  "generate" : "jswrap_Task_suspend"
 }
 Suspend task, be careful not to suspend Espruino task itself
 */
@@ -122,10 +128,10 @@ void jswrap_Task_suspend(JsVar *parent){
   return;
 }
 /*JSON{
- "type"     : "method",
- "class"    : "Task",
- "name"     : "resume",
- "generate" : "jswrap_Task_resume"
+  "type" : "method",
+  "class" : "Task",
+  "name" : "resume",
+  "generate" : "jswrap_Task_resume"
 }
 Resumes a suspended task
 */
@@ -135,11 +141,11 @@ void jswrap_Task_resume(JsVar *parent){
   return;
 }
 /*JSON{
- "type"     : "method",
- "class"    : "Task",
- "name"     : "getCurrent",
- "generate" : "jswrap_Task_getCurrent",
- "return"   : ["JsVar","Name of current task"]
+  "type" : "method",
+  "class" : "Task",
+  "name" : "getCurrent",
+  "generate" : "jswrap_Task_getCurrent",
+  "return" : ["JsVar","Name of current task."]
 }
 returns name of actual task
 */
@@ -147,10 +153,10 @@ JsVar *jswrap_Task_getCurrent(JsVar *parent){
   return jsvNewFromString(task_getCurrentName());
 }
 /*JSON{
- "type"     : "method",
- "class"    : "Task",
- "name"     : "notify",
- "generate" : "jswrap_Task_notify"
+  "type" : "method",
+  "class" : "Task",
+  "name" : "notify",
+  "generate" : "jswrap_Task_notify"
 }
 Sends a binary notify to task
 */
@@ -159,10 +165,10 @@ void jswrap_Task_notify(JsVar *parent){
   task_notify(jsvGetInteger(idx));
 }
 /*JSON{
- "type"     : "method",
- "class"    : "Task",
- "name"     : "log",
- "generate" : "jswrap_Task_log"
+  "type" : "method",
+  "class" : "Task",
+  "name" : "log",
+  "generate" : "jswrap_Task_log"
 }
 logs list of tasks
 */
@@ -172,21 +178,23 @@ void jswrap_Task_log(JsVar *parent) {
 }
 
 /*JSON{
-  "type"	: "class",
-  "class"	: "Timer"
+  "type" : "class",
+  "class" : "Timer"
 }
 A class to handle Timer on base of ESP32 Timer
 */
 /*JSON{
-  "type"     : "constructor",
-  "class"    : "Timer",
-  "name"     : "Timer",
+  "type" : "constructor",
+  "class" : "Timer",
+  "name" : "Timer",
   "generate" : "jswrap_Timer_constructor",
-  "params"   : [ ["timerName", "JsVar", "Timer Name"],
-                 ["group", "int", "Timer group"],
-				 ["index", "int", "Timer index"],
-                 ["isrIndex", "int", "isr (0 = Espruino, 1 = test)"]  ],
-  "return"   : ["JsVar","A Timer Object"]
+  "params" : [
+    ["timerName","JsVar","Timer Name."],
+    ["group","int","Timer group."],
+    ["index","int","Timer index."],
+    ["isrIndex","int","isr (0 = Espruino, 1 = test)."]
+  ],
+  "return" : ["JsVar","A Timer Object."]
 }
 Creates a Timer Object
 */
@@ -200,10 +208,12 @@ JsVar *jswrap_Timer_constructor(JsVar *timerName,int group, int index, int isrIn
   return timer;
 }
 /*JSON{
-  "type"     : "method",
-  "class"    : "Timer",
-  "name"     : "start",
-  "params"   : [["duration","int","duration of timmer in micro secs"]],
+  "type" : "method",
+  "class" : "Timer",
+  "name" : "start",
+  "params" : [
+    ["duration","int","duration of timmer in micro secs."]
+  ],
   "generate" : "jswrap_Timer_start"
 }
 Starts a timer
@@ -213,10 +223,12 @@ void jswrap_Timer_start(JsVar *parent, int duration){
   timer_Start(jsvGetInteger(idx),duration);
 }
 /*JSON{
-  "type"     : "method",
-  "class"    : "Timer",
-  "name"     : "reschedule",
-  "params"   : [["duration","int","duration of timmer in micro secs"]],
+  "type" : "method",
+  "class" : "Timer",
+  "name" : "reschedule",
+  "params" : [
+    ["duration","int","duration of timmer in micro secs."]
+  ],
   "generate" : "jswrap_Timer_reschedule"
 }
 Reschedules a timer, needs to be started at least once
@@ -226,10 +238,10 @@ void jswrap_Timer_reschedule(JsVar *parent, int duration){
   timer_Reschedule(jsvGetInteger(idx),duration);
 }
 /*JSON{
- "type"     : "method",
- "class"    : "Timer",
- "name"     : "log",
- "generate" : "jswrap_Timer_log"
+  "type" : "method",
+  "class" : "Timer",
+  "name" : "log",
+  "generate" : "jswrap_Timer_log"
 }
 logs list of timers
 */

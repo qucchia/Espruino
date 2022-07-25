@@ -22,22 +22,22 @@
 
 
 /*JSON{
-    "type": "class",
-    "class" : "WioLTE"
+  "type" : "class",
+  "class" : "WioLTE"
 }
 Class containing utility functions for the Seeed WIO LTE board
 */
 
 /*JSON{
-    "type" : "staticmethod",
-    "class" : "WioLTE",
-    "name" : "LED",
-    "generate" : "jswrap_wio_lte_led",
-    "params" : [
-      ["red","int","0-255, red LED intensity"],
-      ["green","int","0-255, green LED intensity"],
-      ["blue","int","0-255, blue LED intensity"]
-    ]
+  "type" : "staticmethod",
+  "class" : "WioLTE",
+  "name" : "LED",
+  "generate" : "jswrap_wio_lte_led",
+  "params" : [
+    ["red","int","0-255, red LED intensity."],
+    ["green","int","0-255, green LED intensity."],
+    ["blue","int","0-255, blue LED intensity."]
+  ]
 }
 Set the WIO's LED
 */
@@ -53,13 +53,13 @@ void jswrap_wio_lte_led(int r, int g, int b) {
 }
 
 /*JSON{
-    "type" : "staticmethod",
-    "class" : "WioLTE",
-    "name" : "setGrovePower",
-    "generate" : "jswrap_wio_lte_setGrovePower",
-    "params" : [
-      ["onoff","bool","Whether to turn the Grove connectors power on or off (D38/D39 are always powered)"]
-    ]
+  "type" : "staticmethod",
+  "class" : "WioLTE",
+  "name" : "setGrovePower",
+  "generate" : "jswrap_wio_lte_setGrovePower",
+  "params" : [
+    ["onoff","bool","Whether to turn the Grove connectors power on or off (D38/D39 are always powered)."]
+  ]
 }
 Set the power of Grove connectors, except for `D38` and `D39` which are always
 on.
@@ -69,13 +69,13 @@ void jswrap_wio_lte_setGrovePower(bool pwr) {
 }
 
 /*JSON{
-    "type" : "staticmethod",
-    "class" : "WioLTE",
-    "name" : "setLEDPower",
-    "generate" : "jswrap_wio_lte_setLEDPower",
-    "params" : [
-      ["onoff","bool","true = on, false = off"]
-    ]
+  "type" : "staticmethod",
+  "class" : "WioLTE",
+  "name" : "setLEDPower",
+  "generate" : "jswrap_wio_lte_setLEDPower",
+  "params" : [
+    ["onoff","bool","true = on, false = off."]
+  ]
 }
 Turn power to the WIO's LED on or off.
 
@@ -87,54 +87,48 @@ void jswrap_wio_lte_setLEDPower(bool pwr) {
 }
 
 /*JSON{
-    "type" : "staticproperty",
-    "class" : "WioLTE",
-    "name" : "D38",
-    "generate_full" : "jspEvaluate(\"[C6,C7]\",true)",
-    "return" : [ "JsVar", ""]
-}
-*/ // D38,D39
+  "type" : "staticproperty",
+  "class" : "WioLTE",
+  "name" : "D38",
+  "generate_full" : "jspEvaluate(\"[C6,C7]\",true)",
+  "return" : ["JsVar",""]
+}*/ // D38,D39
 /*JSON{
-    "type" : "staticproperty",
-    "class" : "WioLTE",
-    "name" : "D20",
-    "generate_full" : "jspEvaluate(\"[B4,B3]\",true)",
-    "return" : [ "JsVar", ""]
-}
-*/ // D20,D19
+  "type" : "staticproperty",
+  "class" : "WioLTE",
+  "name" : "D20",
+  "generate_full" : "jspEvaluate(\"[B4,B3]\",true)",
+  "return" : ["JsVar",""]
+}*/ // D20,D19
 /*JSON{
-    "type" : "staticproperty",
-    "class" : "WioLTE",
-    "name" : "A6",
-    "generate_full" : "jspEvaluate(\"[A6,A7]\",true)",
-    "return" : [ "JsVar", ""]
-}
-*/ // A6,A7
+  "type" : "staticproperty",
+  "class" : "WioLTE",
+  "name" : "A6",
+  "generate_full" : "jspEvaluate(\"[A6,A7]\",true)",
+  "return" : ["JsVar",""]
+}*/ // A6,A7
 
 /*JSON{
-    "type" : "staticproperty",
-    "class" : "WioLTE",
-    "name" : "I2C",
-    "generate_full" : "jspEvaluate(\"[B8,B9]\",true)",
-    "return" : [ "JsVar", ""]
-}
-*/ // I2C1 SCL,SDA
+  "type" : "staticproperty",
+  "class" : "WioLTE",
+  "name" : "I2C",
+  "generate_full" : "jspEvaluate(\"[B8,B9]\",true)",
+  "return" : ["JsVar",""]
+}*/ // I2C1 SCL,SDA
 /*JSON{
-    "type" : "staticproperty",
-    "class" : "WioLTE",
-    "name" : "UART",
-    "generate_full" : "jspEvaluate(\"[B7,B6]\",true)",
-    "return" : [ "JsVar", ""]
-}
-*/ // UART1 RX,TX
+  "type" : "staticproperty",
+  "class" : "WioLTE",
+  "name" : "UART",
+  "generate_full" : "jspEvaluate(\"[B7,B6]\",true)",
+  "return" : ["JsVar",""]
+}*/ // UART1 RX,TX
 /*JSON{
-    "type" : "staticproperty",
-    "class" : "WioLTE",
-    "name" : "A4",
-    "generate_full" : "jspEvaluate(\"[A4,A5]\",true)",
-    "return" : [ "JsVar", ""]
-}
-*/ // A4,A5
+  "type" : "staticproperty",
+  "class" : "WioLTE",
+  "name" : "A4",
+  "generate_full" : "jspEvaluate(\"[A4,A5]\",true)",
+  "return" : ["JsVar",""]
+}*/ // A4,A5
 
 /*JSON{
   "type" : "init",

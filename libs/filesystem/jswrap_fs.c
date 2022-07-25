@@ -79,9 +79,9 @@ extern void jsfsReportError(const char *msg, FRESULT res);
   "name" : "readdir",
   "generate" : "jswrap_fs_readdir",
   "params" : [
-    ["path","JsVar","The path of the directory to list. If it is not supplied, '' is assumed, which will list the root directory"]
+    ["path","JsVar","The path of the directory to list. If it is not supplied, '' is assumed, which will list the root directory."]
   ],
-  "return" : ["JsVar","An array of filename strings (or undefined if the directory couldn't be listed)"]
+  "return" : ["JsVar","An array of filename strings (or undefined if the directory couldn't be listed)."]
 }
 List all files in the supplied directory, returning them as an array of strings.
 
@@ -95,9 +95,9 @@ the 'Sync' version.
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_fs_readdir",
   "params" : [
-    ["path","JsVar","The path of the directory to list. If it is not supplied, '' is assumed, which will list the root directory"]
+    ["path","JsVar","The path of the directory to list. If it is not supplied, '' is assumed, which will list the root directory."]
   ],
-  "return" : ["JsVar","An array of filename strings (or undefined if the directory couldn't be listed)"]
+  "return" : ["JsVar","An array of filename strings (or undefined if the directory couldn't be listed)."]
 }
 List all files in the supplied directory, returning them as an array of strings.
 */
@@ -161,10 +161,10 @@ JsVar *jswrap_fs_readdir(JsVar *path) {
   "name" : "writeFile",
   "generate_full" : " jswrap_fs_writeOrAppendFile(path, data, false)",
   "params" : [
-    ["path","JsVar","The path of the file to write"],
-    ["data","JsVar","The data to write to the file"]
+    ["path","JsVar","The path of the file to write."],
+    ["data","JsVar","The data to write to the file."]
   ],
-  "return" : ["bool","True on success, false on failure"]
+  "return" : ["bool","True on success, false on failure."]
 }
 Write the data to the given file
 
@@ -178,10 +178,10 @@ the 'Sync' version.
   "ifndef" : "SAVE_ON_FLASH",
   "generate_full" : " jswrap_fs_writeOrAppendFile(path, data, false)",
   "params" : [
-    ["path","JsVar","The path of the file to write"],
-    ["data","JsVar","The data to write to the file"]
+    ["path","JsVar","The path of the file to write."],
+    ["data","JsVar","The data to write to the file."]
   ],
-  "return" : ["bool","True on success, false on failure"]
+  "return" : ["bool","True on success, false on failure."]
 }
 Write the data to the given file
 */
@@ -191,10 +191,10 @@ Write the data to the given file
   "name" : "appendFile",
   "generate_full" : " jswrap_fs_writeOrAppendFile(path, data, true)",
   "params" : [
-    ["path","JsVar","The path of the file to write"],
-    ["data","JsVar","The data to write to the file"]
+    ["path","JsVar","The path of the file to write."],
+    ["data","JsVar","The data to write to the file."]
   ],
-  "return" : ["bool","True on success, false on failure"]
+  "return" : ["bool","True on success, false on failure."]
 }
 Append the data to the given file, created a new file if it doesn't exist
 
@@ -208,10 +208,10 @@ the 'Sync' version.
   "ifndef" : "SAVE_ON_FLASH",
   "generate_full" : "jswrap_fs_writeOrAppendFile(path, data, true)",
   "params" : [
-    ["path","JsVar","The path of the file to write"],
-    ["data","JsVar","The data to write to the file"]
+    ["path","JsVar","The path of the file to write."],
+    ["data","JsVar","The data to write to the file."]
   ],
-  "return" : ["bool","True on success, false on failure"]
+  "return" : ["bool","True on success, false on failure."]
 }
 Append the data to the given file, created a new file if it doesn't exist
 */
@@ -233,9 +233,9 @@ bool jswrap_fs_writeOrAppendFile(JsVar *path, JsVar *data, bool append) {
   "name" : "readFile",
   "generate" : "jswrap_fs_readFile",
   "params" : [
-    ["path","JsVar","The path of the file to read"]
+    ["path","JsVar","The path of the file to read."]
   ],
-  "return" : ["JsVar","A string containing the contents of the file (or undefined if the file doesn't exist)"]
+  "return" : ["JsVar","A string containing the contents of the file (or undefined if the file doesn't exist)."]
 }
 Read all data from a file and return as a string
 
@@ -249,9 +249,9 @@ the 'Sync' version.
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_fs_readFile",
   "params" : [
-    ["path","JsVar","The path of the file to read"]
+    ["path","JsVar","The path of the file to read."]
   ],
-  "return" : ["JsVar","A string containing the contents of the file (or undefined if the file doesn't exist)"]
+  "return" : ["JsVar","A string containing the contents of the file (or undefined if the file doesn't exist)."]
 }
 Read all data from a file and return as a string.
 
@@ -276,9 +276,9 @@ JsVar *jswrap_fs_readFile(JsVar *path) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_fs_unlink",
   "params" : [
-    ["path","JsVar","The path of the file to delete"]
+    ["path","JsVar","The path of the file to delete."]
   ],
-  "return" : ["bool","True on success, or false on failure"]
+  "return" : ["bool","True on success, or false on failure."]
 }
 Delete the given file
 
@@ -292,9 +292,9 @@ the 'Sync' version.
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_fs_unlink",
   "params" : [
-    ["path","JsVar","The path of the file to delete"]
+    ["path","JsVar","The path of the file to delete."]
   ],
-  "return" : ["bool","True on success, or false on failure"]
+  "return" : ["bool","True on success, or false on failure."]
 }
 Delete the given file
 */
@@ -326,9 +326,9 @@ bool jswrap_fs_unlink(JsVar *path) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_fs_stat",
   "params" : [
-    ["path","JsVar","The path of the file to get information on"]
+    ["path","JsVar","The path of the file to get information on."]
   ],
-  "return" : ["JsVar","An object describing the file, or undefined on failure"]
+  "return" : ["JsVar","An object describing the file, or undefined on failure."]
 }
 Return information on the given file. This returns an object with the following
 fields:
@@ -390,9 +390,9 @@ JsVar *jswrap_fs_stat(JsVar *path) {
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_fs_mkdir",
   "params" : [
-    ["path","JsVar","The name of the directory to create"]
+    ["path","JsVar","The name of the directory to create."]
   ],
-  "return" : ["bool","True on success, or false on failure"]
+  "return" : ["bool","True on success, or false on failure."]
 }
 Create the directory
 
@@ -406,9 +406,9 @@ the 'Sync' version.
   "ifndef" : "SAVE_ON_FLASH",
   "generate" : "jswrap_fs_mkdir",
   "params" : [
-    ["path","JsVar","The name of the directory to create"]
+    ["path","JsVar","The name of the directory to create."]
   ],
-  "return" : ["bool","True on success, or false on failure"]
+  "return" : ["bool","True on success, or false on failure."]
 }
 Create the directory
 */

@@ -28,19 +28,19 @@ Methods may be called on the `USB`, `Serial1`, `Serial2`, `Serial3`, `Serial4`,
 `Serial5` and `Serial6` objects. While different processors provide different
 numbers of USARTs, on official Espruino boards you can always rely on at least
 `Serial1` being available
- */
+*/
 /*JSON{
   "type" : "constructor",
   "class" : "Serial",
   "name" : "Serial",
   "generate" : "jswrap_serial_constructor",
-  "return" : ["JsVar","A Serial object"]
+  "return" : ["JsVar","A Serial object."]
 }
 Create a software Serial port. This has limited functionality (only low baud
 rates), but it can work on any pins.
 
 Use `Serial.setup` to configure this port.
- */
+*/
 JsVar *jswrap_serial_constructor() {
   return jspNewObject(0,"Serial");
 }
@@ -49,13 +49,13 @@ JsVar *jswrap_serial_constructor() {
   "class" : "Serial",
   "name" : "data",
   "params" : [
-    ["data","JsVar","A string containing one or more characters of received data"]
+    ["data","JsVar","A string containing one or more characters of received data."]
   ]
 }
 The `data` event is called when data is received. If a handler is defined with
 `X.on('data', function(data) { ... })` then it will be called, otherwise data
 will be stored in an internal buffer, where it can be retrieved with `X.read()`
- */
+*/
 
 /*JSON{
   "type" : "event",
@@ -74,7 +74,7 @@ passed to the `data` handler.
 
 **Note:** This only works on STM32 and NRF52 based devices (eg. all official
 Espruino boards)
- */
+*/
 /*JSON{
   "type" : "event",
   "class" : "Serial",
@@ -91,7 +91,7 @@ passed to the `data` handler.
 
 **Note:** This only works on STM32 and NRF52 based devices (eg. all official
 Espruino boards)
- */
+*/
 // this is created in jsiIdle based on EV_SERIALx_STATUS ecents
 
 /*JSON{
@@ -100,7 +100,7 @@ Espruino boards)
   "name" : "find",
   "generate_full" : "jshGetDeviceObjectFor(JSH_USART1, JSH_USARTMAX, pin)",
   "params" : [
-    ["pin","pin","A pin to search with"]
+    ["pin","pin","A pin to search with."]
   ],
   "return" : ["JsVar","An object of type `Serial`, or `undefined` if one couldn't be found."]
 }
@@ -118,7 +118,7 @@ May return undefined if no device can be found.
   "ifdef" : "USB"
 }
 The USB Serial port
- */
+*/
 /*JSON{
   "type" : "object",
   "name" : "Serial1",
@@ -126,7 +126,7 @@ The USB Serial port
   "#if" : "USART_COUNT>=1"
 }
 The first Serial (USART) port
- */
+*/
 /*JSON{
   "type" : "object",
   "name" : "Serial2",
@@ -134,7 +134,7 @@ The first Serial (USART) port
   "#if" : "USART_COUNT>=2"
 }
 The second Serial (USART) port
- */
+*/
 /*JSON{
   "type" : "object",
   "name" : "Serial3",
@@ -142,7 +142,7 @@ The second Serial (USART) port
   "#if" : "USART_COUNT>=3"
 }
 The third Serial (USART) port
- */
+*/
 /*JSON{
   "type" : "object",
   "name" : "Serial4",
@@ -150,7 +150,7 @@ The third Serial (USART) port
   "#if" : "USART_COUNT>=4"
 }
 The fourth Serial (USART) port
- */
+*/
 /*JSON{
   "type" : "object",
   "name" : "Serial5",
@@ -158,7 +158,7 @@ The fourth Serial (USART) port
   "#if" : "USART_COUNT>=5"
 }
 The fifth Serial (USART) port
- */
+*/
 /*JSON{
   "type" : "object",
   "name" : "Serial6",
@@ -166,7 +166,7 @@ The fifth Serial (USART) port
   "#if" : "USART_COUNT>=6"
 }
 The sixth Serial (USART) port
- */
+*/
 
 /*JSON{
   "type" : "object",
@@ -175,7 +175,7 @@ The sixth Serial (USART) port
 }
 A loopback serial device. Data sent to `LoopbackA` comes out of `LoopbackB` and
 vice versa
- */
+*/
 /*JSON{
   "type" : "object",
   "name" : "LoopbackB",
@@ -183,7 +183,7 @@ vice versa
 }
 A loopback serial device. Data sent to `LoopbackA` comes out of `LoopbackB` and
 vice versa
- */
+*/
 /*JSON{
   "type" : "object",
   "name" : "Telnet",
@@ -192,7 +192,7 @@ vice versa
 }
 A telnet serial device that maps to the built-in telnet console server (devices
 that have built-in wifi only).
- */
+*/
 
 
 
@@ -202,7 +202,7 @@ that have built-in wifi only).
   "name" : "setConsole",
   "generate" : "jswrap_serial_setConsole",
   "params" : [
-    ["force","bool","Whether to force the console to this port"]
+    ["force","bool","Whether to force the console to this port."]
   ]
 }
 Set this Serial port as the port for the JavaScript console (REPL).
@@ -211,7 +211,7 @@ Unless `force` is set to true, changes in the connection state of the board (for
 instance plugging in USB) will cause the console to change.
 
 See `E.setConsole` for a more flexible version of this function.
- */
+*/
 void jswrap_serial_setConsole(JsVar *parent, bool force) {
   IOEventFlags device = jsiGetDeviceFromClass(parent);
   if (DEVICE_IS_SERIAL(device)) {
@@ -227,7 +227,7 @@ void jswrap_serial_setConsole(JsVar *parent, bool force) {
   "name" : "setup",
   "generate" : "jswrap_serial_setup",
   "params" : [
-    ["baudrate","JsVar","The baud rate - the default is 9600"],
+    ["baudrate","JsVar","The baud rate - the default is 9600."],
     ["options","JsVar","An optional structure containing extra information on initialising the serial port - see below."]
   ]
 }
@@ -421,21 +421,21 @@ void _jswrap_serial_print(JsVar *parent, JsVar *arg, bool isPrint, bool newLine)
   "name" : "print",
   "generate" : "jswrap_serial_print",
   "params" : [
-    ["string","JsVar","A String to print"]
+    ["string","JsVar","A String to print."]
   ]
 }
 Print a string to the serial port - without a line feed
 
  **Note:** This function replaces any occurances of `\n` in the string with
  `\r\n`. To avoid this, use `Serial.write`.
- */
+*/
 /*JSON{
   "type" : "method",
   "class" : "Serial",
   "name" : "println",
   "generate" : "jswrap_serial_println",
   "params" : [
-    ["string","JsVar","A String to print"]
+    ["string","JsVar","A String to print."]
   ]
 }
 Print a line to the serial port with a newline (`\r\n`) at the end of it.
@@ -443,7 +443,7 @@ Print a line to the serial port with a newline (`\r\n`) at the end of it.
  **Note:** This function converts data to a string first, eg
  `Serial.print([1,2,3])` is equivalent to `Serial.print("1,2,3"). If you'd like
  to write raw bytes, use `Serial.write`.
- */
+*/
 void jswrap_serial_print(JsVar *parent, JsVar *str) {
   _jswrap_serial_print(parent, str, true, false);
 }
@@ -464,7 +464,7 @@ Write a character or array of data to the serial port
 This method writes unmodified data, eg `Serial.write([1,2,3])` is equivalent to
 `Serial.write("\1\2\3")`. If you'd like data converted to a string first, use
 `Serial.print`.
- */
+*/
 void jswrap_serial_write(JsVar *parent, JsVar *args) {
   _jswrap_serial_print(parent, args, false, false);
 }
@@ -490,7 +490,7 @@ Serial1.inject('Hello World');
 
 This is most useful if you wish to send characters to Espruino's REPL (console)
 while it is on another device.
- */
+*/
 static void _jswrap_serial_inject_cb(int data, void *userData) {
   IOEventFlags device = *(IOEventFlags*)userData;
   jshPushIOCharEvent(device, (char)data);
@@ -506,11 +506,11 @@ void jswrap_serial_inject(JsVar *parent, JsVar *args) {
   "class" : "Serial",
   "name" : "available",
   "generate" : "jswrap_stream_available",
-  "return" : ["int","How many bytes are available"]
+  "return" : ["int","How many bytes are available."]
 }
 Return how many bytes are available to read. If there is already a listener for
 data, this will always return 0.
- */
+*/
 
 /*JSON{
   "type" : "method",
@@ -518,12 +518,12 @@ data, this will always return 0.
   "name" : "read",
   "generate" : "jswrap_stream_read",
   "params" : [
-    ["chars","int","The number of characters to read, or undefined/0 for all available"]
+    ["chars","int","The number of characters to read, or undefined/0 for all available."]
   ],
   "return" : ["JsVar","A string containing the required bytes."]
 }
 Return a string containing characters that have been received
- */
+*/
 
 /*JSON{
   "type" : "method",
@@ -533,8 +533,8 @@ Return a string containing characters that have been received
   "generate" : "jswrap_pipe",
   "params" : [
     ["destination","JsVar","The destination file/stream that will receive content from the source."],
-    ["options","JsVar",["An optional object `{ chunkSize : int=32, end : bool=true, complete : function }`","chunkSize : The amount of data to pipe from source to destination at a time","complete : a function to call when the pipe activity is complete","end : call the 'end' function on the destination when the source is finished"]]
+    ["options","JsVar",["An optional object `{ chunkSize : int=32, end : bool=true, complete : function }`","chunkSize : The amount of data to pipe from source to destination at a time","complete : a function to call when the pipe activity is complete","end : call the 'end' function on the destination when the source is finished."]]
   ]
 }
 Pipe this USART to a stream (an object with a 'write' method)
- */
+*/

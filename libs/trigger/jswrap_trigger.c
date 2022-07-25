@@ -37,9 +37,9 @@ This class is currently in testing - it is NOT AVAILABLE on normal boards.
   "name" : "getPosAtTime",
   "generate" : "jswrap_trig_getPosAtTime",
   "params" : [
-    ["time","float","The time at which to find the position"]
+    ["time","float","The time at which to find the position."]
   ],
-  "return" : ["float","The position of the trigger wheel in degrees - as a floating point number"]
+  "return" : ["float","The position of the trigger wheel in degrees - as a floating point number."]
 }
 Get the position of the trigger wheel at the given time (from getTime)
 */
@@ -56,8 +56,8 @@ JsVarFloat jswrap_trig_getPosAtTime(JsVarFloat time) {
   "name" : "setup",
   "generate" : "jswrap_trig_setup",
   "params" : [
-    ["pin","pin","The pin to use for triggering"],
-    ["options","JsVar","Additional options as an object. defaults are: ```{teethTotal:60,teethMissing:2,minRPM:30,keyPosition:0}```"]
+    ["pin","pin","The pin to use for triggering."],
+    ["options","JsVar","Additional options as an object. defaults are: ```{teethTotal:60,teethMissing:2,minRPM:30,keyPosition:0}```."]
   ]
 }
 Initialise the trigger class
@@ -117,10 +117,10 @@ void jswrap_trig_setup(Pin pin, JsVar *options) {
   "name" : "setTrigger",
   "generate" : "jswrap_trig_setTrigger",
   "params" : [
-    ["num","int","The trigger number (0..7)"],
-    ["pos","float","The position (in degrees) to fire the trigger at"],
-    ["pins","JsVar","An array of pins to pulse (max 4)"],
-    ["pulseLength","float","The time (in msec) to pulse for"]
+    ["num","int","The trigger number (0..7)."],
+    ["pos","float","The position (in degrees) to fire the trigger at."],
+    ["pins","JsVar","An array of pins to pulse (max 4)."],
+    ["pulseLength","float","The time (in msec) to pulse for."]
   ]
 }
 Set a trigger for a certain point in the cycle
@@ -165,7 +165,7 @@ void jswrap_trig_setTrigger(JsVarInt num, JsVarFloat position, JsVar *pins, JsVa
   "name" : "killTrigger",
   "generate" : "jswrap_trig_killTrigger",
   "params" : [
-    ["num","int","The trigger number (0..7)"]
+    ["num","int","The trigger number (0..7)."]
   ]
 }
 Disable a trigger
@@ -188,9 +188,9 @@ void jswrap_trig_killTrigger(JsVarInt num) {
   "name" : "getTrigger",
   "generate" : "jswrap_trig_getTrigger",
   "params" : [
-    ["num","int","The trigger number (0..7)"]
+    ["num","int","The trigger number (0..7)."]
   ],
-  "return" : ["JsVar","A structure containing all information about the trigger"]
+  "return" : ["JsVar","A structure containing all information about the trigger."]
 }
 Get the current state of a trigger
 */
@@ -232,7 +232,7 @@ JsVar *jswrap_trig_getTrigger(JsVarInt num) {
   "class" : "Trig",
   "name" : "getRPM",
   "generate" : "jswrap_trig_getRPM",
-  "return" : ["float","The current RPM of the trigger wheel"]
+  "return" : ["float","The current RPM of the trigger wheel."]
 }
 Get the RPM of the trigger wheel
 */
@@ -248,7 +248,7 @@ JsVarFloat jswrap_trig_getRPM() {
   "class" : "Trig",
   "name" : "getErrors",
   "generate" : "jswrap_trig_getErrors",
-  "return" : ["int","The error flags"]
+  "return" : ["int","The error flags."]
 }
 Get the current error flags from the trigger wheel - and zero them
 */
@@ -264,7 +264,7 @@ JsVarInt jswrap_trig_getErrors() {
   "class" : "Trig",
   "name" : "getErrorArray",
   "generate" : "jswrap_trig_getErrorArray",
-  "return" : ["JsVar","An array of error strings"]
+  "return" : ["JsVar","An array of error strings."]
 }
 Get the current error flags from the trigger wheel - and zero them
 */

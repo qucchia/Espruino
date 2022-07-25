@@ -78,10 +78,10 @@ Library for communication with the WIZnet Ethernet module
   "name" : "connect",
   "generate" : "jswrap_wiznet_connect",
   "params" : [
-    ["spi", "JsVar", "Device to use for SPI (or undefined to use the default)"],
-    ["cs", "pin", "The pin to use for Chip Select"]
+    ["spi","JsVar","Device to use for SPI (or undefined to use the default)."],
+    ["cs","pin","The pin to use for Chip Select."]
   ],
-  "return" : ["JsVar","An Ethernet Object"],
+  "return" : ["JsVar","An Ethernet Object."],
   "return_object" : "Ethernet"
 }
 Initialise the WIZnet module and return an Ethernet object
@@ -243,7 +243,7 @@ static void _eth_getIP_set_address(JsVar *options, char *name, unsigned char *pt
     ["options","JsVar","Object containing IP address options `{ ip : '1.2.3.4', subnet : '...', gateway: '...', dns:'...', mac:':::::'  }`, or do not supply an object in order to force DHCP."],
     ["callback","JsVar","An optional `callback(err)` function to invoke when ip is set. `err==null` on success, or a string on failure."]
   ],
-  "return" : ["bool","True on success"]
+  "return" : ["bool","True on success."]
 }
 Set the current IP address or get an IP from DHCP (if no options object is
 specified)
@@ -329,10 +329,10 @@ bool jswrap_ethernet_setIP(JsVar *wlanObj, JsVar *options, JsVar *callback) {
   "name" : "setHostname",
   "generate" : "jswrap_ethernet_setHostname",
   "params" : [
-    ["hostname","JsVar","hostname as string"],
+    ["hostname","JsVar","hostname as string."],
     ["callback","JsVar","An optional `callback(err)` function to be called back with null or error text."]
   ],
-  "return" : ["bool","True on success"]
+  "return" : ["bool","True on success."]
 }
 Set hostname allow to set the hosname used during the dhcp request. min 8 and
 max 12 char, best set before calling `eth.setIP()` Default is WIZnet010203,
@@ -372,7 +372,7 @@ bool jswrap_ethernet_setHostname(JsVar *wlanObj, JsVar *jsHostname, JsVar *callb
   "params" : [
     ["callback","JsVar","An optional `callback(err,hostname)` function to be called back with the status information."]
   ],
-  "return" : ["JsVar" ]
+  "return" : ["JsVar"]
 }
 Returns the hostname
 */
@@ -401,10 +401,9 @@ JsVar * jswrap_ethernet_getHostname(JsVar *wlanObj, JsVar *callback) {
   "params" : [
     ["options","JsVar","An optional `callback(err, status)` function to be called back with the status information."]
   ],
-  "return" : ["JsVar" ]
+  "return" : ["JsVar"]
 }
 Get the current status of the ethernet device
-
 */
 JsVar * jswrap_ethernet_getStatus( JsVar *wlanObj, JsVar *callback) {
   NOT_USED(wlanObj);

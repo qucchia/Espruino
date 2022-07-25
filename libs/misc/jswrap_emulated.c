@@ -20,54 +20,49 @@
 /*JSON{
   "type" : "class",
   "class" : "NRF"
-}
-*/
+}*/
 /*JSON{
   "type" : "class",
   "class" : "Bluetooth"
-}
-*/
+}*/
 
 /*JSON{
-    "type" : "staticmethod",
-    "class" : "NRF",
-    "name" : "getSecurityStatus",
-    "generate_full" : "jsvNewObject()",
-    "return" : ["JsVar", "An object" ]
-}
-*/
-/*JSON{
-    "type" : "staticmethod",
-    "class" : "NRF",
-    "name" : "getAddress",
-    "generate_full" : "jsvNewFromString(\"12:34:56:78:90:ab\")",
-    "return" : ["JsVar", "An object" ]
-}
-*/
-/*JSON{
-    "type" : "staticmethod",
-    "class" : "NRF",
-    "name" : "setServices",
-    "generate_full" : "",
-    "params" : [
-      ["data","JsVar","The service (and characteristics) to advertise"],
-      ["options","JsVar","Optional object containing options"]
-    ]
+  "type" : "staticmethod",
+  "class" : "NRF",
+  "name" : "getSecurityStatus",
+  "generate_full" : "jsvNewObject()",
+  "return" : ["JsVar","An object."]
 }*/
 /*JSON{
-    "type" : "staticmethod",
-    "class" : "NRF",
-    "name" : "setAdvertising",
-    "generate_full" : "",
-    "params" : [
-      ["data","JsVar","The data to advertise as an object - see below for more info"],
-      ["options","JsVar","An optional object of options"]
-    ]
+  "type" : "staticmethod",
+  "class" : "NRF",
+  "name" : "getAddress",
+  "generate_full" : "jsvNewFromString(\"12:34:56:78:90:ab\")",
+  "return" : ["JsVar","An object."]
 }*/
 /*JSON{
-    "type" : "staticmethod",
-    "class" : "Bluetooth",
-    "name" : "setConsole",
-    "generate_full" : ""
-}
-*/
+  "type" : "staticmethod",
+  "class" : "NRF",
+  "name" : "setServices",
+  "generate_full" : "",
+  "params" : [
+    ["data","JsVar","The service (and characteristics) to advertise."],
+    ["options","JsVar","Optional object containing options."]
+  ]
+}*/
+/*JSON{
+  "type" : "staticmethod",
+  "class" : "NRF",
+  "name" : "setAdvertising",
+  "generate_full" : "",
+  "params" : [
+    ["data","JsVar","The data to advertise as an object - see below for more info."],
+    ["options","JsVar","An optional object of options."]
+  ]
+}*/
+/*JSON{
+  "type" : "staticmethod",
+  "class" : "Bluetooth",
+  "name" : "setConsole",
+  "generate_full" : ""
+}*/

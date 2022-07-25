@@ -55,7 +55,7 @@ The HTTP server request
   "class" : "httpSRq",
   "name" : "data",
   "params" : [
-    ["data","JsVar","A string containing one or more characters of received data"]
+    ["data","JsVar","A string containing one or more characters of received data."]
   ]
 }
 The 'data' event is called when data is received. If a handler is defined with
@@ -72,29 +72,29 @@ Called when the connection closes.
 
 
 /*JSON{
-    "type" : "property",
-    "class" : "httpSRq",
-    "name" : "headers",
-    "generate" : false,
-    "return" : ["JsVar", "An object mapping header name to value" ]
+  "type" : "property",
+  "class" : "httpSRq",
+  "name" : "headers",
+  "generate" : false,
+  "return" : ["JsVar","An object mapping header name to value."]
 }
 The headers to sent to the server with this HTTP request.
 *//*Documentation only*/
 /*JSON{
-    "type" : "property",
-    "class" : "httpSRq",
-    "name" : "method",
-    "generate" : false,
-    "return" : ["JsVar", "A string" ]
+  "type" : "property",
+  "class" : "httpSRq",
+  "name" : "method",
+  "generate" : false,
+  "return" : ["JsVar","A string."]
 }
 The HTTP method used with this request. Often `"GET"`.
 *//*Documentation only*/
 /*JSON{
-    "type" : "property",
-    "class" : "httpSRq",
-    "name" : "url",
-    "generate" : false,
-    "return" : ["JsVar", "A string representing the URL" ]
+  "type" : "property",
+  "class" : "httpSRq",
+  "name" : "url",
+  "generate" : false,
+  "return" : ["JsVar","A string representing the URL."]
 }
 The URL requested in this HTTP request, for instance:
 
@@ -107,7 +107,7 @@ The URL requested in this HTTP request, for instance:
   "class" : "httpSRq",
   "name" : "available",
   "generate" : "jswrap_stream_available",
-  "return" : ["int","How many bytes are available"]
+  "return" : ["int","How many bytes are available."]
 }
 Return how many bytes are available to read. If there is already a listener for
 data, this will always return 0.
@@ -118,7 +118,7 @@ data, this will always return 0.
   "name" : "read",
   "generate" : "jswrap_stream_read",
   "params" : [
-    ["chars","int","The number of characters to read, or undefined/0 for all available"]
+    ["chars","int","The number of characters to read, or undefined/0 for all available."]
   ],
   "return" : ["JsVar","A string containing the required bytes."]
 }
@@ -132,7 +132,7 @@ Return a string containing characters that have been received
   "generate" : "jswrap_pipe",
   "params" : [
     ["destination","JsVar","The destination file/stream that will receive content from the source."],
-    ["options","JsVar",["An optional object `{ chunkSize : int=32, end : bool=true, complete : function }`","chunkSize : The amount of data to pipe from source to destination at a time","complete : a function to call when the pipe activity is complete","end : call the 'end' function on the destination when the source is finished"]]
+    ["options","JsVar",["An optional object `{ chunkSize : int=32, end : bool=true, complete : function }`","chunkSize : The amount of data to pipe from source to destination at a time","complete : a function to call when the pipe activity is complete","end : call the 'end' function on the destination when the source is finished."]]
   ]
 }
 Pipe this to a stream (an object with a 'write' method)
@@ -200,7 +200,7 @@ The HTTP client response, passed to the callback of `http.request()` an
   "class" : "httpCRs",
   "name" : "data",
   "params" : [
-    ["data","JsVar","A string containing one or more characters of received data"]
+    ["data","JsVar","A string containing one or more characters of received data."]
   ]
 }
 The 'data' event is called when data is received. If a handler is defined with
@@ -226,38 +226,38 @@ event function receives an error object as parameter with a `code` field and a
 conclude the HTTP request/response.
 */
 /*JSON{
-    "type" : "property",
-    "class" : "httpCRs",
-    "name" : "headers",
-    "generate" : false,
-    "return" : ["JsVar", "An object mapping header name to value" ]
+  "type" : "property",
+  "class" : "httpCRs",
+  "name" : "headers",
+  "generate" : false,
+  "return" : ["JsVar","An object mapping header name to value."]
 }
 The headers received along with the HTTP response
 *//*Documentation only*/
 /*JSON{
-    "type" : "property",
-    "class" : "httpCRs",
-    "name" : "statusCode",
-    "generate" : false,
-    "return" : ["JsVar", "The status code as a String" ]
+  "type" : "property",
+  "class" : "httpCRs",
+  "name" : "statusCode",
+  "generate" : false,
+  "return" : ["JsVar","The status code as a String."]
 }
 The HTTP response's status code - usually `"200"` if all went well
 *//*Documentation only*/
 /*JSON{
-    "type" : "property",
-    "class" : "httpCRs",
-    "name" : "statusMessage",
-    "generate" : false,
-    "return" : ["JsVar", "An String Status Message" ]
+  "type" : "property",
+  "class" : "httpCRs",
+  "name" : "statusMessage",
+  "generate" : false,
+  "return" : ["JsVar","An String Status Message."]
 }
 The HTTP response's status message - Usually `"OK"` if all went well
 *//*Documentation only*/
 /*JSON{
-    "type" : "property",
-    "class" : "httpCRs",
-    "name" : "httpVersion",
-    "generate" : false,
-    "return" : ["JsVar", "Th" ]
+  "type" : "property",
+  "class" : "httpCRs",
+  "name" : "httpVersion",
+  "generate" : false,
+  "return" : ["JsVar","Th."]
 }
 The HTTP version reported back by the server - usually `"1.1"`
 *//*Documentation only*/
@@ -266,7 +266,7 @@ The HTTP version reported back by the server - usually `"1.1"`
   "class" : "httpCRs",
   "name" : "available",
   "generate" : "jswrap_stream_available",
-  "return" : ["int","How many bytes are available"]
+  "return" : ["int","How many bytes are available."]
 }
 Return how many bytes are available to read. If there is a 'data' event handler,
 this will always return 0.
@@ -277,7 +277,7 @@ this will always return 0.
   "name" : "read",
   "generate" : "jswrap_stream_read",
   "params" : [
-    ["chars","int","The number of characters to read, or undefined/0 for all available"]
+    ["chars","int","The number of characters to read, or undefined/0 for all available."]
   ],
   "return" : ["JsVar","A string containing the required bytes."]
 }
@@ -291,7 +291,7 @@ Return a string containing characters that have been received
   "generate" : "jswrap_pipe",
   "params" : [
     ["destination","JsVar","The destination file/stream that will receive content from the source."],
-    ["options","JsVar",["An optional object `{ chunkSize : int=32, end : bool=true, complete : function }`","chunkSize : The amount of data to pipe from source to destination at a time","complete : a function to call when the pipe activity is complete","end : call the 'end' function on the destination when the source is finished"]]
+    ["options","JsVar",["An optional object `{ chunkSize : int=32, end : bool=true, complete : function }`","chunkSize : The amount of data to pipe from source to destination at a time","complete : a function to call when the pipe activity is complete","end : call the 'end' function on the destination when the source is finished."]]
   ]
 }
 Pipe this to a stream (an object with a 'write' method)
@@ -312,9 +312,9 @@ Pipe this to a stream (an object with a 'write' method)
   "name" : "createServer",
   "generate" : "jswrap_http_createServer",
   "params" : [
-    ["callback","JsVar","A function(request,response) that will be called when a connection is made"]
+    ["callback","JsVar","A function(request,response) that will be called when a connection is made."]
   ],
-  "return" : ["JsVar","Returns a new httpSrv object"],
+  "return" : ["JsVar","Returns a new httpSrv object."],
   "return_object" : "httpSrv"
 }
 Create an HTTP Server
@@ -339,12 +339,12 @@ JsVar *jswrap_http_createServer(JsVar *callback) {
   "type" : "staticmethod",
   "class" : "http",
   "name" : "request",
-    "generate_full" : "jswrap_net_connect(options, callback, ST_HTTP)",
+  "generate_full" : "jswrap_net_connect(options, callback, ST_HTTP)",
   "params" : [
-    ["options","JsVar","An object containing host,port,path,method,headers fields (and also ca,key,cert if HTTPS is enabled)"],
+    ["options","JsVar","An object containing host,port,path,method,headers fields (and also ca,key,cert if HTTPS is enabled)."],
     ["callback","JsVar","A function(res) that will be called when a connection is made. You can then call `res.on('data', function(data) { ... })` and `res.on('close', function() { ... })` to deal with the response."]
   ],
-  "return" : ["JsVar","Returns a new httpCRq object"],
+  "return" : ["JsVar","Returns a new httpCRq object."],
   "return_object" : "httpCRq"
 }
 Create an HTTP Request - `end()` must be called on it to complete the operation.
@@ -379,7 +379,6 @@ here](/Internet#http-post)
 
 **Note:** if TLS/HTTPS is enabled, options can have `ca`, `key` and `cert`
 fields. See `tls.connect` for more information about these and how to use them.
-
 */
 
 /*JSON{
@@ -388,10 +387,10 @@ fields. See `tls.connect` for more information about these and how to use them.
   "name" : "get",
   "generate" : "jswrap_http_get",
   "params" : [
-    ["options","JsVar","A simple URL, or an object containing host,port,path,method fields"],
+    ["options","JsVar","A simple URL, or an object containing host,port,path,method fields."],
     ["callback","JsVar","A function(res) that will be called when a connection is made. You can then call `res.on('data', function(data) { ... })` and `res.on('close', function() { ... })` to deal with the response."]
   ],
-  "return" : ["JsVar","Returns a new httpCRq object"],
+  "return" : ["JsVar","Returns a new httpCRq object."],
   "return_object" : "httpCRq"
 }
 Request a webpage over HTTP - a convenience function for `http.request()` that
@@ -443,9 +442,9 @@ JsVar *jswrap_http_get(JsVar *options, JsVar *callback) {
   "name" : "listen",
   "generate_full" : "jswrap_net_server_listen(parent, port, ST_HTTP)",
   "params" : [
-    ["port","int32","The port to listen on"]
+    ["port","int32","The port to listen on."]
   ],
-  "return" : ["JsVar","The HTTP server instance that 'listen' was called on"]
+  "return" : ["JsVar","The HTTP server instance that 'listen' was called on."]
 }
 Start listening for new HTTP connections on the given port
 */
@@ -467,11 +466,11 @@ Stop listening for new HTTP connections
 // ---------------------------------------------------------------------------------
 // ---------------------------------------------------------------------------------
 /*JSON{
-    "type" : "property",
-    "class" : "httpSRs",
-    "name" : "headers",
-    "generate" : false,
-    "return" : ["JsVar", "An object mapping header name to value" ]
+  "type" : "property",
+  "class" : "httpSRs",
+  "name" : "headers",
+  "generate" : false,
+  "return" : ["JsVar","An object mapping header name to value."]
 }
 The headers to send back along with the HTTP response.
 
@@ -490,9 +489,9 @@ The default contents are:
   "name" : "write",
   "generate" : "jswrap_httpSRs_write",
   "params" : [
-    ["data","JsVar","A string containing data to send"]
+    ["data","JsVar","A string containing data to send."]
   ],
-  "return" : ["bool","For node.js compatibility, returns the boolean false. When the send buffer is empty, a `drain` event will be sent"]
+  "return" : ["bool","For node.js compatibility, returns the boolean false. When the send buffer is empty, a `drain` event will be sent."]
 }
 This function writes the `data` argument as a string. Data that is passed in
 (including arrays) will be converted to a string with the normal JavaScript
@@ -510,7 +509,7 @@ bool jswrap_httpSRs_write(JsVar *parent, JsVar *data) {
   "name" : "end",
   "generate" : "jswrap_httpSRs_end",
   "params" : [
-    ["data","JsVar","A string containing data to send"]
+    ["data","JsVar","A string containing data to send."]
   ]
 }
 See `Socket.write` for more information about the data argument
@@ -527,8 +526,8 @@ void jswrap_httpSRs_end(JsVar *parent, JsVar *data) {
   "name" : "writeHead",
   "generate" : "jswrap_httpSRs_writeHead",
   "params" : [
-    ["statusCode","int32","The HTTP status code"],
-    ["headers","JsVar","An object containing the headers"]
+    ["statusCode","int32","The HTTP status code."],
+    ["headers","JsVar","An object containing the headers."]
   ]
 }
 Send the given status code and headers. If not explicitly called this will be
@@ -547,8 +546,8 @@ void jswrap_httpSRs_writeHead(JsVar *parent, int statusCode, JsVar *headers) {
   "name" : "setHeader",
   "generate" : "jswrap_httpSRs_setHeader",
   "params" : [
-    ["name","JsVar","The name of the header as a String"],
-    ["value","JsVar","The value of the header as a String"]
+    ["name","JsVar","The name of the header as a String."],
+    ["value","JsVar","The value of the header as a String."]
   ]
 }
 Set a value to send in the header of this HTTP response. This updates the
@@ -571,9 +570,9 @@ void jswrap_httpSRs_setHeader(JsVar *parent, JsVar *name, JsVar *value) {
   "name" : "write",
   "generate" : "jswrap_net_socket_write",
   "params" : [
-    ["data","JsVar","A string containing data to send"]
+    ["data","JsVar","A string containing data to send."]
   ],
-  "return" : ["bool","For node.js compatibility, returns the boolean false. When the send buffer is empty, a `drain` event will be sent"]
+  "return" : ["bool","For node.js compatibility, returns the boolean false. When the send buffer is empty, a `drain` event will be sent."]
 }
 This function writes the `data` argument as a string. Data that is passed in
 (including arrays) will be converted to a string with the normal JavaScript
@@ -588,7 +587,7 @@ This function writes the `data` argument as a string. Data that is passed in
   "name" : "end",
   "generate" : "jswrap_net_socket_end",
   "params" : [
-    ["data","JsVar","A string containing data to send"]
+    ["data","JsVar","A string containing data to send."]
   ]
 }
 Finish this HTTP request - optional data to append as an argument

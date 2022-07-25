@@ -113,3 +113,38 @@ exports.readAllWrapperFiles = function(callback) {
   });
 }
 
+exports.getBoard = function (board) {
+  try {
+    const contents = require("fs")
+      .readFileSync(__dirname + "/../boards/" + board)
+      .toString();
+    const b = {};
+
+    const True = true;
+    const False = false;
+    const rev = (x) => x.reverse();
+    const saved_code_pages = 4;
+
+    ["info", "chip", "devices", "board"].forEach((key) => {
+      const matches = contents.match(
+        new RegExp(key + " = (\\{(?:(?!\\*\\/).|[\\n\\r])*?\\});\\n")
+      );
+      if (!matches) return;
+      b[key] = eval(
+        "(() => { return " + matches[1].replace(/#/g, "//") + "})()"
+      );
+    });
+
+    return b;
+  } catch (e) {
+    console.log("Error in board", board);
+    console.error(e);
+  }
+};
+
+exports.getAllBoards = function () {
+  return require("fs")
+    .readdirSync(__dirname + "/../boards")
+    .filter((filename) => filename.match(/[.]py$/))
+    .map((board) => exports.getBoard(board));
+};

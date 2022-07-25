@@ -24,8 +24,7 @@
 /*JSON{
   "type" : "library",
   "class" : "tensorflow"
-}
-*/
+}*/
 
 void *jswrap_tfmicrointerpreter_getTFMI(JsVar *parent) {
   JsVar *mi = jsvObjectGetChild(parent, "mi", 0);
@@ -46,13 +45,12 @@ void *jswrap_tfmicrointerpreter_getTFMI(JsVar *parent) {
   "name" : "create",
   "generate" : "jswrap_tensorflow_create",
   "params" : [
-    ["arenaSize","int","The TensorFlow Arena size"],
-    ["model","JsVar","The model to use - this should be a flat array/string"]
+    ["arenaSize","int","The TensorFlow Arena size."],
+    ["model","JsVar","The model to use - this should be a flat array/string."]
   ],
-  "return" : ["JsVar","A tensorflow instance"],
+  "return" : ["JsVar","A tensorflow instance."],
   "return_object" : "TFMicroInterpreter"
-}
-*/
+}*/
 JsVar *jswrap_tensorflow_create(int arena_size, JsVar *model) {
   if (arena_size<512) {
     jsExceptionHere(JSET_ERROR, "Invalid Arena Size");
@@ -140,10 +138,9 @@ JsVar *jswrap_tfmicrointerpreter_tensorToArrayBuffer(JsVar *parent, bool isInput
   "class" : "TFMicroInterpreter",
   "name" : "getInput",
   "generate" : "jswrap_tfmicrointerpreter_getInput",
-  "return" : ["JsVar","An arraybuffer referencing the input data"],
+  "return" : ["JsVar","An arraybuffer referencing the input data."],
   "return_object" : "ArrayBufferView"
-}
-*/
+}*/
 JsVar *jswrap_tfmicrointerpreter_getInput(JsVar *parent) {
   return jswrap_tfmicrointerpreter_tensorToArrayBuffer(parent, true);
 }
@@ -152,10 +149,9 @@ JsVar *jswrap_tfmicrointerpreter_getInput(JsVar *parent) {
   "class" : "TFMicroInterpreter",
   "name" : "getOutput",
   "generate" : "jswrap_tfmicrointerpreter_getOutput",
-  "return" : ["JsVar","An arraybuffer referencing the output data"],
+  "return" : ["JsVar","An arraybuffer referencing the output data."],
   "return_object" : "ArrayBufferView"
-}
-*/
+}*/
 JsVar *jswrap_tfmicrointerpreter_getOutput(JsVar *parent) {
   return jswrap_tfmicrointerpreter_tensorToArrayBuffer(parent, false);
 }
@@ -164,8 +160,7 @@ JsVar *jswrap_tfmicrointerpreter_getOutput(JsVar *parent) {
   "class" : "TFMicroInterpreter",
   "name" : "invoke",
   "generate" : "jswrap_tfmicrointerpreter_invoke"
-}
-*/
+}*/
 void jswrap_tfmicrointerpreter_invoke(JsVar *parent) {
   void *tfmi = jswrap_tfmicrointerpreter_getTFMI(parent);
   if (!tfmi) return;

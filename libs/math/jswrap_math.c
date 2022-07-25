@@ -83,56 +83,56 @@ This is a standard JavaScript class that contains useful Maths routines
   "class" : "Math",
   "name" : "E",
   "generate_full" : "2.718281828459045",
-  "return" : ["float","The value of E - 2.718281828459045"]
+  "return" : ["float","The value of E - 2.718281828459045."]
 }*/
 /*JSON{
   "type" : "staticproperty",
   "class" : "Math",
   "name" : "PI",
   "generate_full" : "PI",
-  "return" : ["float","The value of PI - 3.141592653589793"]
+  "return" : ["float","The value of PI - 3.141592653589793."]
 }*/
 /*JSON{
   "type" : "staticproperty",
   "class" : "Math",
   "name" : "LN2",
   "generate_full" : "0.6931471805599453",
-  "return" : ["float","The natural logarithm of 2 - 0.6931471805599453"]
+  "return" : ["float","The natural logarithm of 2 - 0.6931471805599453."]
 }*/
 /*JSON{
   "type" : "staticproperty",
   "class" : "Math",
   "name" : "LN10",
   "generate_full" : "2.302585092994046",
-  "return" : ["float","The natural logarithm of 10 - 2.302585092994046"]
+  "return" : ["float","The natural logarithm of 10 - 2.302585092994046."]
 }*/
 /*JSON{
   "type" : "staticproperty",
   "class" : "Math",
   "name" : "LOG2E",
   "generate_full" : "1.4426950408889634",
-  "return" : ["float","The base 2 logarithm of e - 1.4426950408889634"]
+  "return" : ["float","The base 2 logarithm of e - 1.4426950408889634."]
 }*/
 /*JSON{
   "type" : "staticproperty",
   "class" : "Math",
   "name" : "LOG10E",
   "generate_full" : "0.4342944819032518",
-  "return" : ["float","The base 10 logarithm of e - 0.4342944819032518"]
+  "return" : ["float","The base 10 logarithm of e - 0.4342944819032518."]
 }*/
 /*JSON{
   "type" : "staticproperty",
   "class" : "Math",
   "name" : "SQRT2",
   "generate_full" : "1.4142135623730951",
-  "return" : ["float","The square root of 2 - 1.4142135623730951"]
+  "return" : ["float","The square root of 2 - 1.4142135623730951."]
 }*/
 /*JSON{
   "type" : "staticproperty",
   "class" : "Math",
   "name" : "SQRT1_2",
   "generate_full" : "0.7071067811865476",
-  "return" : ["float","The square root of 1/2 - 0.7071067811865476"]
+  "return" : ["float","The square root of 1/2 - 0.7071067811865476."]
 }*/
 
 
@@ -142,9 +142,9 @@ This is a standard JavaScript class that contains useful Maths routines
   "name" : "abs",
   "generate" : "jswrap_math_abs",
   "params" : [
-    ["x","float","A floating point value"]
+    ["x","float","A floating point value."]
   ],
-  "return" : ["float","The absolute value of x (eg, ```Math.abs(2)==2```, but also ```Math.abs(-2)==2```)"]
+  "return" : ["float","The absolute value of x (eg, ```Math.abs(2)==2```, but also ```Math.abs(-2)==2```)."]
 }*/
 JsVarFloat jswrap_math_abs(JsVarFloat x) {
   return (x<0)?-x:x;
@@ -156,9 +156,9 @@ JsVarFloat jswrap_math_abs(JsVarFloat x) {
   "name" : "acos",
   "generate_full" : "(PI/2) - jswrap_math_asin(x)",
   "params" : [
-    ["x","float","The value to get the arc cosine of"]
+    ["x","float","The value to get the arc cosine of."]
   ],
-  "return" : ["float","The arc cosine of x, between 0 and PI"]
+  "return" : ["float","The arc cosine of x, between 0 and PI."]
 }*/
 /*JSON{
   "type" : "staticmethod",
@@ -167,9 +167,9 @@ JsVarFloat jswrap_math_abs(JsVarFloat x) {
   "name" : "asin",
   "generate" : "jswrap_math_asin",
   "params" : [
-    ["x","float","The value to get the arc sine of"]
+    ["x","float","The value to get the arc sine of."]
   ],
-  "return" : ["float","The arc sine of x, between -PI/2 and PI/2"]
+  "return" : ["float","The arc sine of x, between -PI/2 and PI/2."]
 }*/
 JsVarFloat jswrap_math_asin(JsVarFloat x) {
   return jswrap_math_atan(x / jswrap_math_sqrt(1-x*x));
@@ -180,9 +180,9 @@ JsVarFloat jswrap_math_asin(JsVarFloat x) {
   "name" : "atan",
   "generate" : "jswrap_math_atan",
   "params" : [
-    ["x","float","The value to get the arc tangent of"]
+    ["x","float","The value to get the arc tangent of."]
   ],
-  "return" : ["float","The arc tangent of x, between -PI/2 and PI/2"]
+  "return" : ["float","The arc tangent of x, between -PI/2 and PI/2."]
 }*/
 double jswrap_math_atan(double x) {
 #ifdef SAVE_ON_FLASH_MATH
@@ -227,10 +227,10 @@ double jswrap_math_atan(double x) {
   "name" : "atan2",
   "generate" : "jswrap_math_atan2",
   "params" : [
-    ["y","float","The Y-part of the angle to get the arc tangent of"],
-    ["x","float","The X-part of the angle to get the arc tangent of"]
+    ["y","float","The Y-part of the angle to get the arc tangent of."],
+    ["x","float","The X-part of the angle to get the arc tangent of."]
   ],
-  "return" : ["float","The arctangent of Y/X, between -PI and PI"]
+  "return" : ["float","The arctangent of Y/X, between -PI and PI."]
 }*/
 double jswrap_math_atan2(double y, double x) {
 #ifdef SAVE_ON_FLASH_MATH
@@ -255,9 +255,9 @@ double jswrap_math_atan2(double y, double x) {
   "name" : "cos",
   "generate_full" : "jswrap_math_sin(theta + (PI/2))",
   "params" : [
-    ["theta","float","The angle to get the cosine of"]
+    ["theta","float","The angle to get the cosine of."]
   ],
-  "return" : ["float","The cosine of theta"]
+  "return" : ["float","The cosine of theta."]
 }*/
 
 double jswrap_math_mod(double x, double y) {
@@ -332,17 +332,17 @@ double jswrap_math_pow(double x, double y) {
   "name" : "pow",
   "generate" : "jswrap_math_pow",
   "params" : [
-    ["x","float","The value to raise to the power"],
-    ["y","float","The power x should be raised to"]
+    ["x","float","The value to raise to the power."],
+    ["y","float","The power x should be raised to."]
   ],
-  "return" : ["float","x raised to the power y (x^y)"]
+  "return" : ["float","x raised to the power y (x^y)."]
 }*/
 /*JSON{
   "type" : "staticmethod",
   "class" : "Math",
   "name" : "random",
   "generate_full" : "(JsVarFloat)rand() / (JsVarFloat)RAND_MAX",
-  "return" : ["float","A random number between 0 and 1"]
+  "return" : ["float","A random number between 0 and 1."]
 }*/
 /*JSON{
   "type" : "staticmethod",
@@ -350,9 +350,9 @@ double jswrap_math_pow(double x, double y) {
   "name" : "round",
   "generate" : "jswrap_math_round",
   "params" : [
-    ["x","float","The value to round"]
+    ["x","float","The value to round."]
   ],
-  "return" : ["JsVar","x, rounded to the nearest integer"]
+  "return" : ["JsVar","x, rounded to the nearest integer."]
 }*/
 JsVar *jswrap_math_round(double x) {
   if (!isfinite(x) || isNegativeZero(x)) return jsvNewFromFloat(x);
@@ -369,9 +369,9 @@ JsVar *jswrap_math_round(double x) {
   "name" : "sin",
   "generate" : "jswrap_math_sin",
   "params" : [
-    ["theta","float","The angle to get the sine of"]
+    ["theta","float","The angle to get the sine of."]
   ],
-  "return" : ["float","The sine of theta"]
+  "return" : ["float","The sine of theta."]
 }*/
 /*JSON{
   "type" : "staticmethod",
@@ -379,9 +379,9 @@ JsVar *jswrap_math_round(double x) {
   "name" : "tan",
   "generate_full" : "jswrap_math_sin(theta) / jswrap_math_sin(theta+(PI/2))",
   "params" : [
-    ["theta","float","The angle to get the tangent of"]
+    ["theta","float","The angle to get the tangent of."]
   ],
-  "return" : ["float","The tangent of theta"]
+  "return" : ["float","The tangent of theta."]
 }*/ // note - we're trying to avoid having to use cos here
 
 /* we could use the real sqrt - but re-use pow to save on code space */
@@ -392,9 +392,9 @@ JsVar *jswrap_math_round(double x) {
   "name" : "sqrt",
   "generate" : "jswrap_math_sqrt",
   "params" : [
-    ["x","float","The value to take the square root of"]
+    ["x","float","The value to take the square root of."]
   ],
-  "return" : ["float","The square root of x"]
+  "return" : ["float","The square root of x."]
 }*/
 
 double jswrap_math_sqrt(double x) {
@@ -407,9 +407,9 @@ double jswrap_math_sqrt(double x) {
   "name" : "ceil",
   "generate" : "ceil",
   "params" : [
-    ["x","float","The value to round up"]
+    ["x","float","The value to round up."]
   ],
-  "return" : ["float","x, rounded upwards to the nearest integer"]
+  "return" : ["float","x, rounded upwards to the nearest integer."]
 }*/
 /*JSON{
   "type" : "staticmethod",
@@ -417,9 +417,9 @@ double jswrap_math_sqrt(double x) {
   "name" : "floor",
   "generate" : "floor",
   "params" : [
-    ["x","float","The value to round down"]
+    ["x","float","The value to round down."]
   ],
-  "return" : ["float","x, rounded downwards to the nearest integer"]
+  "return" : ["float","x, rounded downwards to the nearest integer."]
 }*/
 
 /*JSON{
@@ -429,9 +429,9 @@ double jswrap_math_sqrt(double x) {
   "name" : "exp",
   "generate" : "exp",
   "params" : [
-    ["x","float","The value raise E to the power of"]
+    ["x","float","The value raise E to the power of."]
   ],
-  "return" : ["float","E^x"]
+  "return" : ["float","E^x."]
 }*/
 /*JSON{
   "type" : "staticmethod",
@@ -440,9 +440,9 @@ double jswrap_math_sqrt(double x) {
   "name" : "log",
   "generate" : "log",
   "params" : [
-    ["x","float","The value to take the logarithm (base E) root of"]
+    ["x","float","The value to take the logarithm (base E) root of."]
   ],
-  "return" : ["float","The log (base E) of x"]
+  "return" : ["float","The log (base E) of x."]
 }*/
 
 /*JSON{
@@ -452,9 +452,9 @@ double jswrap_math_sqrt(double x) {
   "name" : "clip",
   "generate" : "jswrap_math_clip",
   "params" : [
-    ["x","float","A floating point value to clip"],
-    ["min","float","The smallest the value should be"],
-    ["max","float","The largest the value should be"]
+    ["x","float","A floating point value to clip."],
+    ["min","float","The smallest the value should be."],
+    ["max","float","The largest the value should be."]
   ],
   "return" : ["float","The value of x, clipped so as not to be below min or above max."]
 }
@@ -474,8 +474,8 @@ JsVarFloat jswrap_math_clip(JsVarFloat x, JsVarFloat min, JsVarFloat max) {
   "name" : "wrap",
   "generate" : "wrapAround",
   "params" : [
-    ["x","float","A floating point value to wrap"],
-    ["max","float","The largest the value should be"]
+    ["x","float","A floating point value to wrap."],
+    ["max","float","The largest the value should be."]
   ],
   "return" : ["float","The value of x, wrapped so as not to be below min or above max."]
 }
@@ -491,9 +491,9 @@ instance you might do: ```Math.wrap(angleInDegrees, 360)```
   "name" : "min",
   "generate_full" : "jswrap_math_minmax(args, false)",
   "params" : [
-    ["args","JsVarArray","Floating point values to clip"]
+    ["args","JsVarArray","Floating point values to clip."]
   ],
-  "return" : ["float","The minimum of the supplied values"]
+  "return" : ["float","The minimum of the supplied values."]
 }
 Find the minimum of a series of numbers
 */
@@ -503,9 +503,9 @@ Find the minimum of a series of numbers
   "name" : "max",
   "generate_full" : "jswrap_math_minmax(args, true)",
   "params" : [
-    ["args","JsVarArray","Floating point values to clip"]
+    ["args","JsVarArray","Floating point values to clip."]
   ],
-  "return" : ["float","The maximum of the supplied values"]
+  "return" : ["float","The maximum of the supplied values."]
 }
 Find the maximum of a series of numbers
 */

@@ -230,8 +230,7 @@ For example `E.setTimeZone(1)` will be GMT+0100
 
 *However* if you have daylight savings time set with `E.setDST(...)` then the
 timezone set by `E.setTimeZone(...)` will be _ignored_.
-
- */
+*/
 
 /*JSON{
   "type" : "staticmethod",
@@ -242,7 +241,7 @@ timezone set by `E.setTimeZone(...)` will be _ignored_.
 }
 Get the number of milliseconds elapsed since 1970 (or on embedded platforms,
 since startup)
- */
+*/
 JsVarFloat jswrap_date_now() {
   // Not quite sure why we need this, but (JsVarFloat)jshGetSystemTime() / (JsVarFloat)jshGetTimeFromMilliseconds(1) in inaccurate on STM32
   return ((JsVarFloat)jshGetSystemTime() / (JsVarFloat)jshGetTimeFromMilliseconds(1000)) * 1000;
@@ -262,13 +261,13 @@ JsVar *jswrap_date_from_milliseconds(JsVarFloat time) {
   "name" : "Date",
   "generate" : "jswrap_date_constructor",
   "params" : [
-    ["args","JsVarArray","Either nothing (current time), one numeric argument (milliseconds since 1970), a date string (see `Date.parse`), or [year, month, day, hour, minute, second, millisecond] "]
+    ["args","JsVarArray","Either nothing (current time), one numeric argument (milliseconds since 1970), a date string (see `Date.parse`), or [year, month, day, hour, minute, second, millisecond] ."]
   ],
-  "return" : ["JsVar","A Date object"],
+  "return" : ["JsVar","A Date object."],
   "return_object" : "Date"
 }
 Creates a date object
- */
+*/
 JsVar *jswrap_date_constructor(JsVar *args) {
   JsVarFloat time = 0;
 
@@ -307,11 +306,10 @@ JsVar *jswrap_date_constructor(JsVar *args) {
   "class" : "Date",
   "name" : "getTimezoneOffset",
   "generate" : "jswrap_date_getTimezoneOffset",
-  "return" : ["int32","The difference, in minutes, between UTC and local time"]
+  "return" : ["int32","The difference, in minutes, between UTC and local time."]
 }
 This returns the time-zone offset from UTC, in minutes.
-
- */
+*/
 int jswrap_date_getTimezoneOffset(JsVar *parent) {
   return -getTimeFromDateVar(parent, false/*system timezone*/).zone;
 }
@@ -323,11 +321,10 @@ int jswrap_date_getTimezoneOffset(JsVar *parent) {
   "class" : "Date",
   "name" : "getIsDST",
   "generate" : "jswrap_date_getIsDST",
-  "return" : ["int32","true if daylight savings time is in effect"]
+  "return" : ["int32","true if daylight savings time is in effect."]
 }
 This returns a boolean indicating whether daylight savings time is in effect.
-
- */
+*/
 int jswrap_date_getIsDST(JsVar *parent) {
   return getTimeFromDateVar(parent, false/*system timezone*/).is_dst ? 1 : 0;
 }
@@ -340,7 +337,7 @@ int jswrap_date_getIsDST(JsVar *parent) {
   "return" : ["float",""]
 }
 Return the number of milliseconds since 1970
- */
+*/
 /*JSON{
   "type" : "method",
   "class" : "Date",
@@ -349,7 +346,7 @@ Return the number of milliseconds since 1970
   "return" : ["float",""]
 }
 Return the number of milliseconds since 1970
- */
+*/
 JsVarFloat jswrap_date_getTime(JsVar *date) {
   return jsvGetFloatAndUnLock(jsvObjectGetChild(date, "ms", 0));
 }
@@ -359,12 +356,12 @@ JsVarFloat jswrap_date_getTime(JsVar *date) {
   "name" : "setTime",
   "generate" : "jswrap_date_setTime",
   "params" : [
-    ["timeValue","float","the number of milliseconds since 1970"]
+    ["timeValue","float","the number of milliseconds since 1970."]
   ],
-  "return" : ["float","the number of milliseconds since 1970"]
+  "return" : ["float","the number of milliseconds since 1970."]
 }
 Set the time/date of this Date class
- */
+*/
 JsVarFloat jswrap_date_setTime(JsVar *date, JsVarFloat timeValue) {
   if (date)
     jsvObjectSetChildAndUnLock(date, "ms", jsvNewFromFloat(timeValue));
@@ -380,7 +377,7 @@ JsVarFloat jswrap_date_setTime(JsVar *date, JsVarFloat timeValue) {
   "return" : ["int32",""]
 }
 0..23
- */
+*/
 int jswrap_date_getHours(JsVar *parent) {
   return getTimeFromDateVar(parent, false/*system timezone*/).hour;
 }
@@ -393,7 +390,7 @@ int jswrap_date_getHours(JsVar *parent) {
   "return" : ["int32",""]
 }
 0..59
- */
+*/
 int jswrap_date_getMinutes(JsVar *parent) {
   return getTimeFromDateVar(parent, false/*system timezone*/).min;
 }
@@ -406,7 +403,7 @@ int jswrap_date_getMinutes(JsVar *parent) {
   "return" : ["int32",""]
 }
 0..59
- */
+*/
 int jswrap_date_getSeconds(JsVar *parent) {
   return getTimeFromDateVar(parent, false/*system timezone*/).sec;
 }
@@ -419,7 +416,7 @@ int jswrap_date_getSeconds(JsVar *parent) {
   "return" : ["int32",""]
 }
 0..999
- */
+*/
 int jswrap_date_getMilliseconds(JsVar *parent) {
   return getTimeFromDateVar(parent, false/*system timezone*/).ms;
 }
@@ -432,7 +429,7 @@ int jswrap_date_getMilliseconds(JsVar *parent) {
   "return" : ["int32",""]
 }
 Day of the week (0=sunday, 1=monday, etc)
- */
+*/
 int jswrap_date_getDay(JsVar *parent) {
   return getCalendarDateFromDateVar(parent, false/*system timezone*/).dow;
 }
@@ -445,7 +442,7 @@ int jswrap_date_getDay(JsVar *parent) {
   "return" : ["int32",""]
 }
 Day of the month 1..31
- */
+*/
 int jswrap_date_getDate(JsVar *parent) {
   return getCalendarDateFromDateVar(parent, false/*system timezone*/).day;
 }
@@ -459,7 +456,7 @@ int jswrap_date_getDate(JsVar *parent) {
   "return" : ["int32",""]
 }
 Month of the year 0..11
- */
+*/
 int jswrap_date_getMonth(JsVar *parent) {
   return getCalendarDateFromDateVar(parent, false/*system timezone*/).month;
 }
@@ -472,7 +469,7 @@ int jswrap_date_getMonth(JsVar *parent) {
   "return" : ["int32",""]
 }
 The year, eg. 2014
- */
+*/
 int jswrap_date_getFullYear(JsVar *parent) {
   return getCalendarDateFromDateVar(parent, false/*system timezone*/).year;
 }
@@ -487,15 +484,15 @@ int jswrap_date_getFullYear(JsVar *parent) {
   "name" : "setHours",
   "generate" : "jswrap_date_setHours",
   "params" : [
-    ["hoursValue","int","number of hours, 0..23"],
-    ["minutesValue","JsVar","number of minutes, 0..59"],
-    ["secondsValue","JsVar","optional - number of seconds, 0..59"],
-    ["millisecondsValue","JsVar","optional - number of milliseconds, 0..999"]
+    ["hoursValue","int","number of hours, 0..23."],
+    ["minutesValue","JsVar","number of minutes, 0..59."],
+    ["secondsValue","JsVar","optional - number of seconds, 0..59."],
+    ["millisecondsValue","JsVar","optional - number of milliseconds, 0..999."]
   ],
-  "return" : ["float","The number of milliseconds since 1970"]
+  "return" : ["float","The number of milliseconds since 1970."]
 }
 0..23
- */
+*/
 JsVarFloat jswrap_date_setHours(JsVar *parent, int hoursValue, JsVar *minutesValue, JsVar *secondsValue, JsVar *millisecondsValue) {
   TimeInDay td = getTimeFromDateVar(parent, false/*system timezone*/);
   td.hour = hoursValue;
@@ -516,14 +513,14 @@ JsVarFloat jswrap_date_setHours(JsVar *parent, int hoursValue, JsVar *minutesVal
   "name" : "setMinutes",
   "generate" : "jswrap_date_setMinutes",
   "params" : [
-    ["minutesValue","int","number of minutes, 0..59"],
-    ["secondsValue","JsVar","optional - number of seconds, 0..59"],
-    ["millisecondsValue","JsVar","optional - number of milliseconds, 0..999"]
+    ["minutesValue","int","number of minutes, 0..59."],
+    ["secondsValue","JsVar","optional - number of seconds, 0..59."],
+    ["millisecondsValue","JsVar","optional - number of milliseconds, 0..999."]
   ],
-  "return" : ["float","The number of milliseconds since 1970"]
+  "return" : ["float","The number of milliseconds since 1970."]
 }
 0..59
- */
+*/
 JsVarFloat jswrap_date_setMinutes(JsVar *parent, int minutesValue, JsVar *secondsValue, JsVar *millisecondsValue) {
   TimeInDay td = getTimeFromDateVar(parent, false/*system timezone*/);
   td.min = minutesValue;
@@ -542,13 +539,13 @@ JsVarFloat jswrap_date_setMinutes(JsVar *parent, int minutesValue, JsVar *second
   "name" : "setSeconds",
   "generate" : "jswrap_date_setSeconds",
   "params" : [
-    ["secondsValue","int","number of seconds, 0..59"],
-    ["millisecondsValue","JsVar","optional - number of milliseconds, 0..999"]
+    ["secondsValue","int","number of seconds, 0..59."],
+    ["millisecondsValue","JsVar","optional - number of milliseconds, 0..999."]
   ],
-  "return" : ["float","The number of milliseconds since 1970"]
+  "return" : ["float","The number of milliseconds since 1970."]
 }
 0..59
- */
+*/
 JsVarFloat jswrap_date_setSeconds(JsVar *parent, int secondsValue, JsVar *millisecondsValue) {
   TimeInDay td = getTimeFromDateVar(parent, false/*system timezone*/);
   td.sec = secondsValue;
@@ -565,11 +562,10 @@ JsVarFloat jswrap_date_setSeconds(JsVar *parent, int secondsValue, JsVar *millis
   "name" : "setMilliseconds",
   "generate" : "jswrap_date_setMilliseconds",
   "params" : [
-    ["millisecondsValue","int","number of milliseconds, 0..999"]
+    ["millisecondsValue","int","number of milliseconds, 0..999."]
   ],
-  "return" : ["float","The number of milliseconds since 1970"]
-}
- */
+  "return" : ["float","The number of milliseconds since 1970."]
+}*/
 JsVarFloat jswrap_date_setMilliseconds(JsVar *parent, int millisecondsValue) {
   TimeInDay td = getTimeFromDateVar(parent, false/*system timezone*/);
   td.ms = millisecondsValue;
@@ -584,12 +580,12 @@ JsVarFloat jswrap_date_setMilliseconds(JsVar *parent, int millisecondsValue) {
   "name" : "setDate",
   "generate" : "jswrap_date_setDate",
   "params" : [
-    ["dayValue","int","the day of the month, between 0 and 31"]
+    ["dayValue","int","the day of the month, between 0 and 31."]
   ],
-  "return" : ["float","The number of milliseconds since 1970"]
+  "return" : ["float","The number of milliseconds since 1970."]
 }
 Day of the month 1..31
- */
+*/
 JsVarFloat jswrap_date_setDate(JsVar *parent, int dayValue) {
   TimeInDay td = getTimeFromDateVar(parent, false/*system timezone*/);
   CalendarDate d = getCalendarDate(td.daysSinceEpoch);
@@ -607,13 +603,13 @@ JsVarFloat jswrap_date_setDate(JsVar *parent, int dayValue) {
   "name" : "setMonth",
   "generate" : "jswrap_date_setMonth",
   "params" : [
-    ["yearValue","int","The month, between 0 and 11"],
-    ["dayValue","JsVar","optional - the day, between 0 and 31"]
+    ["yearValue","int","The month, between 0 and 11."],
+    ["dayValue","JsVar","optional - the day, between 0 and 31."]
   ],
-  "return" : ["float","The number of milliseconds since 1970"]
+  "return" : ["float","The number of milliseconds since 1970."]
 }
 Month of the year 0..11
- */
+*/
 JsVarFloat jswrap_date_setMonth(JsVar *parent, int monthValue, JsVar *dayValue) {
   TimeInDay td = getTimeFromDateVar(parent, false/*system timezone*/);
   CalendarDate d = getCalendarDate(td.daysSinceEpoch);
@@ -632,13 +628,12 @@ JsVarFloat jswrap_date_setMonth(JsVar *parent, int monthValue, JsVar *dayValue) 
   "name" : "setFullYear",
   "generate" : "jswrap_date_setFullYear",
   "params" : [
-    ["yearValue","int","The full year - eg. 1989"],
-    ["monthValue","JsVar","optional - the month, between 0 and 11"],
-    ["dayValue","JsVar","optional - the day, between 0 and 31"]
+    ["yearValue","int","The full year - eg. 1989."],
+    ["monthValue","JsVar","optional - the month, between 0 and 11."],
+    ["dayValue","JsVar","optional - the day, between 0 and 31."]
   ],
-  "return" : ["float","The number of milliseconds since 1970"]
-}
- */
+  "return" : ["float","The number of milliseconds since 1970."]
+}*/
 JsVarFloat jswrap_date_setFullYear(JsVar *parent, int yearValue, JsVar *monthValue, JsVar *dayValue) {
   TimeInDay td = getTimeFromDateVar(parent, false/*system timezone*/);
   CalendarDate d = getCalendarDate(td.daysSinceEpoch);
@@ -661,7 +656,7 @@ JsVarFloat jswrap_date_setFullYear(JsVar *parent, int yearValue, JsVar *monthVal
   "class" : "Date",
   "name" : "toString",
   "generate" : "jswrap_date_toString",
-  "return" : ["JsVar","A String"]
+  "return" : ["JsVar","A String."]
 }
 Converts to a String, eg: `Fri Jun 20 2014 14:52:20 GMT+0000`
 
@@ -691,12 +686,12 @@ JsVar *jswrap_date_toString(JsVar *parent) {
   "class" : "Date",
   "name" : "toUTCString",
   "generate" : "jswrap_date_toUTCString",
-  "return" : ["JsVar","A String"]
+  "return" : ["JsVar","A String."]
 }
 Converts to a String, eg: `Fri, 20 Jun 2014 14:52:20 GMT`
 
  **Note:** This always assumes a timezone of GMT
- */
+*/
 JsVar *jswrap_date_toUTCString(JsVar *parent) {
   TimeInDay time = getTimeFromDateVar(parent, true/*GMT*/);
   CalendarDate date = getCalendarDate(time.daysSinceEpoch);
@@ -709,18 +704,18 @@ JsVar *jswrap_date_toUTCString(JsVar *parent) {
   "class" : "Date",
   "name" : "toISOString",
   "generate" : "jswrap_date_toISOString",
-  "return" : ["JsVar","A String"]
+  "return" : ["JsVar","A String."]
 }
 Converts to a ISO 8601 String, eg: `2014-06-20T14:52:20.123Z`
 
  **Note:** This always assumes a timezone of GMT
- */
+*/
 /*JSON{
   "type" : "method",
   "class" : "Date",
   "name" : "toJSON",
   "generate" : "jswrap_date_toISOString",
-  "return" : ["JsVar","A String"]
+  "return" : ["JsVar","A String."]
 }
 Calls `Date.toISOString` to output this date to JSON
 */
@@ -736,11 +731,11 @@ JsVar *jswrap_date_toISOString(JsVar *parent) {
   "class" : "Date",
   "name" : "toLocalISOString",
   "generate" : "jswrap_date_toLocalISOString",
-  "return" : ["JsVar","A String"]
+  "return" : ["JsVar","A String."]
 }
 Converts to a ISO 8601 String (with timezone information), eg:
 `2014-06-20T14:52:20.123-0500`
- */
+*/
 JsVar *jswrap_date_toLocalISOString(JsVar *parent) {
   TimeInDay time = getTimeFromDateVar(parent, false/*system timezone*/);
   CalendarDate date = getCalendarDate(time.daysSinceEpoch);
@@ -816,13 +811,13 @@ static bool _parse_time(TimeInDay *time, int initialChars) {
   "name" : "parse",
   "generate" : "jswrap_date_parse",
   "params" : [
-    ["str","JsVar","A String"]
+    ["str","JsVar","A String."]
   ],
-  "return" : ["float","The number of milliseconds since 1970"]
+  "return" : ["float","The number of milliseconds since 1970."]
 }
 Parse a date string and return milliseconds since 1970. Data can be either
 '2011-10-20T14:48:00', '2011-10-20' or 'Mon, 25 Dec 1995 13:30:00 +0430'
- */
+*/
 JsVarFloat jswrap_date_parse(JsVar *str) {
   if (!jsvIsString(str)) return 0;
   TimeInDay time;
